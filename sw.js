@@ -1,8 +1,9 @@
-const CACHE_NAME = 'flashcards-rw-v2';
+const CACHE_NAME = 'flashcards-rw-v3';
 const ASSETS = [
   './',
   './index.html',
   './topics.js',
+  './exercises.js',
   './manifest.json'
 ];
 
