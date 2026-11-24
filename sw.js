@@ -1,4 +1,4 @@
-const CACHE_NAME = 'flashcards-rw-v4';
+const CACHE_NAME = 'flashcards-rw-v5';
 const ASSETS = [
   './',
   './index.html',

@@ -1,12 +1,16 @@
-// Database degli Esercizi d'Esame Svolti e Guidati Passo-Passo
+// Database degli Esercizi d'Esame Svolti e Guidati Passo-Passo (Reti Cellulari + LTE)
 // Tratti dalle lezioni del Prof. Mauro Femminella (UniPG - Reti Wireless)
-
 window.EXAM_EXERCISES = [
   {
     "id": "ex-02-fast-fading",
     "title": "Esercizio 2: Dimensionamento Cella con Solo Fast Fading",
     "lesson": "Lezione 04 (3 marzo)",
-    "tags": ["fast_fading", "rayleigh", "margine_potenza", "raggio_cella"],
+    "tags": [
+      "fast_fading",
+      "rayleigh",
+      "margine_potenza",
+      "raggio_cella"
+    ],
     "difficulty": 2,
     "problem_statement": "In un sistema cellulare con esponente di attenuazione η = 4, la potenza ricevuta a d0 = 100 m è Pr(100) = -20 dBm. Il ricevitore presenta una sensibilità Pth = -80 dBm. Si richiede un outage massimo al bordo cella Pout ≤ 1%. Si assuma trascurabile lo shadowing log-normale (presenza di solo fast fading di Rayleigh). Calcolare il margine di potenza M e il raggio di cella R.",
     "known_data": {
@@ -16,7 +20,11 @@ window.EXAM_EXERCISES = [
       "Outage massimo Pout": "1% (0.01)",
       "Shadowing": "Trascurato (solo Fast Fading Rayleigh)"
     },
-    "unknowns": ["Margine lineare M", "Margine in decibel M_dB", "Raggio di copertura massimo R"],
+    "unknowns": [
+      "Margine lineare M",
+      "Margine in decibel M_dB",
+      "Raggio di copertura massimo R"
+    ],
     "steps": [
       {
         "step_num": 1,
@@ -80,7 +88,12 @@ window.EXAM_EXERCISES = [
     "id": "ex-01-shadowing-sir",
     "title": "Esercizio 1: Dimensionamento con Shadowing, Tabella erfc e SIR",
     "lesson": "Lezione 04 (3 marzo)",
-    "tags": ["shadowing", "erfc", "sir", "settorializzazione"],
+    "tags": [
+      "shadowing",
+      "erfc",
+      "sir",
+      "settorializzazione"
+    ],
     "difficulty": 2,
     "problem_statement": "In un sistema cellulare con celle trisettorializzate (Ni = 2 interferenti nel primo anello), la potenza ricevuta a d0 = 100 m è Pr(100) = -35 dBm, la sensibilità è Pth = -80 dBm, l'esponente di attenuazione vale η = 3.7. Lo shadowing è modellato con deviazione standard σ_dB = 5 dB e si richiede un outage massimo al bordo cella Pout ≤ 1.5%. La distanza di riuso vale D = 3836.9 m. Calcolare il margine M_dB con la tabella erfc, il raggio di cella R e il SIR risultante al bordo cella.",
     "known_data": {
@@ -92,7 +105,11 @@ window.EXAM_EXERCISES = [
       "Outage massimo Pout": "1.5% (0.015)",
       "Distanza di riuso D": "3836.9 m"
     },
-    "unknowns": ["Margine M_dB (con tabella erfc)", "Raggio R", "Rapporto SIR in dB"],
+    "unknowns": [
+      "Margine M_dB (con tabella erfc)",
+      "Raggio R",
+      "Rapporto SIR in dB"
+    ],
     "steps": [
       {
         "step_num": 1,
@@ -156,7 +173,12 @@ window.EXAM_EXERCISES = [
     "id": "ex-03-capacita-km2",
     "title": "Esercizio 3: Capacità Teorica per Chilometro Quadrato e Geometria Esagonale",
     "lesson": "Lezione 04 (3 marzo)",
-    "tags": ["capacita_area", "shannon", "geometria_esagono", "densita_capacita"],
+    "tags": [
+      "capacita_area",
+      "shannon",
+      "geometria_esagono",
+      "densita_capacita"
+    ],
     "difficulty": 2,
     "problem_statement": "Una stazione base con banda B = 15 MHz serve una cella esagonale omnidirezionale con raggio R = 600 m. Al bordo cella il rapporto SIR medio garantito è pari a 17 dB. Calcolare l'area della cella esagonale, la capacità teorica di Shannon della cella C_cella e la densità di capacità per chilometro quadrato ρ_C [Mbit/s / km²].",
     "known_data": {
@@ -165,7 +187,11 @@ window.EXAM_EXERCISES = [
       "Rapporto SIR al bordo": "17 dB",
       "Geometria": "Esagono regolare regolare con raggio R"
     },
-    "unknowns": ["Area della cella esagonale Acella in km²", "Capacità di Shannon Ccella in Mbit/s", "Densità di capacità ρC in Mbit/s/km²"],
+    "unknowns": [
+      "Area della cella esagonale Acella in km²",
+      "Capacità di Shannon Ccella in Mbit/s",
+      "Densità di capacità ρC in Mbit/s/km²"
+    ],
     "steps": [
       {
         "step_num": 1,
@@ -205,7 +231,12 @@ window.EXAM_EXERCISES = [
     "id": "ex-04-cluster-erlang",
     "title": "Esercizio 4: Dimensionamento Cluster, Canali e Traffico Erlang-B",
     "lesson": "Lezione 07 (15 marzo) e Lezione 10 (24 marzo)",
-    "tags": ["cluster", "erlang_b", "canali_voce", "probabilita_blocco"],
+    "tags": [
+      "cluster",
+      "erlang_b",
+      "canali_voce",
+      "probabilita_blocco"
+    ],
     "difficulty": 2,
     "problem_statement": "Un operatore mobile dispone di una banda bidirezionale totale B = 12.5 MHz. Il sistema adotta canali duplex a 200 kHz (spaziatura GSM). Il vincolo di qualità impone un SIR minimo al bordo di γ = 18 dB con esponente di attenuazione η = 4 in celle omnidirezionali (Ni = 6). Determinare la dimensione teorica minima e la dimensione geometrica ammissibile del cluster N, il numero di canali assegnati a ciascuna cella, e il traffico smaltibile in Erlang con probabilità di blocco Pb = 2% (tramite tabella Erlang-B).",
     "known_data": {
@@ -216,7 +247,13 @@ window.EXAM_EXERCISES = [
       "Esponente η": "4",
       "Blocco Erlang-B Pb": "2% (0.02)"
     },
-    "unknowns": ["Numero canali totali Ntot", "Cluster minimo teorico Nmin", "Cluster geometrico N ammissibile", "Canali per cella Ccella", "Traffico Erlang A"],
+    "unknowns": [
+      "Numero canali totali Ntot",
+      "Cluster minimo teorico Nmin",
+      "Cluster geometrico N ammissibile",
+      "Canali per cella Ccella",
+      "Traffico Erlang A"
+    ],
     "steps": [
       {
         "step_num": 1,
@@ -272,7 +309,13 @@ window.EXAM_EXERCISES = [
     "id": "ex-05-lte-resource-blocks",
     "title": "Esercizio 5: Griglia LTE, Resource Block e Bitrate di Picco",
     "lesson": "Lezione 10 (24 marzo)",
-    "tags": ["lte", "resource_block", "mimo", "bitrate_picco", "64qam"],
+    "tags": [
+      "lte",
+      "resource_block",
+      "mimo",
+      "bitrate_picco",
+      "64qam"
+    ],
     "difficulty": 3,
     "problem_statement": "Un sistema LTE opera con banda di canale B = 20 MHz (allocazione di 100 Resource Block). Si consideri una trama FDD con durata 10 ms e normale prefisso ciclico (7 simboli OFDM per slot da 0.5 ms). Si assume modulazione 64-QAM (6 bit/simbolo), tasso di codifica di canale r = 3/4, antenna 2x2 MIMO (2 flussi spaziali indipendenti). Trascurando inizialmente l'overhead di segnalazione (CRS, PDCCH), calcolare il numero di Resource Element al secondo e il bitrate di picco dello strato fisico.",
     "known_data": {
@@ -283,7 +326,11 @@ window.EXAM_EXERCISES = [
       "Coding rate": "r = 3/4",
       "Configurazione MIMO": "2x2 (2 stream spaziali)"
     },
-    "unknowns": ["Resource Elements per RB", "Bitrate teorico per singolo RB", "Bitrate di picco complessivo a 20 MHz"],
+    "unknowns": [
+      "Resource Elements per RB",
+      "Bitrate teorico per singolo RB",
+      "Bitrate di picco complessivo a 20 MHz"
+    ],
     "steps": [
       {
         "step_num": 1,
@@ -316,6 +363,126 @@ window.EXAM_EXERCISES = [
         "back": "Con 100 RB in parallelo: R_100RB = 100 · 0.756 Mbit/s = 75.6 Mbit/s. Con 2x2 Spatial Multiplexing MIMO (2 stream contemporanei indipendenti): R_picco = 2 · 75.6 Mbit/s = 151.2 Mbit/s ≈ 150 Mbit/s.",
         "formula": "R_picco = 100 RB · 756 kbps · 2 (MIMO) = 151.2 Mbit/s",
         "tip": "Questo è esattamente il famoso valore commerciale di targa di LTE Cat.4 a 150 Mbps!"
+      }
+    ]
+  },
+  {
+    "id": "ex-06-handover-x2",
+    "title": "Esercizio 6: Procedura di Handover X2, Data Forwarding e Path Switch",
+    "lesson": "Lezione 09 (22 marzo)",
+    "tags": [
+      "handover",
+      "x2",
+      "forwarding",
+      "path_switch",
+      "lossless"
+    ],
+    "difficulty": 2,
+    "problem_statement": "Un terminale LTE in stato ECM-CONNECTED con sessione TCP attiva si sta muovendo in auto tra due celle servite dallo stesso MME e S-GW. La stazione radio base sorgente (eNodeB-A) decide l'handover verso la stazione base target (eNodeB-B) collegata tramite interfaccia X2. Spiegare passo-passo la sequenza di segnalazione, come viene garantita l'assenza di perdita di pacchetti durante il cambio radio e quale funzione svolge il Path Switch sul piano di trasporto.",
+    "known_data": {
+      "Stato iniziale": "ECM-CONNECTED / RRC_CONNECTED con traffico attivo",
+      "Stazioni base": "eNodeB-A (sorgente) ed eNodeB-B (target) con interfaccia diretta X2",
+      "Nodi core": "MME e S-GW stabili (non cambiano)",
+      "Obiettivo": "Handover seamless lossless (zero packet loss)"
+    },
+    "unknowns": [
+      "Fase 1: Misure e decisione",
+      "Fase 2: Preparazione X2",
+      "Fase 3: Packet Forwarding",
+      "Fase 4: Path Switch su S1"
+    ],
+    "steps": [
+      {
+        "step_num": 1,
+        "phase": "1. Misure e Decisione di Handover",
+        "front": "Come viene innescata la decisione di handover e chi decide il passaggio alla nuova cella?",
+        "back": "L'UE monitora costantemente i piloti CRS delle celle adiacenti misurando RSRP (potenza) e RSRQ (qualità). Quando la cella target supera la cella servente per un tempo di isteresi (Time-to-Trigger), l'UE invia un Measurement Report. È l'eNodeB sorgente che valuta il report e decide autonomamente l'handover (Network-Controlled Handover).",
+        "formula": "RSRP_target > RSRP_sorgente + Hysteresis per T_trigger",
+        "tip": "La decisione è presa dall'antenna (eNodeB), non dall'MME né dal terminale."
+      },
+      {
+        "step_num": 2,
+        "phase": "2. Preparazione del Target su Interfaccia X2",
+        "front": "Cosa accade nella fase di preparazione prima che il terminale cambi frequenza radio?",
+        "back": "L'eNodeB sorgente invia un messaggio di Handover Request all'eNodeB target direttamente via cavo X2, trasmettendo il contesto del terminale (QoS, chiavi e security capabilities). Il target esegue il controllo di ammissione, alloca le risorse radio e risponde con Handover Request Acknowledge, fornendo un preambolo di accesso casuale dedicato (non-contention based).",
+        "formula": "eNodeB-A --(Handover Request su X2)--> eNodeB-B",
+        "tip": "L'assegnazione di un preambolo dedicato evita collisioni sul canale ad accesso casuale della nuova cella!"
+      },
+      {
+        "step_num": 3,
+        "phase": "3. Cambio Radio e Meccanismo di Packet Forwarding",
+        "front": "Cosa succede ai pacchetti dati in volo mentre il terminale si sintonizza sulla nuova frequenza radio?",
+        "back": "L'eNodeB sorgente ordina all'UE il cambio cella (RRC Connection Reconfiguration). Contemporaneamente, l'eNodeB sorgente re-instrada tutti i pacchetti downlink ricevuti dal S-GW verso l'eNodeB target tramite l'interfaccia X2 (Packet Forwarding). Il target li memorizza in un buffer temporaneo e li trasmetterà all'UE appena agganciata la nuova portante. In questo modo zero pacchetti vengono persi!",
+        "formula": "Tunnel Forwarding GTP-U temporaneo su interfaccia X2",
+        "tip": "Grazie al forwarding su X2, l'handover in LTE è rigorosamente 'lossless'."
+      },
+      {
+        "step_num": 4,
+        "phase": "4. Path Switch e Aggiornamento del Tunnel S1",
+        "front": "Come viene reindirizzato definitivamente il flusso dati dal Serving Gateway alla nuova antenna?",
+        "back": "Appena l'UE completa l'accesso sul target, l'eNodeB target invia un messaggio di Path Switch Request all'MME. L'MME invia una Modify Bearer Request al S-GW ordinando di commutare l'endpoint del tunnel S1 di downlink verso il target. Il S-GW invia un pacchetto 'End Marker' sul vecchio canale verso la vecchia cella per segnalare la fine dei dati residui.",
+        "formula": "eNodeB-B --(Path Switch)--> MME --(Modify Bearer)--> S-GW",
+        "tip": "Solo al termine del Path Switch il target invia un Release Resource alla vecchia cella per liberare i buffer."
+      }
+    ]
+  },
+  {
+    "id": "ex-07-autenticazione-chiavi-lte",
+    "title": "Esercizio 7: Procedura di Autenticazione EPS-AKA e Calcolo delle Chiavi",
+    "lesson": "Lezione 08 (17 marzo)",
+    "tags": [
+      "aka",
+      "sicurezza",
+      "hss",
+      "k_asme",
+      "k_enb"
+    ],
+    "difficulty": 2,
+    "problem_statement": "Durante la procedura di accensione e Attach, un terminale LTE deve autenticarsi con la rete centrale e stabilire le chiavi di sicurezza per la cifratura del controllo e dei dati. Spiegare come la rete e la SIM condividono la fiducia partendo dalla chiave segreta K, come l'HSS genera il vettore (RAND, AUTN, XRES, K_ASME), come l'UE convalida la rete e in che modo le chiavi operative K_NAS e K_eNB vengono separate.",
+    "known_data": {
+      "Chiave master segreta K": "128 bit permanente, presente SOLO nella USIM e nell'HSS/AuC",
+      "Identità terminale": "IMSI (International Mobile Subscriber Identity)",
+      "Rete servente": "MME e eNodeB",
+      "Protocollo di sicurezza": "EPS-AKA (Authentication and Key Agreement)"
+    },
+    "unknowns": [
+      "Generazione Vettore nell'HSS",
+      "Verifica della Rete nella SIM (AUTN)",
+      "Verifica dell'Utente nell'MME (RES/XRES)",
+      "Derivazione e Consegna delle Chiavi K_NAS e K_eNB"
+    ],
+    "steps": [
+      {
+        "step_num": 1,
+        "phase": "1. Generazione del Vettore di Autenticazione nell'HSS",
+        "front": "Quali operazioni esegue l'HSS quando riceve dall'MME la richiesta di autenticazione per un dato IMSI?",
+        "back": "L'HSS genera un numero pseudocasuale RAND e usa la chiave master K per calcolare: 1) AUTN (token che contiene il Sequence Number cifrato e il codice di autenticazione del messaggio MAC); 2) XRES (risposta attesa dall'utente); 3) K_ASME (chiave radice per l'MME servente, calcolata con KDF a partire da K e dall'identità della rete PLMN). L'HSS spedisce all'MME la quadrupla {RAND, AUTN, XRES, K_ASME}.",
+        "formula": "Vettore EPS = {RAND, AUTN, XRES, K_ASME}",
+        "tip": "La chiave K non lascia mai l'HSS; l'MME riceve solo K_ASME."
+      },
+      {
+        "step_num": 2,
+        "phase": "2. Autenticazione della Rete da parte della SIM",
+        "front": "Cosa fa la SIM dell'utente quando riceve dall'MME la coppia {RAND, AUTN}?",
+        "back": "La SIM inserisce RAND e AUTN nel proprio chip sicuro e, tramite la chiave master K, ricalcola il MAC di rete e decifra il Sequence Number. Se il MAC corrisponde e il sequence number è fresco (non replicato), la SIM ha la prova matematica che l'MME è collegato al vero HSS dell'operatore, validando l'autenticità della rete ed escludendo attacchi da antenne civetta.",
+        "formula": "Verifica: MAC_calcolato == MAC_in_AUTN && SQN > SQN_precedente",
+        "tip": "Questa è la mutua autenticazione: anche l'utente verifica la rete, a differenza del vecchio 2G GSM."
+      },
+      {
+        "step_num": 3,
+        "phase": "3. Autenticazione del Terminale presso l'MME",
+        "front": "Come viene completata l'autenticazione del terminale verso l'MME?",
+        "back": "Se la verifica di AUTN ha successo, la SIM calcola la risposta RES = f2(K, RAND) e la invia all'MME tramite il messaggio NAS Authentication Response. L'MME confronta la stringa ricevuta RES con quella attesa XRES. Se RES == XRES, l'utente è autenticato con successo e l'MME lo registra.",
+        "formula": "MME verifica: RES == XRES",
+        "tip": "Se RES != XRES, l'MME invia una Authentication Reject e disconnette il terminale."
+      },
+      {
+        "step_num": 4,
+        "phase": "4. Derivazione della Gerarchia Chiavi K_NAS e K_eNB",
+        "front": "Come vengono derivate e distribuite le chiavi operative K_NAS e K_eNB a partire da K_ASME?",
+        "back": "Sia l'UE sia l'MME derivano autonomamente da K_ASME le chiavi K_NASenc (cifratura) e K_NASint (integrità) per proteggere i messaggi di controllo NAS. Successivamente l'MME calcola la chiave K_eNB = KDF(K_ASME, NAS_count) e la consegna all'antenna eNodeB nel messaggio Initial Context Setup. L'eNodeB userà K_eNB per cifrare e proteggere i dati radio sul livello PDCP.",
+        "formula": "K_ASME ---> K_NAS (per MME) & K_eNB (per eNodeB)",
+        "tip": "L'antenna eNodeB non possiede K_ASME né K, isolando la sicurezza della rete centrale da intrusioni sulle antenne fisiche."
       }
     ]
   }

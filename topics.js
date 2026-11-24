@@ -1,5 +1,5 @@
-// Database definitivo delle flashcards per Reti Wireless (Reti Cellulari)
-// Generato automaticamente da RetiCellulari.excalidraw
+// Database definitivo delle flashcards per Reti Wireless (Reti Cellulari + LTE)
+// Generato automaticamente da RetiCellulari.excalidraw e LTE.excalidraw
 window.DEFAULT_TOPICS = [
   {
     "topic_id": "reticell_architettura",
@@ -879,6 +879,232 @@ window.DEFAULT_TOPICS = [
         "image": "RetiCellulari-img-27-carico-normalizzato.png",
         "image_side": "fronte",
         "extra": "Poiché E[N] >= 1, si ha sempre G >= S.",
+        "difficolta": 2
+      }
+    ]
+  },
+  {
+    "topic_id": "lte_architettura_attach_handover",
+    "topic_name": "5. LTE: Architettura, Attach, Stati, GTP-U, Roaming e Handover",
+    "cards": [
+      {
+        "id": "lte-001",
+        "front": "Per quale motivo fondamentale l'architettura LTE è definita 'All-IP'?",
+        "back": "Perché elimina completamente il dominio a commutazione di circuito (CS) del GSM/UMTS; tutti i servizi, inclusa la voce (VoLTE tramite IMS), sono trasportati esclusivamente come pacchetti IP a commutazione di pacchetto (PS).",
+        "node": "Architettura LTE All-IP",
+        "note": "Lezione 05 8 marzo - 05 - Evoluzione dell'architettura - da GSM alla rete interamente IP",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Semplifica la rete e riduce la latenza end-to-end.",
+        "difficolta": 1
+      },
+      {
+        "id": "lte-002",
+        "front": "Quali nodi compongono il piano di controllo e quali il piano dati nella rete centrale EPC di LTE?",
+        "back": "Il piano di controllo è gestito dall'MME (Mobility Management Entity) e dall'HSS. Il piano dati (utente) è gestito dal Serving Gateway (S-GW) e dal Packet Gateway (P-GW).",
+        "node": "Separazione Piano Controllo e Dati",
+        "note": "Lezione 08 17 marzo - 01 - EPS bearer e separazione tra controllo e dati",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'eNodeB gestisce entrambi i piani sul versante radio.",
+        "difficolta": 1
+      },
+      {
+        "id": "lte-003",
+        "front": "Perché in LTE si usa OFDMA in Downlink ma SC-FDMA in Uplink?",
+        "back": "OFDMA presenta un elevato PAPR (Peak-to-Average Power Ratio) che richiederebbe amplificatori di potenza costosi e inefficienti. In Uplink si usa SC-FDMA per contenere il PAPR, preservando la batteria del terminale mobile.",
+        "node": "OFDMA vs SC-FDMA",
+        "note": "Lezione 05 8 marzo - 24 - PAPR e motivazione di SC-FDMA",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "SC-FDMA applica una DFT prima dell'IFFT per distribuire l'energia dei simboli.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-004",
+        "front": "Qual è la struttura standard di un Resource Block (RB) in LTE con prefisso ciclico normale?",
+        "back": "Comprende 12 sottoportanti spaziate a 15 kHz (banda totale 180 kHz) per la durata di uno slot di 0.5 ms (7 simboli OFDM). Su uno slot contiene 84 Resource Elements (168 su un subframe di 1 ms).",
+        "node": "Resource Block e Griglia LTE",
+        "note": "Lezione 05 8 marzo - 28 - Resource block, simbolo OFDM e resource element",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Un Resource Element (RE) è la più piccola unità allocabile (1 sottoportante x 1 simbolo OFDM).",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-005",
+        "front": "Qual è la differenza operativa tra Fractional Frequency Reuse (FFR) e Soft Frequency Reuse (SFR)?",
+        "back": "FFR separa rigidamente le bande tra centro e bordo cella (riuso 1 al centro, riuso frazionario al bordo). SFR utilizza tutta la banda ovunque, ma trasmette a potenza ridotta al centro e a piena potenza al bordo su sottobande ortogonali.",
+        "node": "FFR vs SFR",
+        "note": "Lezione 04 3 marzo - 22 e 23 - FFR e SFR",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "SFR garantisce un'efficienza spettrale aggregata superiore a FFR.",
+        "difficolta": 3
+      },
+      {
+        "id": "lte-006",
+        "front": "Come viene trasportato il messaggio di Attach Request dall'UE all'MME?",
+        "back": "È un messaggio del livello NAS (Non-Access Stratum) trasparente per la stazione radio base: viene incapsulato dentro un messaggio RRC tra UE ed eNodeB, e poi re-incapsulato dall'eNodeB in un messaggio S1-AP verso l'MME.",
+        "node": "Messaggio di Attach Request",
+        "note": "Lezione 08 17 marzo - 09 - Attach Request - messaggio NAS dentro RRC e S1-AP",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'eNodeB non decodifica il contenuto della Attach Request.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-007",
+        "front": "Quali elementi compongono il vettore di autenticazione calcolato dall'HSS per la procedura EPS-AKA?",
+        "back": "Contiene 4 elementi: 1) RAND (numero casuale di sfida); 2) AUTN (token di autenticazione della rete); 3) XRES (risposta attesa dall'utente); 4) K_ASME (chiave radice di sicurezza per l'MME).",
+        "node": "Vettori di Autenticazione EPS-AKA",
+        "note": "Lezione 08 17 marzo - 13 - HSS e AuC - generazione dei vettori di autenticazione",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Tutti derivano dalla chiave segreta K conservata nell'AuC e nella SIM.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-008",
+        "front": "In quale modo terminale e rete si autenticano reciprocamente in EPS-AKA?",
+        "back": "L'UE verifica il token AUTN con la propria SIM (autenticando la rete e scongiurando antenne civetta). L'UE calcola la risposta RES e la invia all'MME; l'MME confronta RES con XRES (autenticando l'utente).",
+        "node": "Verifica Mutua dell'Autenticazione",
+        "note": "Lezione 08 17 marzo - 14 e 15 - Sfida di autenticazione e verifica della rete",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Se AUTN fallisce, il terminale abortisce la connessione immediatamente.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-009",
+        "front": "Come si sviluppa la gerarchia delle chiavi crittografiche LTE a partire dalla chiave master K?",
+        "back": "Dalla chiave master K (SIM/HSS) si deriva K_ASME (MME). Da K_ASME si derivano: 1) K_NASint e K_NASenc (per integrità e cifratura MME-UE); 2) K_eNB, consegnata all'antenna per derivare le chiavi radio AS (K_UPenc, K_RRCint, K_RRCenc).",
+        "node": "Gerarchia delle Chiavi LTE",
+        "note": "Lezione 08 17 marzo - 12 - Gerarchia delle chiavi LTE - K CK IK KASME e KeNB",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "La chiave master K non esce mai dalla SIM e dall'HSS.",
+        "difficolta": 3
+      },
+      {
+        "id": "lte-010",
+        "front": "Che cos'è il Default EPS Bearer e quando viene attivato?",
+        "back": "È il tunnel dati IP logico permanente di default che connette l'UE a Internet tramite il P-GW. Viene creato contestualmente alla procedura di Attach per garantire connettività dati 'always-on'.",
+        "node": "Default EPS Bearer",
+        "note": "Lezione 08 17 marzo - 01 - EPS bearer e separazione tra controllo e dati",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Ha caratteristiche Non-GBR con associato un QCI (tipicamente QCI=9 per navigazione web).",
+        "difficolta": 1
+      },
+      {
+        "id": "lte-011",
+        "front": "Come viaggiano i pacchetti IP dell'utente nella rete centrale EPC e cosa rappresenta il TEID?",
+        "back": "Viaggiano incapsulati dentro pacchetti UDP/IP interni tramite il protocollo GTP-U. Il TEID (Tunnel Endpoint Identifier) è l'identificativo numerico che indica al nodo ricevente (S-GW, P-GW o eNodeB) a quale specifico bearer appartiene il pacchetto.",
+        "node": "Tunnel GTP-U e TEID",
+        "note": "Lezione 09 22 marzo - 02 e 03 - Incapsulamento GTP-U e TEID",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Ogni tratta ha due TEID distinti: uno per la salita (uplink) e uno per la discesa (downlink).",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-012",
+        "front": "Quali funzioni critiche svolge il P-GW sul traffico dati IP in uscita verso Internet?",
+        "back": "Assegna l'indirizzo IP all'UE all'attach, rimuove l'incapsulamento GTP-U, decrementa il TTL del pacchetto, applica il NAT (traduzione da IP privato a pubblico), gestisce il filtraggio filtri TFT e conteggia il traffico per la tariffazione.",
+        "node": "Ruolo del P-GW come Router e NAT",
+        "note": "Lezione 09 22 marzo - 04 - P-GW come router di uscita - TTL e NAT",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "È l'ancora stabile dell'indirizzo IP: l'IP del terminale non cambia anche se l'utente cambia cella.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-013",
+        "front": "Qual è la differenza fondamentale tra APN-AMBR e UE-AMBR e quali nodi ne fanno l'enforcement?",
+        "back": "L'APN-AMBR limita la velocità massima aggregata per tutti i bearer non-GBR associati a un singolo APN (enforced dal P-GW). L'UE-AMBR limita la velocità aggregata totale del terminale su tutti gli APN aperti contemporaneamente (enforced dall'eNodeB).",
+        "node": "APN-AMBR vs UE-AMBR",
+        "note": "Lezione 09 22 marzo - 06, 07 e 08 - AMBR e controllo del traffico",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'eNodeB limita la trasmissione radio imponendo Min(UE-AMBR, Somma APN-AMBR).",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-014",
+        "front": "Quali sono i tre livelli di stato di un terminale LTE e cosa controlla ciascuno?",
+        "back": "1) EMM (Mobility Management NAS): Registered o Deregistered dalla rete; 2) ECM (Connection Management NAS): Connected o Idle verso l'MME; 3) RRC (Radio Resource Control): Connected o Idle verso l'eNodeB.",
+        "node": "Stati EMM, ECM e RRC",
+        "note": "Lezione 09 22 marzo - 09 - Stati EMM, ECM e RRC",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "In assenza di traffico, il terminale passa a ECM-IDLE e RRC_IDLE pur rimanendo EMM-REGISTERED.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-015",
+        "front": "A quale livello di granularità la rete conosce la posizione del terminale in Connected e in Idle?",
+        "back": "In Connected la rete conosce la posizione alla singola cella (l'eNodeB gestisce l'handover). In Idle la rete conosce la posizione solo a livello di Tracking Area (insieme di celle), evitando che il terminale consumi batteria avvisando la rete a ogni cambio cella.",
+        "node": "Granularità di Posizione: Connected vs Idle",
+        "note": "Lezione 09 22 marzo - 11 - Terminale registrato e idle - tracking area",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "In Idle l'UE avvisa la rete solo se esce dalla Tracking Area (Tracking Area Update).",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-016",
+        "front": "Come fa la rete a raggiungere e risvegliare un terminale in stato Idle all'arrivo di dati dal server?",
+        "back": "I dati arrivano al S-GW, che invia una Downlink Data Notification all'MME. L'MME trasmette un messaggio di Paging a tutti gli eNodeB della Tracking Area dell'utente; gli eNodeB irradiano il Paging via radio e il terminale si risveglia eseguendo un accesso su PRACH.",
+        "node": "Procedura di Paging",
+        "note": "Lezione 09 22 marzo - 12 - Indirizzo IP conservato, messaggi entranti e paging",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il S-GW bufferizza temporaneamente i pacchetti durante la procedura di Paging.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-017",
+        "front": "Come operano lo scheduling in Downlink e in Uplink nell'eNodeB ogni subframe da 1 ms?",
+        "back": "In Downlink l'UE invia misure CQI, l'eNodeB sceglie modulazione/codifica (MCS) e notifica l'assegnazione RB tramite messaggio DCI su PDCCH. In Uplink l'UE invia un Buffer Status Report (BSR) e l'eNodeB concede uno Scheduling Grant dedicato.",
+        "node": "Scheduling Downlink e Uplink",
+        "note": "Lezione 09 22 marzo - 16 e 17 - Scheduling downlink e uplink",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'UE non trasmette mai in Uplink senza previo Scheduling Grant dell'eNodeB.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-018",
+        "front": "Come funziona l'instradamento nel Roaming LTE Home-Routed (interfaccia S8)?",
+        "back": "L'antenna eNodeB e il Serving Gateway (S-GW) risiedono nella rete estera visitata (V-PLMN), ma il tunnel dati attraversa l'interfaccia internazionale S8 e termina nel Packet Gateway (P-GW) della rete domestica dell'operatore di casa (H-PLMN).",
+        "node": "Roaming LTE Home-Routed",
+        "note": "Lezione 09 22 marzo - 24 e 25 - Roaming LTE home-routed",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'utente mantiene l'indirizzo IP italiano, le tariffe di casa e le stesse policy applicative.",
+        "difficolta": 2
+      },
+      {
+        "id": "lte-019",
+        "front": "Perché l'Handover su interfaccia X2 in LTE è detto 'senza perdita di pacchetti' (lossless)?",
+        "back": "Durante la transizione radio dell'UE, l'eNodeB sorgente inoltra direttamente all'eNodeB target via cavo X2 (Packet Forwarding) tutti i pacchetti che continuano ad arrivare dal S-GW, finché il target non completa il Path Switch sul tunnel S1.",
+        "node": "Handover X2 e Data Forwarding",
+        "note": "Lezione 09 22 marzo - 29 e 30 - Cambio radio e forwarding temporaneo",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il target consegna prima i pacchetti inoltrati via X2 e poi quelli nuovi via S1, garantendo l'ordine.",
+        "difficolta": 3
+      },
+      {
+        "id": "lte-020",
+        "front": "A cosa serve e quale entità coinvolge la fase di 'Path Switch' al termine dell'handover?",
+        "back": "L'eNodeB target invia una Path Switch Request all'MME, il quale istruisce il S-GW a deviare l'endpoint del tunnel dati S1 di downlink dalla vecchia antenna alla nuova. Il S-GW invia un pacchetto 'End Marker' alla vecchia cella per chiudere il forwarding.",
+        "node": "Path Switch nell'Handover",
+        "note": "Lezione 09 22 marzo - 31 - Path switch e aggiornamento MME",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Solo dopo il Path Switch l'eNodeB sorgente rilascia le vecchie risorse radio.",
         "difficolta": 2
       }
     ]
