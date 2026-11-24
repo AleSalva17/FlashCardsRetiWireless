@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f141c">
+  <title>Flashcards Reti Wireless - WebApp</title>
+  
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Telegram WebApp SDK (se aperto dentro Telegram si attiva automaticamente) -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+  <style>
+    :root {
+      --bg: #0f141c;
+      --surface: #181f2c;
+      --surface-elevated: #222b3d;
+      --surface-border: #2e3a50;
+      --accent: #60a5fa;
+      --accent-hover: #3b82f6;
+      --accent-glow: rgba(96, 165, 250, 0.2);
+      --danger: #f87171;
+      --danger-bg: rgba(248, 113, 113, 0.15);
+      --success: #34d399;
+      --success-bg: rgba(52, 211, 153, 0.15);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    header {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .brand-title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .header-btns {
+      display: flex;
+      gap: 8px;
+    }
+    .badge-btn {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .badge-btn:active {
+      background: var(--surface-elevated);
+      border-color: var(--accent);
+    }
+    .badge-count {
+      background: var(--danger-bg);
+      color: var(--danger);
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* VISTE */
+    .view { display: none; width: 100%; flex-direction: column; }
+    .view.active { display: flex; }
+
+    /* SETUP VIEW */
+    .setup-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      box-shadow: var(--shadow);
+    }
+    .setup-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .setup-desc {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .section-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topics-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+      max-height: 240px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+    .topic-item {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .topic-item.selected {
+      background: rgba(96, 165, 250, 0.12);
+      border-color: var(--accent);
+    }
+    .topic-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+    .topic-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      pointer-events: none;
+    }
+    .topic-name {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+    .topic-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--surface);
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-left: 8px;
+      white-space: nowrap;
+    }
+
+    .options-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .option-box {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    input[type=range] {
+      width: 100%;
+      height: 6px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .toggle-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider-toggle {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--surface);
+      border: 1px solid var(--surface-border);
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .slider-toggle:before {
+      position: absolute;
+      content: "";
+      height: 16px; width: 16px;
+      left: 3px; bottom: 3px;
+      background-color: var(--text-muted);
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider-toggle {
+      background-color: var(--accent);
+      border-color: var(--accent);
+    }
+    input:checked + .slider-toggle:before {
+      transform: translateX(20px);
+      background-color: white;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: var(--radius-md);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+    .btn-primary:disabled {
+      opacity: 0.5;
+      transform: none;
+    }
+
+    /* PRACTICE VIEW */
+    .practice-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .progress-info {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .topic-pill {
+      background: var(--surface-elevated);
+      color: var(--accent);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid var(--surface-border);
+      max-width: 220px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .progress-bar-container {
+      width: 100%;
+      height: 5px;
+      background: var(--surface-elevated);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* 3D FLIP CARD */
+    .card-scene {
+      width: 100%;
+      height: 380px;
+      perspective: 1200px;
+      margin-bottom: 18px;
+    }
+    .card-3d {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.45s cubic-bezier(0.4, 0.2, 0.2, 1);
+      cursor: pointer;
+    }
+    .card-3d.is-flipped {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius-lg);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--surface-border);
+      background: var(--surface);
+    }
+    .card-face.front {
+      background: linear-gradient(180deg, #182030 0%, #131a26 100%);
+    }
+    .card-face.back {
+      transform: rotateY(180deg);
+      background: linear-gradient(180deg, #1a2233 0%, #151c2a 100%);
+      border-color: #3b4963;
+    }
+    .card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .card-content {
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 600;
+      color: var(--text);
+      overflow-y: auto;
+      max-height: 230px;
+      padding-right: 4px;
+      user-select: text;
+    }
+    .card-face.back .card-content {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--surface-border);
+      padding-top: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* MARK WRONG TOGGLE */
+    .mark-wrong-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-elevated);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--surface-border);
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+    }
+    .mark-wrong-container.checked {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    /* CONTROLS BAR */
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .nav-btn {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .nav-btn:active:not(:disabled) {
+      background: var(--surface-elevated);
+      border-color: var(--accent);
+    }
+    .nav-btn:disabled {
+      opacity: 0.35;
+    }
+    .swipe-hint {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* REPORT VIEW */
+    .report-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 20px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .score-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+      border: 3px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .score-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .score-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .report-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .report-subtitle {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .stat-pill {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      flex: 1;
+    }
+    .stat-pill .val {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .stat-pill .lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .stat-pill.success .val { color: var(--success); }
+    .stat-pill.danger .val { color: var(--danger); }
+
+    .wrong-list-box {
+      text-align: left;
+      margin-bottom: 24px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .wrong-list-header {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: var(--danger);
+    }
+    .wrong-items-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .wrong-item {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+    .wrong-item-node {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .wrong-item-note {
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    .report-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-secondary {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      padding: 14px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 500px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .modal-title {
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .btn-danger-outline {
+      background: transparent;
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="logo-icon">⚡</div>
+      <div>
+        <div class="brand-title">Flashcards Reti Wireless</div>
+        <div class="brand-sub">PWA & Telegram Ready</div>
+      </div>
+    </div>
+    <div class="header-btns">
+      <button class="badge-btn" onclick="openSyncModal()" title="Sincronizza con GitHub o Telegram">
+        <span id="syncStatusIcon">☁️</span> <span>Sync</span>
+      </button>
+      <button class="badge-btn" onclick="openReviewModal()">
+        <span>📋 Da Ripassare</span>
+        <span class="badge-count" id="headerReviewCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- VIEW 1: SETUP -->
+    <div id="viewSetup" class="view active">
+      <div class="setup-card">
+        <h2 class="setup-title">Configura Sessione</h2>
+        <p class="setup-desc">Seleziona gli argomenti per pescare le flashcard.</p>
+
+        <div class="section-label">
+          <span>Argomenti</span>
+          <label style="cursor: pointer; color: var(--accent); font-size: 12px; text-transform: none;">
+            + Importa JSON
+            <input type="file" id="importJsonInput" accept=".json" style="display: none;" onchange="importCustomJson(event)">
+          </label>
+        </div>
+        
+        <div class="topics-grid" id="topicsContainer">
+          <!-- Popolato via JS -->
+        </div>
+
+        <div class="options-row">
+          <div class="option-box">
+            <div class="slider-header">
+              <span>Numero di Card</span>
+              <span id="sliderVal" style="color: var(--accent);">0</span>
+            </div>
+            <input type="range" id="cardSlider" min="1" max="10" value="5" oninput="updateSliderVal(this.value)">
+          </div>
+
+          <div class="option-box">
+            <div class="toggle-wrapper">
+              <div>
+                <div>Ordine Casuale (Shuffle)</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="shuffleToggle" checked>
+                <span class="slider-toggle"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="btnStart" onclick="startPractice()">
+          <span>Avvia Esercitazione</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- VIEW 2: PRACTICE -->
+    <div id="viewPractice" class="view">
+      <div class="practice-header">
+        <div class="progress-info" id="cardCounter">Card 1 di 10</div>
+        <div class="topic-pill" id="currentTopicPill">Argomento</div>
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+
+      <!-- ZONA CARTA TOUCH (Tap per girare, Swipe per scorrere) -->
+      <div class="card-scene" id="cardScene">
+        <div class="card-3d" id="cardElement">
+          <!-- FRONTE -->
+          <div class="card-face front">
+            <div class="card-tag">DOMANDA (FRONTE)</div>
+            <div class="card-content" id="cardFrontText">Testo domanda...</div>
+            <div class="card-footer">
+              <span>↻ Tocca per girare</span>
+              <span id="cardNodeLabel" style="font-size: 11px; color: var(--text-muted);"></span>
+            </div>
+          </div>
+          <!-- RETRO -->
+          <div class="card-face back">
+            <div class="card-tag">RISPOSTA (RETRO)</div>
+            <div class="card-content" id="cardBackText">Testo risposta...</div>
+            <div class="card-footer" onclick="event.stopPropagation()">
+              <div class="mark-wrong-container" id="markWrongBox" onclick="toggleMarkWrong()">
+                <input type="checkbox" id="markWrongCheck" style="accent-color: var(--danger); pointer-events: none;">
+                <label style="cursor: pointer; font-size: 12px;">Non la sapevo</label>
+              </div>
+              <span id="cardNoteLink" style="font-size: 11px; color: var(--accent);"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls-bar">
+        <button class="nav-btn" id="btnPrev" onclick="prevCard()">
+          <span>← Prec</span>
+        </button>
+        <button class="nav-btn" style="background: var(--surface-elevated); font-size: 13px;" onclick="finishSessionEarly()">
+          <span>Fine</span>
+        </button>
+        <button class="nav-btn" id="btnNext" onclick="nextCard()">
+          <span>Succ →</span>
+        </button>
+      </div>
+
+      <div class="swipe-hint">
+        💡 Suggerimento: Tocca per girare &bull; Scorri col dito (Swipe) a destra/sinistra per cambiare card
+      </div>
+    </div>
+
+    <!-- VIEW 3: REPORT -->
+    <div id="viewReport" class="view">
+      <div class="report-card">
+        <div class="score-circle">
+          <div class="score-num" id="reportPercent">0%</div>
+          <div class="score-label">ACCURATEZZA</div>
+        </div>
+        <h2 class="report-title">Completato!</h2>
+        <p class="report-subtitle" id="reportSubtitle">Report salvato nella memoria dell'app.</p>
+
+        <div class="stats-row">
+          <div class="stat-pill success">
+            <div class="val" id="statCorrect">0</div>
+            <div class="lbl">SVOLTE BENE</div>
+          </div>
+          <div class="stat-pill danger">
+            <div class="val" id="statWrong">0</div>
+            <div class="lbl">DA RIPASSARE</div>
+          </div>
+          <div class="stat-pill">
+            <div class="val" id="statTotal">0</div>
+            <div class="lbl">TOTALI</div>
+          </div>
+        </div>
+
+        <div class="wrong-list-box" id="wrongListBox" style="display: none;">
+          <div class="wrong-list-header">⚠️ Argomenti da Ripassare:</div>
+          <div class="wrong-items-container" id="wrongItemsContainer"></div>
+        </div>
+
+        <div class="report-actions">
+          <button class="btn-primary" id="btnSendToTelegram" onclick="sendReportToTelegramChat()" style="display: none; background: linear-gradient(135deg, #0088cc, #006699);">
+            <span>💬 Invia Report alla Chat Telegram</span>
+          </button>
+          <button class="btn-primary" onclick="copyReportMarkdown()">
+            <span>📋 Copia Report (Markdown)</span>
+          </button>
+          <button class="btn-secondary" id="btnReviewWrongOnly" onclick="startWrongOnlyPractice()" style="display: none;">
+            Ripassa Subito le Sbagliate
+          </button>
+          <button class="btn-secondary" onclick="restartSetup()">Nuova Sessione</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL LISTA RIPASSO -->
+  <div class="modal-overlay" id="reviewModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">📋 Argomenti da Ripassare</div>
+        <button class="modal-close" onclick="closeReviewModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalReviewContent"></div>
+      <div class="modal-actions">
+        <button class="btn-danger-outline" onclick="clearAllReviewData()">Svuota Lista</button>
+        <button class="btn-secondary" style="padding: 10px 18px;" onclick="closeReviewModal()">Chiudi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL SYNC GITHUB & TELEGRAM -->
+  <div class="modal-overlay" id="syncModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">☁️ Sincronizzazione Progressi e Note</div>
+        <button class="modal-close" onclick="closeSyncModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <!-- TELEGRAM CLOUD STORAGE (attivo se aperto da bot o webapp Telegram) -->
+        <div id="telegramSyncBox" style="display: none; background: rgba(59,130,246,0.12); border: 1px solid var(--accent); border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px;">
+          <div style="font-weight: 700; color: var(--accent); margin-bottom: 4px;">✈️ Telegram Cloud Storage Attivo</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">I tuoi progressi vengono sincronizzati sul tuo account Telegram.</div>
+          <button class="btn-secondary" style="width: 100%; padding: 8px; font-size: 12px;" onclick="syncWithTelegram(true)">🔄 Sincronizza con Telegram Cloud</button>
+        </div>
+
+        <!-- GITHUB GIST SYNC (universale per qualsiasi browser, iPhone, Android, PC) -->
+        <div style="background: var(--surface-elevated); border: 1px solid var(--surface-border); border-radius: var(--radius-md); padding: 16px;">
+          <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+            <span>🐙 Sincronizzazione con GitHub Gist</span>
+          </div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
+            Sincronizza le card da ripassare e i topic personalizzati tra tutti i tuoi dispositivi usando un Gist privato gratuito.
+          </div>
+
+          <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">GitHub Personal Access Token (con permesso 'gist'):</label>
+          <input type="password" id="ghTokenInput" placeholder="ghp_..." onchange="saveSyncCredentials()" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--surface-border); background: var(--surface); color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-bottom: 12px;">
+
+          <label style="font-size: 12px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Gist ID (lascia vuoto per crearlo automaticamente):</label>
+          <input type="text" id="ghGistIdInput" placeholder="lascia vuoto se nuovo..." onchange="saveSyncCredentials()" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--surface-border); background: var(--surface); color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; margin-bottom: 14px;">
+
+          <div style="display: flex; gap: 8px; margin-bottom: 10px;">
+            <button class="btn-primary" style="padding: 10px; font-size: 13px; flex: 1;" onclick="syncPushGitHub()">⬆️ Carica su GitHub</button>
+            <button class="btn-secondary" style="padding: 10px; font-size: 13px; flex: 1;" onclick="syncPullGitHub()">⬇️ Scarica da GitHub</button>
+          </div>
+
+          <div id="syncStatusMsg" style="font-size: 12px; text-align: center; color: var(--text-muted); min-height: 18px;"></div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" style="padding: 10px 18px;" onclick="closeSyncModal()">Chiudi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carica database iniziale -->
+  <script src="topics.js"></script>
+
+  <script>
+    // Inizializzazione Telegram WebApp se presente
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+      tg.expand();
+      tg.ready();
+    }
+
+    function triggerHaptic(type = 'light') {
+      try {
+        if (tg?.HapticFeedback) {
+          if (type === 'light') tg.HapticFeedback.impactOccurred('light');
+          else if (type === 'medium') tg.HapticFeedback.impactOccurred('medium');
+          else if (type === 'error') tg.HapticFeedback.notificationOccurred('error');
+        } else if (navigator.vibrate) {
+          navigator.vibrate(type === 'error' ? 80 : 30);
+        }
+      } catch (e) {}
+    }
+
+    // Registrazione Service Worker per uso offline (PWA)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+
+    let allTopics = [];
+    let sessionCards = [];
+    let currentIndex = 0;
+    let cardResults = {};
+    let lastReportText = "";
+    let lastReportData = null;
+
+    const STORAGE_KEY_TOPICS = "rw_flashcards_custom_topics";
+    const STORAGE_KEY_REVIEW = "rw_flashcards_da_ripassare";
+    const STORAGE_KEY_GH_TOKEN = "rw_flashcards_gh_token";
+    const STORAGE_KEY_GH_GIST = "rw_flashcards_gh_gist";
+
+    async function init() {
+      loadTopics();
+      updateHeaderBadge();
+      setupTouchGestures();
+      initSyncSettings();
+      // Se avviato da Telegram, esegui auto-pull iniziale da CloudStorage
+      if (tg?.CloudStorage) {
+        document.getElementById('telegramSyncBox').style.display = 'block';
+        await autoPullTelegramCloud();
+      }
+    }
+
+    /* ============================================================
+       SINCRONIZZAZIONE: TELEGRAM CLOUD STORAGE & GITHUB GIST
+       ============================================================ */
+
+    function initSyncSettings() {
+      const token = localStorage.getItem(STORAGE_KEY_GH_TOKEN) || "";
+      const gistId = localStorage.getItem(STORAGE_KEY_GH_GIST) || "";
+      if (document.getElementById('ghTokenInput')) {
+        document.getElementById('ghTokenInput').value = token;
+      }
+      if (document.getElementById('ghGistIdInput')) {
+        document.getElementById('ghGistIdInput').value = gistId;
+      }
+    }
+
+    function saveSyncCredentials() {
+      const token = document.getElementById('ghTokenInput').value.trim();
+      const gistId = document.getElementById('ghGistIdInput').value.trim();
+      localStorage.setItem(STORAGE_KEY_GH_TOKEN, token);
+      localStorage.setItem(STORAGE_KEY_GH_GIST, gistId);
+    }
+
+    function openSyncModal() {
+      initSyncSettings();
+      document.getElementById('syncModal').classList.add('open');
+      triggerHaptic('light');
+    }
+
+    function closeSyncModal() {
+      document.getElementById('syncModal').classList.remove('open');
+    }
+
+    function setSyncMsg(msg, isError = false) {
+      const el = document.getElementById('syncStatusMsg');
+      if (el) {
+        el.textContent = msg;
+        el.style.color = isError ? 'var(--danger)' : 'var(--success)';
+      }
+    }
+
+    // TELEGRAM CLOUD STORAGE
+    async function autoPullTelegramCloud() {
+      if (!tg?.CloudStorage) return;
+      tg.CloudStorage.getItem('rw_sync_data', (err, val) => {
+        if (!err && val) {
+          try {
+            const data = JSON.parse(val);
+            if (data.review) {
+              const localRev = getReviewData();
+              const merged = { ...data.review.items, ...localRev.items };
+              saveReviewData({ items: merged, last_updated: new Date().toLocaleString() });
+            }
+            if (data.customTopics) {
+              localStorage.setItem(STORAGE_KEY_TOPICS, JSON.stringify(data.customTopics));
+              loadTopics();
+            }
+            updateHeaderBadge();
+          } catch (e) {
+            console.error("Errore parsing Telegram CloudStorage", e);
+          }
+        }
+      });
+    }
+
+    async function syncWithTelegram(manual = false) {
+      if (!tg?.CloudStorage) {
+        if (manual) alert("Telegram WebApp CloudStorage non disponibile (apri l'app dentro Telegram).");
+        return;
+      }
+      const revData = getReviewData();
+      const customTopicsRaw = localStorage.getItem(STORAGE_KEY_TOPICS);
+      const customTopics = customTopicsRaw ? JSON.parse(customTopicsRaw) : [];
+
+      const payload = JSON.stringify({
+        review: revData,
+        customTopics: customTopics,
+        last_updated: new Date().toISOString()
+      });
+
+      tg.CloudStorage.setItem('rw_sync_data', payload, (err, ok) => {
+        if (!err && ok) {
+          if (manual) alert("✅ Sincronizzazione con Telegram Cloud completata!");
+        } else if (manual) {
+          alert("Errore salvataggio su Telegram Cloud: " + err);
+        }
+      });
+    }
+
+    // GITHUB GIST SYNC
+    async function syncPushGitHub() {
+      saveSyncCredentials();
+      const token = localStorage.getItem(STORAGE_KEY_GH_TOKEN);
+      let gistId = localStorage.getItem(STORAGE_KEY_GH_GIST);
+
+      if (!token) {
+        setSyncMsg("Inserisci un GitHub Personal Access Token con permesso 'gist'.", true);
+        return;
+      }
+
+      setSyncMsg("Caricamento su GitHub in corso...");
+      const revData = getReviewData();
+      const customTopicsRaw = localStorage.getItem(STORAGE_KEY_TOPICS);
+      const customTopics = customTopicsRaw ? JSON.parse(customTopicsRaw) : [];
+
+      const syncPayload = {
+        updated_at: new Date().toISOString(),
+        review_data: revData,
+        custom_topics: customTopics
+      };
+
+      const gistBody = {
+        description: "Flashcards Reti Wireless - Sync Progressi & Note",
+        public: false,
+        files: {
+          "rw_flashcards_sync.json": {
+            content: JSON.stringify(syncPayload, null, 2)
+          }
+        }
+      };
+
+      try {
+        let res;
+        if (gistId) {
+          // Aggiorna Gist esistente
+          res = await fetch(`https://api.github.com/gists/${gistId}`, {
+            method: 'PATCH',
+            headers: {
+              'Authorization': `token ${token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gistBody)
+          });
+        } else {
+          // Crea nuovo Gist
+          res = await fetch(`https://api.github.com/gists`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `token ${token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gistBody)
+          });
+        }
+
+        if (!res.ok) {
+          throw new Error(`GitHub API error (${res.status}): ${await res.text()}`);
+        }
+
+        const resData = await res.json();
+        gistId = resData.id;
+        localStorage.setItem(STORAGE_KEY_GH_GIST, gistId);
+        document.getElementById('ghGistIdInput').value = gistId;
+
+        setSyncMsg("✅ Dati sincronizzati con successo su GitHub!");
+        triggerHaptic('medium');
+      } catch (err) {
+        console.error(err);
+        setSyncMsg("Errore: " + err.message, true);
+        triggerHaptic('error');
+      }
+    }
+
+    async function syncPullGitHub() {
+      saveSyncCredentials();
+      const token = localStorage.getItem(STORAGE_KEY_GH_TOKEN);
+      const gistId = localStorage.getItem(STORAGE_KEY_GH_GIST);
+
+      if (!token || !gistId) {
+        setSyncMsg("Inserisci sia il Token GitHub che il Gist ID per scaricare i dati.", true);
+        return;
+      }
+
+      setSyncMsg("Scaricamento da GitHub in corso...");
+      try {
+        const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error(`GitHub API error (${res.status})`);
+        }
+
+        const data = await res.json();
+        const fileObj = data.files["rw_flashcards_sync.json"];
+        if (!fileObj || !fileObj.content) {
+          throw new Error("File rw_flashcards_sync.json non trovato nel Gist.");
+        }
+
+        const parsed = JSON.parse(fileObj.content);
+        if (parsed.review_data) {
+          const localRev = getReviewData();
+          const merged = { ...localRev.items, ...parsed.review_data.items };
+          saveReviewData({ items: merged, last_updated: new Date().toLocaleString() });
+        }
+        if (parsed.custom_topics) {
+          localStorage.setItem(STORAGE_KEY_TOPICS, JSON.stringify(parsed.custom_topics));
+          loadTopics();
+        }
+
+        updateHeaderBadge();
+        setSyncMsg("✅ Dati scaricati e fusi con successo da GitHub!");
+        triggerHaptic('medium');
+      } catch (err) {
+        console.error(err);
+        setSyncMsg("Errore: " + err.message, true);
+        triggerHaptic('error');
+      }
+    }
+
+    function loadTopics() {
+      const stored = localStorage.getItem(STORAGE_KEY_TOPICS);
+      let customTopics = [];
+      if (stored) {
+        try { customTopics = JSON.parse(stored); } catch (e) {}
+      }
+      
+      const defaultT = window.DEFAULT_TOPICS || [];
+      const map = new Map();
+      defaultT.forEach(t => map.set(t.topic_id, t));
+      customTopics.forEach(t => map.set(t.topic_id, t));
+      
+      allTopics = Array.from(map.values()).map(t => ({
+        ...t,
+        count: t.cards ? t.cards.length : 0
+      }));
+      renderTopics();
+    }
+
+    function getReviewData() {
+      const raw = localStorage.getItem(STORAGE_KEY_REVIEW);
+      if (raw) {
+        try { return JSON.parse(raw); } catch (e) {}
+      }
+      return { items: {} };
+    }
+
+    function saveReviewData(data) {
+      localStorage.setItem(STORAGE_KEY_REVIEW, JSON.stringify(data));
+      updateHeaderBadge();
+    }
+
+    function updateHeaderBadge() {
+      const rev = getReviewData();
+      const count = Object.keys(rev.items || {}).length;
+      document.getElementById('headerReviewCount').textContent = count;
+    }
+
+    function renderTopics() {
+      const container = document.getElementById('topicsContainer');
+      container.innerHTML = '';
+      allTopics.forEach(t => {
+        const item = document.createElement('div');
+        item.className = 'topic-item selected';
+        item.id = `topic-${t.topic_id}`;
+        item.onclick = (e) => {
+          const cb = item.querySelector('input');
+          cb.checked = !cb.checked;
+          item.classList.toggle('selected', cb.checked);
+          updateSliderRange();
+          triggerHaptic('light');
+        };
+
+        item.innerHTML = `
+          <div class="topic-info">
+            <input type="checkbox" class="topic-checkbox" checked>
+            <div class="topic-name">${t.topic_name}</div>
+          </div>
+          <div class="topic-count">${t.count} card</div>
+        `;
+        container.appendChild(item);
+      });
+      updateSliderRange();
+    }
+
+    function getSelectedTopics() {
+      const selected = [];
+      allTopics.forEach(t => {
+        const el = document.getElementById(`topic-${t.topic_id}`);
+        if (el && el.querySelector('input').checked) {
+          selected.push(t);
+        }
+      });
+      return selected;
+    }
+
+    function updateSliderRange() {
+      const sel = getSelectedTopics();
+      const totalAvailable = sel.reduce((acc, t) => acc + t.count, 0);
+      const slider = document.getElementById('cardSlider');
+      const btn = document.getElementById('btnStart');
+
+      if (totalAvailable === 0) {
+        slider.min = 0; slider.max = 0; slider.value = 0;
+        updateSliderVal(0);
+        btn.disabled = true;
+      } else {
+        slider.min = 1;
+        slider.max = totalAvailable;
+        if (parseInt(slider.value) > totalAvailable || parseInt(slider.value) === 0) {
+          slider.value = totalAvailable;
+        }
+        updateSliderVal(slider.value);
+        btn.disabled = false;
+      }
+    }
+
+    function updateSliderVal(v) {
+      document.getElementById('sliderVal').textContent = v;
+    }
+
+    function startPractice() {
+      const sel = getSelectedTopics();
+      let pool = [];
+      sel.forEach(t => {
+        t.cards.forEach(c => {
+          pool.push({ ...c, topicName: t.topic_name });
+        });
+      });
+
+      const shouldShuffle = document.getElementById('shuffleToggle').checked;
+      if (shouldShuffle) {
+        pool.sort(() => Math.random() - 0.5);
+      }
+
+      const count = parseInt(document.getElementById('cardSlider').value);
+      sessionCards = pool.slice(0, count);
+      if (sessionCards.length === 0) return;
+
+      currentIndex = 0;
+      cardResults = {};
+      sessionCards.forEach(c => { cardResults[c.id] = false; });
+
+      triggerHaptic('medium');
+      switchView('viewPractice');
+      renderCard();
+    }
+
+    function switchView(viewId) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById(viewId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function renderCard() {
+      const card = sessionCards[currentIndex];
+      const cardEl = document.getElementById('cardElement');
+      cardEl.classList.remove('is-flipped');
+
+      document.getElementById('cardCounter').textContent = `Card ${currentIndex + 1} di ${sessionCards.length}`;
+      document.getElementById('currentTopicPill').textContent = card.topicName;
+      document.getElementById('progressBar').style.width = `${((currentIndex + 1) / sessionCards.length) * 100}%`;
+
+      document.getElementById('cardFrontText').textContent = card.front;
+      document.getElementById('cardBackText').textContent = card.back;
+      document.getElementById('cardNodeLabel').textContent = card.node ? `📍 ${card.node}` : '';
+      document.getElementById('cardNoteLink').textContent = card.note ? `Nota: [[${card.note}]]` : '';
+
+      const isMarked = !!cardResults[card.id];
+      updateMarkWrongUI(isMarked);
+
+      document.getElementById('btnPrev').disabled = currentIndex === 0;
+      document.getElementById('btnNext').textContent = currentIndex === sessionCards.length - 1 ? 'Concludi →' : 'Succ →';
+    }
+
+    function flipCard() {
+      const cardEl = document.getElementById('cardElement');
+      cardEl.classList.toggle('is-flipped');
+      triggerHaptic('light');
+    }
+
+    function toggleMarkWrong() {
+      const card = sessionCards[currentIndex];
+      cardResults[card.id] = !cardResults[card.id];
+      updateMarkWrongUI(cardResults[card.id]);
+      triggerHaptic(cardResults[card.id] ? 'error' : 'light');
+    }
+
+    function updateMarkWrongUI(isMarked) {
+      const box = document.getElementById('markWrongBox');
+      const cb = document.getElementById('markWrongCheck');
+      cb.checked = isMarked;
+      box.classList.toggle('checked', isMarked);
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        triggerHaptic('light');
+        renderCard();
+      }
+    }
+
+    function nextCard() {
+      if (currentIndex < sessionCards.length - 1) {
+        currentIndex++;
+        triggerHaptic('light');
+        renderCard();
+      } else {
+        finishSession();
+      }
+    }
+
+    function finishSessionEarly() {
+      if (confirm("Terminare l'esercitazione e mostrare il report finale?")) {
+        finishSession();
+      }
+    }
+
+    function finishSession() {
+      const total = sessionCards.length;
+      const wrongCards = sessionCards.filter(c => cardResults[c.id]);
+      const wrongCount = wrongCards.length;
+      const correctCount = total - wrongCount;
+      const pct = Math.round((correctCount / total) * 100);
+
+      document.getElementById('reportPercent').textContent = `${pct}%`;
+      document.getElementById('statCorrect').textContent = correctCount;
+      document.getElementById('statWrong').textContent = wrongCount;
+      document.getElementById('statTotal').textContent = total;
+
+      const wrongBox = document.getElementById('wrongListBox');
+      const wrongContainer = document.getElementById('wrongItemsContainer');
+      const btnReviewWrong = document.getElementById('btnReviewWrongOnly');
+
+      if (wrongCount > 0) {
+        wrongBox.style.display = 'block';
+        btnReviewWrong.style.display = 'block';
+        wrongContainer.innerHTML = '';
+        wrongCards.forEach(c => {
+          const div = document.createElement('div');
+          div.className = 'wrong-item';
+          div.innerHTML = `
+            <div class="wrong-item-node">${c.front}</div>
+            <div class="wrong-item-note">📍 ${c.node || ''} &bull; <i>[[${c.note || ''}]]</i></div>
+          `;
+          wrongContainer.appendChild(div);
+        });
+      } else {
+        wrongBox.style.display = 'none';
+        btnReviewWrong.style.display = 'none';
+      }
+
+      // Aggiorna memoria persistente
+      const revData = getReviewData();
+      const nowStr = new Date().toLocaleString();
+      wrongCards.forEach(w => {
+        if (!revData.items[w.id]) {
+          revData.items[w.id] = {
+            id: w.id, front: w.front, node: w.node, note: w.note, topic: w.topicName,
+            first_failed: nowStr, last_failed: nowStr, fail_count: 1
+          };
+        } else {
+          revData.items[w.id].fail_count = (revData.items[w.id].fail_count || 1) + 1;
+          revData.items[w.id].last_failed = nowStr;
+        }
+      });
+      saveReviewData(revData);
+
+      // Prepara report Markdown per copia/incolla
+      let lines = [
+        `# Report Flashcards — ${nowStr}`,
+        `> **Totale**: ${total} | **Corrette**: ${correctCount} (${pct}%) | **Da Ripassare**: ${wrongCount}`,
+        ""
+      ];
+      if (wrongCards.length > 0) {
+        lines.push("### ⚠️ Argomenti da Ripassare:");
+        wrongCards.forEach(w => {
+          lines.push(`- **${w.front}**`);
+          lines.push(`  - [[${w.note || w.node || ''}]] (${w.topicName})`);
+        });
+      } else {
+        lines.push("🎉 Tutte le card svolte correttamente!");
+      }
+      lastReportText = lines.join("\n");
+
+      // Auto-Sync con Telegram Cloud e GitHub se configurati
+      if (tg?.CloudStorage) {
+        syncWithTelegram(false);
+      }
+      if (localStorage.getItem(STORAGE_KEY_GH_TOKEN) && localStorage.getItem(STORAGE_KEY_GH_GIST)) {
+        syncPushGitHub();
+      }
+
+      // Mostra pulsante Telegram se dentro Telegram
+      const btnTg = document.getElementById('btnSendToTelegram');
+      if (btnTg) {
+        btnTg.style.display = tg ? 'block' : 'none';
+      }
+
+      triggerHaptic('medium');
+      switchView('viewReport');
+    }
+
+    function sendReportToTelegramChat() {
+      if (tg) {
+        tg.sendData(lastReportText);
+      } else {
+        alert("Funzione attiva solo dentro una chat Telegram.");
+      }
+    }
+
+    function copyReportMarkdown() {
+      navigator.clipboard.writeText(lastReportText).then(() => {
+        alert("✅ Report Markdown copiato negli appunti! Puoi incollarlo in una nota Obsidian o nella chat.");
+      }).catch(() => {
+        prompt("Copia il report qui sotto:", lastReportText);
+      });
+    }
+
+    function startWrongOnlyPractice() {
+      const wrongCards = sessionCards.filter(c => cardResults[c.id]);
+      if (wrongCards.length === 0) return;
+      sessionCards = [...wrongCards];
+      currentIndex = 0;
+      cardResults = {};
+      sessionCards.forEach(c => { cardResults[c.id] = false; });
+      switchView('viewPractice');
+      renderCard();
+    }
+
+    function restartSetup() {
+      switchView('viewSetup');
+      updateSliderRange();
+    }
+
+    // Modal Ripasso
+    function openReviewModal() {
+      const container = document.getElementById('modalReviewContent');
+      container.innerHTML = '';
+      const revData = getReviewData();
+      const keys = Object.keys(revData.items || {});
+
+      if (keys.length === 0) {
+        container.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 24px;">Nessun argomento da ripassare. Ottimo lavoro! 🎉</div>';
+      } else {
+        keys.forEach(k => {
+          const item = revData.items[k];
+          const div = document.createElement('div');
+          div.className = 'wrong-item';
+          div.style.marginBottom = '6px';
+          div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span class="wrong-item-node">${item.front || item.node}</span>
+              <span style="font-size:10px; background:var(--danger-bg); color:var(--danger); padding:2px 6px; border-radius:10px; font-weight:bold;">${item.fail_count || 1} errori</span>
+            </div>
+            <div class="wrong-item-note">📍 [[${item.note || item.node || ''}]] &bull; ${item.topic || ''}</div>
+          `;
+          container.appendChild(div);
+        });
+      }
+      document.getElementById('reviewModal').classList.add('open');
+      triggerHaptic('light');
+    }
+
+    function closeReviewModal() {
+      document.getElementById('reviewModal').classList.remove('open');
+    }
+
+    function clearAllReviewData() {
+      if (confirm("Vuoi davvero azzerare l'elenco degli argomenti da ripassare?")) {
+        localStorage.removeItem(STORAGE_KEY_REVIEW);
+        updateHeaderBadge();
+        closeReviewModal();
+      }
+    }
+
+    // Importazione file JSON personalizzati
+    function importCustomJson(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (evt) => {
+        try {
+          const data = JSON.parse(evt.target.result);
+          if (!data.topic_id || !data.cards) {
+            alert("File JSON non valido. Deve contenere topic_id e cards.");
+            return;
+          }
+          const stored = localStorage.getItem(STORAGE_KEY_TOPICS);
+          let custom = stored ? JSON.parse(stored) : [];
+          custom = custom.filter(t => t.topic_id !== data.topic_id);
+          custom.push(data);
+          localStorage.setItem(STORAGE_KEY_TOPICS, JSON.stringify(custom));
+          loadTopics();
+          alert(`Argomento "${data.topic_name || data.topic_id}" importato con successo (${data.cards.length} card)!`);
+        } catch (err) {
+          alert("Errore nel parsing del file JSON: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // GESTIONE GESTI TOUCH (Swipe sinistra/destra e Tap)
+    function setupTouchGestures() {
+      const cardScene = document.getElementById('cardScene');
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchEndX = 0;
+      let touchEndY = 0;
+      let isSwiping = false;
+
+      cardScene.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+        isSwiping = false;
+      }, { passive: true });
+
+      cardScene.addEventListener('touchmove', (e) => {
+        const diffX = Math.abs(e.changedTouches[0].screenX - touchStartX);
+        const diffY = Math.abs(e.changedTouches[0].screenY - touchStartY);
+        if (diffX > 15 && diffX > diffY) {
+          isSwiping = true;
+        }
+      }, { passive: true });
+
+      cardScene.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleGesture();
+      }, { passive: true });
+
+      function handleGesture() {
+        const dx = touchEndX - touchStartX;
+        const dy = touchEndY - touchStartY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) {
+            // Swipe verso sinistra -> Avanti
+            nextCard();
+          } else {
+            // Swipe verso destra -> Indietro
+            prevCard();
+          }
+        } else if (!isSwiping && Math.abs(dx) < 15 && Math.abs(dy) < 15) {
+          // Tap normale -> Gira carta
+          flipCard();
+        }
+      }
+
+      // Per desktop: click gira la carta
+      cardScene.addEventListener('click', (e) => {
+        if (!('ontouchstart' in window)) {
+          flipCard();
+        }
+      });
+    }
+
+    // Tastiera per PC
+    window.addEventListener('keydown', (e) => {
+      if (!document.getElementById('viewPractice').classList.contains('active')) return;
+      if (e.code === 'Space') { e.preventDefault(); flipCard(); }
+      else if (e.code === 'ArrowRight') { e.preventDefault(); nextCard(); }
+      else if (e.code === 'ArrowLeft') { e.preventDefault(); prevCard(); }
+      else if (e.code === 'KeyX' || e.code === 'KeyS') { e.preventDefault(); toggleMarkWrong(); }
+    });
+
+    init();
+  </script>
+</body>
+</html>
