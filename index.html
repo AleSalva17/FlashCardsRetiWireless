@@ -1430,12 +1430,193 @@
       padding: 4px 0 !important;
     }
 
+    /* SEZIONE DOMANDE D'ESAME & RISPOSTE MODELLO */
+    .question-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 12px;
+      transition: all var(--transition-fast);
+      overflow: hidden;
+    }
+    .question-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+    .question-card.open {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+    .question-header {
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--surface-elevated);
+      user-select: none;
+    }
+    .question-header:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .question-meta-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .question-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .question-badge.prof {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+    .question-badge.gen {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .question-topic-pill {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: var(--surface);
+      padding: 2px 8px;
+      border-radius: 12px;
+      border: 1px solid var(--surface-border);
+    }
+    .question-title-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .question-chevron {
+      font-size: 14px;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+    .question-card.open .question-chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+    .question-body {
+      display: none;
+      padding: 18px;
+      border-top: 1px solid var(--surface-border);
+      background: var(--surface);
+    }
+    .question-card.open .question-body {
+      display: block;
+    }
+    .question-prompt-box {
+      background: rgba(59, 130, 246, 0.08);
+      border-left: 3px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      font-style: italic;
+      color: #93c5fd;
+      line-height: 1.5;
+    }
+    .question-answer-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .question-answer-text h3 {
+      color: var(--accent);
+      font-size: 16px;
+      margin: 16px 0 8px;
+    }
+    .question-answer-text h4 {
+      color: #60a5fa;
+      font-size: 14.5px;
+      margin: 14px 0 6px;
+    }
+    .question-answer-text table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0;
+      font-size: 12.5px;
+    }
+    .question-answer-text th, .question-answer-text td {
+      border: 1px solid var(--surface-border);
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .question-answer-text th {
+      background: var(--surface-elevated);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .question-tips-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-top: 16px;
+      margin-bottom: 14px;
+    }
+    .question-tips-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .question-actions-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--surface-border);
+    }
+    .question-action-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--transition-fast);
+    }
+    .question-action-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
   </style>
 
   <!-- KaTeX per rendering formule matematiche ad alta definizione -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="if(window.renderMathInFlashcard) window.renderMathInFlashcard();"></script>
+  <!-- Parser Markdown per risposte d'esame -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
@@ -1468,13 +1649,16 @@
     <!-- VIEW 1: SETUP -->
     <div id="viewSetup" class="view active">
       
-      <!-- SELETTORE MODALITÀ: 4 SEZIONI DI STUDIO D'ESAME -->
+      <!-- SELETTORE MODALITÀ: 5 SEZIONI DI STUDIO D'ESAME -->
       <div class="mode-switcher-container">
         <button class="mode-tab-btn active" id="tabModeTheory" onclick="selectAppMode('theory')">
           📚 Flashcards
         </button>
         <button class="mode-tab-btn" id="tabModeExercises" onclick="selectAppMode('exercises')">
           ✏️ Esercizi
+        </button>
+        <button class="mode-tab-btn" id="tabModeQuestions" onclick="selectAppMode('questions')">
+          🎯 Domande
         </button>
         <button class="mode-tab-btn" id="tabModeFormulas" onclick="selectAppMode('formulas')">
           📐 Formulario
@@ -1610,6 +1794,41 @@
             <!-- Contenuto del riassunto renderizzato -->
           </div>
         </div>
+      </div>
+
+      <!-- SEZIONE 5: DOMANDE D'ESAME & RISPOSTE MODELLO -->
+      <div id="setupQuestionsBox" class="setup-card" style="display: none;">
+        <div class="section-header-row" style="margin-bottom: 12px;">
+          <h2 class="setup-title" style="margin-bottom: 4px;">🎯 Domande d'Esame & Risposte Modello</h2>
+          <p class="setup-desc">Archivio completo per la preparazione della prova orale e scritta: le 14 domande ufficiali del Professore su LTE e le 16 domande cruciali generate dal dimensionamento al 5G.</p>
+        </div>
+
+        <!-- Sub-switcher per le due categorie richieste -->
+        <div class="sub-tab-switcher" style="margin-bottom: 16px;">
+          <button class="sub-tab-btn active" id="subTabQuestionsProf" onclick="selectQuestionsCategory('prof')">
+            👨‍🏫 Domande del Prof (14 LTE Ufficiali)
+          </button>
+          <button class="sub-tab-btn" id="subTabQuestionsGen" onclick="selectQuestionsCategory('generated')">
+            🤖 Domande Cruciali (16 fino al 5G)
+          </button>
+        </div>
+
+        <!-- Barra di ricerca e toggle espandi tutto -->
+        <div style="display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
+          <input type="text" id="questionSearchInput" class="formula-search-input" style="flex: 1; min-width: 220px;" placeholder="🔍 Cerca domanda, argomento o parola chiave (es. Handover, CFO, Erlang, 5G, S1-U, MIMO)..." oninput="filterQuestions()">
+          <button class="btn-secondary" id="btnToggleAllQuestions" style="padding: 10px 14px; font-size: 13px;" onclick="toggleAllQuestions()">
+            <span id="btnToggleAllQuestionsText">📂 Espandi Tutte</span>
+          </button>
+        </div>
+
+        <!-- Chips argomenti -->
+        <div class="filter-chips-row" id="questionsTopicChips"></div>
+
+        <!-- Contatore -->
+        <div class="formulas-counter-text" id="questionsCountLabel">14 domande ufficiali disponibili</div>
+
+        <!-- Lista interattiva delle domande -->
+        <div class="questions-list" id="questionsListContainer"></div>
       </div>
 
     </div>
@@ -1779,10 +1998,11 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=11"></script>
-  <script src="exercises.js?v=11"></script>
-  <script src="formulas.js?v=11"></script>
-  <script src="summaries.js?v=11"></script>
+  <script src="topics.js?v=12"></script>
+  <script src="exercises.js?v=12"></script>
+  <script src="questions.js?v=12"></script>
+  <script src="formulas.js?v=12"></script>
+  <script src="summaries.js?v=12"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -1824,7 +2044,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_5g_v11";
+      const DATASET_VERSION = "reticellulari_lte_5g_v12";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -2536,6 +2756,19 @@
         });
       }
 
+      if (window.EXAM_QUESTIONS) {
+        window.EXAM_QUESTIONS.forEach(q => {
+          cardMap.set(String(q.id), {
+            id: q.id,
+            front: q.question,
+            back: q.answer,
+            node: q.title,
+            note: q.note,
+            topicName: 'Domanda: ' + (q.topic_short || q.topic)
+          });
+        });
+      }
+
       const retryCards = [];
       keys.forEach(k => {
         if (cardMap.has(String(k))) {
@@ -2726,16 +2959,18 @@
       
       const tabTheory = document.getElementById('tabModeTheory');
       const tabEx = document.getElementById('tabModeExercises');
+      const tabQuest = document.getElementById('tabModeQuestions');
       const tabForm = document.getElementById('tabModeFormulas');
       const tabRev = document.getElementById('tabModeReviews');
 
       const boxTheory = document.getElementById('setupTheoryBox');
       const boxEx = document.getElementById('setupExercisesBox');
+      const boxQuest = document.getElementById('setupQuestionsBox');
       const boxForm = document.getElementById('setupFormulasBox');
       const boxRev = document.getElementById('setupReviewsBox');
 
-      [tabTheory, tabEx, tabForm, tabRev].forEach(t => t?.classList.remove('active'));
-      [boxTheory, boxEx, boxForm, boxRev].forEach(b => { if(b) b.style.display = 'none'; });
+      [tabTheory, tabEx, tabQuest, tabForm, tabRev].forEach(t => t?.classList.remove('active'));
+      [boxTheory, boxEx, boxQuest, boxForm, boxRev].forEach(b => { if(b) b.style.display = 'none'; });
 
       if (mode === 'theory') {
         tabTheory.classList.add('active');
@@ -2744,6 +2979,10 @@
         tabEx.classList.add('active');
         boxEx.style.display = 'block';
         renderExercisesList();
+      } else if (mode === 'questions') {
+        tabQuest.classList.add('active');
+        boxQuest.style.display = 'block';
+        initQuestionsSection();
       } else if (mode === 'formulas') {
         tabForm.classList.add('active');
         boxForm.style.display = 'block';
@@ -2754,6 +2993,275 @@
         initReviewsSection();
       }
       triggerHaptic('light');
+    }
+
+    /* ============================================================
+       SEZIONE DOMANDE D'ESAME & RISPOSTE MODELLO
+       ============================================================ */
+    let currentQuestionsCategory = 'prof'; // 'prof' | 'generated'
+    let currentActiveQuestionTopic = 'all';
+    let openedQuestions = new Set();
+
+    function initQuestionsSection() {
+      renderQuestionTopicChips();
+      renderQuestionsList();
+    }
+
+    function selectQuestionsCategory(cat) {
+      currentQuestionsCategory = cat;
+      currentActiveQuestionTopic = 'all';
+      openedQuestions.clear();
+      
+      const tabProf = document.getElementById('subTabQuestionsProf');
+      const tabGen = document.getElementById('subTabQuestionsGen');
+      if (tabProf && tabGen) {
+        tabProf.classList.toggle('active', cat === 'prof');
+        tabGen.classList.toggle('active', cat === 'generated');
+      }
+      
+      renderQuestionTopicChips();
+      renderQuestionsList();
+      triggerHaptic('light');
+    }
+
+    function renderQuestionTopicChips() {
+      const container = document.getElementById('questionsTopicChips');
+      if (!container) return;
+      const allQ = window.EXAM_QUESTIONS || [];
+      const catQ = allQ.filter(q => q.category === currentQuestionsCategory);
+      
+      const topicsSet = new Set();
+      catQ.forEach(q => { if (q.topic_short) topicsSet.add(q.topic_short); });
+      const topics = Array.from(topicsSet);
+
+      container.innerHTML = '';
+      
+      const allChip = document.createElement('div');
+      allChip.className = `filter-chip ${currentActiveQuestionTopic === 'all' ? 'active' : ''}`;
+      allChip.textContent = `Tutti (${catQ.length})`;
+      allChip.onclick = () => {
+        currentActiveQuestionTopic = 'all';
+        renderQuestionTopicChips();
+        renderQuestionsList();
+        triggerHaptic('light');
+      };
+      container.appendChild(allChip);
+
+      topics.forEach(top => {
+        const count = catQ.filter(q => q.topic_short === top).length;
+        const chip = document.createElement('div');
+        chip.className = `filter-chip ${currentActiveQuestionTopic === top ? 'active' : ''}`;
+        chip.textContent = `${top} (${count})`;
+        chip.onclick = () => {
+          currentActiveQuestionTopic = top;
+          renderQuestionTopicChips();
+          renderQuestionsList();
+          triggerHaptic('light');
+        };
+        container.appendChild(chip);
+      });
+    }
+
+    function renderQuestionsList() {
+      const container = document.getElementById('questionsListContainer');
+      const countLabel = document.getElementById('questionsCountLabel');
+      const searchVal = (document.getElementById('questionSearchInput')?.value || '').toLowerCase().trim();
+      if (!container) return;
+
+      const allQ = window.EXAM_QUESTIONS || [];
+      const filtered = allQ.filter(q => {
+        if (q.category !== currentQuestionsCategory) return false;
+        if (currentActiveQuestionTopic !== 'all' && q.topic_short !== currentActiveQuestionTopic) return false;
+        if (!searchVal) return true;
+        const hay = `${q.number} ${q.title} ${q.question} ${q.topic} ${q.answer} ${(q.tags||[]).join(' ')}`.toLowerCase();
+        return hay.includes(searchVal);
+      });
+
+      if (countLabel) {
+        countLabel.textContent = `${filtered.length} domande ${currentQuestionsCategory === 'prof' ? 'ufficiali del prof' : 'generate fino al 5G'}`;
+      }
+
+      container.innerHTML = '';
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-muted); text-align:center; padding:32px;">Nessuna domanda trovata con i filtri attuali.</div>';
+        return;
+      }
+
+      filtered.forEach(q => {
+        const isOpen = openedQuestions.has(q.id);
+        const card = document.createElement('div');
+        card.className = `question-card ${isOpen ? 'open' : ''}`;
+        card.id = `qcard-${q.id}`;
+
+        const isProf = q.category === 'prof';
+        const badgeClass = isProf ? 'prof' : 'gen';
+        const badgeText = isProf ? `Prof #${q.number}` : `Cruciale #${q.number}`;
+
+        // Header
+        const header = document.createElement('div');
+        header.className = 'question-header';
+        header.onclick = () => toggleQuestion(q.id);
+        header.innerHTML = `
+          <div style="flex: 1;">
+            <div class="question-meta-row">
+              <span class="question-badge ${badgeClass}">${badgeText}</span>
+              <span class="question-topic-pill">${q.topic_short || q.topic}</span>
+            </div>
+            <div class="question-title-text">${q.title}</div>
+          </div>
+          <div class="question-chevron">▼</div>
+        `;
+        card.appendChild(header);
+
+        // Body
+        const body = document.createElement('div');
+        body.className = 'question-body';
+        
+        let htmlContent = `
+          <div class="question-prompt-box">
+            <strong style="color:var(--accent);">Quesito d'Esame:</strong><br>
+            "${q.question}"
+          </div>
+          <div class="question-answer-text">
+            ${renderMarkdownBasic(q.answer)}
+          </div>
+        `;
+
+        if (q.oral_tips && q.oral_tips.length > 0) {
+          htmlContent += `
+            <div class="question-tips-box">
+              <div class="question-tips-title">💡 Punti Chiave per l'Esame Orale</div>
+              <ul style="margin: 0; padding-left: 20px; font-size: 13px; color: var(--text);">
+                ${q.oral_tips.map(tip => `<li style="margin-bottom: 4px;">${tip}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        }
+
+        htmlContent += `
+          <div class="question-actions-bar">
+            <div style="font-size: 12px; color: var(--text-muted);">
+              📍 Nota: <em>[[${q.note || ''}]]</em>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="question-action-btn" onclick="copyQuestionAnswer('${q.id}')" title="Copia domanda e risposta in Markdown">
+                📋 Copia Risposta
+              </button>
+              <button class="question-action-btn" onclick="addQuestionToReview('${q.id}')" title="Aggiungi all'elenco da ripassare">
+                ➕ Metti in Da Ripassare
+              </button>
+            </div>
+          </div>
+        `;
+
+        body.innerHTML = htmlContent;
+        card.appendChild(body);
+        container.appendChild(card);
+
+        if (isOpen) {
+          renderMathInQuestion(body);
+        }
+      });
+    }
+
+    function toggleQuestion(qid) {
+      const card = document.getElementById(`qcard-${qid}`);
+      if (!card) return;
+      if (openedQuestions.has(qid)) {
+        openedQuestions.delete(qid);
+        card.classList.remove('open');
+      } else {
+        openedQuestions.add(qid);
+        card.classList.add('open');
+        const body = card.querySelector('.question-body');
+        if (body) renderMathInQuestion(body);
+      }
+      triggerHaptic('light');
+    }
+
+    function toggleAllQuestions() {
+      const allQ = window.EXAM_QUESTIONS || [];
+      const catQ = allQ.filter(q => q.category === currentQuestionsCategory);
+      const btn = document.getElementById('btnToggleAllQuestionsText');
+      if (openedQuestions.size === catQ.length) {
+        openedQuestions.clear();
+        if (btn) btn.textContent = '📂 Espandi Tutte';
+      } else {
+        catQ.forEach(q => openedQuestions.add(q.id));
+        if (btn) btn.textContent = '📁 Chiudi Tutte';
+      }
+      renderQuestionsList();
+      triggerHaptic('light');
+    }
+
+    function filterQuestions() {
+      renderQuestionsList();
+    }
+
+    function renderMathInQuestion(el) {
+      if (!el) return;
+      if (window.renderMathInElement) {
+        try {
+          renderMathInElement(el, {
+            delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false}
+            ],
+            throwOnError: false
+          });
+        } catch(e) {}
+      }
+    }
+
+    function renderMarkdownBasic(text) {
+      if (window.marked && window.marked.parse) {
+        try {
+          return marked.parse(text);
+        } catch(e) {}
+      }
+      let out = (text || '')
+        .replace(/^#### (.*?)$/gm, '<h4 style="margin:14px 0 6px; color:#60a5fa; font-size:14.5px; font-weight:700;">$1</h4>')
+        .replace(/^### (.*?)$/gm, '<h3 style="margin:16px 0 8px; color:var(--accent); font-size:16px; font-weight:700;">$1</h3>')
+        .replace(/^## (.*?)$/gm, '<h2 style="margin:18px 0 10px; color:var(--text); font-size:18px; font-weight:700;">$1</h2>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/^[\*\-] (.*?)$/gm, '<li style="margin-bottom:4px; margin-left:18px;">$1</li>')
+        .replace(/\n\n/g, '<br><br>');
+      return out;
+    }
+
+    function copyQuestionAnswer(qid) {
+      const q = (window.EXAM_QUESTIONS || []).find(x => x.id === qid);
+      if (!q) return;
+      let text = `# Domanda: ${q.title}\n\n> **Quesito d'Esame:**\n> ${q.question}\n\n### Risposta Modello:\n${q.answer}\n`;
+      if (q.oral_tips && q.oral_tips.length > 0) {
+        text += `\n### Punti Chiave per l'Orale:\n` + q.oral_tips.map(t => `- ${t}`).join('\n') + `\n`;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Domanda e risposta copiate negli appunti in formato Markdown!");
+        triggerHaptic('medium');
+      });
+    }
+
+    function addQuestionToReview(qid) {
+      const q = (window.EXAM_QUESTIONS || []).find(x => x.id === qid);
+      if (!q) return;
+      const revData = getReviewData();
+      const nowStr = new Date().toLocaleString();
+      revData.items[q.id] = {
+        id: q.id,
+        front: q.question,
+        back: q.answer,
+        node: q.title,
+        note: q.note,
+        topic: q.topic,
+        first_failed: nowStr,
+        last_failed: nowStr,
+        fail_count: 1
+      };
+      saveReviewData(revData);
+      triggerHaptic('medium');
+      alert(`Domanda aggiunta all'elenco "Da Ripassare":\n"${q.title}"`);
     }
 
     /* ============================================================
