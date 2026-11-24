@@ -1636,6 +1636,10 @@
         <span>📋 Da Ripassare</span>
         <span class="badge-count" id="headerReviewCount">0</span>
       </button>
+      <button class="badge-btn" onclick="openDiscardedModal()" title="Visualizza le domande scartate">
+        <span>🗑️ Scartate</span>
+        <span class="badge-count" id="headerDiscardedCount">0</span>
+      </button>
     
       <button class="badge-btn" onclick="forceRefreshApp()" title="Forza ricarica da GitHub">
         <span>🔄</span>
@@ -1877,9 +1881,12 @@
         </div>
       </div>
 
-      <div class="controls-bar">
+      <div class="controls-bar" style="display: flex; gap: 8px;">
         <button class="nav-btn" id="btnPrev" onclick="prevCard()">
           <span>← Prec</span>
+        </button>
+        <button class="nav-btn" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); font-size: 13px; font-weight: 600;" onclick="discardCurrentCard()" title="Scarta questa domanda escludendola dalle future esercitazioni">
+          <span>🗑️ Scarta</span>
         </button>
         <button class="nav-btn" style="background: var(--surface-elevated); font-size: 13px;" onclick="finishSessionEarly()">
           <span>Fine</span>
@@ -1959,6 +1966,26 @@
     </div>
   </div>
 
+  <!-- MODAL DOMANDE SCARTATE -->
+  <div class="modal-overlay" id="discardedModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">🗑️ Domande Scartate (<span id="modalDiscardedCount">0</span>)</div>
+        <button class="modal-close" onclick="closeDiscardedModal()">&times;</button>
+      </div>
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.4;">
+        Le domande scartate vengono escluse dalle normali sessioni di esercitazione. Puoi ripristinarle in qualsiasi momento singolarmente o tutte insieme.
+      </div>
+      <div class="modal-body" id="modalDiscardedContent"></div>
+      <div class="modal-actions" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; align-items: center;">
+        <button class="btn-primary" id="btnRestoreAllDiscarded" style="padding: 10px 18px; font-weight: 700; background: linear-gradient(135deg, #10b981, #059669); display: inline-flex; align-items: center; gap: 6px;" onclick="restoreAllDiscardedCards()">
+          <span>♻️ Ripristina Tutte</span>
+        </button>
+        <button class="btn-secondary" style="padding: 10px 18px;" onclick="closeDiscardedModal()">Chiudi</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL SYNC GITHUB & TELEGRAM -->
   <div class="modal-overlay" id="syncModal">
     <div class="modal-card">
@@ -2004,11 +2031,11 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=13"></script>
-  <script src="exercises.js?v=13"></script>
-  <script src="questions.js?v=13"></script>
-  <script src="formulas.js?v=13"></script>
-  <script src="summaries.js?v=13"></script>
+  <script src="topics.js?v=14"></script>
+  <script src="exercises.js?v=14"></script>
+  <script src="questions.js?v=14"></script>
+  <script src="formulas.js?v=14"></script>
+  <script src="summaries.js?v=14"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -2045,12 +2072,13 @@
 
     const STORAGE_KEY_TOPICS = "rw_flashcards_custom_topics";
     const STORAGE_KEY_REVIEW = "rw_flashcards_da_ripassare";
+    const STORAGE_KEY_DISCARDED = "rw_flashcards_discarded";
     const STORAGE_KEY_GH_TOKEN = "rw_flashcards_gh_token";
     const STORAGE_KEY_GH_GIST = "rw_flashcards_gh_gist";
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_5g_v13";
+      const DATASET_VERSION = "reticellulari_lte_5g_v14";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -2318,11 +2346,16 @@
       const rev = getReviewData();
       const count = Object.keys(rev.items || {}).length;
       document.getElementById('headerReviewCount').textContent = count;
+      const disc = getDiscardedCards();
+      const discCount = Object.keys(disc || {}).length;
+      const discBadge = document.getElementById('headerDiscardedCount');
+      if (discBadge) discBadge.textContent = discCount;
     }
 
     function renderTopics() {
       const container = document.getElementById('topicsContainer');
       container.innerHTML = '';
+      const discarded = getDiscardedCards();
       allTopics.forEach(t => {
         const item = document.createElement('div');
         item.className = 'topic-item'; // Non selezionato all'avvio
@@ -2335,12 +2368,16 @@
           triggerHaptic('light');
         };
 
+        const activeCount = (t.cards || []).filter(c => !discarded[c.id]).length;
+        const discardedCount = (t.cards || []).length - activeCount;
+        const discBadge = discardedCount > 0 ? `<span style="font-size:10px; color:var(--text-muted); margin-left:4px;">(${discardedCount} scartate)</span>` : '';
+
         item.innerHTML = `
           <div class="topic-info">
             <input type="checkbox" class="topic-checkbox">
             <div class="topic-name">${t.topic_name}</div>
           </div>
-          <div class="topic-count">${t.count} card</div>
+          <div class="topic-count">${activeCount} card${discBadge}</div>
         `;
         container.appendChild(item);
       });
@@ -2373,7 +2410,11 @@
 
     function updateSliderRange() {
       const sel = getSelectedTopics();
-      const totalAvailable = sel.reduce((acc, t) => acc + t.count, 0);
+      const discarded = getDiscardedCards();
+      const totalAvailable = sel.reduce((acc, t) => {
+        const activeCount = (t.cards || []).filter(c => !discarded[c.id]).length;
+        return acc + activeCount;
+      }, 0);
       const slider = document.getElementById('cardSlider');
       const btn = document.getElementById('btnStart');
 
@@ -2399,10 +2440,13 @@
 
     function startPractice() {
       const sel = getSelectedTopics();
+      const discarded = getDiscardedCards();
       let pool = [];
       sel.forEach(t => {
         t.cards.forEach(c => {
-          pool.push({ ...c, topicName: t.topic_name });
+          if (!discarded[c.id]) {
+            pool.push({ ...c, topicName: t.topic_name });
+          }
         });
       });
 
@@ -2433,6 +2477,33 @@
       window.scrollTo(0, 0);
     }
 
+    function formatCardMarkdown(text) {
+      if (!text) return '';
+      const mathBlocks = [];
+      // 1. Mask math ($$...$$ and $...$) so math characters aren't touched
+      let masked = text.replace(/(\$\$[\s\S]*?\$\$|\$[^\$\n\r]+?\$)/g, (match) => {
+        mathBlocks.push(match);
+        return `___MATH_BLOCK_${mathBlocks.length - 1}___`;
+      });
+
+      // 2. Format Markdown bold, italic, lists
+      masked = masked
+        // ***bold italic***
+        .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
+        // **bold**
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        // *italic* (not touching boundary characters)
+        .replace(/(^|[^\*])\*([^\*\r\n]+?)\*([^\*]|$)/g, '$1<em>$2</em>$3')
+        // Bullet points (- or *)
+        .replace(/^[\*\-] (.*?)$/gm, '• $1')
+        // Newlines to <br>
+        .replace(/\r?\n/g, '<br>');
+
+      // 3. Unmask math
+      masked = masked.replace(/___MATH_BLOCK_(\d+)___/g, (_, idx) => mathBlocks[parseInt(idx)]);
+      return masked;
+    }
+
     function formatCardSide(text, image, imageSide, currentSide, card) {
       let html = '';
       if (card && card.isExercise && currentSide === 'fronte' && card.phase) {
@@ -2442,7 +2513,7 @@
         html += `<div class="card-img-container"><img src="images/${image}" alt="figura/formula"></div>`;
       }
       let clean = (text || '').replace(/!\[\[(.*?)\]\](<br>)?/g, '').trim();
-      html += `<div>${clean.replace(/\r?\n/g, '<br>')}</div>`;
+      html += `<div>${formatCardMarkdown(clean)}</div>`;
 
       if (card && card.isExercise && currentSide === 'retro') {
         if (card.formula) {
@@ -2451,7 +2522,7 @@
           html += `<div class="formula-box"><strong>📐 Formula Matematica / Passaggio:</strong><div>${fMath}</div></div>`;
         }
         if (card.tip) {
-          html += `<div class="tip-box">💡 <strong>Nota del Professore:</strong><br>${card.tip}</div>`;
+          html += `<div class="tip-box">💡 <strong>Nota del Professore:</strong><br>${formatCardMarkdown(card.tip)}</div>`;
         }
       }
       return html;
@@ -2723,7 +2794,7 @@
           div.style.marginBottom = '6px';
           div.innerHTML = `
             <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
-              <span class="wrong-item-node" style="font-weight:600; flex:1;">${item.front || item.node}</span>
+              <span class="wrong-item-node" style="font-weight:600; flex:1;">${formatCardMarkdown(item.front || item.node)}</span>
               <div style="display:flex; align-items:center; gap:8px;">
                 <span style="font-size:10px; background:var(--danger-bg); color:var(--danger); padding:2px 6px; border-radius:10px; font-weight:bold; white-space:nowrap;">${item.fail_count || 1} errori</span>
                 <button onclick="removeSingleReviewItem('${k}')" title="Rimuovi da ripassare" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:14px; padding:2px 6px; border-radius:4px; line-height:1;">✕</button>
@@ -2733,6 +2804,18 @@
           `;
           container.appendChild(div);
         });
+
+        if (window.renderMathInElement) {
+          try {
+            renderMathInElement(container, {
+              delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+              ],
+              throwOnError: false
+            });
+          } catch(e) {}
+        }
       }
       document.getElementById('reviewModal').classList.add('open');
       triggerHaptic('light');
@@ -2839,6 +2922,129 @@
         localStorage.removeItem(STORAGE_KEY_REVIEW);
         updateHeaderBadge();
         closeReviewModal();
+      }
+    }
+
+    /* ============================================================
+       GESTIONE DOMANDE SCARTATE
+       ============================================================ */
+
+    function getDiscardedCards() {
+      const stored = localStorage.getItem(STORAGE_KEY_DISCARDED);
+      if (!stored) return {};
+      try { return JSON.parse(stored); } catch(e) { return {}; }
+    }
+
+    function saveDiscardedCards(data) {
+      localStorage.setItem(STORAGE_KEY_DISCARDED, JSON.stringify(data));
+      updateHeaderBadge();
+    }
+
+    function discardCurrentCard() {
+      if (!sessionCards || sessionCards.length === 0) return;
+      const card = sessionCards[currentIndex];
+      if (!card) return;
+
+      const disc = getDiscardedCards();
+      disc[card.id] = {
+        id: card.id,
+        front: card.front,
+        topic: card.topicName || card.topic || '',
+        node: card.node || '',
+        note: card.note || '',
+        discarded_at: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      saveDiscardedCards(disc);
+      triggerHaptic('medium');
+
+      // Rimuovi dalla sessione corrente
+      sessionCards.splice(currentIndex, 1);
+
+      if (sessionCards.length === 0) {
+        alert("Hai scartato tutte le card della sessione!");
+        finishSession();
+      } else {
+        if (currentIndex >= sessionCards.length) {
+          currentIndex = sessionCards.length - 1;
+        }
+        renderCard();
+      }
+      renderTopics();
+      updateHeaderBadge();
+    }
+
+    function openDiscardedModal() {
+      const container = document.getElementById('modalDiscardedContent');
+      container.innerHTML = '';
+      const disc = getDiscardedCards();
+      const keys = Object.keys(disc || {});
+      const countSpan = document.getElementById('modalDiscardedCount');
+      const restoreAllBtn = document.getElementById('btnRestoreAllDiscarded');
+      if (countSpan) countSpan.textContent = keys.length;
+
+      if (keys.length === 0) {
+        if (restoreAllBtn) restoreAllBtn.style.display = 'none';
+        container.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 24px;">Nessuna domanda scartata. Tutte le flashcard sono attive nelle esercitazioni! ✨</div>';
+      } else {
+        if (restoreAllBtn) restoreAllBtn.style.display = 'inline-flex';
+        keys.forEach(k => {
+          const item = disc[k];
+          const div = document.createElement('div');
+          div.className = 'wrong-item';
+          div.style.marginBottom = '8px';
+          div.style.borderLeft = '3px solid #f87171';
+          div.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+              <div style="flex:1;">
+                <div style="font-weight:600; font-size:13px; line-height:1.4; color:var(--text);">${formatCardMarkdown(item.front || k)}</div>
+                <div class="wrong-item-note" style="margin-top:4px;">📂 ${item.topic || ''} &bull; <span style="font-size:10px; color:var(--text-muted);">${item.discarded_at || ''}</span></div>
+              </div>
+              <button onclick="restoreSingleDiscardedCard('${k}')" class="btn-secondary" style="font-size:11px; padding:4px 8px; border-radius:6px; white-space:nowrap; background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.3); cursor:pointer;">
+                ♻️ Ripristina
+              </button>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+
+        if (window.renderMathInElement) {
+          try {
+            renderMathInElement(container, {
+              delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+              ],
+              throwOnError: false
+            });
+          } catch(e) {}
+        }
+      }
+      document.getElementById('discardedModal').classList.add('open');
+      triggerHaptic('light');
+    }
+
+    function closeDiscardedModal() {
+      document.getElementById('discardedModal').classList.remove('open');
+    }
+
+    function restoreSingleDiscardedCard(cardId) {
+      const disc = getDiscardedCards();
+      if (disc[cardId]) {
+        delete disc[cardId];
+        saveDiscardedCards(disc);
+        renderTopics();
+        openDiscardedModal();
+        triggerHaptic('light');
+      }
+    }
+
+    function restoreAllDiscardedCards() {
+      if (confirm("Vuoi ripristinare tutte le domande scartate e riattivarle nelle flashcard?")) {
+        localStorage.removeItem(STORAGE_KEY_DISCARDED);
+        renderTopics();
+        updateHeaderBadge();
+        closeDiscardedModal();
+        triggerHaptic('medium');
       }
     }
 
@@ -3246,6 +3452,7 @@
         .replace(/^#### (.*?)$/gm, '<h4 style="margin:14px 0 6px; color:#60a5fa; font-size:14.5px; font-weight:700;">$1</h4>')
         .replace(/^### (.*?)$/gm, '<h3 style="margin:16px 0 8px; color:var(--accent); font-size:16px; font-weight:700;">$1</h3>')
         .replace(/^## (.*?)$/gm, '<h2 style="margin:18px 0 10px; color:var(--text); font-size:18px; font-weight:700;">$1</h2>')
+        .replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/^[\*\-] (.*?)$/gm, '<li style="margin-bottom:4px; margin-left:18px;">$1</li>')

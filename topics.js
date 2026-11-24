@@ -1,530 +1,2480 @@
-// Database Flashcards d'Esame Raffinato - Reti Wireless (Prof. M. Femminella)
-// Allineato alle 5 Mappe Concettuali (Reti Cellulari, Dimensionamento, LTE, 17-22 Marzo, 5G)
+// Database unificato e completo delle flashcards per Reti Wireless
+// Ripristinate tutte le 163 flashcards originali + integrate le nuove flashcard d'esame
+// Totale Argomenti: 10 | Totale Flashcards: 219
 
 window.DEFAULT_TOPICS = [
   {
-    "topic_id": "reticell_fondamenti_propagazione",
-    "topic_name": "1. Reti Cellulari Fondamentali & Propagazione",
+    "topic_id": "reticell_architettura",
+    "topic_name": "1. Reti Cellulari, Antenne e Propagazione",
     "cards": [
       {
-        "id": "t1_01",
-        "front": "Che cos'è una rete cellulare mobile e su quale principio fondamentale si basa?",
-        "back": "È un'infrastruttura radiomobile che suddivide il territorio in aree geografiche elementari denominate **celle** (servite da stazioni radio base).\nSi basa sul principio del **riutilizzo delle frequenze**: limitando la potenza di trasmissione, la stessa banda radio può essere riutilizzata in celle geograficamente distanti senza generare intollerabile interferenza co-canale.",
-        "node": "Concetto di Cella & Riutilizzo",
-        "note": "01 Introduzione Reti Wireless"
+        "id": "reticell_architettura_001",
+        "front": "Che cos'è una rete cellulare mobile e su quale principio si basa?",
+        "back": "È un'architettura di rete wireless in cui il territorio è suddiviso in aree geografiche elementari (celle), ciascuna servita da una stazione radio base.",
+        "node": "Reti Cellulari",
+        "note": "Introduzione alle reti cellulari e al riuso",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Consente di riutilizzare le stesse frequenze a distanza spaziale controllata.",
+        "difficolta": 1,
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_02",
+        "id": "reticell_architettura_002",
+        "front": "Qual è il principale vantaggio del partizionamento del territorio in celle?",
+        "back": "Permette il riuso delle frequenze nello spazio, moltiplicando la capacità complessiva del sistema rispetto a una copertura a singola cella.",
+        "node": "Reti Cellulari",
+        "note": "Lezione 01 22 febbraio - 38",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "A parità di banda spettrale licenziata, aumenta gli utenti contemporanei.",
+        "difficolta": 1,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_003",
+        "front": "Che cos'è un radiatore isotropico e come irradia la potenza?",
+        "back": "È un'antenna ideale puntiforme che irradia potenza elettromagnetica con la stessa intensità in tutte le direzioni dello spazio sferico.",
+        "node": "Radiatore Isotropico",
+        "note": "Lezione 01 22 febbraio - 21",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Riferimento teorico per il calcolo del guadagno d'antenna.",
+        "difficolta": 1,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_004",
+        "front": "Qual è la formula della densità di potenza isotropica S_iso a distanza d?",
+        "back": "$$S_{\\text{iso}} = \\frac{P_t}{4\\pi d^2} \\quad [\\text{W/m}^2]$$ La potenza totale $P_t$ si distribuisce uniformemente sulla superficie sferica di raggio $d$ ($4\\pi d^2$).",
+        "node": "Radiatore Isotropico",
+        "note": "Formulario Reti Wireless - Sez 1.2",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Decadimento quadratico con la distanza nello spazio libero.",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_005",
+        "front": "Qual è la funzione di un'antenna direttiva rispetto a quella isotropica?",
+        "back": "Focalizza la potenza irradiata verso una direzione privilegiata dello spazio, aumentando la densità di potenza utile e riducendo l'interferenza nelle altre direzioni.",
+        "node": "Antenne direttive",
+        "note": "Lezione 01 22 febbraio - 22",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il guadagno Gt quantifica l'amplificazione direzionale.",
+        "difficolta": 1,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_006",
+        "front": "Come si definisce l'EIRP e cosa rappresenta fisicamente?",
+        "back": "L'EIRP (Equivalent Isotropically Radiated Power) è la potenza che dovrebbe irradiare un radiatore isotropico per produrre la stessa densità di potenza nella direzione di massimo lobo.",
+        "node": "EIRP",
+        "note": "Lezione 01 22 febbraio - 24",
+        "image": "RetiCellulari-img-01-eirp.png",
+        "image_side": "retro",
+        "extra": "$$\\text{EIRP} = P_t \\cdot G_t \\implies \\text{EIRP}_{\\text{dBm}} = P_{t,\\text{dBm}} + G_{t,\\text{dBi}}$$",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_007",
+        "front": "Quale relazione fisica fondamentale è espressa da questa formula?",
+        "back": "La densità di potenza direzionale $S$ a distanza $d$ in funzione dell'EIRP: $$S = \\frac{\\text{EIRP}}{4\\pi d^2} = \\frac{P_t G_t}{4\\pi d^2} \\quad [\\text{W/m}^2]$$",
+        "node": "EIRP",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-01-eirp.png",
+        "image_side": "fronte",
+        "extra": "Formula slide Lezione 01.",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_008",
+        "front": "Qual è la formula di trasmissione di Friis in forma lineare?",
+        "back": "$$P_r = P_t G_t G_r \\left(\\frac{\\lambda}{4\\pi d}\\right)^2$$ Lega la potenza ricevuta $P_r$ alla potenza trasmessa $P_t$, guadagni d'antenna $G_t, G_r$, lunghezza d'onda $\\lambda$ e distanza $d$ in spazio libero (LOS).",
+        "node": "Formula di FRISS",
+        "note": "Formulario Reti Wireless - Sez 1.5",
+        "image": "RetiCellulari-img-02-friis.png",
+        "image_side": "retro",
+        "extra": "Valida in condizioni di campo lontano d >= d0.",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_009",
+        "front": "Identifica la formula in figura e specifica la condizione di validità.",
+        "back": "È la formula di Friis per la propagazione in spazio libero (LOS), valida in assenza di ostacoli e per distanze superiori alla regione di campo vicino.",
+        "node": "Formula di FRISS",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-02-friis.png",
+        "image_side": "fronte",
+        "extra": "Esponente di propagazione eta = 2.",
+        "difficolta": 1,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_010",
+        "front": "Quali sono i tre blocchi concettuali che compongono l'espressione di Friis mostrata?",
+        "back": "1) Potenza trasmessa e guadagno Tx ($\\text{EIRP} = P_t G_t$); 2) Attenuazione geometrica di spazio libero $\\frac{1}{4\\pi d^2}$; 3) Area efficace dell'antenna ricevente $A_e = G_r \\frac{\\lambda^2}{4\\pi}$.",
+        "node": "Formula di FRISS",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-03-friis-dettaglio.png",
+        "image_side": "fronte",
+        "extra": "Pr = (Pt*Gt) * (1/(4*pi*d^2)) * (Gr*lambda^2 / 4*pi).",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_011",
+        "front": "Cosa rappresenta l'esponente di propagazione eta (o gamma) e quanto vale nei vari ambienti?",
+        "back": "Misura la rapidità con cui decade la potenza ricevuta con la distanza ($P_r \\propto d^{-\\eta}$). Vale $\\eta = 2$ in spazio libero, e tra $3$ e $5$ in ambienti urbani terrestri.",
+        "node": "ETA",
+        "note": "Lezione 01 22 febbraio - 30",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Nel modello a due raggi (Two-Ray ground) a grandi distanze vale esattamente 4.",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_012",
+        "front": "Cosa comporta un aumento dell'esponente di attenuazione eta per il raggio di cella R?",
+        "back": "A parità di potenza emessa, la potenza decade molto più rapidamente, contraendo il raggio di copertura utile $R$ della cella.",
+        "node": "ETA",
+        "note": "Lezione 04 3 marzo - 13",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Tuttavia, attenua più fortemente anche l'interferenza co-canale dai siti vicini.",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_013",
+        "front": "Qual è la formula della distanza di visibilità dell'orizzonte radio tra due antenne elevate?",
+        "back": "$$d_{\\text{radio}} = \\sqrt{2 R' h_t} + \\sqrt{2 R' h_r} \\approx 4.12 \\cdot (\\sqrt{h_t} + \\sqrt{h_r})\\text{ [km]}$$ con $h_t, h_r$ in metri ed $R' = \\frac{4}{3} R_0$ raggio equivalente terrestre.",
+        "node": "Orizzonte ottico ed orizzonte radio",
+        "note": "Formulario Reti Wireless - Sez 1.6",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il raggio terrestre fittizio R' tiene conto della rifrazione atmosferica standard.",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_014",
+        "front": "Perché l'orizzonte radio d_radio è circa il 15% più esteso dell'orizzonte ottico d_ottico?",
+        "back": "A causa del gradiente di indice di rifrazione dell'atmosfera con la quota, che incurva i raggi elettromagnetici verso la superficie terrestre.",
+        "node": "Orizzonte ottico ed orizzonte radio",
+        "note": "Lezione 01 22 febbraio - 28",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Si modella incrementando il raggio terrestre a R' = (4/3)*R approx 8500 km.",
+        "difficolta": 2,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_015",
+        "front": "Qual è la formula asintotica di potenza ricevuta nel modello a due raggi (Two-Ray Ground)?",
+        "back": "$$P_r = P_t G_t G_r \\frac{h_t^2 h_r^2}{d^4}$$ La potenza ricevuta decade con la quarta potenza della distanza ed è indipendente dalla frequenza della portante.",
+        "node": "Modello a due raggi e decadimento d^4",
+        "note": "Formulario Reti Wireless - Sez 1.8",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Valida per distanze oltre la distanza di crossover d_c = (4 * pi * ht * hr) / lambda.",
+        "difficolta": 3,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_016",
+        "front": "Perché nel modello a due raggi la potenza decade con d^4 anziché con d^2?",
+        "back": "Perché il raggio riflesso dal suolo subisce uno sfasamento di circa 180° rispetto al raggio diretto, provocando un'interferenza distruttiva quasi perfetta a grande distanza.",
+        "node": "Modello a due raggi e decadimento d^4",
+        "note": "Lezione 01 22 febbraio - 29",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Dimostra perché a terra l'esponente di attenuazione effettivo eta sale a 4.",
+        "difficolta": 3,
+        "topic": "reticell_architettura"
+      },
+      {
+        "id": "reticell_architettura_017",
         "front": "Come si definisce un radiatore isotropico e qual è la formula della densità di potenza a distanza d?",
         "back": "Un radiatore isotropico è un'antenna teorica puntiforme che irradia la potenza $P_{tx}$ uniformemente in tutte le direzioni dello spazio (su una superficie sferica).\nLa densità di potenza a distanza $d$ vale:\n$$S_{iso}(d) = \\frac{P_{tx}}{4\\pi d^2} \\quad [\\text{W/m}^2]$$",
         "node": "Radiatore Isotropico",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_03",
+        "id": "reticell_architettura_018",
         "front": "Come si definisce il Guadagno d'Antenna G e che cos'è l'EIRP?",
         "back": "Il **Guadagno d'Antenna** $G(\\theta, \\phi)$ misura la capacità di concentrare l'energia irradiata in una determinata direzione rispetto all'irradiatore isotropico.\nL'**EIRP (Equivalent Isotropically Radiated Power)** è la potenza che dovrebbe irradiare un'antenna isotropica per produrre la stessa densità di potenza nella direzione di massimo guadagno:\n$$EIRP = P_{tx} \\cdot G_{tx} \\implies EIRP_{\\text{dBm}} = P_{tx,\\text{dBm}} + G_{tx,\\text{dBi}}$$",
         "node": "Guadagno & EIRP",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_04",
-        "front": "Qual è la Formula di Trasmissione di Friis per lo spazio libero?",
-        "back": "Esprime la potenza ricevuta $P_{rx}$ in condizioni di spazio libero (assenza di ostacoli, Line-Of-Sight):\n$$P_{rx} = P_{tx} \\cdot G_{tx} \\cdot G_{rx} \\cdot \\left(\\frac{\\lambda}{4\\pi d}\\right)^2 = P_{tx} \\cdot G_{tx} \\cdot G_{rx} \\cdot \\left(\\frac{c}{4\\pi d f}\\right)^2$$\nIn decibel (Path Loss di spazio libero):\n$$PL_{FS}(d) \\text{ [dB]} = 32.44 + 20\\log_{10}(f_{\\text{MHz}}) + 20\\log_{10}(d_{\\text{km}})$$\nCresce quadraticamente con la distanza ($d^2$) e con la frequenza ($f^2$).",
-        "node": "Formula di Friis",
-        "note": "01 Introduzione Reti Wireless"
-      },
-      {
-        "id": "t1_05",
+        "id": "reticell_architettura_019",
         "front": "Quali sono i tre principali fenomeni fisici di attenuazione nei canali mobili?",
         "back": "1. **Path Loss (Larga scala)**: attenuazione deterministica legata alla distanza $d$, con legge esponenziale $PL(d) \\propto d^\\gamma$ (con $\\gamma \\in [3, 4.5]$ in ambiente urbano).\n2. **Shadowing (Media scala)**: ombreggiamento da grandi ostacoli (edifici, rilievi), modellato con distribuzione **Log-Normale** su decine di metri.\n3. **Multipath Fading (Piccola scala / Veloce)**: fluttuazioni rapide su distanze microscopiche (frazioni di $\\lambda$) dovute alla somma costruttiva/distruttiva di raggi riflessi (distribuzione di Rayleigh o Rice).",
         "node": "Meccanismi di Propagazione",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_06",
-        "front": "Qual è la differenza fondamentale tra Multipath Fading di Rayleigh e di Rice?",
-        "back": "* **Rayleigh**: si applica in assenza di un raggio visivo diretto (**NLOS - Non-Line-Of-Sight**). L'inviluppo segue una densità di Rayleigh e la potenza istantanea segue una distribuzione esponenziale decrescente.\n* **Rice**: si applica in presenza di un raggio diretto dominante (**LOS - Line-Of-Sight**). Il parametro $K_{Rice} = P_{LOS} / P_{diffusa}$ quantifica la robustezza del canale. Per $K \\to 0$ collassa in Rayleigh; per $K \\to \\infty$ diventa un canale gaussiano senza fading.",
-        "node": "Rayleigh vs Rice",
-        "note": "01 Introduzione Reti Wireless"
-      },
-      {
-        "id": "t1_07",
+        "id": "reticell_architettura_020",
         "front": "Cosa rappresentano il Tempo di Coerenza Tc e la Banda di Coerenza Bc del canale radio?",
         "back": "* **Tempo di Coerenza ($T_c$)**: intervallo temporale in cui la risposta impulsiva del canale si può considerare costante. È inversamente proporzionale allo shift Doppler massimo: $T_c \\approx 1 / f_{d,max}$. Se la durata del simbolo $T_s > T_c$ si ha *fading veloce*.\n* **Banda di Coerenza ($B_c$)**: intervallo di frequenza in cui il canale ha guadagno approssimativamente costante. È inversamente proporzionale al delay spread: $B_c \\approx 1 / (2\\pi \\tau_{max})$. Se la banda del segnale $B > B_c$ il canale è *selettivo in frequenza*.",
         "node": "Tempo e Banda di Coerenza",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_08",
+        "id": "reticell_architettura_021",
         "front": "Che cos'è un Cluster di celle e come si calcola la dimensione N?",
         "back": "Un **cluster** è il gruppo minimo di $N$ celle adiacenti che utilizzano complessivamente l'intera banda assegnata all'operatore, senza riutilizzare frequenze al suo interno.\nPer tassellare perfettamente il piano esagonale deve valere:\n$$N = i^2 + ij + j^2 \\quad (i, j \\in \\mathbb{N}_0)$$\nValori ammissibili: $N \\in \\{1, 3, 4, 7, 9, 12, ...\\}$.",
         "node": "Cluster di Riutilizzo",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_09",
+        "id": "reticell_architettura_022",
         "front": "Come si calcola la Distanza di Riuso Co-Canale D in funzione del raggio di cella R e di N?",
         "back": "La distanza tra i centri di due celle che riutilizzano lo stesso set di frequenze vale:\n$$D = R \\sqrt{3N}$$\nIl parametro $Q = \\frac{D}{R} = \\sqrt{3N}$ è il **rapporto di riutilizzo co-canale** (*co-channel reuse ratio*). All'aumentare di $N$, $D$ cresce e l'interferenza tra celle diminuisce.",
         "node": "Distanza di Riuso D",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_10",
+        "id": "reticell_architettura_023",
         "front": "Qual è la formula del rapporto Segnale-Interferenza (SIR) con 6 interferenti di primo anello?",
         "back": "Nel caso peggiore di downlink con terminale al bordo cella ($d = R$) e 6 interferenti a distanza media $D$:\n$$SIR = \\frac{S}{I} \\approx \\frac{P_t K R^{-\\gamma}}{6 P_t K D^{-\\gamma}} = \\frac{1}{6} \\left(\\frac{D}{R}\\right)^\\gamma = \\frac{(\\sqrt{3N})^\\gamma}{6} = \\frac{(3N)^{\\gamma/2}}{6}$$\nCon esponente di path loss $\\gamma = 4$, risulta: $SIR = \\frac{(3N)^2}{6} = 1.5 \\cdot N^2$.",
         "node": "Calcolo del SIR",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_11",
+        "id": "reticell_architettura_024",
         "front": "Qual è il fondamentale trade-off progettuale legato alla scelta di N?",
         "back": "* **$N$ elevato (es. $N = 7$ o $12$)**: la distanza di riuso $D$ aumenta $\\implies$ il SIR cresce $\\implies$ qualità radio eccellente e bassa interferenza. Tuttavia, i canali per cella sono pochi ($C = S/N$), riducendo la **capacità complessiva** del sistema.\n* **$N$ basso (es. $N = 1$ in LTE/5G)**: massima capacità di banda per cella ($C = S$), ma interferenza co-canale elevata che richiede tecniche trasmissive avanzate (OFDMA, MIMO, coordinamento ICIC).",
         "node": "Trade-Off Dimensione Cluster",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_12",
+        "id": "reticell_architettura_025",
         "front": "In che modo la settorizzazione a 120 gradi migliora il SIR della cella?",
         "back": "Sostituendo l'antenna omnidirezionale con 3 antenne direttive a $120^\\circ$:\n* L'angolo di ricezione dell'interferenza viene ridotto da $360^\\circ$ a $120^\\circ$.\n* Il numero di stazioni base co-canale di primo anello che irradiano verso il settore dell'utente passa da **6 a soli 2** (o talvolta 1).\n* Il SIR migliora di un fattore $6/2 = 3$ ($+4.77 \\text{ dB}$), consentendo di ridurre $N$ a parità di qualità radio.",
         "node": "Settorizzazione a 120 Gradi",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       },
       {
-        "id": "t1_13",
+        "id": "reticell_architettura_026",
         "front": "Che cos'è la Probabilità di Fuori Servizio (Outage Probability) e cos'è il Fade Margin?",
         "back": "* **Probabilità di Outage ($P_{out}$)**: probabilità che la potenza ricevuta $P_{rx}$ scenda al di sotto della soglia minima di sensibilità del ricevitore $\\gamma_{th}$ necessaria per demodulare: $P_{out} = P(P_{rx} < \\gamma_{th})$.\n* **Fade Margin ($M$)**: margine di potenza addizionale trasmesso rispetto alla soglia nominale per proteggere il collegamento dalle fluttuazioni casuali dello shadowing log-normale e del multipath.",
         "node": "Outage & Fade Margin",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_architettura"
       }
-    ]
+    ],
+    "count": 26
+  },
+  {
+    "topic_id": "reticell_riuso_sir",
+    "topic_name": "2. Riuso di Frequenza, Geometria Cluster e Analisi SIR",
+    "cards": [
+      {
+        "id": "reticell_riuso_sir_001",
+        "front": "Qual è il limite principale della progettazione a singola cella?",
+        "back": "La capacità complessiva è rigidamente limitata dalla banda totale assegnata, poiché tutte le frequenze possono essere usate una sola volta in tutta l'area.",
+        "node": "Singola Cella",
+        "note": "Lezione 01 22 febbraio - 33",
+        "image": "RetiCellulari-img-04-singola-cella.png",
+        "image_side": "retro",
+        "extra": "Se ho 12 frequenze, posso servire solo 12 canali simultanei in tutto il territorio.",
+        "difficolta": 1,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_002",
+        "front": "Quale scenario operativo è illustrato nel diagramma?",
+        "back": "Copertura mediante singola stazione radio base centrale con frequenze dedicate f1..f12 senza riuso spaziale.",
+        "node": "Singola Cella",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-04-singola-cella.png",
+        "image_side": "fronte",
+        "extra": "Semplice installazione ma capacità totale limitata a N canali.",
+        "difficolta": 1,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_003",
+        "front": "Come il sistema multicella supera il limite di capacità della singola cella?",
+        "back": "Fraziona il territorio in tante celle e riutilizza lo stesso gruppo di frequenze in celle distanti, moltiplicando la capacità per il numero di volte che le frequenze sono riusate.",
+        "node": "Multi Cella",
+        "note": "Lezione 01 22 febbraio - 35",
+        "image": "RetiCellulari-img-11-capacita-multicella.png",
+        "image_side": "retro",
+        "extra": "Capacità complessiva C_tot = M * (Banda / N_cluster).",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_004",
+        "front": "Cosa dimostra la formula di capacità del sistema multicella mostrata?",
+        "back": "Mostra che la capacità di sistema scala linearmente con il numero di celle M, permettendo di aumentare la densità di utenti semplicemente riducendo il raggio delle celle.",
+        "node": "Multi Cella",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-11-capacita-multicella.png",
+        "image_side": "fronte",
+        "extra": "Capacità totale = M * (Banda_cella / canali).",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_005",
+        "front": "Quali elementi tecnici richiede la gestione di un'infrastruttura multicella?",
+        "back": "Richiede pianificazione delle frequenze, gestione della mobilità (handover tra celle adiacenti) e controllo dell'interferenza co-canale.",
+        "node": "Progetto stazione radio base",
+        "note": "Lezione 01 22 febbraio - 35",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Costi di installazione e complessità di rete più elevati rispetto a singola cella.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_006",
+        "front": "Che cos'è il riuso unitario (N=1)?",
+        "back": "È la configurazione in cui ogni cella del sistema utilizza l'intera banda disponibile di sistema senza partizionamento tra celle adiacenti.",
+        "node": "Riuso Unitario",
+        "note": "Lezione 01 22 febbraio - 36",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Adottato in CDMA ed LTE/5G.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_007",
+        "front": "Qual è il principale inconveniente del riuso di frequenza tra celle diverse?",
+        "back": "Genera interferenza co-canale (CCI), che degrada il rapporto segnale/interferenza (SIR) specialmente al bordo cella dove la potenza del segnale utile è minima.",
+        "node": "Interferenza tra celle",
+        "note": "Lezione 01 22 febbraio - 37",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'interferenza co-canale dipende dal rapporto tra distanza di riuso D e raggio R.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_008",
+        "front": "Definisci il concetto di riuso cellulare e la sua metrica principale Q.",
+        "back": "È l'allocazione delle stesse frequenze a celle separate da una distanza $D$ tale che l'interferenza co-canale rimanga sotto una soglia tollerabile. La metrica principale è il fattore di riuso: $$Q = \\frac{D}{R} = \\sqrt{3N}$$",
+        "node": "Riuso Cellulare",
+        "note": "Lezione 02 24 febbraio - 02",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Q è il fattore di riuso o rapporto di protezione.",
+        "difficolta": 1,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_009",
+        "front": "Che cos'è un cluster di celle e quali valori può assumere la sua dimensione N?",
+        "back": "È il gruppo minimo di celle adiacenti a cui viene assegnato l'intero insieme di frequenze disponibili senza ripetizioni. $N$ assume valori ammissibili: $$N = i^2 + ij + j^2$$ con $i, j$ interi non negativi ($N \\in \\{1, 3, 4, 7, 9, 12, 13, 19, \\dots\\}$).",
+        "node": "Cluster",
+        "note": "Lezione 02 24 febbraio - 06",
+        "image": "RetiCellulari-img-06-cluster-uv.png",
+        "image_side": "retro",
+        "extra": "Valori ammissibili: N in {1, 3, 4, 7, 9, 12, ...}.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_010",
+        "front": "Come si determinano i centri delle celle co-canale usando gli assi u e v in figura?",
+        "back": "Partendo dal centro di una cella, ci si sposta di u passi lungo l'asse u, si ruota di 60 gradi in senso antiorario e ci si sposta di v passi lungo l'asse v.",
+        "node": "Cluster",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-06-cluster-uv.png",
+        "image_side": "fronte",
+        "extra": "Formula della distanza D = R * sqrt(3*(u^2 + u*v + v^2)).",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_011",
+        "front": "Qual è la formula che lega la distanza di riuso D al raggio R e alla dimensione N del cluster?",
+        "back": "$$D = R \\sqrt{3N} \\implies \\frac{D}{R} = \\sqrt{3N}$$ dove $R$ è il raggio dell'esagono circoscritto e $N$ è la dimensione del cluster.",
+        "node": "Distanza di riuso",
+        "note": "Formulario Reti Wireless - Sez 2.2",
+        "image": "RetiCellulari-img-05-distanza-riuso.png",
+        "image_side": "retro",
+        "extra": "Il fattore di riuso adimensionale vale Q = D / R = sqrt(3 * N).",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_012",
+        "front": "Quale formula geometrica è rappresentata nell'immagine?",
+        "back": "La relazione della distanza di riuso $$D = R \\sqrt{3N}$$ che definisce la spaziatura minima tra stazioni base che condividono le medesime frequenze.",
+        "node": "Distanza di riuso",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-05-distanza-riuso.png",
+        "image_side": "fronte",
+        "extra": "Derivata dalla geometria della griglia esagonale.",
+        "difficolta": 1,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_013",
+        "front": "Come si esprime la capacità di canale di Shannon in presenza di rumore?",
+        "back": "$$C = B \\log_2\\left(1 + \\frac{S}{N}\\right) \\quad [\\text{bit/s}]$$ dove $B$ è la banda in Hz ed $S/N$ è il rapporto segnale/rumore in potenza lineare.",
+        "node": "Rapporto segnale disturbo - Shannon",
+        "note": "Formulario Reti Wireless - Sez 2.3",
+        "image": "RetiCellulari-img-07-shannon.png",
+        "image_side": "retro",
+        "extra": "Limite teorico massimo insuperabile per canale AWGN.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_014",
+        "front": "Indica il significato della formula di Shannon mostrata nell'immagine.",
+        "back": "Rappresenta la capacità massima teorica di trasmissione $C\\text{ [bit/s]}$ su canale a banda $B$ con rapporto segnale/disturbo $S/N$.",
+        "node": "Rapporto segnale disturbo - Shannon",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-07-shannon.png",
+        "image_side": "fronte",
+        "extra": "Base per la modulazione adattativa e la codifica di canale.",
+        "difficolta": 1,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_015",
+        "front": "Qual è la differenza fondamentale tra SINR e SIR in una rete cellulare?",
+        "back": "Il SINR include al denominatore sia l'interferenza co-canale $I$ che il rumore termico $N$ ($\\frac{S}{I+N}$); il SIR trascura il rumore termico ($C/I$), valida in regimi *interference-limited*.",
+        "node": "SINR e SIR",
+        "note": "Lezione 02 24 febbraio - 09",
+        "image": "RetiCellulari-img-08-sinr.png",
+        "image_side": "retro",
+        "extra": "Nelle reti cellulari urbane il sistema è quasi sempre interference-limited (SIR approx SINR).",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_016",
+        "front": "Quale grandezza esprime la formula in figura e quando si approssima a SIR?",
+        "back": "Esprime il $$\\text{SINR} = \\frac{S}{\\sum I_i + N}$$ Quando l'interferenza co-canale $\\sum I_i$ domina nettamente sul rumore termico $N$, il termine $N$ diventa trascurabile e il SINR coincide con il SIR ($C/I$).",
+        "node": "SINR e SIR",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-08-sinr.png",
+        "image_side": "fronte",
+        "extra": "Slide Lezione 02.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_017",
+        "front": "Come si modella la potenza ricevuta Pr a distanza d nel modello semplificato con esponente eta?",
+        "back": "Pr(d) = k * Pt * d^(-eta), dove k è una costante d'antenna e di propagazione ed eta è l'esponente di attenuazione.",
+        "node": "Potenza ricevuta Pr",
+        "note": "Lezione 02 24 febbraio - 10",
+        "image": "RetiCellulari-img-09-potenza-eta.png",
+        "image_side": "retro",
+        "extra": "In decibel: Pr_dB = k_dB + Pt_dB - 10*eta*log10(d).",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_018",
+        "front": "Cosa descrive la relazione di proporzionalità Pr mostrata in figura?",
+        "back": "Descrive il decadimento della potenza ricevuta Pr proporzionale a d^(-gamma) (o d^(-eta)), parametrizzata dalla costante k e dalla potenza emessa Pt.",
+        "node": "Potenza ricevuta Pr",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-09-potenza-eta.png",
+        "image_side": "fronte",
+        "extra": "Modello base per la derivazione del SIR di cella.",
+        "difficolta": 1,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_019",
+        "front": "Perché il SIR al bordo cella è indipendente dal raggio assoluto R della cella?",
+        "back": "Perché sia la potenza del segnale utile C (proporzionale a R^(-eta)) sia l'interferenza I (proporzionale a D^(-eta)) scalano con la stessa potenza; nel rapporto C/I il termine R si semplifica.",
+        "node": "Indipendenza dalla grandezza della cella",
+        "note": "Lezione 02 24 febbraio - 12",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "SIR = (1/ni) * (D/R)^eta = (1/ni) * (3*N)^(eta/2).",
+        "difficolta": 3,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_020",
+        "front": "Come si scrive la formula analitica del SIR in funzione di Q ed eta nel caso peggiore?",
+        "back": "SIR_lineare = (1 / ni) * Q^eta = (1 / ni) * (3 * N)^(eta / 2), dove ni è il numero di interferenti co-canale del primo anello.",
+        "node": "Gamma è SIR ed è lineare",
+        "note": "Formulario Reti Wireless - Sez 2.4",
+        "image": "RetiCellulari-img-10-sir-lineare.png",
+        "image_side": "retro",
+        "extra": "In dB: SIR_dB = 10*log10(1/ni) + 10*(eta/2)*log10(3*N).",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_021",
+        "front": "Indica cosa rappresentano gamma e ni nell'equazione di progetto mostrata.",
+        "back": "$\\gamma$ (o $\\Gamma_{\\text{th}}$) è la soglia minima di SIR lineare richiesta per il servizio, mentre $\\nu$ è il numero di stazioni radio base interferenti del primo ordine ($\\nu = 6$ per celle omnidirezionali, $\\nu = 2$ per settori a 120°).",
+        "node": "Gamma è SIR ed è lineare",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-10-sir-lineare.png",
+        "image_side": "fronte",
+        "extra": "ni = 6 per celle omnidirezionali, ni = 2 per settorizzazione a 120 gradi.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_022",
+        "front": "Perché con la settorializzazione a 120 gradi gli interferenti si riducono da 6 a 2?",
+        "back": "L'equazione di dimensionamento del cluster per il caso peggiore di interferenza: $$\\frac{1}{\\nu}\\left(\\frac{D}{R}\\right)^\\eta \\ge \\Gamma_{\\text{th}} \\implies \\frac{D}{R} \\ge (\\nu \\cdot \\Gamma_{\\text{th}})^{1/\\eta}$$",
+        "node": "ni = 6 omnidirezionale / ni = 2 con 3 settori",
+        "note": "Lezione 02 24 febbraio - 16",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Guadagno in SIR = 10*log10(6/2) = 10*log10(3) approx 4.77 dB.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_023",
+        "front": "Qual è il costo prestazionale della settorializzazione delle celle a 3 settori?",
+        "back": "La banda della cella viene partizionata tra i 3 settori (ciascuno con 1/3 dei canali), causando una perdita di efficienza di aggregazione del traffico (trunking efficiency).",
+        "node": "Settorizzazione",
+        "note": "Lezione 02 24 febbraio - 15",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Servono più canali totali per garantire la stessa probabilità di blocco di Erlang-B.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_024",
+        "front": "Come si adatta la formula di Shannon al sistema multicella interference-limited?",
+        "back": "Si sostituisce il rapporto segnale/rumore (SNR) con il rapporto segnale/interferenza (SIR): $$C_{\\text{cella}} = B_{\\text{cella}} \\log_2(1 + \\text{SIR})$$",
+        "node": "Shannon con Multicella",
+        "note": "Lezione 02 24 febbraio - 13",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "La capacità per cella non cresce aumentando la potenza Pt, perché cresce proporzionalmente anche l'interferenza I.",
+        "difficolta": 3,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_025",
+        "front": "Come si ricavano le coordinate oblique u e v per individuare i cluster ammissibili?",
+        "back": "Si imposta una griglia di assi inclinati di 60 gradi passanti per i centri degli esagoni. Il numero di celle vale N = u^2 + u*v + v^2 con u, v interi.",
+        "node": "Coordinate oblique (u, v)",
+        "note": "Lezione 02 24 febbraio - 04",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Ad esempio u=1, v=1 dà N = 1+1+1 = 3; u=2, v=1 dà N = 4+2+1 = 7.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_026",
+        "front": "Qual è la formula della distanza D tra due celle generiche aventi coordinate cartesiane oblique?",
+        "back": "D^2 = 3 * R^2 * (u^2 + u*v + v^2) = 3 * R^2 * N, da cui D = R * sqrt(3*N).",
+        "node": "Coordinate oblique (u, v)",
+        "note": "Lezione 02 24 febbraio - 05",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "R è il raggio dell'esagono circoscritto.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_027",
+        "front": "Qual è la differenza fondamentale tra Fractional Frequency Reuse (FFR) e Soft Frequency Reuse (SFR)?",
+        "back": "FFR riserva bande ortogonali disgiunte tra centro e bordo cella; SFR usa tutta la banda ovunque ma modula la potenza, trasmettendo a piena potenza al bordo su bande ortogonali.",
+        "node": "Riuso frazionario: FFR ed SFR",
+        "note": "Lezione 04 3 marzo - 22",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "SFR massimizza l'efficienza spettrale consentendo riuso 1 al centro con potenza ridotta.",
+        "difficolta": 3,
+        "topic": "reticell_riuso_sir"
+      },
+      {
+        "id": "reticell_riuso_sir_028",
+        "front": "A quale scopo vengono adottate le tecniche FFR ed SFR nelle reti moderne come LTE e 5G?",
+        "back": "Servono a mitigare l'interferenza inter-cella al bordo della cella garantendo al contempo un riuso unitario della frequenza (N=1) nella parte centrale della cella.",
+        "node": "Riuso frazionario: FFR ed SFR",
+        "note": "Riuso cellulare, FFR e SFR",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Migliorano il throughput degli utenti periferici senza sacrificare la capacità complessiva.",
+        "difficolta": 2,
+        "topic": "reticell_riuso_sir"
+      }
+    ],
+    "count": 28
   },
   {
     "topic_id": "reticell_dimensionamento_traffico",
-    "topic_name": "2. Dimensionamento della Cella & Teoria del Traffico",
+    "topic_name": "3. Dimensionamento della Cella, Erlang B & Teoria del Traffico",
     "cards": [
       {
-        "id": "t2_01",
+        "id": "reticell_dimensionamento_traffico_001",
         "front": "Quali sono le 4 ipotesi fondamentali alla base del modello di traffico Erlang B?",
         "back": "1. **Arrivi Poissoniani**: tasso medio di arrivo $\\lambda$ [chiamate/s], intertempi esponenziali negativi.\n2. **Durata Conversazione Esponenziale**: durata media $t_m = 1/\\mu$ [s].\n3. **Popolazione Infinita**: tasso di richiesta indipendente dagli utenti già serviti.\n4. **Sistema a Perdita pura (M/M/C/C)**: nessuna coda d'attesa. Le chiamate che trovano tutti i $C$ canali occupati vengono immediatamente bloccate e perse (*Blocked Calls Cleared*).",
         "node": "Ipotesi Erlang B",
-        "note": "02 Dimensionamento della cella"
+        "note": "02 Dimensionamento della cella",
+        "topic": "reticell_dimensionamento_traffico"
       },
       {
-        "id": "t2_02",
+        "id": "reticell_dimensionamento_traffico_002",
         "front": "Come si definisce l'intensità di traffico offerto A e qual è la sua unità di misura?",
         "back": "L'intensità del traffico offerto $A$ rappresenta il volume medio di traffico generato dalla sorgente ed è una grandezza adimensionale espressa in **Erlang**:\n$$A = \\lambda \\cdot t_m = \\frac{\\lambda}{\\mu}$$\nUn Erlang corrisponde all'occupazione continua al 100% di un canale per un'ora intera (3600 secondi di conversazione in un'ora).",
         "node": "Traffico Offerto A (Erlang)",
-        "note": "02 Dimensionamento della cella"
+        "note": "02 Dimensionamento della cella",
+        "topic": "reticell_dimensionamento_traffico"
       },
       {
-        "id": "t2_03",
+        "id": "reticell_dimensionamento_traffico_003",
         "front": "Qual è la formula analitica di Erlang B per la probabilità di blocco Pb?",
         "back": "La probabilità che tutti i $C$ canali siano occupati corrisponde allo stato $C$ della catena markoviana:\n$$P_b = B(C, A) = \\frac{\\frac{A^C}{C!}}{\\sum_{k=0}^{C} \\frac{A^k}{k!}}$$\nFormula ricorsiva per il calcolo rapido:\n$$B(0, A) = 1, \\quad B(k, A) = \\frac{A \\cdot B(k-1, A)}{k + A \\cdot B(k-1, A)}$$",
         "node": "Formula Erlang B",
-        "note": "02 Dimensionamento della cella"
+        "note": "02 Dimensionamento della cella",
+        "topic": "reticell_dimensionamento_traffico"
       },
       {
-        "id": "t2_04",
+        "id": "reticell_dimensionamento_traffico_004",
         "front": "Che cos'è l'Efficienza di Trunking (Trunking Efficiency) e perché cresce con C?",
         "back": "È la quantità di traffico gestibile per singolo canale a parità di probabilità di blocco fissata (es. $P_b = 2\\%$):\n$$\\eta_{trunking} = \\frac{A_{max}}{C} \\quad [\\text{Erlang/canale}]$$\nAll'aumentare del numero di canali condivisi $C$, l'efficienza **cresce in modo monotono** (statistica dei grandi numeri: le fluttuazioni degli arrivi si mediano meglio). Aggregare risorse in gruppi ampi (pooling) riduce lo spreco di spettro.",
         "node": "Efficienza di Trunking",
-        "note": "02 Dimensionamento della cella"
+        "note": "02 Dimensionamento della cella",
+        "topic": "reticell_dimensionamento_traffico"
       },
       {
-        "id": "t2_05",
+        "id": "reticell_dimensionamento_traffico_005",
         "front": "Come si dimensionano il numero di canali C e il numero di celle necessarie in una città?",
         "back": "1. Traffico totale dell'area urbana: $A_{tot} = U_{tot} \\cdot (\\lambda_u \\cdot t_m)$.\n2. Fissato $P_b$, si determina il traffico massimo $A_{cell}$ che una cella può sostenere con i propri $C_{cell}$ canali tramite Erlang B.\n3. Il numero minimo di stazioni base necessarie per coprire il traffico è:\n$$N_{celle} = \\left\\lceil \\frac{A_{tot}}{A_{cell}} \\right\\rceil$$",
         "node": "Dimensionamento Canali & Celle",
-        "note": "02 Dimensionamento della cella"
+        "note": "02 Dimensionamento della cella",
+        "topic": "reticell_dimensionamento_traffico"
       },
       {
-        "id": "t2_06",
-        "front": "Qual è la differenza fondamentale tra un sistema 'Coverage-Limited' e 'Capacity-Limited'?",
-        "back": "* **Coverage-Limited (Limitato dalla Copertura)**: tipico di aree rurali. Il raggio di cella $R$ è limitato esclusivamente dalla sensibilità del ricevitore e dal link budget di potenza radio. La cella è fisicamente grande ma poco carica di traffico.\n* **Capacity-Limited (Limitato dalla Capacità)**: tipico di aree urbane dense. Il raggio di cella $R$ deve essere ridotto drasticamente (microcelle/picocelle) per soddisfare l'altissima densità di traffico offerto per $\\text{km}^2$, anche se la potenza radio permetterebbe una copertura molto più estesa.",
-        "node": "Coverage vs Capacity Limited",
-        "note": "02 Dimensionamento della cella"
-      },
-      {
-        "id": "t2_07",
+        "id": "reticell_dimensionamento_traffico_006",
         "front": "Come si confrontano i protocolli ad accesso casuale ALOHA puro e Slotted ALOHA?",
         "back": "* **ALOHA Puro**: un nodo trasmette non appena ha un pacchetto pronto. Periodo di vulnerabilità $T_v = 2T$. Throughput massimo: $S_{max} = \\frac{1}{2e} \\approx 18.4\\%$ (per carico $G = 0.5$).\n* **Slotted ALOHA**: il tempo è diviso in slot sincronizzati di durata $T$; i nodi trasmettono solo all'inizio dello slot. Periodo di vulnerabilità dimezzato a $T_v = T$. Throughput massimo **raddoppiato**: $S_{max} = \\frac{1}{e} \\approx 36.8\\%$ (per carico $G = 1$).",
         "node": "ALOHA vs Slotted ALOHA",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_dimensionamento_traffico"
       }
-    ]
+    ],
+    "count": 6
   },
   {
-    "topic_id": "reticell_accesso_multiplo_2g_3g",
-    "topic_name": "3. Accesso Multiplo & Sistemi 2G/3G (GSM & UMTS)",
+    "topic_id": "reticell_accesso_multiplo",
+    "topic_name": "4. Tecniche di Accesso Multiplo (FDMA, TDMA, CDMA, GSM & UMTS)",
     "cards": [
       {
-        "id": "t3_01",
+        "id": "reticell_accesso_multiplo_001",
         "front": "Qual è la differenza fondamentale tra duplexing FDD e duplexing TDD?",
-        "back": "* **FDD (Frequency Division Duplexing)**: Uplink e Downlink trasmettono simultaneamente su due bande di frequenza distinte separate da un salto fisso (*Duplex Spacing*). Ideale per traffico simmetrico (voce).\n* **TDD (Time Division Duplexing)**: Uplink e Downlink condividono la medesima banda di frequenza ma trasmettono alternandosi in slot temporali disgiunti. Ideale per traffico asimmetrico (Internet, 5G NR) poiché consente di allocare dinamicamente più slot al Downlink.",
-        "node": "Duplexing FDD vs TDD",
-        "note": "01 Introduzione Reti Wireless"
+        "back": "L'FDD separa uplink e downlink su due frequenze distinte contemporaneamente; il TDD usa la stessa frequenza separando uplink e downlink in slot temporali alternati.",
+        "node": "FDD e TDD",
+        "note": "Lezione 02 24 febbraio - 20",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "FDD richiede filtri duplexer e banda di guardia; TDD permette allocazione asimmetrica flessibile.",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_02",
+        "id": "reticell_accesso_multiplo_002",
+        "front": "Perché le problematiche di potenza differiscono radicalmente tra Uplink e Downlink?",
+        "back": "Nel Downlink la stazione base ha alimentazione di rete e trasmette a tutti gli utenti; nell'Uplink il terminale mobile è a batteria e deve contenere la potenza per non interferire con gli altri.",
+        "node": "Distribuzione potenza Uplink e Downlink",
+        "note": "Lezione 02 24 febbraio - 21",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "In uplink è essenziale il controllo di potenza ad anello chiuso per risolvere il problema near-far.",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_003",
+        "front": "Quali sono le tre famiglie fondamentali di tecniche di accesso multiplo al canale?",
+        "back": "1) Canalizzazione statica (FDMA, TDMA, CDMA, OFDMA); 2) Accesso controllato (polling, prenotazione, token); 3) Accesso casuale (ALOHA, Slotted ALOHA, CSMA).",
+        "node": "Accesso Multiplo",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-12-tre-famiglie-accesso.png",
+        "image_side": "fronte",
+        "extra": "Come rappresentato nel diagramma tassonomico.",
+        "difficolta": 1,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_004",
+        "front": "Qual è il principio della canalizzazione statica e quale limite presenta?",
+        "back": "Assegna porzioni dedicate e ortogonali di frequenza, tempo o codice a ciascun utente. Il limite è lo spreco di risorse in presenza di traffico a raffica (bursty).",
+        "node": "Canalizzazione",
+        "note": "Lezione 02 24 febbraio - 22",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Ottimale per traffico continuo come la voce, inefficiente per il traffico dati a pacchetto.",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_005",
+        "front": "Come funziona l'accesso multiplo FDMA (Frequency Division Multiple Access)?",
+        "back": "La banda totale viene suddivisa in sottobande di frequenza disgiunte (canali radio); a ciascuna comunicazione è assegnata una frequenza per tutta la durata della connessione.",
+        "node": "FDMA",
+        "note": "Lezione 02 24 febbraio - 22",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Richiede filtri passabanda selettivi per evitare cross-talk.",
+        "difficolta": 1,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_006",
+        "front": "Come funziona l'accesso multiplo TDMA (Time Division Multiple Access)?",
+        "back": "Tutti gli utenti condividono la stessa frequenza portante trasmettendo a turno all'interno di intervalli temporali dedicati e periodici (time slot all'interno di una trama).",
+        "node": "TDMA",
+        "note": "Lezione 02 24 febbraio - 22",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Richiede una rigorosa sincronizzazione temporale e tempi di guardia.",
+        "difficolta": 1,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_007",
+        "front": "Quale principio fisico-matematico permette la separazione dei segnali in CDMA?",
+        "back": "La moltiplicazione per sequenze di codice pseudo-casuali mutuamente ortogonali; in ricezione l'integrale del prodotto del segnale ricevuto con il codice proprio estrae il bit trasmesso.",
+        "node": "CDMA",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-13-cdma-ortogonali.png",
+        "image_side": "fronte",
+        "extra": "Tutti gli utenti trasmettono contemporaneamente sulla medesima frequenza.",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_008",
+        "front": "Come opera l'accesso controllato a prenotazione o polling?",
+        "back": "Un nodo coordinatore centrale interroga a turno i nodi (polling) o i nodi inviano brevi messaggi di prenotazione per ottenere uno slot di trasmissione garantito e privo di collisioni.",
+        "node": "Accesso Controllato",
+        "note": "Lezione 02 24 febbraio - 23",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Evita collisioni ma introduce latenza e overhead di coordinamento.",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_009",
+        "front": "Che cos'è l'accesso casuale (random access)?",
+        "back": "È un paradigma di accesso in cui i terminali trasmettono spontaneamente quando hanno dati pronti, gestendo le possibili collisioni mediante meccanismi di riscontro e ritrasmissione.",
+        "node": "Accesso Casuale",
+        "note": "Lezione 02 24 febbraio - 24",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Include le famiglie ALOHA e CSMA.",
+        "difficolta": 1,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_010",
+        "front": "Perché il meccanismo CSMA/CD di Ethernet non è applicabile nelle reti wireless?",
+        "back": "Perché nel mezzo radio la potenza trasmessa locale è enormemente superiore al debole segnale ricevuto attenuato, rendendo impossibile rilevare una collisione durante la trasmissione.",
+        "node": "CSMA/CD",
+        "note": "Lezione 02 24 febbraio - 24",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Nelle reti wireless si usa CSMA/CA (Collision Avoidance).",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_011",
+        "front": "Quali sono le due differenze cruciali tra mezzo guidato cablato e canale radio?",
+        "back": "1) Nel wireless il canale è tempo-variabile, condiviso broadcast e soggetto a multipath/fading; 2) Non è possibile rilevare collisioni mentre si trasmette a causa della grande dinamica di potenza.",
+        "node": "Differenza tra reti cablate e wireless",
+        "note": "Lezione 01 22 febbraio - 13",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Richiede riscontri positivi espliciti (ACK immediati a livello MAC).",
+        "difficolta": 1,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_012",
+        "front": "Che cos'è la modulazione OFDM (Orthogonal Frequency Division Multiplexing)?",
+        "back": "È una tecnica di modulazione che suddivide un flusso dati ad alta velocità in molti flussi paralleli a bassa velocità modulati su sottoportanti ortogonali strettamente spaziate.",
+        "node": "OFDM",
+        "note": "Lezione 03 1 marzo - 24",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Spaziatura minima Delta_f = 1 / T_simbolo.",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_013",
+        "front": "A cosa servono le portanti pilota (pilot carriers o reference signals) in OFDM?",
+        "back": "Trasmettono simboli noti al ricevitore per stimare la risposta in frequenza del canale, correggere la fase e consentire la demodulazione coerente dei dati.",
+        "node": "Sottoportanti, flussi paralleli e portanti pilota",
+        "note": "Lezione 03 1 marzo - 24",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "In LTE sono i Cell-specific Reference Signals (CRS).",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_014",
+        "front": "Come fa l'OFDM a trasformare un canale selettivo in frequenza in canali con fading piatto?",
+        "back": "Aumentando la durata del simbolo su ciascuna sottoportante (T >> delay spread), la banda della singola portante diventa inferiore alla banda di coerenza del canale (B_sub << B_c).",
+        "node": "Delay spread, fading piatto e selettivita in frequenza",
+        "note": "Lezione 03 1 marzo - 25",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Ogni sottoportante sperimenta un guadagno costante, equalizzabile con un singolo moltiplicatore.",
+        "difficolta": 3,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_015",
+        "front": "A cosa serve il prefisso ciclico (Cyclic Prefix) in OFDM?",
+        "back": "Copia la coda del simbolo OFDM in testa all'intervallo di guardia; elimina l'interferenza inter-simbolica (ISI) causata dal multipath e preserva l'ortogonalità tra sottoportanti.",
+        "node": "Prefisso ciclico e intervallo di guardia temporale",
+        "note": "Lezione 03 1 marzo - 26",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "La durata T_cp deve essere maggiore del massimo ritardo di multipath (delay spread).",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_016",
+        "front": "Come avviene l'allocazione delle risorse agli utenti nella griglia OFDMA mostrata?",
+        "back": "Le risorse sono suddivise in blocchi bidimensionali tempo-frequenza (Resource Block); lo scheduler assegna dinamicamente blocchi differenti a utenti diversi ogni slot temporale.",
+        "node": "OFDMA",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-14-ofdma-griglia.png",
+        "image_side": "fronte",
+        "extra": "Consente l'adattamento dinamico in base al canale di ogni utente (scheduling opportunistico).",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_017",
+        "front": "In base a quale trade-off si sceglie tra canalizzazione statica e accesso casuale?",
+        "back": "La canalizzazione è ottimale per traffico continuo e garantito (bassa variabilità, QoS rigida); l'accesso casuale è ideale per carichi bassi e fortemente a raffica (bursty).",
+        "node": "Tre famiglie di accesso multiplo e relaz",
+        "note": "Lezione 02 24 febbraio - 25",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Per carichi intermedi si usano schemi a prenotazione (accesso controllato).",
+        "difficolta": 2,
+        "topic": "reticell_accesso_multiplo"
+      },
+      {
+        "id": "reticell_accesso_multiplo_018",
         "front": "Come opera ciascuna delle tecniche di accesso multiplo FDMA, TDMA e CDMA?",
         "back": "* **FDMA (1G)**: suddivide lo spettro in bande di frequenza disgiunte; ogni utente ha un canale continuo ma dedicato.\n* **TDMA (2G GSM)**: suddivide il tempo in slot periodici su una stessa portante; ciascun utente trasmette in un burst temporale esclusivo.\n* **CDMA (3G UMTS)**: tutti gli utenti trasmettono contemporaneamente sull'intera banda condivisa; i segnali sono separati mediante codici matematici quasi-ortogonali a spettro espanso.",
         "node": "FDMA, TDMA e CDMA",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_03",
+        "id": "reticell_accesso_multiplo_019",
         "front": "Quali sono i sottosistemi principali della rete GSM (2G) e i loro nodi chiave?",
         "back": "1. **BSS (Base Station Subsystem - Accesso Radio)**: **BTS** (apparati ricetrasmettitori radio) e **BSC** (controllo radio, allocazione canali, handover intra-BSS).\n2. **NSS (Network & Switching Subsystem - Core a Circuito)**:\n   - **MSC/VLR**: centrale di commutazione e database temporaneo per gli utenti nella Location Area.\n   - **HLR/AuC**: database centrale permanente abbonati e centro di autenticazione.\n   - **EIR**: registro identificativi hardware IMEI.",
         "node": "Architettura Rete GSM",
-        "note": "03 Rete cellulare GSM"
+        "note": "03 Rete cellulare GSM",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_04",
+        "id": "reticell_accesso_multiplo_020",
         "front": "Come viene introdotto il traffico a pacchetto in 2.5G con GPRS ed EDGE?",
         "back": "Senza sostituire le BTS/BSC esistenti, vengono aggiunti due nodi di Core a pacchetto:\n* **SGSN (Serving GPRS Support Node)**: equivalente dell'MSC per la commutazione di pacchetto (mobilità per Routing Area, cifratura).\n* **GGSN (Gateway GPRS Support Node)**: gateway IP verso Internet, alloca l'indirizzo IP all'utente.\n* **EDGE**: introduce la modulazione 8-PSK (3 bit/simbolo anziché 1 di GMSK), triplicando la velocità dati fino a 384 kbps.",
         "node": "GPRS & EDGE",
-        "note": "03 Rete cellulare GSM"
+        "note": "03 Rete cellulare GSM",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_05",
+        "id": "reticell_accesso_multiplo_021",
         "front": "In 3G WCDMA, qual è la formula dello Spreading Factor SF e del Guadagno di Processo Gp?",
         "back": "Detti $R_{chip} = 3.84 \\text{ Mchip/s}$ il chip rate e $R_b$ il bit rate informativo dell'utente:\n* **Spreading Factor ($SF$)**:\n$$SF = \\frac{R_{chip}}{R_b} = \\frac{T_b}{T_c}$$\n* **Guadagno di Processo ($G_p$)**:\n$$G_p = 10\\log_{10}(SF) = 10\\log_{10}\\left(\\frac{W}{R_b}\\right) \\quad [\\text{dB}]$$\nPermette di estrarre il segnale desiderato anche con rapporto segnale-disturbo iniziale negativo prima del despreading.",
         "node": "Spreading Factor & Guadagno Gp",
-        "note": "04 Rete cellulare UMTS"
+        "note": "04 Rete cellulare UMTS",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_06",
+        "id": "reticell_accesso_multiplo_022",
         "front": "Qual è la differenza tra Codici di Canale (OVSF) e Codici di Scrambling in UMTS?",
         "back": "* **Codici OVSF (Orthogonal Variable Spreading Factor)**: albero di codici perfettamente ortogonali generati da matrici di Hadamard. Allargano lo spettro e separano canali/utenti sincronizzati nella medesima cella (in DL) o canali dati/controllo dello stesso UE (in UL).\n* **Codici di Scrambling**: sequenze pseudo-casuali (Gold o Kasami). Non cambiano la banda del segnale; presentano bassa correlazione incrociata e servono a **discriminare celle diverse** in Downlink (512 codici primari) o terminali diversi in Uplink.",
         "node": "OVSF vs Scrambling",
-        "note": "04 Rete cellulare UMTS"
+        "note": "04 Rete cellulare UMTS",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_07",
+        "id": "reticell_accesso_multiplo_023",
         "front": "Che cos'è il problema Near-Far (vicino-lontano) in CDMA e come si risolve?",
         "back": "In Uplink, se tutti i terminali trasmettessero alla stessa potenza, il segnale di un utente vicino alla stazione base arriverebbe con potenza enormemente superiore a quello di un utente al bordo cella, accecando il ricevitore per non perfetta ortogonalità dei codici.\n* **Soluzione**: controllo di potenza obbligatorio affinché tutti i segnali giungano alla stazione base con la **medesima potenza target**: $P_{rx,1} = P_{rx,2} = ... = P_{target}$.",
         "node": "Problema Near-Far",
-        "note": "04 Rete cellulare UMTS"
+        "note": "04 Rete cellulare UMTS",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_08",
+        "id": "reticell_accesso_multiplo_024",
         "front": "Come funziona il Fast Closed-Loop Power Control a 1500 Hz in UMTS?",
         "back": "Opera a frequenza rapidissima (**1500 Hz**, una correzione ogni slot da $667 \\ \\mu\\text{s}$) per inseguire il fading veloce di Rayleigh:\n1. La stazione base (NodeB) stima il SIR istantaneo dell'utente sul canale pilota DPCCH.\n2. Lo confronta con un $SIR_{target}$ prefissato.\n3. Invia all'utente un comando **TPC (Transmit Power Control)** di 1 bit in DL: comanda di alzare (`1`) o abbassare (`0`) la potenza di un passo $\\Delta P$ (es. $1 \\text{ dB}$).",
         "node": "Fast Closed-Loop Power Control",
-        "note": "04 Rete cellulare UMTS"
+        "note": "04 Rete cellulare UMTS",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_09",
+        "id": "reticell_accesso_multiplo_025",
         "front": "Che cos'è il fenomeno del Cell Breathing (respiro della cella) nei sistemi CDMA?",
         "back": "In CDMA la cella è limitata dall'interferenza complessiva (*Noise Rise*):\n* Quando il numero di utenti attivi aumenta, l'interferenza totale sale e la stazione base comanda a tutti di alzare la potenza.\n* I terminali al bordo cella raggiungono il loro limite massimo hardware ($P_{max} = 21/24 \\text{ dBm}$) e non riescono più a collegarsi $\\implies$ il raggio di copertura utile **si contrae** (espira).\n* Quando il carico cala, il rumore diminuisce e la copertura **si espande** (inspira).",
         "node": "Cell Breathing",
-        "note": "04 Rete cellulare UMTS"
+        "note": "04 Rete cellulare UMTS",
+        "topic": "reticell_accesso_multiplo"
       },
       {
-        "id": "t3_10",
+        "id": "reticell_accesso_multiplo_026",
         "front": "Qual è la differenza operativa tra Hard Handover e Soft Handover?",
         "back": "* **Hard Handover (\"Break-Before-Make\")**: il canale radio con la vecchia cella viene interrotto prima di agganciare la nuova (tipico di GSM e LTE). Semplice ed efficiente, non spreca risorse radio duplicate.\n* **Soft Handover (\"Make-Before-Break\")**: il terminale si collega alla nuova cella prima di rilasciare la vecchia (tipico di UMTS, frequenze uguali). Comunica contemporaneamente con 2 o più NodeB; in ricezione l'UE usa il **Rake Receiver** per combinare i segnali con Maximal Ratio Combining (MRC).",
         "node": "Hard vs Soft Handover",
-        "note": "01 Introduzione Reti Wireless"
+        "note": "01 Introduzione Reti Wireless",
+        "topic": "reticell_accesso_multiplo"
       }
-    ]
+    ],
+    "count": 26
   },
   {
-    "topic_id": "lte_fisico_trasmissione",
-    "topic_name": "4. LTE: Architettura, Modulazione & Canali Radio",
+    "topic_id": "reticell_aloha",
+    "topic_name": "5. Protocolli ad Accesso Casuale (ALOHA e Slotted ALOHA)",
     "cards": [
       {
-        "id": "t4_01",
-        "front": "Per quale motivo fondamentale l'architettura LTE (EPS) è definita 'All-IP'?",
-        "back": "Perché elimina totalmente il sottosistema a commutazione di circuito (CS): l'intero traffico utente, compresa la voce (**VoLTE**), viene trasportato nativamente come pacchetti IP su tunnel GTP-U unificati.",
-        "node": "Architettura All-IP LTE",
-        "note": "05 Lezione 8 marzo"
+        "id": "reticell_aloha_001",
+        "front": "Qual è la regola operativa fondamentale del protocollo ALOHA puro?",
+        "back": "Ogni stazione trasmette immediatamente il pacchetto non appena è disponibile. Se riceve l'ACK prima del timeout ha successo, altrimenti ritrasmette dopo un backoff casuale.",
+        "node": "ALOHA",
+        "note": "Lezione 03 1 marzo - 05",
+        "image": "RetiCellulari-img-15-aloha-collisioni.png",
+        "image_side": "retro",
+        "extra": "Completamente asincrono e privo di carrier sensing.",
+        "difficolta": 1,
+        "topic": "reticell_aloha"
       },
       {
-        "id": "t4_02",
-        "front": "Qual è la differenza fondamentale tra l'architettura radio E-UTRAN di LTE e quella di UMTS?",
-        "back": "L'architettura radio di LTE è **piatta (flat)**: scompare l'entità intermedia RNC (*Radio Network Controller*). La rete di accesso è formata esclusivamente dagli **eNodeB**, che integrano tutte le funzioni radio, scheduling, compressione intestazioni e decisione autonoma di Handover, riducendo drasticamente la latenza radio.",
-        "node": "E-UTRAN Architettura Piatta",
-        "note": "05 Lezione 8 marzo"
+        "id": "reticell_aloha_002",
+        "front": "Cosa mostra il diagramma temporale di ALOHA puro in figura?",
+        "back": "Mostra che la sovrapposizione anche solo parziale tra due o più pacchetti trasmessi da nodi diversi provoca la collisione e distruzione di tutti i pacchetti coinvolti.",
+        "node": "ALOHA",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-15-aloha-collisioni.png",
+        "image_side": "fronte",
+        "extra": "Basta 1 bit sovrapposto per distruggere l'intera trama.",
+        "difficolta": 1,
+        "topic": "reticell_aloha"
       },
       {
-        "id": "t4_03",
+        "id": "reticell_aloha_003",
+        "front": "Come si calcola il tempo di timeout Tout per il riscontro in ALOHA?",
+        "back": "Tout = 2 * Tmax = 2 * (T_prop + T_frame), pari al tempo di andata e ritorno del segnale più il tempo di emissione del pacchetto e dell'ACK.",
+        "node": "Tempo di attesa del riscontro Tout=2Tmax",
+        "note": "Formulario Reti Wireless - Sez 4.1",
+        "image": "RetiCellulari-img-16-aloha-timeout.png",
+        "image_side": "fronte",
+        "extra": "Scaduto il Tout senza ACK, la stazione assume che sia avvenuta una collisione.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_004",
+        "front": "Perché è indispensabile un ritardo di backoff casuale dopo una collisione in ALOHA?",
+        "back": "Per evitare che le stazioni che sono entrate in collisione ritrasmettano nello stesso istante, collidendo di nuovo indefinitamente.",
+        "node": "Backoff e ritrasmissione",
+        "note": "Lezione 03 1 marzo - 06",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il tempo di attesa casuale desincronizza le ritrasmissioni dei nodi.",
+        "difficolta": 1,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_005",
+        "front": "Qual è la formula della distribuzione di Poisson per la generazione dei pacchetti?",
+        "back": "P(k) = ((G)^k / k!) * e^(-G), che esprime la probabilità di generare k pacchetti nell'intervallo temporale considerato, dove G è il tasso medio di arrivo.",
+        "node": "Modello di Poisson",
+        "note": "Formulario Reti Wireless - Sez 4.2",
+        "image": "RetiCellulari-img-17-poisson-grafico.png",
+        "image_side": "retro",
+        "extra": "Ipotesi di popolazione infinita di sorgenti indipendenti.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_006",
+        "front": "Cosa rappresenta la formula P(0) = e^(-2G) in figura?",
+        "back": "Rappresenta la probabilità che nessun altro pacchetto venga generato durante l'intero intervallo di vulnerabilità 2T in ALOHA puro, garantendo il successo del pacchetto.",
+        "node": "Modello di Poisson",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-18-poisson-p0.png",
+        "image_side": "fronte",
+        "extra": "P_succ = P(0 arrivi in 2T) = e^(-2G).",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_007",
+        "front": "Perché il periodo di vulnerabilità di ALOHA puro vale esattamente Tv = 2*T?",
+        "back": "Perché un pacchetto di durata T entra in collisione se un altro nodo inizia a trasmettere nell'intervallo (t0 - T, t0 + T), che ha un'estensione totale pari a 2T.",
+        "node": "Periodo Vulnerabilità Tv=2T",
+        "note": "Lezione 03 1 marzo - 09",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "T è la durata di emissione del pacchetto.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_008",
+        "front": "Qual è la formula del throughput normalizzato S(G) per ALOHA puro?",
+        "back": "S = G * e^(-2G), dove G è il carico offerto totale (nuovi pacchetti più ritrasmissioni).",
+        "node": "Throughput di ALOHA",
+        "note": "Formulario Reti Wireless - Sez 4.3",
+        "image": "RetiCellulari-img-20-throughput-aloha.png",
+        "image_side": "retro",
+        "extra": "Massimo a G = 0.5, dove S_max = 1 / (2*e) approx 0.184 (18.4%).",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_009",
+        "front": "Qual è il punto di massimo della curva S(G) per ALOHA puro mostrata?",
+        "back": "Il massimo si ha per un carico offerto G = 0.5 pacchetti/slot, in corrispondenza del quale il throughput vale S_max = 1/(2*e) approx 18.4%.",
+        "node": "Throughput di ALOHA",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-20-throughput-aloha.png",
+        "image_side": "fronte",
+        "extra": "Per G > 0.5 la rete entra in congestione per collisioni a catena.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_010",
+        "front": "Qual è la formula del numero medio di tentativi di trasmissione E[N] in ALOHA puro?",
+        "back": "E[N] = e^(2G). Cresce esponenzialmente al crescere del carico generato G.",
+        "node": "Numero medio di tentativi",
+        "note": "Formulario Reti Wireless - Sez 4.4",
+        "image": "RetiCellulari-img-21-tentativi-aloha.png",
+        "image_side": "retro",
+        "extra": "In Slotted ALOHA vale invece E[N] = e^G.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_011",
+        "front": "Confronta l'espressione di E[N] tra ALOHA puro e Slotted ALOHA visibile in figura.",
+        "back": "In ALOHA puro E[N] = e^(2G), mentre in Slotted ALOHA E[N] = e^G; Slotted ALOHA richiede meno tentativi medi grazie al dimezzamento della vulnerabilità.",
+        "node": "Numero medio di tentativi",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-23-confronto-tentativi.png",
+        "image_side": "fronte",
+        "extra": "Slide Lezione 03.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_012",
+        "front": "In cosa differisce lo Slotted ALOHA da ALOHA puro e qual è il vantaggio?",
+        "back": "Il tempo è discretizzato in slot sincronizzati di durata T; i nodi possono iniziare a trasmettere solo all'inizio di ogni slot. Dimezza la vulnerabilità raddoppiando l'efficienza.",
+        "node": "Slotted Aloha",
+        "note": "Lezione 03 1 marzo - 15",
+        "image": "RetiCellulari-img-19-slotted-vulnerabilita.png",
+        "image_side": "retro",
+        "extra": "Throughput massimo raddoppiato da 18.4% a 36.8%.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_013",
+        "front": "Perché l'intervallo di vulnerabilità in Slotted ALOHA vale solo Tv = T?",
+        "back": "Perché forzando l'inizio della trasmissione ai bordi degli slot, due pacchetti possono collidere solo se arrivano entrambi nello stesso slot temporale T.",
+        "node": "Periodo vulnerabilità Tv=T",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-19-slotted-vulnerabilita.png",
+        "image_side": "fronte",
+        "extra": "Elimina le collisioni parziali tipiche di ALOHA puro.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_014",
+        "front": "Qual è la formula del throughput di Slotted ALOHA e il suo valore di picco?",
+        "back": "S = G * e^(-G). Il valore massimo si ha per G = 1 e vale S_max = 1 / e approx 0.368 (36.8%).",
+        "node": "Throughput Slotted ALOHA",
+        "note": "Formulario Reti Wireless - Sez 4.3",
+        "image": "RetiCellulari-img-24-throughput-slotted.png",
+        "image_side": "retro",
+        "extra": "Raddoppia il limite teorico rispetto ad ALOHA puro.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_015",
+        "front": "Descrivi le due curve di throughput messe a confronto nel grafico.",
+        "back": "La curva inferiore è ALOHA puro (picco S=18.4% a G=0.5); la curva superiore è Slotted ALOHA (picco S=36.8% a G=1.0).",
+        "node": "Throughput Slotted ALOHA",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-26-confronto-throughput.png",
+        "image_side": "fronte",
+        "extra": "Dimostra il raddoppio esatto dell'efficienza grazie alla sincronizzazione a slot.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_016",
+        "front": "Che cos'è il carico normalizzato G nei protocolli di accesso casuale?",
+        "back": "È il tasso medio complessivo di pacchetti presentati al canale nell'unità di tempo T, includendo sia i pacchetti di prima generazione sia le ritrasmissioni.",
+        "node": "Carico Normalizzato",
+        "note": "Lezione 03 1 marzo - 10",
+        "image": "RetiCellulari-img-27-carico-normalizzato.png",
+        "image_side": "retro",
+        "extra": "G = lambda * T, dove lambda è la frequenza complessiva di generazione arrivi.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      },
+      {
+        "id": "reticell_aloha_017",
+        "front": "Quale formula di bilancio lega il carico offerto G al throughput S?",
+        "back": "G = S * E[N]. Il carico totale offerto al canale G è pari al tasso di successo S moltiplicato per il numero medio di tentativi necessari E[N].",
+        "node": "Carico Normalizzato",
+        "note": "Slide Reti cellulari",
+        "image": "RetiCellulari-img-27-carico-normalizzato.png",
+        "image_side": "fronte",
+        "extra": "Poiché E[N] >= 1, si ha sempre G >= S.",
+        "difficolta": 2,
+        "topic": "reticell_aloha"
+      }
+    ],
+    "count": 17
+  },
+  {
+    "topic_id": "lte_architettura_fisico_canali_rach",
+    "topic_name": "6. LTE: Architettura, Strato Fisico, Canali e Procedura RACH",
+    "cards": [
+      {
+        "id": "lte_architettura_fisico_canali_rach_001",
+        "front": "Per quale motivo fondamentale l'architettura LTE è definita 'All-IP'?",
+        "back": "Perché elimina completamente il dominio a commutazione di circuito (CS) del GSM/UMTS; tutti i servizi, inclusa la voce (VoLTE tramite IMS), sono trasportati esclusivamente come pacchetti IP a commutazione di pacchetto (PS).",
+        "node": "Architettura LTE All-IP",
+        "note": "Lezione 05 8 marzo - 05 - Evoluzione dell'architettura - da GSM alla rete interamente IP",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Semplifica la rete, riduce i costi di apparati e abbatte la latenza end-to-end.",
+        "difficolta": 1,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_002",
+        "front": "Quali nodi compongono il piano di controllo e quali il piano dati nella rete centrale EPC di LTE?",
+        "back": "Il piano di controllo è gestito dall'MME (Mobility Management Entity) e dall'HSS. Il piano dati (utente) è gestito dal Serving Gateway (S-GW) e dal Packet Gateway (P-GW).",
+        "node": "Separazione Piano Controllo e Dati",
+        "note": "Lezione 08 17 marzo - 01 - EPS bearer e separazione tra controllo e dati",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'eNodeB gestisce entrambi i piani sul versante radio.",
+        "difficolta": 1,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_003",
+        "front": "Perché in LTE si usa OFDMA in Downlink ma SC-FDMA in Uplink?",
+        "back": "OFDMA presenta un elevato PAPR (Peak-to-Average Power Ratio) che richiederebbe amplificatori di potenza inefficienti. In Uplink si usa SC-FDMA per contenere il PAPR, preservando la batteria del terminale mobile.",
+        "node": "OFDMA vs SC-FDMA",
+        "note": "Lezione 05 8 marzo - 24 - PAPR e motivazione di SC-FDMA",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "SC-FDMA applica una trasformata DFT prima dell'IFFT per distribuire l'energia dei simboli.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_004",
+        "front": "A cosa serve il prefisso ciclico (CP) in LTE e come supera l'interferenza inter-simbolo (ISI)?",
+        "back": "Copia la parte finale del simbolo OFDM all'inizio dell'intervallo di guardia; se la sua durata supera il massimo ritardo di multipath (delay spread), assorbe gli echi eliminando l'ISI e preservando l'ortogonalità tra sottoportanti.",
+        "node": "Prefisso Ciclico in LTE",
+        "note": "Lezione 05 8 marzo - 17 - Prefisso ciclico e interferenza tra simboli",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "In LTE normale dura circa 4.7 microsecondi (7 simboli per slot).",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_005",
+        "front": "Qual è la struttura standard di un Resource Block (RB) in LTE con prefisso ciclico normale?",
+        "back": "Comprende 12 sottoportanti spaziate a 15 kHz (banda totale 180 kHz) per la durata di uno slot di 0.5 ms (7 simboli OFDM). Su uno slot contiene 84 Resource Elements (168 su un subframe di 1 ms).",
+        "node": "Resource Block e Griglia LTE",
+        "note": "Lezione 05 8 marzo - 28 - Resource block, simbolo OFDM e resource element",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Un Resource Element (RE) è la più piccola unità allocabile (1 sottoportante x 1 simbolo OFDM).",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_006",
+        "front": "Quali sono le 6 larghezze di banda scalabili previste dallo standard LTE e quanti Resource Block contengono?",
+        "back": "Nel dominio del tempo dura 1 slot ($0.5\\text{ ms}$), nel dominio della frequenza occupa 12 sottoportanti a $15\\text{ kHz}$ ($180\\text{ kHz}$). Contiene $12 \\times 7 = 84$ Resource Elements (RE) con Cyclic Prefix normale.",
+        "node": "Larghezze di Banda del Canale LTE",
+        "note": "Lezione 05 8 marzo - 29 - Larghezza del canale e numero di resource block",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "La banda a 20 MHz con 100 RB è la configurazione di riferimento per il massimo throughput.",
+        "difficolta": 1,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_007",
+        "front": "A cosa servono i segnali PSS e SSS e dove sono posizionati nella trama LTE?",
+        "back": "Servono per la sincronizzazione iniziale: il PSS sincronizza lo slot e dà l'indice di settore (0, 1, 2); l'SSS sincronizza la trama (10 ms) e dà il gruppo di cella (0..167). Sono allocati nei 6 Resource Block centrali della banda.",
+        "node": "Segnali PSS ed SSS",
+        "note": "Lezione 05 8 marzo - 31 - Sincronizzazione primaria e secondaria",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Essere al centro permette di rilevarli senza conoscere prima la banda totale del canale.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_008",
+        "front": "Come si calcola la Physical Cell Identity (PCI) e quanti valori distinti può assumere?",
+        "back": "PCI = 3 * N_ID^(1) + N_ID^(2), dove N_ID^(1) in {0..167} è il gruppo cella da SSS e N_ID^(2) in {0,1,2} è il settore da PSS. Assume esattamente 504 valori distinti (da 0 a 503).",
+        "node": "Physical Cell Identity (PCI)",
+        "note": "Lezione 05 8 marzo - 32 - Physical Cell Identity",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Costituisce la 'targa' dello strato fisico di ciascuna cella.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_009",
+        "front": "Come si posizionano in frequenza i segnali di riferimento CRS e come si evita l'interferenza tra celle vicine?",
+        "back": "La posizione delle sottoportanti CRS subisce uno shift in frequenza v_shift = PCI mod 6. Assegnando PCI opportuni a celle adiacenti (con diverso modulo 6), i piloti non si sovrappongono, evitando interferenza distruttiva.",
+        "node": "Shift dei Segnali di Riferimento CRS",
+        "note": "Lezione 06 10 marzo - 02 - Segnali di riferimento e interferenza tra celle adiacenti",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Ci sono 6 configurazioni di shift disponibili per antenne a singola porta.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_010",
+        "front": "Come opera il protocollo HARQ a livello MAC in LTE per recuperare gli errori di trasmissione?",
+        "back": "Utilizza uno schema Stop-and-Wait con 8 processi paralleli interlacciati nel tempo. Se un blocco di trasporto è errato, viene inviato un NACK; alla ritrasmissione il ricevitore combina i bit morbidi (Soft Combining) aumentando la probabilità di decodifica.",
+        "node": "Livello MAC e Processi HARQ",
+        "note": "Lezione 06 10 marzo - 15 - MAC e HARQ - FEC e processi Stop and Wait paralleli",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Consente ritrasmissioni rapidissime nell'ordine di 8 ms.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_011",
+        "front": "Quali sono le tre modalità operative del protocollo RLC e per quali servizi sono impiegate?",
+        "back": "1) TM (Transparent Mode): nessun header, per broadcast; 2) UM (Unacknowledged Mode): senza riscontri ma con numerazione, per servizi real-time (VoIP/video); 3) AM (Acknowledged Mode): con riscontri ARQ e ritrasmissioni, per traffico dati affidabile.",
+        "node": "Modalità del Protocollo RLC",
+        "note": "Lezione 06 10 marzo - 10 - RLC - funzioni e modalita TM UM AM",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "RLC gestisce inoltre la segmentazione e concatenazione delle SDU.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_012",
+        "front": "Quali sono le tre funzioni fondamentali svolte dal protocollo PDCP nel piano utente e controllo?",
+        "back": "1) Compressione delle intestazioni IP tramite ROHC (Robust Header Compression); 2) Cifratura e protezione dell'integrità dei dati e della segnalazione radio; 3) Riordino e scarto dei pacchetti duplicati durante l'handover.",
+        "node": "Funzioni del Protocollo PDCP",
+        "note": "Lezione 06 10 marzo - 06, 07 e 08 - Funzioni del PDCP",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "ROHC riduce gli header IP/UDP da 40-60 byte a soli 2-4 byte, fondamentale per la voce.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_013",
+        "front": "Come si distinguono concettualmente canali logici, canali di trasporto e canali fisici in LTE?",
+        "back": "I canali logici (tra RLC e MAC) definiscono 'cosa' viene trasportato (tipo di informazione); i canali di trasporto (tra MAC e PHY) definiscono 'come' viene trasportato (caratteristiche di trasmissione); i canali fisici definiscono 'dove' nello spazio tempo-frequenza.",
+        "node": "Canali Logici, di Trasporto e Fisici",
+        "note": "Lezione 06 10 marzo - 19 - Corrispondenza tra canali logici e di trasporto",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Esempio: DTCH (logico) -> DL-SCH (trasporto) -> PDSCH (fisico).",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_014",
+        "front": "Quali informazioni vitali trasporta il canale broadcast PBCH nel messaggio MIB?",
+        "back": "Trasporta: 1) La larghezza di banda del sistema in Resource Block (da 6 a 100); 2) La configurazione del canale di riscontro PHICH; 3) Il System Frame Number (SFN, i bit più significativi della trama da 10 ms).",
+        "node": "Canale PBCH e Master Information Block (MIB)",
+        "note": "Lezione 07 15 marzo - 02 - PBCH e MIB - informazioni iniziali e banda del sistema",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Viene trasmesso sui 6 RB centrali ogni 40 ms (diviso in 4 blocchi da 10 ms).",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_015",
+        "front": "Quali parametri fondamentali contengono rispettivamente SIB1 e SIB2 per l'accesso del terminale?",
+        "back": "SIB1 contiene l'identità dell'operatore (PLMN), il codice di Tracking Area (TAC), criteri di selezione cella e la schedulazione degli altri SIB. SIB2 contiene i parametri radio di accesso: configurazione del canale PRACH e banda uplink (EARFCN).",
+        "node": "System Information Blocks (SIB1 e SIB2)",
+        "note": "Lezione 07 15 marzo - 08 - MIB, SIB1 e SIB2 - informazione di sistema e lettura progressiva",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Senza aver decodificato SIB2, il terminale non può trasmettere sull'accesso casuale.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_016",
+        "front": "Come sono composti e cosa identificano rispettivamente il codice PLMN e il codice IMSI?",
+        "back": "Il PLMN identifica l'operatore di rete tramite MCC (Country Code) + MNC (Network Code). L'IMSI identifica univocamente la SIM a livello mondiale tramite MCC + MNC + MSIN (Subscriber Identification Number).",
+        "node": "Identificativi PLMN ed IMSI",
+        "note": "Lezione 07 15 marzo - 12 e 13 - PLMN e IMSI",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'IMSI non deve mai essere confuso con il numero telefonico (MSISDN) né con la chiave segreta K.",
+        "difficolta": 1,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_017",
+        "front": "A cosa serve l'identità temporanea GUTI e perché viene usata al posto dell'IMSI?",
+        "back": "Serve a garantire la privacy dell'utente: evita di trasmettere via radio in chiaro l'IMSI, che potrebbe essere intercettato per tracciare la posizione dell'utente. Inoltre identifica l'MME specifico che gestisce il contesto del terminale.",
+        "node": "Identità Temporanea GUTI",
+        "note": "Lezione 07 15 marzo - 15 - GUTI, GUMMEI e S-TMSI - identita temporanee",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "GUTI = GUMMEI (identificativo MME) + M-TMSI (identificativo temporaneo dell'utente nell'MME).",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_018",
+        "front": "Che cos'è una Tracking Area (TA) e come è composto il Tracking Area Identifier (TAI)?",
+        "back": "È un raggruppamento logico di celle adiacenti usato per localizzare il terminale in stato di riposo (Idle). Il TAI è composto da PLMN (MCC + MNC) + TAC (Tracking Area Code a 16 bit).",
+        "node": "Tracking Area e Identificativo TAI",
+        "note": "Lezione 07 15 marzo - 14 - Tracking area, cella ed eNodeB - identificativi e ambiti",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Un MME può assegnare all'utente una lista di TAI per ridurre gli aggiornamenti di posizione.",
+        "difficolta": 1,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_019",
+        "front": "Cosa trasmette il terminale nel Messaggio 1 della procedura di Random Access su PRACH?",
+        "back": "Trasmette un preambolo pseudocasuale ortogonale (sequenza di Zadoff-Chu) scelto tra i 64 disponibili nella cella. Il preambolo non contiene dati utente, ma serve all'eNodeB per misurare il ritardo e stimare il Timing Advance.",
+        "node": "Accesso Casuale RACH: Messaggio 1",
+        "note": "Lezione 07 15 marzo - 18 - Accesso casuale LTE - panoramica della procedura con contesa",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'occasione di invio definisce l'identificativo RA-RNTI associato.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_020",
+        "front": "A cosa serve il Timing Advance (TA) comunicato dall'eNodeB nel Messaggio 2 (RAR)?",
+        "back": "Compensa il ritardo di propagazione dell'onda radio: ordina al terminale di anticipare la propria trasmissione in modo che i simboli inviati arrivino all'antenna della stazione base perfettamente sincronizzati con quelli degli altri utenti.",
+        "node": "Timing Advance nell'Accesso Casuale",
+        "note": "Lezione 07 15 marzo - 22 - Timing Advance e assegnazione dell'identita radio temporanea",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Essenziale per preservare l'ortogonalità dell'accesso SC-FDMA in uplink.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_021",
+        "front": "Come viene risolta la contesa se due terminali scelgono lo stesso preambolo nel Messaggio 1?",
+        "back": "Entrambi ricevono lo stesso RAR (Msg2). Nel Msg3 ciascun terminale trasmette un proprio identificativo univoco (es. S-TMSI o valore casuale). L'eNodeB nel Msg4 fa l'eco dell'identità del terminale che ha decodificato correttamente: chi si riconosce vince, l'altro ritrasmette.",
+        "node": "Risoluzione della Contesa RACH (Messaggi 3 e 4)",
+        "note": "Lezione 07 15 marzo - 27 - Messaggio 4 - risoluzione della contesa ed eco dell'identita",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Risolve definitivamente l'ambiguità prima di iniziare lo scambio dati.",
+        "difficolta": 3,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_022",
+        "front": "Che cos'è il C-RNTI (Cell Radio Network Temporary Identifier) e chi lo assegna?",
+        "back": "È l'identificativo univoco a 16 bit assegnato dall'eNodeB al terminale per tutta la durata della connessione radio RRC attiva. Viene usato per indirizzare dinamicamente le risorse radio sul canale PDCCH.",
+        "node": "Identificativo Radio C-RNTI",
+        "note": "Lezione 07 15 marzo - 22 - Timing Advance e assegnazione dell'identita radio temporanea",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Viene rilasciato non appena il terminale torna in stato Idle o cambia cella via handover.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_023",
+        "front": "Qual è il ruolo dei canali fisici di controllo Downlink PCFICH, PHICH e PDCCH?",
+        "back": "PCFICH indica quanti simboli OFDM (da 1 a 3) occupa il controllo nel subframe; PHICH trasporta i riscontri HARQ ACK/NACK per le trasmissioni uplink; PDCCH trasporta i messaggi DCI con l'allocazione delle risorse radio per tutti gli utenti.",
+        "node": "Canali Fisici di Controllo Downlink (PCFICH, PHICH, PDCCH)",
+        "note": "Lezione 07 15 marzo - 04 - Canali fisici di downlink - funzioni e riscontri HARQ",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Si trovano nei primi simboli di ciascun subframe da 1 ms.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_024",
+        "front": "Quali informazioni trasporta il canale PUCCH dai terminali verso la stazione base?",
+        "back": "Trasporta: 1) I riscontri HARQ ACK/NACK per i dati ricevuti in downlink; 2) Le misure di qualità del canale CQI/PMI/RI; 3) Le Scheduling Request (SR) per richiedere risorse di trasmissione uplink.",
+        "node": "Canale Fisico di Controllo Uplink (PUCCH)",
+        "note": "Lezione 07 15 marzo - 10 - Canali di uplink - UL-SCH, RACH, PUSCH, PRACH e PUCCH",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "È allocato ai bordi superiore e inferiore della banda di sistema.",
+        "difficolta": 2,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_025",
+        "front": "Qual è il vantaggio spettrale di Soft Frequency Reuse (SFR) rispetto a Fractional Frequency Reuse (FFR)?",
+        "back": "FFR suddivide la banda assegnando porzioni ortogonali disgiunte tra centro e bordo cella, riducendo la banda disponibile al centro. SFR usa l'intera banda ovunque, modulando solo la potenza (potenza bassa al centro, piena potenza al bordo), massimizzando l'efficienza spettrale.",
+        "node": "FFR vs SFR",
+        "note": "Lezione 04 3 marzo - 22 e 23 - FFR e SFR",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "SFR garantisce riuso unitario al centro mitigando l'interferenza co-canale ai bordi.",
+        "difficolta": 3,
+        "topic": "lte_architettura_fisico_canali_rach"
+      },
+      {
+        "id": "lte_architettura_fisico_canali_rach_026",
         "front": "Quali ruoli svolgono rispettivamente MME, S-GW e P-GW in LTE?",
         "back": "* **MME (Mobility Management Entity)**: governa esclusivamente il **Piano di Controllo** (segnalazione NAS, autenticazione, paging, gestione della mobilità in Idle per Tracking Area, selezione dei gateway).\n* **S-GW (Serving Gateway)**: perno del **Piano Utente locale** (ancora di mobilità locale tra eNodeB diversi, bufferizzazione pacchetti per terminali IDLE).\n* **P-GW (Packet Data Network Gateway)**: gateway IP di confine verso Internet (ancora globale di sessione, allocazione indirizzo IP all'UE, enforcement delle regole di QoS e limiti AMBR).",
         "node": "Ruoli Nodi EPC (MME, SGW, PGW)",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_architettura_fisico_canali_rach"
       },
       {
-        "id": "t4_04",
+        "id": "lte_architettura_fisico_canali_rach_027",
         "front": "Perché LTE impiega la modulazione OFDMA in Downlink e SC-FDMA in Uplink?",
         "back": "* **Downlink (OFDMA)**: la stazione base ha alimentazione fissa e amplificatori lineari; OFDMA permette allocazione dinamica di risorse a grana fine tempo-frequenza e scheduling selettivo sul miglior canale per ciascun utente.\n* **Uplink (SC-FDMA)**: il terminale mobile è alimentato a batteria. L'OFDM classico ha un elevatissimo rapporto picco-potenza media (**PAPR**), che richiederebbe amplificatori con grande back-off. SC-FDMA (grazie alla pre-codifica DFT) genera una forma d'onda a singola portante con **PAPR ridotto**, prolungando la batteria e migliorando la copertura al bordo cella.",
         "node": "OFDMA vs SC-FDMA (PAPR)",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_architettura_fisico_canali_rach"
       },
       {
-        "id": "t4_05",
-        "front": "A cosa serve il Prefisso Ciclico (CP) in LTE e come elimina l'ISI?",
-        "back": "Copia gli ultimi campioni del simbolo utile OFDM all'inizio dell'intervallo di trasmissione (lunghezza $T_{cp} \\ge \\tau_{max}$).\n* **Elimina l'ISI**: assorbe i ritardi di propagazione dei raggi multipath prima dell'intervallo di integrazione utile.\n* **Proprietà matematica**: trasforma la convoluzione lineare del canale in una **convoluzione circolare**, consentendo di equalizzare il canale in ricezione con una semplice divisione scalare per singolo tap su ciascuna sottoportante.",
-        "node": "Prefisso Ciclico & Convoluzione Circolare",
-        "note": "05 Lezione 8 marzo"
-      },
-      {
-        "id": "t4_06",
-        "front": "Qual è la struttura standard di un Resource Block (RB) in LTE con prefisso ciclico normale?",
-        "back": "Un Resource Block (RB) è l'unità base di allocazione delle risorse:\n* **Frequenza**: **12 sottoportanti** adiacenti da $15 \\text{ kHz}$ ciascuna $\\implies$ banda totale di **$180 \\text{ kHz}$**.\n* **Tempo**: **1 time slot di $0.5 \\text{ ms}$**, contenente **7 simboli OFDM** (con CP normale).\n* **Resource Elements totali**: $12 \\times 7 = \\mathbf{84 \\text{ RE}}$. Un Resource Block Pair (schedulato su un subframe da $1 \\text{ ms}$) comprende $12 \\times 14 = 168 \\text{ RE}$.",
-        "node": "Struttura Resource Block (RB)",
-        "note": "05 Lezione 8 marzo"
-      },
-      {
-        "id": "t4_07",
-        "front": "Quali sono le 6 larghezze di banda scalabili previste in LTE e i relativi Resource Block?",
-        "back": "Lo standard LTE prevede 6 larghezze di banda di canale scalabili:\n1. **$1.4 \\text{ MHz}$** $\\to$ **$6 \\text{ RB}$** (occupa $1.08 \\text{ MHz}$ utili)\n2. **$3 \\text{ MHz}$** $\\to$ **$15 \\text{ RB}$** ($2.7 \\text{ MHz}$)\n3. **$5 \\text{ MHz}$** $\\to$ **$25 \\text{ RB}$** ($4.5 \\text{ MHz}$)\n4. **$10 \\text{ MHz}$** $\\to$ **$50 \\text{ RB}$** ($9.0 \\text{ MHz}$)\n5. **$15 \\text{ MHz}$** $\\to$ **$75 \\text{ RB}$** ($13.5 \\text{ MHz}$)\n6. **$20 \\text{ MHz}$** $\\to$ **$100 \\text{ RB}$** ($18.0 \\text{ MHz}$)\nIl restante 10% della banda fa da banda di guardia laterale.",
-        "node": "Bande Scalabili LTE",
-        "note": "05 Lezione 8 marzo"
-      },
-      {
-        "id": "t4_08",
+        "id": "lte_architettura_fisico_canali_rach_028",
         "front": "A cosa servono i segnali PSS e SSS e come si calcola la Physical Cell Identity (PCI)?",
         "back": "* **PSS (Primary Synchronization Signal)**: fornisce il sincronismo temporale di simbolo (slot) e indica l'identità di settore $N_{ID}^{(2)} \\in \\{0, 1, 2\\}$.\n* **SSS (Secondary Synchronization Signal)**: fornisce il sincronismo di trama radio ($10 \\text{ ms}$) e indica il gruppo di cella $N_{ID}^{(1)} \\in \\{0, ..., 167\\}$.\n* **Formula PCI** (504 identità fisiche univoche):\n$$PCI = 3 \\cdot N_{ID}^{(1)} + N_{ID}^{(2)}$$",
         "node": "PSS, SSS e Calcolo PCI",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_architettura_fisico_canali_rach"
       },
       {
-        "id": "t4_09",
+        "id": "lte_architettura_fisico_canali_rach_029",
         "front": "Qual è la gerarchia dei canali in LTE (Logici, Trasporto, Fisici)?",
         "back": "1. **Canali Logici (Cosa viene trasferito)**: definiti dal tipo di informazione (Controllo: BCCH, PCCH, CCCH, DCCH; Dati: DTCH).\n2. **Canali di Trasporto (Come viene trasferito)**: definiti dal formato di codifica e interleaving (DL: BCH, PCH, DL-SCH; UL: RACH, UL-SCH).\n3. **Canali Fisici (Dove viene trasmesso tempo-frequenza)**:\n   - DL: PBCH (MIB), PDCCH (scheduling grant), PDSCH (dati utente).\n   - UL: PRACH (preamboli di accesso), PUCCH (ACK/NACK, CQI), PUSCH (dati utente).",
         "node": "Gerarchia Canali LTE",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_architettura_fisico_canali_rach"
       },
       {
-        "id": "t4_10",
+        "id": "lte_architettura_fisico_canali_rach_030",
         "front": "In quali 4 passi si articola la procedura di accesso casuale RACH in LTE?",
         "back": "1. **Msg1 (Preamble)**: l'UE invia un preambolo casuale su PRACH per farsi rilevare.\n2. **Msg2 (Random Access Response - RAR)**: l'eNodeB risponde su PDSCH indicando correzione temporale (*Timing Advance*), C-RNTI temporaneo e grant UL.\n3. **Msg3 (RRC Connection Request)**: l'UE trasmette la propria richiesta di connessione con identificativo su PUSCH.\n4. **Msg4 (Contention Resolution)**: l'eNodeB conferma quale UE ha vinto l'eventuale contesa tra preamboli identici.",
         "node": "Procedura RACH a 4 Passi",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_architettura_fisico_canali_rach"
       }
-    ]
+    ],
+    "count": 30
   },
   {
     "topic_id": "lte_tecniche_fisiche_17_22_marzo",
-    "topic_name": "5. LTE Tecniche Fisiche Avanzate (Lezioni 17-22 Marzo)",
+    "topic_name": "7. LTE: Tecniche Fisiche Avanzate (Lezioni 17-22 Marzo)",
     "cards": [
       {
-        "id": "t5_01",
+        "id": "lte_tecniche_fisiche_17_22_marzo_001",
         "front": "Che cos'è il Carrier Frequency Offset (CFO) e da quali cause fisiche si origina?",
         "back": "È lo scostamento $\\Delta f_{cfo}$ tra la frequenza della portante del trasmettitore e quella dell'oscillatore locale del ricevitore.\nSi origina da due cause fisiche:\n1. **Tolleranza termica e imprecisione dei risonatori RF** a quarzo.\n2. **Effetto Doppler da movimento dell'utente**: $f_d = \\frac{v}{\\lambda}\\cos\\theta = \\frac{v \\cdot f_c}{c}\\cos\\theta$.\nIl CFO normalizzato rispetto alla spaziatura tra sottoportanti vale: $\\epsilon = \\frac{\\Delta f_{cfo}}{\\Delta f}$.",
         "node": "Origine Fisica del CFO",
-        "note": "Lezione 17 marzo - Appunti integrali"
+        "note": "Lezione 17 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_02",
+        "id": "lte_tecniche_fisiche_17_22_marzo_002",
         "front": "In che modo il CFO distrugge l'ortogonalità tra le sottoportanti OFDM generando ICI?",
         "back": "Nel tempo introduce una rampa di fase $e^{j 2\\pi \\Delta f_{cfo} t}$. In frequenza, sposta i punti di campionamento della FFT lontano dai passaggi per lo zero delle funzioni $\\text{sinc}$.\n* Il segnale utile sulla sottoportante viene attenuato del fattore $\\text{sinc}(\\epsilon)$.\n* L'energia di tutte le altre $N-1$ sottoportanti tracima sulla sottoportante considerata, generando **Inter-Carrier Interference (ICI)**.",
         "node": "CFO & Nascita ICI",
-        "note": "Lezione 17 marzo - Appunti integrali"
+        "note": "Lezione 17 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_03",
+        "id": "lte_tecniche_fisiche_17_22_marzo_003",
         "front": "Qual è la formula asintotica della potenza dell'ICI e qual è il limite tollerabile di epsilon?",
         "back": "Per piccoli valori di $\\epsilon$ ($|\\epsilon| \\ll 1$), la potenza di ICI cresce in modo quadratico:\n$$P_{ICI} \\approx \\sigma_x^2 \\cdot \\frac{\\pi^2}{3} \\epsilon^2$$\nIl rapporto segnale-interferenza degrada come: $SIR_{cfo} \\approx \\frac{3}{\\pi^2 \\epsilon^2}$.\n* **Limite di progetto**: per contenere la perdita di SNR a meno di 0.5 dB, è obbligatorio contenere il CFO normalizzato entro **$|\\epsilon| \\le 0.01 \\div 0.02$** (meno dell'1-2% di $\\Delta f$).",
         "node": "Potenza ICI & Limite Epsilon",
-        "note": "Lezione 17 marzo - Appunti integrali"
+        "note": "Lezione 17 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_04",
+        "id": "lte_tecniche_fisiche_17_22_marzo_004",
         "front": "Come viene stimato il canale in LTE tramite i simboli pilota (Reference Signals)?",
         "back": "1. **Stima sui Piloti**: sui Resource Element che contengono i simboli noti CRS, il ricevitore applica la stima Least Squares (LS):\n$$\\hat{H}_{LS}(k_p, l_p) = \\frac{Y(k_p, l_p)}{X_p}$$\n2. **Interpolazione 2D**: mediante interpolazione lineare, cubica o filtraggio Wiener su tempo e frequenza, si ricava la risposta di canale $\\hat{H}_k$ su tutti i dati della trama.",
         "node": "Stima Canale su Piloti CRS",
-        "note": "Lezione 17 marzo - Appunti integrali"
+        "note": "Lezione 17 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_05",
-        "front": "Qual è la differenza fondamentale tra l'equalizzatore Zero-Forcing (ZF) e l'equalizzatore MMSE?",
-        "back": "* **Zero-Forcing ($G_{ZF} = 1/H_k$)**: inverte esattamente la risposta del canale eliminando la distorsione. **Grave difetto**: nei nulli di canale ($|H_k| \\to 0$), amplifica a dismisura il rumore termico (*Noise Enhancement*).\n* **MMSE ($G_{MMSE} = \\frac{H_k^*}{|H_k|^2 + 1/SNR}$)**: minimizza l'errore quadratico medio totale. Quando $|H_k| \\to 0$, il termine $1/SNR$ a denominatore impedisce l'amplificazione incontrollata del rumore, garantendo prestazioni nettamente superiori.",
-        "node": "Equalizzatori ZF vs MMSE",
-        "note": "Lezione 17 marzo - Appunti integrali"
-      },
-      {
-        "id": "t5_06",
+        "id": "lte_tecniche_fisiche_17_22_marzo_005",
         "front": "Come funziona la Link Adaptation adattativa (AMC) e qual è il ruolo del CQI?",
         "back": "1. L'UE misura il SINR sui simboli pilota e seleziona il più alto indice **CQI ($1..15$)** che garantisce un tasso di errore di blocco **$BLER \\le 10\\%$** sul primo invio.\n2. Invia periodicamente il CQI all'eNodeB.\n3. L'eNodeB adatta dinamicamente lo schema di modulazione (QPSK, 16QAM, 64QAM) e il code rate (MCS), massimizzando la velocità di trasmissione al variare delle condizioni radio.",
         "node": "Link Adaptation & CQI",
-        "note": "Lezione 22 marzo - Appunti integrali"
+        "note": "Lezione 22 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_07",
+        "id": "lte_tecniche_fisiche_17_22_marzo_006",
         "front": "Come opera l'algoritmo Outer Loop Link Adaptation (OLLA) e perché delta_down = 9 * delta_up?",
         "back": "Corregge gli errori di stima e i ritardi del CQI aggiornando un offset additivo $\\Delta_{OLLA}$:\n* Ad ogni **ACK** (ricezione corretta): $\\Delta_{OLLA} \\leftarrow \\Delta_{OLLA} + \\delta_{up}$.\n* Ad ogni **NACK** (blocco errato): $\\Delta_{OLLA} \\leftarrow \\Delta_{OLLA} - \\delta_{down}$.\n* Per convergere stabilmente al target di $BLER_{target} = 10\\%$ ($0.10$), all'equilibrio deve valere: $0.90 \\cdot \\delta_{up} = 0.10 \\cdot \\delta_{down} \\implies \\mathbf{\\delta_{down} = 9 \\cdot \\delta_{up}}$ (es. $\\delta_{up} = 0.1 \\text{ dB}, \\delta_{down} = 0.9 \\text{ dB}$).",
         "node": "Algoritmo OLLA",
-        "note": "Lezione 22 marzo - Appunti integrali"
+        "note": "Lezione 22 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_08",
-        "front": "Quali sono le tre modalità operative fondamentali delle tecnologie multi-antenna MIMO?",
-        "back": "1. **Diversità Spaziale (Spatial Diversity)**: invia lo stesso segnale duplicato su canali indipendenti (es. codice di Alamouti/SFBC) per massimizzare l'**affidabilità** contro il fading.\n2. **Beamforming**: applica pesi di fase per orientare il lobo principale verso l'utente, massimizzando il **guadagno di SNR** e riducendo l'interferenza verso altre celle.\n3. **Multiplexing Spaziale (Spatial Multiplexing)**: trasmette flussi indipendenti (*Layers*) simultaneamente sulla stessa risorsa, **moltiplicando il throughput** per il Rank della matrice di canale.",
-        "node": "Le 3 Modalità MIMO",
-        "note": "Lezione 22 marzo - Appunti integrali"
-      },
-      {
-        "id": "t5_09",
+        "id": "lte_tecniche_fisiche_17_22_marzo_007",
         "front": "Come funziona il Codice di Alamouti (SFBC) per la diversità spaziale con 2 antenne trasmettenti?",
         "back": "Due simboli consecutivi $s_1, s_2$ vengono trasmessi su due sottoportanti adiacenti con matrice:\n$$\\mathbf{S} = \\begin{pmatrix} s_1 & -s_2^* \\\\ s_2 & s_1^* \\end{pmatrix}$$\nIl ricevitore estrae i simboli tramite semplice elaborazione lineare, ottenendo un ordine di diversità pari a $2 \\times N_{rx}$ a piena velocità di simbolo, senza richiedere che il trasmettitore conosca il canale (*open-loop*).",
         "node": "Codice di Alamouti (SFBC)",
-        "note": "Lezione 22 marzo - Appunti integrali"
+        "note": "Lezione 22 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_10",
+        "id": "lte_tecniche_fisiche_17_22_marzo_008",
         "front": "Qual è il vincolo di Rango (Rank) nel Spatial Multiplexing MIMO e quale condizione ambientale richiede?",
         "back": "Il numero di flussi paralleli $N_L$ è vincolato dal rango della matrice di canale $\\mathbf{H}$ ($N_R \\times N_T$):\n$$N_L \\le \\text{Rank}(\\mathbf{H}) \\le \\min(N_T, N_R)$$\n* **Condizione Ambientale**: richiede un ambiente ricco di **scattering e multipath**, che renda i cammini radio linearmente indipendenti. In canale puramente ottico (LOS) senza riflessioni, il rango collassa a 1 e il multiplexing spaziale non è possibile.",
         "node": "Vincolo di Rango MIMO",
-        "note": "Lezione 22 marzo - Appunti integrali"
+        "note": "Lezione 22 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       },
       {
-        "id": "t5_11",
+        "id": "lte_tecniche_fisiche_17_22_marzo_009",
         "front": "Che cos'è la Carrier Aggregation (CA) in LTE-Advanced?",
         "back": "È la tecnica che permette di aggregare fino a **5 portanti componenti (Component Carrier - CC)** da massimo $20 \\text{ MHz}$ ciascuna, per formare un unico canale virtuale con ampiezza complessiva fino a **$100 \\text{ MHz}$**, moltiplicando direttamente il throughput di picco dell'utente. Può essere intra-banda (contigua o non contigua) o inter-banda.",
         "node": "Carrier Aggregation",
-        "note": "Lezione 22 marzo - Appunti integrali"
+        "note": "Lezione 22 marzo - Appunti integrali",
+        "topic": "lte_tecniche_fisiche_17_22_marzo"
       }
-    ]
+    ],
+    "count": 9
   },
   {
-    "topic_id": "lte_procedure_sicurezza_stati",
-    "topic_name": "6. LTE: Procedure di Rete, Sicurezza, Stati & Handover",
+    "topic_id": "lte_attach_sicurezza_default_bearer",
+    "topic_name": "8. LTE: Procedura di Attach, Sicurezza EPS-AKA e Default Bearer",
     "cards": [
       {
-        "id": "t6_01",
+        "id": "lte_attach_sicurezza_default_bearer_001",
+        "front": "Qual è il ruolo svolto dall'MME durante la procedura di Attach del terminale?",
+        "back": "È il coordinatore centrale del piano di controllo: riceve la richiesta NAS, richiede i vettori di autenticazione all'HSS, autentica il terminale, aggiorna la posizione dell'utente, seleziona i gateway S-GW e P-GW e coordina l'attivazione del default bearer.",
+        "node": "Ruolo dell'MME nell'Attach",
+        "note": "Lezione 08 17 marzo - 02 - Fasi dell'attach e identita del terminale",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'MME gestisce solo segnalazione; nessun pacchetto dati utente attraversa l'MME.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_002",
+        "front": "Quale funzione svolgono rispettivamente l'HSS e l'AuC per la sicurezza della rete?",
+        "back": "L'HSS è il database master dei profili degli abbonati e della loro localizzazione corrente; l'AuC (Authentication Centre) è il modulo crittografico sicuro che custodisce la chiave segreta K e calcola i vettori di autenticazione EPS-AKA.",
+        "node": "Ruolo dell'HSS e dell'AuC",
+        "note": "Lezione 08 17 marzo - 13 - HSS e AuC - generazione dei vettori di autenticazione",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "In LTE HSS e AuC sono integrati in un'unica entità centrale.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_003",
+        "front": "Dove risiede la chiave master K e perché non viene mai trasmessa sui canali di rete?",
+        "back": "Risiede esclusivamente nel chip crittografico sicuro della USIM e nell'AuC/HSS dell'operatore. Non viaggia mai in rete per impedire che possa essere intercettata: tutte le chiavi operative di cifratura derivano matematicamente da essa tramite KDF unidirezionali.",
+        "node": "Segretezza della Chiave Master K",
+        "note": "Lezione 08 17 marzo - 11 - Avvio dell'autenticazione e ipotesi sul contesto precedente",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "È lunga 128 bit ed è programmata in fabbrica al momento della produzione della SIM.",
+        "difficolta": 1,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_004",
+        "front": "Cosa contiene il token AUTN inviato dall'MME e come permette alla SIM di verificare la rete?",
+        "back": "Contiene il Sequence Number cifrato (SQN xor AK) e il codice di autenticazione MAC. La SIM usa la chiave K per estrarre SQN e ricalcolare il MAC: se corrisponde e SQN è crescente, la SIM ha la prova che il messaggio proviene dal vero HSS dell'operatore.",
+        "node": "Token AUTN e Verifica della Rete",
+        "note": "Lezione 08 17 marzo - 14 - Sfida di autenticazione e verifica della rete nella SIM",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Protegge l'utente da attacchi di replay e da stazioni radio civetta (falsi eNodeB).",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_005",
+        "front": "In che modo l'MME convalida l'identità dell'utente attraverso il confronto RES contro XRES?",
+        "back": "La SIM calcola la risposta RES = f2(K, RAND) e la invia all'MME nel messaggio Authentication Response. L'MME confronta RES con il valore XRES (Expected Response) ricevuto dall'HSS nel vettore: se coincidono perfettamente, l'utente è autenticato.",
+        "node": "Autenticazione dell'Utente: RES vs XRES",
+        "note": "Lezione 08 17 marzo - 15 - RES contro XRES e derivazione comune di KASME",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Se i valori non coincidono, l'MME rigetta la procedura con Authentication Reject.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_006",
+        "front": "Che cos'è la chiave K_ASME, chi la possiede e quale ruolo riveste nell'architettura di sicurezza?",
+        "back": "È la chiave radice di sicurezza della rete servente (Access Security Management Entity). Viene calcolata simultaneamente dall'HSS e dalla SIM da K e dall'identità PLMN. È condivisa tra MME e terminale e serve a derivare tutte le chiavi di sessione successive.",
+        "node": "Chiave Radice K_ASME",
+        "note": "Lezione 08 17 marzo - 12 - Gerarchia delle chiavi LTE - K CK IK KASME e KeNB",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Consente all'MME di gestire la sicurezza senza mai conoscere la chiave master K.",
+        "difficolta": 3,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_007",
+        "front": "Qual è lo scopo della procedura NAS Security Mode Command / Complete?",
+        "back": "Comunica al terminale gli algoritmi di cifratura e integrità selezionati dall'MME e attiva la protezione crittografica dei messaggi NAS successivi, verificando che non ci sia stato manomissione o downgrade delle cifrature supportate.",
+        "node": "Attivazione della Sicurezza NAS",
+        "note": "Lezione 08 17 marzo - 16 - NAS Security Mode - algoritmi, integrita e cifratura",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il messaggio Security Mode Command è protetto da integrità; il Complete è anche cifrato.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_008",
+        "front": "Come viene ricavata la chiave K_eNB e a chi viene consegnata dall'MME?",
+        "back": "Viene derivata tramite KDF da K_ASME e dal contatore NAS Uplink. L'MME consegna K_eNB all'eNodeB all'interno del messaggio S1-AP Initial Context Setup. L'eNodeB la utilizzerà per proteggere e cifrare il traffico radio sul canale aereo.",
+        "node": "Derivazione e Consegna della Chiave K_eNB",
+        "note": "Lezione 08 17 marzo - 28 e 29 - Initial Context Setup e AS Security Setup",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'antenna eNodeB non conosce K_ASME, garantendo isolamento se un'antenna fisica viene violata.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_009",
+        "front": "Cosa avviene durante la fase di Location Update inviata dall'MME all'HSS?",
+        "back": "L'MME registra il proprio identificativo nell'HSS come nodo che attualmente serve l'utente. L'HSS risponde scaricando all'MME il profilo dell'abbonato (Subscription Data) contenente gli APN sottoscritti, il QCI e i limiti AMBR.",
+        "node": "Location Update all'HSS",
+        "note": "Lezione 08 17 marzo - 17 e 18 - Location Update e Profilo abbonato",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Se l'utente era registrato su un vecchio MME, l'HSS invia a quest'ultimo una Cancel Location.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_010",
+        "front": "Che cos'è il parametro QCI e cosa specifica per un bearer LTE?",
+        "back": "È un indice scalare (da 1 a 9 negli standard base) che definisce le caratteristiche di qualità di servizio del bearer: tipo di risorsa (GBR o Non-GBR), livello di priorità, ritardo massimo ammissibile e tasso di perdita di pacchetti tollerato.",
+        "node": "QoS Class Identifier (QCI)",
+        "note": "Lezione 08 17 marzo - 18 - Profilo dell'abbonato, QCI e limiti di bitrate",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Esempio: QCI=1 per voce conversazionale VoLTE (GBR), QCI=9 per navigazione web (Non-GBR).",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_011",
+        "front": "Come fa l'MME a selezionare il corretto P-GW per la sessione dati dell'utente?",
+        "back": "Prende l'APN richiesto dal terminale (o quello di default nel profilo HSS, es. 'internet.it') e interroga il server DNS interno dell'operatore, che restituisce l'indirizzo IP del P-GW idoneo a instradare quel traffico.",
+        "node": "Risoluzione dell'Access Point Name (APN)",
+        "note": "Lezione 08 17 marzo - 20 - APN e risoluzione DNS - nome del servizio e gateway",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'APN identifica sia la rete esterna di destinazione sia il punto di uscita dell'operatore.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_012",
+        "front": "Quale entità della rete assegna l'indirizzo IP al terminale LTE durante l'Attach?",
+        "back": "È il P-GW che alloca l'indirizzo IP (di norma un indirizzo IPv4 privato, o un prefisso IPv6). L'indirizzo viene inserito nel messaggio Create Session Response inviato al S-GW e consegnato all'UE all'interno dell'Attach Accept.",
+        "node": "Assegnazione dell'Indirizzo IP",
+        "note": "Lezione 08 17 marzo - 21 e 23 - Assegnazione IP e P-GW",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'IP rimane invariato per tutta la durata della connessione, indipendentemente dalla mobilità.",
+        "difficolta": 1,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_013",
+        "front": "Come viene instaurato il tunnel dati GTP-U sulla tratta S5 tra Serving Gateway e Packet Gateway?",
+        "back": "Nella Create Session Request il S-GW comunica al P-GW il TEID S5 Downlink; nella Create Session Response il P-GW comunica al S-GW il TEID S5 Uplink. Con i due identificativi la tratta S5 bidirezionale è stabilita.",
+        "node": "Creazione della Tratta S5 (S-GW <-> P-GW)",
+        "note": "Lezione 08 17 marzo - 22 e 24 - TEID S5 e completamento tunnel S5",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Su roaming Home-Routed questa tratta prende il nome di interfaccia S8.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_014",
+        "front": "Quali informazioni fondamentali consegna l'MME all'eNodeB nel messaggio Initial Context Setup Request?",
+        "back": "Consegna: 1) Il messaggio NAS Attach Accept (da recapitare all'UE); 2) La chiave di sicurezza K_eNB; 3) I limiti UE-AMBR; 4) I parametri del bearer e il TEID S1 Uplink con l'indirizzo IP del S-GW.",
+        "node": "Initial Context Setup",
+        "note": "Lezione 08 17 marzo - 28 - Initial Context Setup - stato radio, limiti e riferimento S1",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Permette all'eNodeB di configurare la radio e agganciare il tunnel di trasporto.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_015",
+        "front": "Cosa avviene durante la procedura AS Security Mode Command tra eNodeB e terminale?",
+        "back": "L'eNodeB deriva da K_eNB le chiavi K_RRCenc, K_RRCint e K_UPenc e le attiva sull'interfaccia radio al livello PDCP, proteggendo da intercettazione tutti i pacchetti dati e la segnalazione RRC sul canale aereo.",
+        "node": "Attivazione della Sicurezza AS (Access Stratum)",
+        "note": "Lezione 08 17 marzo - 29 - AS Security Setup - chiave dell'eNodeB e protezione PDCP",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Solo dopo aver attivato la cifratura AS viene aperto il Data Radio Bearer.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_016",
+        "front": "A cosa serve il Data Radio Bearer (DRB) e in cosa differisce dai Signaling Radio Bearer (SRB)?",
+        "back": "Gli SRB trasportano la segnalazione di controllo RRC e NAS; il DRB trasporta i pacchetti IP del piano utente attraverso i livelli PDCP, RLC, MAC e PHY con le policy di QoS e cifratura definite per quel servizio.",
+        "node": "Creazione del Data Radio Bearer (DRB)",
+        "note": "Lezione 08 17 marzo - 30 - Consegna dell'Attach Accept e creazione del Data Radio Bearer",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Viene stabilito tramite il messaggio RRC Connection Reconfiguration.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_017",
+        "front": "Come viene completato l'ultimo tassello del percorso dati verso il terminale in downlink?",
+        "back": "L'eNodeB invia all'MME l'Initial Context Setup Response comunicando il proprio TEID S1 Downlink. L'MME invia una Modify Bearer Request al S-GW notificando questo TEID: da questo momento il S-GW sa dove inoltrare i pacchetti downlink.",
+        "node": "Chiusura del Percorso Dati (TEID S1 Downlink)",
+        "note": "Lezione 08 17 marzo - 31 - TEID S1 downlink, Attach Complete e percorso bidirezionale",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'UE invia contestualmente l'Attach Complete all'MME.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_018",
+        "front": "Qual è la differenza concettuale tra un Default EPS Bearer e un Dedicated EPS Bearer?",
+        "back": "Il Default Bearer viene attivato all'Attach, è permanente, di norma Non-GBR (best-effort) e fornisce l'IP. Il Dedicated Bearer viene creato su richiesta per un servizio specifico (es. chiamata VoLTE), si aggancia allo stesso IP ma ha parametri di QoS dedicati (GBR o priorità alta).",
+        "node": "Default Bearer vs Dedicated Bearer",
+        "note": "Lezione 08 17 marzo - 01 - EPS bearer e separazione tra controllo e dati",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Un utente può avere più dedicated bearer sullo stesso default bearer.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_019",
+        "front": "A cosa serve il Traffic Flow Template (TFT) nel P-GW e nel terminale mobile?",
+        "back": "È un insieme di filtri di pacchetto (basati su IP sorgente/destinazione, porte e protocollo) che stabilisce su quale specifico bearer (Default o Dedicated) deve essere instradato ciascun pacchetto IP in uscita o in entrata.",
+        "node": "Traffic Flow Template (TFT)",
+        "note": "Lezione 09 22 marzo - 05 - Downlink - traduzione inversa e mapping verso la radio",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Garantisce che i pacchetti voce VoLTE vadano sul bearer GBR e i dati web sul bearer best-effort.",
+        "difficolta": 2,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_020",
+        "front": "Perché si dice che la procedura di Attach costruisce uno 'stato distribuito consistente'?",
+        "back": "Perché alla fine della procedura tutti e 4 i nodi coinvolti (UE, eNodeB, S-GW, P-GW) condividono lo stesso identico identificativo di bearer (EBI), le stesse policy QoS e tabelle di routing con coppie di TEID speculari perfettamente allineate.",
+        "node": "Consistenza Distribuita dell'Attach",
+        "note": "Lezione 08 17 marzo - 32 - Consistenza distribuita, handover e continuita IP",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Se un solo nodo fallisce la configurazione, l'intera sessione viene abortita per consistenza.",
+        "difficolta": 3,
+        "topic": "lte_attach_sicurezza_default_bearer"
+      },
+      {
+        "id": "lte_attach_sicurezza_default_bearer_021",
         "front": "Cosa avviene durante la procedura di Attach del terminale alla rete LTE?",
         "back": "1. L'UE invia l'Attach Request (con IMSI o GUTI) all'MME tramite l'eNodeB.\n2. L'MME richiede i vettori di autenticazione all'HSS ed esegue l'autenticazione mutua **EPS-AKA**.\n3. Viene attivata la sicurezza NAS e AS.\n4. L'MME seleziona S-GW e P-GW e comanda l'attivazione del **Default EPS Bearer** con allocazione dell'indirizzo IP all'UE.\n5. L'UE passa in stato connesso e può iniziare a trasmettere dati IP.",
         "node": "Procedura di Attach",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       },
       {
-        "id": "t6_02",
+        "id": "lte_attach_sicurezza_default_bearer_022",
         "front": "Come funziona l'autenticazione mutua EPS-AKA e qual è il ruolo del token AUTN?",
         "back": "L'HSS/AuC genera il vettore $(RAND, AUTN, XRES, K_{ASME})$.\n* L'MME invia $(RAND, AUTN)$ alla SIM dell'utente.\n* **Autenticazione della Rete da parte dell'UE**: la SIM verifica il token $AUTN$ (controllando che il numero di sequenza $SQN$ sia nuovo e che il $MAC$ sia corretto tramite la chiave segreta master $K$). Se valido, la SIM calcola $RES$.\n* **Autenticazione dell'UE da parte dell'MME**: l'UE invia $RES$ all'MME, che lo confronta con $XRES$. Se coincidono, l'utente è autenticato.",
         "node": "Autenticazione EPS-AKA & AUTN",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       },
       {
-        "id": "t6_03",
+        "id": "lte_attach_sicurezza_default_bearer_023",
         "front": "Come è strutturata la gerarchia delle chiavi crittografiche in LTE (K -> K_ASME -> K_eNB)?",
         "back": "1. **Chiave Master $K$**: risiede solo nella SIM dell'abbonato e nell'AuC dell'operatore (non viene mai trasmessa in rete).\n2. **Chiave $K_{ASME}$**: generata da SIM e HSS durante EPS-AKA e consegnata all'MME. Da essa derivano le chiavi di integrità e cifratura NAS ($K_{NASint}, K_{NASenc}$).\n3. **Chiave $K_{eNB}$**: derivata dall'MME da $K_{ASME}$ e consegnata all'eNodeB per la sicurezza AS (interfaccia radio: $K_{RRCint}, K_{RRCenc}, K_{UPenc}$).",
         "node": "Gerarchia Chiavi Crittografiche",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       },
       {
-        "id": "t6_04",
+        "id": "lte_attach_sicurezza_default_bearer_024",
         "front": "Che cos'è un EPS Bearer e qual è la differenza tra Default Bearer e Dedicated Bearer?",
         "back": "Un **EPS Bearer** è un tunnel virtuale di livello 2/3 con qualità di servizio (QoS) garantita tra l'UE e il P-GW.\n* **Default Bearer**: viene attivato **obbligatoriamente e automaticamente all'Attach** (always-on). Fornisce connettività IP di base (best-effort, non-GBR) per tutta la durata della connessione con l'IP assegnato.\n* **Dedicated Bearer**: viene creato successivamente su richiesta di un servizio specifico (es. chiamata VoLTE con QCI=1 o streaming video). Può essere di tipo **GBR** (Guaranteed Bit Rate) e viene associato a un Traffic Flow Template (TFT).",
         "node": "Default vs Dedicated Bearer",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       },
       {
-        "id": "t6_05",
+        "id": "lte_attach_sicurezza_default_bearer_025",
         "front": "Cosa rappresentano i limiti aggregati APN-AMBR e UE-AMBR?",
         "back": "* **APN-AMBR (Aggregate Maximum Bit Rate per APN)**: limite massimo di banda aggregata sommando tutti i bearer non-GBR associati a un determinato APN (es. Internet o IMS). È applicato dal **P-GW** in DL e dall'**eNodeB/UE** in UL.\n* **UE-AMBR (Aggregate Maximum Bit Rate per UE)**: limite massimo complessivo sommando tutti gli APN a cui l'utente è contemporaneamente connesso. È applicato dall'**eNodeB**.",
         "node": "Limiti APN-AMBR e UE-AMBR",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       },
       {
-        "id": "t6_06",
+        "id": "lte_attach_sicurezza_default_bearer_026",
         "front": "Qual è la differenza tra gli stati EMM, ECM e RRC del terminale in LTE?",
         "back": "* **EMM (EPS Mobility Management - con MME)**: *DEREGISTERED* (rete ignora posizione UE) vs *REGISTERED* (UE autenticato e noto con granularità di Tracking Area).\n* **ECM (EPS Connection Management - con MME)**: *IDLE* (nessun collegamento di segnalazione NAS attivo, bearer radio rilasciati) vs *CONNECTED* (canale di segnalazione S1-MME attivo).\n* **RRC (Radio Resource Control - con eNodeB)**: *RRC_IDLE* (nessuna risorsa radio dedicata allocata) vs *RRC_CONNECTED* (connessione radio attiva).",
         "node": "Stati EMM, ECM e RRC",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       },
       {
-        "id": "t6_07",
+        "id": "lte_attach_sicurezza_default_bearer_027",
         "front": "Come viene gestito un terminale in stato IDLE e come funziona la procedura di Paging?",
         "back": "* In IDLE, il terminale ascolta il canale a intervalli periodici (**DRX - Discontinuous Reception**) per risparmiare batteria e aggiorna la rete solo se cambia **Tracking Area (TAU - Tracking Area Update)**.\n* Quando arrivano pacchetti IP in Downlink al Serving Gateway (S-GW):\n  1. L'S-GW bufferizza i pacchetti e invia una *Downlink Data Notification* all'MME.\n  2. L'MME invia messaggi di **Paging** a tutti gli eNodeB appartenenti all'ultima Tracking Area dell'utente.\n  3. Gli eNodeB irradiano il Paging sull'interfaccia radio. L'UE lo riceve e avvia la procedura di Service Request per riattivare i bearer radio.",
         "node": "Gestione IDLE & Paging",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       },
       {
-        "id": "t6_08",
+        "id": "lte_attach_sicurezza_default_bearer_028",
         "front": "Qual è la differenza tra Handover X2 e Handover S1 in LTE?",
         "back": "* **Handover X2 (Preferito e Diretto)**: avviene direttamente tra l'eNodeB sorgente e l'eNodeB target tramite l'interfaccia **X2**, senza coinvolgere l'MME nella fase preparatoria. L'eNodeB sorgente inoltra i pacchetti pendenti via tunnel dati (*Data Forwarding*). L'MME viene informato solo a cose fatte (*Path Switch Request*) per commutare il tunnel dell'S-GW.\n* **Handover S1 (Fallback)**: si utilizza se l'interfaccia X2 non è disponibile o se cambiano sia l'MME che l'S-GW. Tutta la segnalazione preparatoria transita attraverso la Core Network via interfaccia **S1-MME**.",
         "node": "Handover X2 vs S1",
-        "note": "05 Lezione 8 marzo"
+        "note": "05 Lezione 8 marzo",
+        "topic": "lte_attach_sicurezza_default_bearer"
       }
-    ]
+    ],
+    "count": 28
+  },
+  {
+    "topic_id": "lte_piano_utente_stati_roaming_handover",
+    "topic_name": "9. LTE: Piano Utente GTP-U, Stati, Paging, Roaming e Handover X2/S1",
+    "cards": [
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_001",
+        "front": "Come è strutturato un pacchetto incapsulato in GTP-U tra eNodeB, S-GW e P-GW?",
+        "back": "Il pacchetto IP originale dell'utente (pacchetto interno) viene inserito come payload all'interno di un pacchetto esterno formato da: Header IP della rete di trasporto + Header UDP (porta 2152) + Header GTP-U contenente il TEID.",
+        "node": "Struttura del Pacchetto GTP-U",
+        "note": "Lezione 09 22 marzo - 02 - Pacchetto interno ed esterno - incapsulamento GTP-U",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "La rete di trasporto dell'operatore instrada solo sull'header IP esterno.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_002",
+        "front": "Perché il P-GW esegue la traduzione NAT prima di immettere i pacchetti su Internet?",
+        "back": "Perché per ragioni di conservazione dello spazio di indirizzamento, agli UE vengono assegnati indirizzi IPv4 privati (RFC 1918). Il P-GW traduce l'IP privato e la porta sorgente in un IP pubblico dell'operatore mantenendo la tabella delle connessioni attive.",
+        "node": "NAT sul Packet Gateway (P-GW)",
+        "note": "Lezione 09 22 marzo - 04 - P-GW come router di uscita - TTL e NAT",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il P-GW funge inoltre da default gateway e decrementa il TTL del pacchetto utente.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_003",
+        "front": "Come viene applicato (enforced) il limite APN-AMBR nel downlink e nell'uplink?",
+        "back": "Nel Downlink viene applicato dal P-GW scartando i pacchetti che superano il bitrate contrattuale. Nell'Uplink è applicato dal terminale stesso (o dal P-GW come controllo secondario per evitare che terminali manomessi saturino la rete).",
+        "node": "Enforcement dell'APN-AMBR",
+        "note": "Lezione 09 22 marzo - 07 - Enforcement APN-AMBR - P-GW, terminale e profilo",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Si applica alla somma di tutti i flussi non-GBR appartenenti a quel dato APN.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_004",
+        "front": "Chi applica il limite UE-AMBR e come interagisce con gli APN-AMBR dei singoli servizi?",
+        "back": "Viene applicato dall'eNodeB sullo scheduler radio. L'eNodeB limita il bitrate aggregato totale del terminale imponendo Min(UE-AMBR, Somma degli APN-AMBR attivi), garantendo che l'utente non superi il massimale del suo abbonamento.",
+        "node": "Enforcement dell'UE-AMBR",
+        "note": "Lezione 09 22 marzo - 08 - UE-AMBR - limite del terminale e minimo tra i vincoli",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'MME trasmette l'UE-AMBR all'eNodeB durante l'Initial Context Setup.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_005",
+        "front": "Cosa indica lo stato EMM e quando il terminale si trova in EMM-REGISTERED?",
+        "back": "Indica lo stato di registrazione del terminale verso la rete centrale (MME). Il terminale è EMM-REGISTERED quando ha completato l'Attach con successo, ha un indirizzo IP, è autenticato e la sua Tracking Area è memorizzata nell'MME e nell'HSS.",
+        "node": "Stati EMM: Registered vs Deregistered",
+        "note": "Lezione 09 22 marzo - 09 e 10 - Stati EMM, ECM e RRC",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Passa a EMM-DEREGISTERED solo se si spegne, attiva la modalità aereo o subisce un distacco esplicito.",
+        "difficolta": 1,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_006",
+        "front": "Qual è la relazione tra lo stato ECM (verso l'MME) e lo stato RRC (verso l'eNodeB)?",
+        "back": "Sono rigidamente concatenati: ECM-CONNECTED implica RRC_CONNECTED (canali radio e interfaccia S1-MME attivi); ECM-IDLE implica RRC_IDLE (canali radio rilasciati e nessuna connessione di segnalazione S1 attiva con l'MME).",
+        "node": "Stati ECM ed RRC: Connected vs Idle",
+        "note": "Lezione 08 17 marzo - 05 - ECM - concatenazione di RRC e S1-AP",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il passaggio a Idle avviene per inattività dopo pochi secondi per preservare la batteria.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_007",
+        "front": "Che cos'è il ciclo DRX (Discontinuous Reception) e perché è fondamentale per lo smartphone?",
+        "back": "In stato Idle, il terminale spegne quasi interamente la circuiteria radio e si risveglia solo per pochi millisecondi a intervalli regolari (es. ogni 1.28 s) per ascoltare il canale di Paging. Senza DRX la batteria dello smartphone si scaricherebbe in poche ore.",
+        "node": "Ricezione Discontinua (DRX) in Idle",
+        "note": "Lezione 09 22 marzo - 11 - Terminale registrato e idle - tracking area e contesto NAS",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il periodo di DRX è negoziato con la rete durante l'Attach.",
+        "difficolta": 1,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_008",
+        "front": "Quale ruolo svolge il Serving Gateway (S-GW) quando il terminale si trova in ECM-IDLE?",
+        "back": "Mantiene attivo il tunnel S5 verso il P-GW conservando l'indirizzo IP del terminale. Quando arrivano pacchetti downlink da Internet, il S-GW rileva l'assenza del tunnel S1 verso l'antenna, bufferizza i pacchetti e invia la Downlink Data Notification all'MME.",
+        "node": "Ruolo di Ancora del S-GW in Idle",
+        "note": "Lezione 09 22 marzo - 15 - Oscillazione tra attivo e idle e ruolo di ancora del S-GW",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Evita che il P-GW debba occuparsi degli stati di riposo dei singoli terminali radio.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_009",
+        "front": "Cosa contiene il messaggio Downlink Data Notification (DDN) inviato dal S-GW all'MME?",
+        "back": "Notifica all'MME che ci sono dati utente in attesa di consegna per un terminale attualmente in Idle. Include l'identificativo del bearer e la priorità del traffico per permettere all'MME di attivare la procedura di Paging.",
+        "node": "Downlink Data Notification (DDN)",
+        "note": "Lezione 09 22 marzo - 12 - Indirizzo IP conservato, messaggi entranti e paging",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Se l'MME rifiuta o il terminale non risponde al paging, il buffer del S-GW viene svuotato.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_010",
+        "front": "Perché il messaggio di Paging viene diffuso in tutta la Tracking Area e non in tutta la rete né in una sola cella?",
+        "back": "In tutta la rete saturerebbe inutilmente la capacità radio dell'operatore; in una singola cella fallirebbe perché la rete in Idle non conosce la cella dell'utente. La Tracking Area rappresenta il compromesso ottimale tra traffico di segnalazione e consumo energetico.",
+        "node": "Ambito di Diffusione del Paging",
+        "note": "Lezione 08 17 marzo - 06 - Mobilita attiva e idle - confronto tra EMM RRC ECM",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Tutti gli eNodeB della Tracking Area irradiano il Paging in contemporanea.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_011",
+        "front": "Come risponde il terminale alla ricezione di un messaggio di Paging a lui indirizzato?",
+        "back": "Esegue l'accesso casuale su PRACH per ottenere la sincronizzazione e invia un messaggio NAS di Service Request all'MME. L'MME riattiva il contesto, l'eNodeB ristabilisce il Data Radio Bearer e il S-GW consegna i pacchetti bufferizzati.",
+        "node": "Service Request",
+        "note": "Lezione 09 22 marzo - 14 - Transizioni tra registrazione, attivita, inattivita e perdita radio",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il terminale passa istantaneamente da ECM-IDLE a ECM-CONNECTED.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_012",
+        "front": "Che cos'è il CQI (Channel Quality Indicator) e come viene utilizzato dallo scheduler dell'eNodeB?",
+        "back": "È un indice da 1 a 15 calcolato dall'UE misurando il rapporto SINR sui segnali di riferimento CRS. Indica all'eNodeB quale schema di modulazione e codifica (MCS) il canale è in grado di sostenere con un BLER massimo del 10%.",
+        "node": "Feedback CQI nello Scheduling Downlink",
+        "note": "Lezione 09 22 marzo - 16 - Scheduling downlink - misure, MCS, DCI e riscontri",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "CQI alto (es. 15) abilita 64-QAM con poco codice; CQI basso impone QPSK molto robusta.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_013",
+        "front": "A cosa serve il Buffer Status Report (BSR) inviato dal terminale all'eNodeB?",
+        "back": "Informa l'eNodeB della quantità precisa di dati (suddivisa per classi di priorità LCG) presente nei buffer di trasmissione del terminale in attesa di essere inviata in uplink.",
+        "node": "Buffer Status Report (BSR) in Uplink",
+        "note": "Lezione 09 22 marzo - 17 - Scheduling uplink - richiesta preliminare, grant e dati",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Senza BSR l'eNodeB non saprebbe quante risorse radio concedere all'utente in uplink.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_014",
+        "front": "Qual è il difetto del routing triangolare rispetto al routing diretto nella mobilità IP?",
+        "back": "Nel routing triangolare tutti i pacchetti devono obbligatoriamente transitare per la rete di casa (Home Agent/P-GW) prima di raggiungere la rete visitata, introducendo ritardo e inefficienza di percorso (tromboning). Il routing diretto va direttamente al corrispondente ma richiede supporto client.",
+        "node": "Routing Triangolare vs Diretto nella Mobilità",
+        "note": "Lezione 09 22 marzo - 22 e 23 - Modello di mobilita triangolare e diretto",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "LTE adotta comunque l'instradamento verso la rete domestica per ragioni di tariffazione e policy.",
+        "difficolta": 3,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_015",
+        "front": "Quali nodi collega l'interfaccia S8 nel Roaming internazionale Home-Routed?",
+        "back": "Collega il Serving Gateway (S-GW) situato nella rete estera visitata (V-PLMN) al Packet Gateway (P-GW) situato nella rete domestica nazionale dell'abbonato (H-PLMN), trasportando sia il controllo GTP-C che i dati GTP-U.",
+        "node": "Interfaccia S8 nel Roaming Home-Routed",
+        "note": "Lezione 09 22 marzo - 24 - Roaming LTE home-routed - MME visitato e P-GW domestico",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "È la variante inter-operatore dell'interfaccia S5 con requisiti di sicurezza rafforzati.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_016",
+        "front": "Cosa misurano rispettivamente RSRP ed RSRQ inviati nei Measurement Reports per l'handover?",
+        "back": "RSRP (Reference Signal Received Power) misura la potenza media lineare del singolo segnale di riferimento (copertura della cella); RSRQ (Reference Signal Received Quality) misura il rapporto tra potenza utile e interferenza totale (qualità del segnale).",
+        "node": "Misure RSRP ed RSRQ per l'Handover",
+        "note": "Lezione 09 22 marzo - 27 - Misure delle celle candidate e decisione di handover",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'eNodeB usa entrambi i parametri per decidere se innescare l'handover.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_017",
+        "front": "Perché l'eNodeB target assegna un preambolo radio dedicato nella Handover Request Acknowledge?",
+        "back": "Perché consente al terminale di effettuare l'accesso sulla nuova cella target senza contesa (contention-free), eliminando il rischio di collisioni su PRACH e rendendo la transizione radio quasi istantanea.",
+        "node": "Assegnazione Preambolo Dedicato nell'Handover",
+        "note": "Lezione 09 22 marzo - 28 - Preparazione del target e accesso senza contesa",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Il preambolo dedicato è riservato a quel singolo terminale per un intervallo di tempo limitato.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_018",
+        "front": "Come funziona il Packet Forwarding su interfaccia X2 durante l'handover?",
+        "back": "Mentre il terminale si risintonizza sulla nuova frequenza, la vecchia antenna (sorgente) riceve ancora i pacchetti downlink dal S-GW: anziché scartarli, li re-incapsula in un tunnel GTP-U provvisorio e li spedisce via cavo X2 alla nuova antenna (target).",
+        "node": "Data Forwarding su Interfaccia X2",
+        "note": "Lezione 09 22 marzo - 30 - Forwarding temporaneo tra sorgente e target",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "La nuova antenna memorizza i pacchetti e li trasmette al terminale non appena agganciato.",
+        "difficolta": 3,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_019",
+        "front": "A cosa serve il pacchetto speciale 'End Marker' inviato dal S-GW durante il Path Switch?",
+        "back": "Viene inviato dal S-GW sul vecchio tunnel verso l'eNodeB sorgente come ultimo pacchetto prima di commutare il flusso sul nuovo tunnel. La vecchia antenna lo inoltra via X2 alla nuova antenna: quando il target riceve l'End Marker, sa che i pacchetti vecchi sono terminati.",
+        "node": "Pacchetto End Marker nel Path Switch",
+        "note": "Lezione 09 22 marzo - 31 - Path switch - aggiornamento tramite MME e nuovi endpoint",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "Garantisce la consegna rigorosamente ordinata dei pacchetti IP all'utente.",
+        "difficolta": 3,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      },
+      {
+        "id": "lte_piano_utente_stati_roaming_handover_020",
+        "front": "In quale circostanza si esegue un Handover via interfaccia S1 anziché via interfaccia X2?",
+        "back": "Si esegue quando l'interfaccia X2 diretta tra le due stazioni radio base non esiste, è temporaneamente guasta, oppure quando l'handover comporta anche il cambio dell'MME servente. In questo caso tutta la segnalazione e il forwarding transitano per l'MME e il core.",
+        "node": "Handover via Interfaccia S1",
+        "note": "Lezione 09 22 marzo - 32 - Rilascio degli stati vecchi e varianti senza X2 o con cambio MME",
+        "image": "",
+        "image_side": "nessuno",
+        "extra": "L'handover S1 è più lento dell'handover X2 a causa dell'overhead di segnalazione nella rete centrale.",
+        "difficolta": 2,
+        "topic": "lte_piano_utente_stati_roaming_handover"
+      }
+    ],
+    "count": 20
   },
   {
     "topic_id": "5g_nr_core",
-    "topic_name": "7. 5G: New Radio, 5G Core, SBA, Slicing & Deployment",
+    "topic_name": "10. 5G: New Radio, 5G Core, SBA, Network Slicing e Deployment",
     "cards": [
       {
-        "id": "t7_01",
+        "id": "5g_nr_core_001",
+        "tipo": "Classificazione",
+        "node": "I Tre Casi d'Uso del 5G (Triangolo ITU)",
+        "front": "Quali sono i tre macro-scenari d'uso del 5G definiti dall'ITU e i loro rispettivi requisiti primari?",
+        "back": "Sono eMBB (Enhanced Mobile Broadband) per altissimi picchi di throughput (fino a 20 Gbps), URLLC (Ultra-Reliable Low-Latency Communication) per latenze inferiori a 1 ms e affidabilità al 99.999%, e mMTC (Massive Machine-Type Communication) per densità fino a 1 milione di dispositivi per km² a bassissimo consumo.",
+        "extra": "Definiti dallo standard ITU-R M.2083 come pilastri fondamentali della rete 5G NR.",
+        "tag": "5g nr itu embb urllc mmtc",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 1",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_002",
+        "tipo": "Confronto",
+        "node": "Bande di Frequenza FR1 vs FR2",
+        "front": "Qual è la differenza fondamentale tra le bande 5G FR1 ed FR2 in termini di frequenza e copertura?",
+        "back": "La FR1 (Sub-6 GHz, 410 MHz - 7.125 GHz) garantisce ampia copertura territoriale e penetrazione indoor con canali fino a 100 MHz. La FR2 (mmWave, 24.25 - 52.6 GHz) offre canali amplissimi (fino a 400 MHz) per throughput estremo a corto raggio, ma soffre di forte attenuazione atmosferica e ostacoli fisici.",
+        "extra": "FR2 richiede necessariamente beamforming analogico o ibrido per superare il severo path loss.",
+        "tag": "5g nr fr1 fr2 mmwave spettro",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 2.1",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_003",
+        "tipo": "Formula",
+        "node": "Numerologia Flessibile e Spaziatura Sottoportanti",
+        "front": "Come varia la spaziatura tra le sottoportanti in 5G NR e come si calcola rispetto a LTE?",
+        "back": "La spaziatura è scalabile secondo la legge: $$\\Delta f = 15 \\times 2^\\mu\\text{ kHz}, \\quad \\mu \\in \\{0, 1, 2, 3, 4\\}$$ Al crescere di $\\mu$, la durata dello slot si riduce ($1\\text{ ms}$ per $\\mu=0$, $0.125\\text{ ms}$ per $\\mu=3$), abbattendo la latenza radio.",
+        "extra": "In LTE mu era fisso a 0 (15 kHz con slot di 0.5 ms / subframe di 1 ms). In 5G con mu=3 lo slot dura 0.125 ms.",
+        "tag": "5g nr numerologia ofdm sottoportanti",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_004",
+        "tipo": "Causa-effetto",
+        "node": "Spaziatura Elevata nelle Onde Millimetriche",
+        "front": "Perché nelle bande ad onde millimetriche (FR2) è indispensabile adottare spaziatura tra sottoportanti elevata (es. 120 kHz)?",
+        "back": "Alle alte frequenze il rumore di fase dell'oscillatore locale e l'effetto Doppler sono molto più severi. Una maggiore spaziatura tra sottoportanti rende la trasmissione OFDM robusta contro l'interferenza inter-portante (ICI) provocata da tali scostamenti di frequenza.",
+        "extra": "A 28 o 39 GHz i 15 kHz dell'LTE provocherebbero un degrado inaccettabile della ricezione.",
+        "tag": "5g nr mmwave doppler rumore_fase ici",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_005",
+        "tipo": "Meccanismo",
+        "node": "Self-Contained Slot e TDD Dinamico",
+        "front": "Che cos'è la struttura di Self-Contained Slot in 5G NR e quale vantaggio introduce?",
+        "back": "È una struttura di slot in cui controllo di downlink, dati utente e controllo/riscontro di uplink (ACK/NACK HARQ) possono coesistere all'interno dello stesso singolo slot. Questo consente al terminale di riscontrare la trasmissione immediatamente, abbattendo la latenza di ritrasmissione a frazioni di millisecondo.",
+        "extra": "Supera la rigidità del frame LTE dove l'ACK HARQ richiedeva tipicamente 4 subframe.",
+        "tag": "5g nr slot self_contained tdd harq",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.3",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_006",
+        "tipo": "Funzione",
+        "node": "Mini-Slot per URLLC e Preemptive Scheduling",
+        "front": "Cosa sono i Mini-Slot in 5G NR e come consentono il supporto al traffico URLLC?",
+        "back": "I mini-slot sono unità di schedulazione radio composte da 2, 4 o 7 simboli OFDM (anziché i 14 simboli dello slot standard). Permettono una trasmissione immediata senza attendere i confini del normale slot, consentendo il preemptive scheduling (sovrascrittura istantanea) su trasmissioni eMBB già in corso.",
+        "extra": "Fondamentali per comunicazioni industriali, veicolari (V2X) e chirurgia remota.",
+        "tag": "5g nr urllc mini_slot scheduling",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.3",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_007",
+        "tipo": "Confronto",
+        "node": "Massive MIMO: Digital vs Hybrid Beamforming",
+        "front": "Qual è la differenza fondamentale tra Digital Beamforming e Hybrid Beamforming nei sistemi 5G Massive MIMO?",
+        "back": "Nel Digital Beamforming ogni singolo elemento d'antenna dispone di una catena RF e convertitore DAC/ADC dedicati, massimizzando la flessibilità ma con altissimo consumo. Nel Beamforming Ibrido/Analogico più antenne condividono la stessa catena RF mediante sfasatori analogici, riducendo drasticamente costi e complessità in FR2.",
+        "extra": "In FR1 si preferisce Digital Beamforming fino a 64 canali RF, in FR2 si impiega il Beamforming Ibrido.",
+        "tag": "5g nr massive_mimo beamforming rf",
+        "difficolta": 3,
+        "fonte": "Riassunto 5G - Sez. 2.4",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_008",
+        "tipo": "Procedura",
+        "node": "Beam Management (Sweeping, Measurement, Tracking)",
+        "front": "In quali fasi si articola la procedura di Beam Management tra gNodeB e terminale 5G?",
+        "back": "Si articola in Beam Sweeping (lo gNB trasmette blocchi SSB sequenzialmente su fasci spaziali diversi), Beam Measurement (lo UE misura RSRP su ciascun fascio), Beam Determination (selezione della coppia fascio migliore) e Beam Tracking/Refinement per correggere l'allineamento spaziale durante il movimento.",
+        "extra": "Gli Synchronization Signal Blocks (SSB) contengono PSS, SSS e PBCH trasmessi a spazzata d'antenna.",
+        "tag": "5g nr beam_management ssb beamforming",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.4",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_009",
+        "tipo": "Confronto",
+        "node": "Codici di Canale: Polar Codes vs LDPC",
+        "front": "Quali codici di correzione d'errore adotta 5G NR al posto dei codici Turbo di LTE?",
+        "back": "5G NR adotta i codici LDPC (Low-Density Parity-Check) per il canale dati condiviso ad altissimo throughput, e i Polar Codes per i canali di controllo radio (PDCCH e PUCCH) grazie alle eccellenti prestazioni su blocchi di payload ridotti.",
+        "extra": "I codici Turbo sono stati completamente abbandonati per limiti di parallelizzazione e decodifica ad alto bitrate.",
+        "tag": "5g nr ldpc polar_codes canale_radio",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.4",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_010",
+        "tipo": "Definizione",
+        "node": "Service-Based Architecture (SBA) del 5G Core",
+        "front": "Che cos'è la Service-Based Architecture (SBA) del 5G Core e quale paradigma adotta nel control plane?",
+        "back": "È l'architettura del piano di controllo in cui le Network Functions (NF) comunicano tramite un bus di servizi software interoperabile basato su protocollo HTTP/2 con API RESTful e serializzazione JSON, abbandonando i protocolli punto-punto come Diameter.",
+        "extra": "Ogni NF agisce come Service Producer e Service Consumer secondo il paradigma web-based microservices.",
+        "tag": "5gc sba http2 rest json architettura",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 3.1",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_011",
+        "tipo": "Funzione",
+        "node": "Ruolo della Funzione NRF (Network Repository Function)",
+        "front": "Qual è la funzione fondamentale della NRF (Network Repository Function) nella rete 5G Core?",
+        "back": "La NRF funge da registro centralizzato di tutti i servizi: le NF vi registrano il proprio profilo, indirizzo IP e capacità all'avvio, e le altre NF interrogano la NRF per individuare (service discovery) istanze ottimali dei microservizi necessari.",
+        "extra": "Equivalente al Service Registry nei pattern cloud-native (es. Consul o Eureka).",
+        "tag": "5gc nrf service_discovery sba microservizi",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.1",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_012",
+        "tipo": "Funzione",
+        "node": "AMF (Access and Mobility Management Function)",
+        "front": "Quali responsabilità gestisce la funzione AMF nel 5GC e quale porzione della vecchia MME 4G eredita?",
+        "back": "L'AMF gestisce la terminazione della segnalazione NAS, l'autenticazione iniziale, la gestione della registrazione, la mobilità e il paging del terminale. Non gestisce invece la sessione dati IP, che è stata completamente delegata alla SMF.",
+        "extra": "L'MME di LTE univa mobilità e sessione; in 5G queste funzioni sono rigidamente separate.",
+        "tag": "5gc amf mme mobilita segnalazione nas",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 3.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_013",
+        "tipo": "Funzione",
+        "node": "SMF (Session Management Function)",
+        "front": "Qual è il compito primario della SMF (Session Management Function) nel 5G Core?",
+        "back": "La SMF gestisce il ciclo di vita delle sessioni dati PDU (Protocol Data Unit), alloca gli indirizzi IP ai terminali, seleziona e configura la funzione del piano utente (UPF) tramite protocollo N4/PFCP e controlla la Quality of Service.",
+        "extra": "Controlla le regole di inoltro pacchetti applicate dall'UPF senza mai toccare il traffico dati direttamente.",
+        "tag": "5gc smf sessione pdu cups pfcp",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_014",
+        "tipo": "Funzione",
+        "node": "UPF (User Plane Function) ed Edge Computing",
+        "front": "Quali ruoli svolge la UPF (User Plane Function) e perché abilita il Multi-Access Edge Computing (MEC)?",
+        "back": "L'UPF è l'unico elemento del 5GC dedicato al piano utente: esegue incapsulamento GTP-U, routing, commutazione, ispezione pacchetti e conteggio traffico. Essendo disaccoppiata e stateless, può essere decentralizzata vicino alle celle radio per elaborazione locale a latenza sub-millisecondo.",
+        "extra": "Sostituisce le porzioni user-plane di S-GW e P-GW (SGW-U e PGW-U).",
+        "tag": "5gc upf user_plane mec edge_computing gtp",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_015",
+        "tipo": "Confronto",
+        "node": "UDM ed AUSF vs HSS del 4G",
+        "front": "Come viene suddiviso il database utenti HSS di LTE nel 5G Core tra le funzioni UDM e AUSF?",
+        "back": "La UDM (Unified Data Management) memorizza i profili di sottoscrizione, credenziali e logica di gestione dati utente, mentre l'AUSF (Authentication Server Function) esegue specificamente gli algoritmi di autenticazione e mutua verifica di sicurezza (5G-AKA o EAP-AKA').",
+        "extra": "Consente di separare l'esecuzione crittografica dall'archiviazione del database sottoscrittori.",
+        "tag": "5gc udm ausf hss sicurezza 5g_aka",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_016",
+        "tipo": "Definizione",
+        "node": "Network Slicing End-to-End",
+        "front": "Che cos'è il Network Slicing nel 5G e su quali livelli della rete si estende?",
+        "back": "È la capacità di istanziare molteplici reti logiche virtualizzate, indipendenti e isolate, sopra una medesima infrastruttura fisica condivisa. Si estende end-to-end coinvolgendo risorse radio (RAN), rete di trasporto e funzioni del 5G Core.",
+        "extra": "Permette di soddisfare contemporaneamente SLA radicalmente opposti (es. slice eMBB per streaming e slice URLLC per veicoli autonomi).",
+        "tag": "5g network_slicing sla isolamento virtualizzazione",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 4.1",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_017",
+        "tipo": "Classificazione",
+        "node": "Identificatore S-NSSAI (SST e SD)",
+        "front": "Da quali componenti è formato l'identificatore S-NSSAI di una slice di rete e cosa rappresentano?",
+        "back": "È composto dal SST (Slice/Service Type, 8 bit) che definisce il comportamento atteso in termini di funzioni e servizi (es. 1=eMBB, 2=URLLC, 3=mMTC), e dal SD opzionale (Slice Differentiator, 24 bit) che distingue slice con lo stesso SST gestite per clienti o tenant differenti.",
+        "extra": "L'insieme delle slice ammesse per un UE forma la lista NSSAI (Network Slice Selection Assistance Information).",
+        "tag": "5g network_slicing s_nssai sst sd tenant",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 4.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_018",
+        "tipo": "Funzione",
+        "node": "Funzione NSSF (Network Slice Selection Function)",
+        "front": "Qual è il compito della funzione NSSF (Network Slice Selection Function) durante la registrazione?",
+        "back": "La NSSF riceve dall'AMF le richieste di slice del terminale, verifica l'autorizzazione dell'abbonato e seleziona il set di Network Slice Instances (NSI) autorizzate, indicando l'insieme di AMF e NF idonee a servire il dispositivo.",
+        "extra": "Interviene all'atto della procedura di registrazione per instradare l'UE verso l'AMF competente.",
+        "tag": "5gc nssf slicing registrazione amf",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 4.2",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_019",
+        "tipo": "Confronto",
+        "node": "Deployment 5G: Standalone (SA) vs Non-Standalone (NSA)",
+        "front": "Qual è la differenza architetturale fondamentale tra il deployment 5G Standalone (SA) e Non-Standalone (NSA)?",
+        "back": "Nel 5G Standalone (Opzione 2) la stazione radio gNB si interfaccia direttamente con il nuovo 5G Core (5GC), consentendo slicing nativo e SBA. Nel 5G Non-Standalone (Opzione 3x) la cella NR opera come estensione di una portante LTE di ancoraggio collegata al vecchio EPC 4G.",
+        "extra": "NSA permette un rollout rapido del 5G su infrastruttura 4G esistente, ma impedisce il Network Slicing end-to-end completo.",
+        "tag": "5g deployment sa nsa opzione2 opzione3x epc",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 5",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_020",
+        "tipo": "Meccanismo",
+        "node": "EN-DC (E-UTRA-NR Dual Connectivity) in Opzione 3x",
+        "front": "Come funziona l'architettura EN-DC (Opzione 3x) e dove avviene la separazione del traffico dati?",
+        "back": "Nel meccanismo EN-DC lo UE comunica contemporaneamente con un eNodeB (Master Node, ancora di controllo RRC) e un gNodeB (Secondary Node). Nell'Opzione 3x il tunnel dati S1-U dell'EPC termina direttamente sul gNodeB, che invia i dati ad altissimo bitrate su 5G NR e splitta una frazione via interfaccia X2 verso l'eNodeB.",
+        "extra": "Evita che il pesante traffico dati 5G intasi la capacità di elaborazione del vecchio eNodeB 4G.",
+        "tag": "5g nsa en_dc dual_connectivity opzione3x split_bearer",
+        "difficolta": 3,
+        "fonte": "Riassunto 5G - Sez. 5",
+        "topic": "5g_nr_core"
+      },
+      {
+        "id": "5g_nr_core_021",
         "front": "Quali sono i tre macro-scenari applicativi definiti dall'ITU per il 5G (IMT-2020)?",
         "back": "1. **eMBB (Enhanced Mobile Broadband)**: velocità estreme (picco 20 Gbps, 100 Mbps garantiti) e altissima capacità d'area per streaming 8K e VR/AR.\n2. **URLLC (Ultra-Reliable Low-Latency Communication)**: latenza radio ultra-bassa ($\\le 1 \\text{ ms}$) e affidabilità estrema ($99.999\\%$) per guida autonoma, telechirurgia e Industria 4.0.\n3. **mMTC (massive Machine-Type Communications)**: densità di $10^6 \\text{ disp/km}^2$, batterie $> 10$ anni e basso costo per smart metering e sensoristica diffusa.",
         "node": "I 3 Pilastri ITU (IMT-2020)",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_02",
-        "front": "Qual è la differenza fondamentale tra le bande 5G FR1 ed FR2?",
-        "back": "* **FR1 (Sub-6 GHz, da 410 MHz a 7.125 GHz)**: ottima propagazione e copertura geografica estesa; canali radio fino a 100 MHz; spaziatura sottoportanti $\\Delta f = 15, 30, 60 \\text{ kHz}$. Include la \"golden band\" dei 3.5 GHz per l'eMBB primario.\n* **FR2 (mmWave, onde millimetriche da 24.25 GHz a 52.6 GHz)**: canali enormi fino a 400 MHz per velocità gigabit estreme; attenuazione elevatissima (assorbimento da muri e pioggia); raggio di cella ridotto a centinaia di metri; spaziatura sottoportanti $\\Delta f = 60, 120 \\text{ kHz}$.",
-        "node": "Bande FR1 vs FR2 mmWave",
-        "note": "01 Introduzione 5G"
-      },
-      {
-        "id": "t7_03",
+        "id": "5g_nr_core_022",
         "front": "Come si definisce la Numerologia Flessibile del 5G NR e come si calcola Delta f?",
         "back": "La spaziatura tra le sottoportanti OFDM è scalabile con l'indice $\\mu \\in \\{0, 1, 2, 3, 4\\}$:\n$$\\Delta f = 15 \\cdot 2^\\mu \\text{ kHz}$$\n* $\\mu = 0 \\implies 15 \\text{ kHz}$ ($T_{slot} = 1.0 \\text{ ms}$)\n* $\\mu = 1 \\implies 30 \\text{ kHz}$ ($T_{slot} = 0.5 \\text{ ms}$)\n* $\\mu = 2 \\implies 60 \\text{ kHz}$ ($T_{slot} = 0.25 \\text{ ms}$)\n* $\\mu = 3 \\implies 120 \\text{ kHz}$ ($T_{slot} = 0.125 \\text{ ms} = 125 \\ \\mu\\text{s}$)\nCiascun slot contiene sempre **14 simboli OFDM**: aumentando $\\mu$ lo slot si accorcia, abbattendo la latenza radio.",
         "node": "Numerologia Flessibile 5G",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_04",
+        "id": "5g_nr_core_023",
         "front": "Perché nelle bande millimetriche (FR2) è obbligatorio adottare una spaziatura Delta f elevata (es. 120 kHz)?",
         "back": "1. **Rumore di Fase (*Phase Noise*)**: alle altissime frequenze ($28 \\div 39 \\text{ GHz}$), gli oscillatori locali presentano forte rumore di fase. Una spaziatura ridotta (15 kHz) verrebbe distrutta dall'ICI, mentre spaziature ampie ($120 \\text{ kHz}$) tollerano il rumore di fase.\n2. **Shift Doppler elevato**: lo spostamento Doppler è proporzionale a $f_c$ ($f_d \\propto f_c$). A 28 GHz un veicolo a 100 km/h genera oltre 2.5 kHz di Doppler, insostenibile a 15 kHz ma trascurabile a 120 kHz.",
         "node": "Perché Delta f grande in mmWave",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_05",
+        "id": "5g_nr_core_024",
         "front": "Cosa sono i Self-Contained Slot e i Mini-Slot in 5G NR e a cosa servono?",
         "back": "* **Self-Contained Slot**: all'interno dello stesso slot da 14 simboli coesistono il grant di controllo in DL, la trasmissione dati e la risposta ACK/NACK in UL, consentendo un riscontro HARQ immediato senza attendere i subframe successivi.\n* **Mini-Slot (da 2, 4 o 7 simboli)**: permettono di trasmettere dati immediatamente senza attendere l'inizio del prossimo boundary di slot standard. Possono eseguire la **preemption** (prelazione immediata) su trasmissioni eMBB in corso per soddisfare la latenza $< 1 \\text{ ms}$ del traffico critico **URLLC**.",
         "node": "Self-Contained & Mini-Slot",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_06",
+        "id": "5g_nr_core_025",
         "front": "Che cos'è il Beam Management in 5G NR e in quali 4 fasi si articola?",
         "back": "Nelle bande millimetriche il collegamento radio necessita di fasci stretti e direttivi per superare l'attenuazione. Il Beam Management identifica e traccia il miglior fascio tra gNodeB e UE tramite:\n1. **Beam Sweeping**: il gNodeB irradia periodicamente i blocchi SSB coprendo l'intero settore angolare a ventaglio.\n2. **Beam Measurement**: l'UE misura la potenza RSRP sui diversi fasci ricevuti.\n3. **Beam Determination**: selezione della coppia di fasci trasmettitore/ricevitore ottimale.\n4. **Beam Recovery (BFR)**: procedura rapida per recuperare il collegamento in caso di improvviso ostacolo (*Beam Failure*).",
         "node": "Beam Management & Sweeping",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_07",
+        "id": "5g_nr_core_026",
         "front": "Come funziona la Service-Based Architecture (SBA) della Core Network 5G (5GC)?",
         "back": "Nel Piano di Controllo, le funzioni di rete (**Network Functions - NF**) non usano più protocolli telecom rigidi punto-punto (GTP-C/Diameter), ma operano come **microservizi software virtualizzati** che comunicano tramite **API RESTful su HTTP/2 con messaggi JSON**.\nUn'entità dedicata, l'**NRF (Network Repository Function)**, funge da registro centrale per la registrazione e la scoperta dinamica dei servizi (*Service Discovery*).",
         "node": "Service-Based Architecture (SBA)",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_08",
+        "id": "5g_nr_core_027",
         "front": "Quali sono le principali Network Function (NF) della 5GC e i loro ruoli?",
         "back": "* **AMF (Access and Mobility Management Function)**: gestisce autenticazione e mobilità dell'UE (eredita il ruolo dell'MME nel controllo).\n* **SMF (Session Management Function)**: governa le sessioni dati (PDU Sessions), alloca gli IP e controlla l'UPF tramite protocollo PFCP.\n* **UPF (User Plane Function)**: **l'unico nodo del Piano Utente** (fonde S-GW e P-GW). Instrada pacchetti IP e applica la QoS; può essere posizionato all'estremo bordo (**Edge Computing / MEC**) per la latenza sub-millisecondo.\n* **UDM / UDR**: gestione e database credenziali e profili abbonamento (evoluzione HSS).\n* **NSSF (Network Slice Selection Function)**: seleziona le slice per l'UE in base all'S-NSSAI.",
         "node": "Network Functions 5GC (AMF, SMF, UPF)",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_09",
+        "id": "5g_nr_core_028",
         "front": "Che cos'è il Network Slicing e come viene identificata una Slice (S-NSSAI)?",
         "back": "È la capacità di creare molteplici **reti logiche virtuali end-to-end, isolate e indipendenti**, che coesistono sulla medesima infrastruttura fisica per servire contemporaneamente e senza interferenze requisiti contrastanti (eMBB, URLLC, mMTC).\nOgni slice è identificata globalmente dall'etichetta **S-NSSAI**, composta da:\n* **SST (Slice/Service Type)**: tipo di servizio standardizzato ($1 = \\text{eMBB}$, $2 = \\text{URLLC}$, $3 = \\text{mMTC}$, $4 = \\text{V2X}$).\n* **SD (Slice Differentiator)**: valore opzionale a 24 bit per partizionare slice dello stesso tipo tra diversi clienti/operatori virtuali.",
         "node": "Network Slicing & S-NSSAI",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       },
       {
-        "id": "t7_10",
+        "id": "5g_nr_core_029",
         "front": "Qual è la differenza tra le opzioni di deployment 5G Standalone (SA) e Non-Standalone (NSA)?",
         "back": "* **Non-Standalone (NSA - Opzione 3x)**: si appoggia all'infrastruttura 4G esistente. Il terminale usa la **Dual Connectivity (EN-DC)** ancorando il piano di controllo all'eNodeB LTE e alla Core Network **EPC**. Il gNodeB 5G funge solo da acceleratore di banda dati per il piano utente.\n* **Standalone (SA - Opzione 2)**: è l'architettura 5G pura e autonoma. Il terminale si connette direttamente al **gNodeB 5G NR**, che è collegato alla nuova **Core Network 5GC (SBA)**. È l'unica modalità che abilita nativamente il vero Network Slicing end-to-end e la latenza ultra-bassa di URLLC.",
         "node": "Deployment Standalone (SA) vs Non-Standalone (NSA)",
-        "note": "01 Introduzione 5G"
+        "note": "01 Introduzione 5G",
+        "topic": "5g_nr_core"
       }
-    ]
+    ],
+    "count": 29
   }
 ];
