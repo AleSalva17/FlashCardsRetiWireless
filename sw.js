@@ -1,12 +1,12 @@
-const CACHE_NAME = 'flashcards-rw-v12';
+const CACHE_NAME = 'flashcards-rw-v13';
 const ASSETS = [
   './',
   './index.html',
-  './topics.js?v=12',
-  './exercises.js?v=12',
-  './questions.js?v=12',
-  './formulas.js?v=12',
-  './summaries.js?v=12',
+  './topics.js?v=13',
+  './exercises.js?v=13',
+  './questions.js?v=13',
+  './formulas.js?v=13',
+  './summaries.js?v=13',
   './manifest.json',
   './images/maps/DimensionamentoDellaCella.svg',
   './images/maps/RetiCellulari.svg',

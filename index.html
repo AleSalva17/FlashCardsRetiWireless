@@ -1673,12 +1673,18 @@
         <h2 class="setup-title">Ripasso per Argomenti</h2>
         <p class="setup-desc">Seleziona uno o più argomenti per avviare l'esercitazione con flashcard teoriche e formule.</p>
 
-        <div class="section-label">
+        <div class="section-label" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <span>Argomenti</span>
-          <label style="cursor: pointer; color: var(--accent); font-size: 12px; text-transform: none;">
-            + Importa JSON
-            <input type="file" id="importJsonInput" accept=".json" style="display: none;" onchange="importCustomJson(event)">
-          </label>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button type="button" onclick="toggleSelectAllTopics(true)" style="background: none; border: none; color: var(--accent); font-size: 12px; font-weight: 600; cursor: pointer; padding: 0;">Tutti</button>
+            <span style="color: var(--surface-border); font-size: 12px;">|</span>
+            <button type="button" onclick="toggleSelectAllTopics(false)" style="background: none; border: none; color: var(--text-muted); font-size: 12px; font-weight: 600; cursor: pointer; padding: 0;">Nessuno</button>
+            <span style="color: var(--surface-border); font-size: 12px;">|</span>
+            <label style="cursor: pointer; color: var(--accent); font-size: 12px; text-transform: none;">
+              + Importa JSON
+              <input type="file" id="importJsonInput" accept=".json" style="display: none;" onchange="importCustomJson(event)">
+            </label>
+          </div>
         </div>
         
         <div class="topics-grid" id="topicsContainer">
@@ -1998,11 +2004,11 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=12"></script>
-  <script src="exercises.js?v=12"></script>
-  <script src="questions.js?v=12"></script>
-  <script src="formulas.js?v=12"></script>
-  <script src="summaries.js?v=12"></script>
+  <script src="topics.js?v=13"></script>
+  <script src="exercises.js?v=13"></script>
+  <script src="questions.js?v=13"></script>
+  <script src="formulas.js?v=13"></script>
+  <script src="summaries.js?v=13"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -2044,7 +2050,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_5g_v12";
+      const DATASET_VERSION = "reticellulari_lte_5g_v13";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -2056,7 +2062,7 @@
       setupTouchGestures();
       initSyncSettings();
       // Se avviato da Telegram, esegui auto-pull iniziale da CloudStorage
-      if (tg?.CloudStorage) {
+      if (tg?.CloudStorage && tg?.isVersionAtLeast && tg.isVersionAtLeast('6.9')) {
         document.getElementById('telegramSyncBox').style.display = 'block';
         await autoPullTelegramCloud();
       }
@@ -2104,7 +2110,7 @@
 
     // TELEGRAM CLOUD STORAGE
     async function autoPullTelegramCloud() {
-      if (!tg?.CloudStorage) return;
+      if (!tg?.CloudStorage || !tg?.isVersionAtLeast || !tg.isVersionAtLeast('6.9')) return;
       tg.CloudStorage.getItem('rw_sync_data', (err, val) => {
         if (!err && val) {
           try {
@@ -2127,8 +2133,8 @@
     }
 
     async function syncWithTelegram(manual = false) {
-      if (!tg?.CloudStorage) {
-        if (manual) alert("Telegram WebApp CloudStorage non disponibile (apri l'app dentro Telegram).");
+      if (!tg?.CloudStorage || !tg?.isVersionAtLeast || !tg.isVersionAtLeast('6.9')) {
+        if (manual) alert("Telegram WebApp CloudStorage non disponibile (apri l'app dentro Telegram con versione >= 6.9).");
         return;
       }
       const revData = getReviewData();
@@ -2319,7 +2325,7 @@
       container.innerHTML = '';
       allTopics.forEach(t => {
         const item = document.createElement('div');
-        item.className = 'topic-item selected';
+        item.className = 'topic-item'; // Non selezionato all'avvio
         item.id = `topic-${t.topic_id}`;
         item.onclick = (e) => {
           const cb = item.querySelector('input');
@@ -2331,7 +2337,7 @@
 
         item.innerHTML = `
           <div class="topic-info">
-            <input type="checkbox" class="topic-checkbox" checked>
+            <input type="checkbox" class="topic-checkbox">
             <div class="topic-name">${t.topic_name}</div>
           </div>
           <div class="topic-count">${t.count} card</div>
@@ -2339,6 +2345,19 @@
         container.appendChild(item);
       });
       updateSliderRange();
+    }
+
+    function toggleSelectAllTopics(selectAll) {
+      allTopics.forEach(t => {
+        const el = document.getElementById(`topic-${t.topic_id}`);
+        if (el) {
+          const cb = el.querySelector('input');
+          if (cb) cb.checked = selectAll;
+          el.classList.toggle('selected', selectAll);
+        }
+      });
+      updateSliderRange();
+      triggerHaptic('light');
     }
 
     function getSelectedTopics() {
@@ -2363,9 +2382,10 @@
         updateSliderVal(0);
         btn.disabled = true;
       } else {
+        const prevVal = parseInt(slider.value) || 0;
         slider.min = 1;
         slider.max = totalAvailable;
-        if (parseInt(slider.value) > totalAvailable || parseInt(slider.value) === 0) {
+        if (prevVal > totalAvailable || prevVal <= 0) {
           slider.value = totalAvailable;
         }
         updateSliderVal(slider.value);
@@ -2393,7 +2413,10 @@
 
       const count = parseInt(document.getElementById('cardSlider').value);
       sessionCards = pool.slice(0, count);
-      if (sessionCards.length === 0) return;
+      if (sessionCards.length === 0) {
+        alert("Seleziona almeno un argomento per avviare l'esercitazione!");
+        return;
+      }
 
       currentIndex = 0;
       cardResults = {};
