@@ -405,6 +405,21 @@
       line-height: 1.6;
       color: #e2e8f0;
     }
+    .card-img-container {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .card-img-container img {
+      max-width: 100%;
+      max-height: 140px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--surface-border);
+      padding: 4px;
+    }
     .card-footer {
       display: flex;
       align-items: center;
@@ -927,6 +942,13 @@
     const STORAGE_KEY_GH_GIST = "rw_flashcards_gh_gist";
 
     async function init() {
+      // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
+      const DATASET_VERSION = "reticellulari_2026_v1";
+      if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
+        localStorage.removeItem(STORAGE_KEY_TOPICS);
+        localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
+      }
+
       loadTopics();
       updateHeaderBadge();
       setupTouchGestures();
@@ -1286,6 +1308,16 @@
       window.scrollTo(0, 0);
     }
 
+    function formatCardSide(text, image, imageSide, currentSide) {
+      let html = '';
+      if (image && imageSide === currentSide) {
+        html += `<div class="card-img-container"><img src="images/${image}" alt="figura/formula"></div>`;
+      }
+      let clean = (text || '').replace(/!\[\[(.*?)\]\](<br>)?/g, '').trim();
+      html += `<div>${clean.replace(/\n/g, '<br>')}</div>`;
+      return html;
+    }
+
     function renderCard() {
       const card = sessionCards[currentIndex];
       const cardEl = document.getElementById('cardElement');
@@ -1295,8 +1327,8 @@
       document.getElementById('currentTopicPill').textContent = card.topicName;
       document.getElementById('progressBar').style.width = `${((currentIndex + 1) / sessionCards.length) * 100}%`;
 
-      document.getElementById('cardFrontText').textContent = card.front;
-      document.getElementById('cardBackText').textContent = card.back;
+      document.getElementById('cardFrontText').innerHTML = formatCardSide(card.front, card.image, card.image_side, 'fronte');
+      document.getElementById('cardBackText').innerHTML = formatCardSide(card.back, card.image, card.image_side, 'retro');
       document.getElementById('cardNodeLabel').textContent = card.node ? `📍 ${card.node}` : '';
       document.getElementById('cardNoteLink').textContent = card.note ? `Nota: [[${card.note}]]` : '';
 
