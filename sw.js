@@ -1,15 +1,20 @@
-const CACHE_NAME = 'flashcards-rw-v7';
+const CACHE_NAME = 'flashcards-rw-v8';
 const ASSETS = [
   './',
   './index.html',
-  './topics.js?v=7',
-  './exercises.js?v=7',
-  './formulas.js?v=7',
-  './summaries.js?v=7',
+  './topics.js?v=8',
+  './exercises.js?v=8',
+  './formulas.js?v=8',
+  './summaries.js?v=8',
   './manifest.json',
   './images/maps/DimensionamentoDellaCella.svg',
   './images/maps/RetiCellulari.svg',
-  './images/maps/LTE.svg'
+  './images/maps/LTE.svg',
+  './images/maps/Riassunto_5G.svg',
+  './images/maps/Riassunto_LTE_17_22_Marzo.svg',
+  './notes/Riassunto_5G.md',
+  './notes/Riassunto_LTE_17_22_Marzo.md',
+  './notes/Formulario_Reti_Wireless.md'
 ];
 
 self.addEventListener('install', (e) => {
@@ -32,15 +37,16 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
-// Network-First strategy per file HTML, JS, JSON e SVG (così gli aggiornamenti si riflettono subito)
+// Network-First strategy per file HTML, JS, JSON, SVG e MD (così gli aggiornamenti si riflettono subito)
 // Cache-First di supporto solo se offline
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   const isDynamicAsset = e.request.mode === 'navigate' || 
                          url.pathname.endsWith('.html') || 
                          url.pathname.endsWith('.js') || 
-                         url.pathname.endsWith('.json') ||
+                         url.pathname.endsWith('.json') || 
                          url.pathname.endsWith('.svg') ||
+                         url.pathname.endsWith('.md') ||
                          url.pathname === '/' ||
                          url.pathname.endsWith('/');
 

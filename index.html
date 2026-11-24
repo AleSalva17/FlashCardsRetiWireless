@@ -1247,6 +1247,144 @@
       margin-top: 8px;
       text-align: center;
     }
+  
+    /* Review Action Toolbar & Enhanced Reader Preview (v8) */
+    .review-action-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding: 12px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      align-items: center;
+    }
+    .review-action-btn {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      border-radius: 6px;
+      padding: 7px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .review-action-btn:hover {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.15);
+      color: #fff;
+    }
+    .review-action-btn.primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .review-action-btn.primary:hover {
+      background: #2563eb;
+    }
+
+    /* Enhanced Reader Preview Typography */
+    .doc-main-header {
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--surface-border);
+      padding-bottom: 12px;
+    }
+    .doc-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: #fff;
+      margin: 0;
+      line-height: 1.35;
+    }
+    .doc-section-card {
+      background: #131b28;
+      border: 1px solid #243247;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+    .doc-section-header {
+      background: #182335;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #243247;
+    }
+    .doc-sec-icon {
+      font-size: 16px;
+    }
+    .doc-sec-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #60a5fa;
+      margin: 0;
+    }
+    .doc-section-body {
+      padding: 18px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #e2e8f0;
+    }
+    .doc-sub-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #38bdf8;
+      margin: 16px 0 8px 0;
+    }
+    .doc-paragraph {
+      margin-bottom: 12px;
+    }
+    .doc-list {
+      margin: 8px 0 14px 20px;
+      padding: 0;
+    }
+    .doc-list li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+    .doc-highlight {
+      color: #ffffff;
+      font-weight: 700;
+      background: rgba(96, 165, 250, 0.15);
+      padding: 1px 5px;
+      border-radius: 4px;
+    }
+    .doc-callout-box {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      color: #bfdbfe;
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .doc-wikilink {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: monospace;
+    }
+    .doc-code {
+      background: #090d16;
+      color: #93c5fd;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      border: 1px solid #1e293b;
+      font-family: monospace;
+    }
+
   </style>
 
   <!-- KaTeX per rendering formule matematiche ad alta definizione -->
@@ -1592,10 +1730,10 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=7"></script>
-  <script src="exercises.js?v=7"></script>
-  <script src="formulas.js?v=7"></script>
-  <script src="summaries.js?v=7"></script>
+  <script src="topics.js?v=8"></script>
+  <script src="exercises.js?v=8"></script>
+  <script src="formulas.js?v=8"></script>
+  <script src="summaries.js?v=8"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -1636,7 +1774,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_5g_v7";
+      const DATASET_VERSION = "reticellulari_lte_5g_v8";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -2741,10 +2879,66 @@
       if (!d || !container) return;
 
       container.innerHTML = `
-        <div style="font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">${d.badge} • ${d.date}</div>
-        <div style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px;">${d.title}</div>
+        <div class="review-action-toolbar">
+          <button class="review-action-btn primary" onclick="openVectorSummary('${d.vectorSvg}', '${d.title}')" title="Apri visualizzatore vettoriale ad altissima definizione">
+            🔍 Esplora Tavola Vettoriale (Zoom & Pan)
+          </button>
+          <a class="review-action-btn" href="${d.downloadMd}" download title="Scarica nota originale Markdown per Obsidian">
+            ⬇️ Scarica Nota (.md)
+          </a>
+          <a class="review-action-btn" href="${d.vectorSvg}" download title="Scarica tavola vettoriale SVG">
+            ⬇️ Scarica Vettoriale (.svg)
+          </a>
+          <button class="review-action-btn" onclick="copyActiveSummaryMd('${d.id}')" title="Copia testo Markdown">
+            📋 Copia Testo
+          </button>
+        </div>
+
+        <div style="font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+          ${d.badge} • ${d.date}
+        </div>
+        
         <div class="summary-body">${d.html}</div>
       `;
+    }
+
+    function openVectorSummary(svgUrl, title) {
+      selectReviewSubTab('maps');
+      const viewer = document.getElementById('mapViewerContainer');
+      viewer.style.display = 'block';
+      document.getElementById('currentMapTitle').textContent = `Tavola Vettoriale: ${title}`;
+      
+      const dlBtn = document.getElementById('btnDownloadMapSvg');
+      if (dlBtn) {
+        dlBtn.href = svgUrl;
+        dlBtn.download = svgUrl.split('/').pop();
+      }
+
+      const wrapper = document.getElementById('mapContentWrapper');
+      wrapper.innerHTML = '<div style="color: var(--text-muted); padding: 40px; text-align: center;">Caricamento tavola vettoriale...</div>';
+
+      fetch(svgUrl)
+        .then(r => r.text())
+        .then(svgText => {
+          wrapper.innerHTML = svgText;
+          resetSvgMapZoom();
+          setupMapPanAndZoom();
+        })
+        .catch(err => {
+          wrapper.innerHTML = `<div style="color: var(--danger); padding: 30px;">Errore caricamento SVG: ${err.message}</div>`;
+        });
+      triggerHaptic('medium');
+    }
+
+    function copyActiveSummaryMd(docId) {
+      const docs = window.REVIEWS_DATA?.summaries || [];
+      const d = docs.find(x => x.id === docId);
+      if (d && d.rawMd) {
+        navigator.clipboard.writeText(d.rawMd).then(() => {
+          triggerHaptic('medium');
+          alert('Testo Markdown della nota copiato negli appunti!');
+        });
+      }
     }
 
     function renderExercisesList() {

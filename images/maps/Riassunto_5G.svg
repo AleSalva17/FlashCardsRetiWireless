@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 2411" width="100%" height="100%" style="background-color: #0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="2411" fill="#0b1120"/>
+
+    <!-- Document Header -->
+    <g transform="translate(40, 40)">
+      <rect width="1200" height="100" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+      <rect x="24" y="20" width="160" height="26" rx="6" fill="rgba(59, 130, 246, 0.2)"/>
+      <text x="104" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#60a5fa">5G NR &amp; 5GC SBA</text>
+      <text x="24" y="74" font-size="22" font-weight="800" fill="#ffffff">5G: New Radio, 5G Core SBA, Network Slicing e Deployment</text>
+      <text x="1176" y="56" text-anchor="end" font-size="12" fill="#94a3b8">UniPG • Reti Wireless • Prof. M. Femminella</text>
+    </g>
+    <!-- Section 1: 1. Il Triangolo ITU: I Tre Casi d&#x27;Uso del 5G -->
+    <g transform="translate(40, 170)">
+      <rect width="1200" height="449" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="449" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">1. Il Triangolo ITU: I Tre Casi d&#x27;Uso del 5G</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 eMBB (Enhanced Mobile Broadband)</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• Throughput di picco fino a 20 Gbps DL e 10 Gbps UL per streaming 4K/8K,</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  AR/VR e alta mobilità.</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• Efficienza spettrale moltiplicata tramite Massive MIMO e canali aggregati</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  fino a 400 MHz.</text>
+      <text x="28" y="188" font-size="14" font-weight="700" fill="#38bdf8">📌 URLLC (Ultra-Reliable and Low Latency Communications)</text>
+      <text x="36" y="212" font-size="13" font-weight="400" fill="#e2e8f0">• Latenza del piano utente &lt; 1 ms e affidabilità al 99.999% (five nines).</text>
+      <text x="36" y="238" font-size="13" font-weight="400" fill="#e2e8f0">• Casi d&#x27;uso critici: guida autonoma (V2X), chirurgia remota, automazione</text>
+      <text x="36" y="258" font-size="13" font-weight="400" fill="#94a3b8">  industriale e smart grid.</text>
+      <text x="28" y="284" font-size="14" font-weight="700" fill="#38bdf8">📌 mMTC (Massive Machine Type Communications)</text>
+      <text x="36" y="308" font-size="13" font-weight="400" fill="#e2e8f0">• Densità fino a 1.000.000 dispositivi per km² con batterie che durano oltre</text>
+      <text x="36" y="328" font-size="13" font-weight="400" fill="#94a3b8">  10 anni.</text>
+      <text x="36" y="354" font-size="13" font-weight="400" fill="#e2e8f0">• Trasmissioni sporadiche di pacchetti piccoli ad altissima efficienza</text>
+      <text x="36" y="374" font-size="13" font-weight="400" fill="#94a3b8">  energetica (Smart City, IoT).</text>
+    </g>
+
+    <!-- Section 2: 2. Interfaccia Radio 5G NR (New Radio) -->
+    <g transform="translate(40, 643)">
+      <rect width="1200" height="647" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="647" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">2. Interfaccia Radio 5G NR (New Radio)</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Bande di Frequenza: FR1 vs FR2</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• FR1 (Sub-6 GHz, 410 MHz - 7.125 GHz): copertura territoriale ampia, canali</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  fino a 100 MHz, numerologie mu=0,1,2.</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• FR2 (mmWave, 24.25 - 52.6 GHz): altissimo throughput a corto raggio,</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  canali fino a 400 MHz, numerologie mu=2,3. Soffre di forte attenuazione</text>
+      <text x="36" y="182" font-size="13" font-weight="400" fill="#94a3b8">  atmosferica e ostacoli.</text>
+      <text x="28" y="208" font-size="14" font-weight="700" fill="#38bdf8">📌 Numerologia Flessibile e Spaziatura Sottoportanti</text>
+      <text x="36" y="232" font-size="13" font-weight="400" fill="#e2e8f0">• Legge di scala: Delta f = 15 * 2^mu kHz. Per mu=0 (15 kHz, LTE), mu=1 (30</text>
+      <text x="36" y="252" font-size="13" font-weight="400" fill="#94a3b8">  kHz), mu=2 (60 kHz), mu=3 (120 kHz), mu=4 (240 kHz).</text>
+      <text x="36" y="278" font-size="13" font-weight="400" fill="#e2e8f0">• Slot standard: 14 simboli OFDM. Al crescere di mu, la durata dello slot si</text>
+      <text x="36" y="298" font-size="13" font-weight="400" fill="#94a3b8">  riduce (1 ms a mu=0, 0.5 ms a mu=1, 0.125 ms a mu=3).</text>
+      <text x="28" y="324" font-size="14" font-weight="700" fill="#38bdf8">📌 Self-Contained Slot e Mini-Slot per URLLC</text>
+      <text x="36" y="348" font-size="13" font-weight="400" fill="#e2e8f0">• Self-Contained Slot: racchiude controllo DL, payload dati e riscontro HARQ</text>
+      <text x="36" y="368" font-size="13" font-weight="400" fill="#94a3b8">  nello stesso slot per minimizzare il round-trip time.</text>
+      <text x="36" y="394" font-size="13" font-weight="400" fill="#e2e8f0">• Mini-Slot (2, 4 o 7 simboli): consentono il preemptive scheduling</text>
+      <text x="36" y="414" font-size="13" font-weight="400" fill="#94a3b8">  immediato sovrascrivendo trasmissioni eMBB senza attendere la fine dello</text>
+      <text x="36" y="434" font-size="13" font-weight="400" fill="#94a3b8">  slot.</text>
+      <text x="28" y="460" font-size="14" font-weight="700" fill="#38bdf8">📌 Massive MIMO e Beam Management</text>
+      <text x="36" y="484" font-size="13" font-weight="400" fill="#e2e8f0">• Digital Beamforming: catena RF/DAC dedicata per antenna (FR1). Hybrid</text>
+      <text x="36" y="504" font-size="13" font-weight="400" fill="#94a3b8">  Beamforming: sfasatori analogici con catene RF condivise (FR2).</text>
+      <text x="36" y="530" font-size="13" font-weight="400" fill="#e2e8f0">• Beam Management: Beam Sweeping (trasmissione periodica dei blocchi SSB su</text>
+      <text x="36" y="550" font-size="13" font-weight="400" fill="#94a3b8">  fasci diversi), Beam Measurement e Beam Tracking.</text>
+    </g>
+
+    <!-- Section 3: 3. 5G Core (5GC) e Service-Based Architecture (SBA) -->
+    <g transform="translate(40, 1314)">
+      <rect width="1200" height="449" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="449" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">3. 5G Core (5GC) e Service-Based Architecture (SBA)</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Principi Architetturali SBA</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• Abbandono dei protocolli punto-punto come Diameter: comunicazione basata</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  su HTTP/2 con API RESTful e serializzazione JSON.</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• Disaccoppiamento totale del piano di controllo in microservizi registrati</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  sulla NRF (Network Repository Function) per il Service Discovery.</text>
+      <text x="28" y="188" font-size="14" font-weight="700" fill="#38bdf8">📌 Network Functions del 5GC e Ruoli</text>
+      <text x="36" y="212" font-size="13" font-weight="400" fill="#e2e8f0">• AMF (Access and Mobility Management Function): terminazione segnalazione</text>
+      <text x="36" y="232" font-size="13" font-weight="400" fill="#94a3b8">  NAS, mobilità, registrazione e paging. Non tocca la sessione.</text>
+      <text x="36" y="258" font-size="13" font-weight="400" fill="#e2e8f0">• SMF (Session Management Function): gestione sessioni dati PDU, allocazione</text>
+      <text x="36" y="278" font-size="13" font-weight="400" fill="#94a3b8">  indirizzi IP, controllo QoS e pilotaggio dell&#x27;UPF.</text>
+      <text x="36" y="304" font-size="13" font-weight="400" fill="#e2e8f0">• UPF (User Plane Function): unico nodo del piano utente (routing,</text>
+      <text x="36" y="324" font-size="13" font-weight="400" fill="#94a3b8">  incapsulamento GTP-U, ispezione pacchetti, billing). Stateless e</text>
+      <text x="36" y="344" font-size="13" font-weight="400" fill="#94a3b8">  decentralizzabile all&#x27;Edge (MEC).</text>
+      <text x="36" y="370" font-size="13" font-weight="400" fill="#e2e8f0">• UDM (Unified Data Management) e AUSF: memorizzazione profili abbonati</text>
+      <text x="36" y="390" font-size="13" font-weight="400" fill="#94a3b8">  (UDM) ed esecuzione di autenticazione e chiavi 5G-AKA (AUSF).</text>
+    </g>
+
+    <!-- Section 4: 4. Network Slicing End-to-End -->
+    <g transform="translate(40, 1787)">
+      <rect width="1200" height="251" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="251" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">4. Network Slicing End-to-End</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Definizione e Identificatore S-NSSAI</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• Capacità di creare molteplici reti logiche indipendenti e isolate sopra</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  una singola infrastruttura fisica per soddisfare SLA opposti.</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• Identificatore S-NSSAI: composto da SST (Slice/Service Type a 8 bit:</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  1=eMBB, 2=URLLC, 3=mMTC) e SD opzionale (Slice Differentiator a 24 bit).</text>
+      <text x="36" y="188" font-size="13" font-weight="400" fill="#e2e8f0">• NSSF (Network Slice Selection Function): seleziona l&#x27;insieme di Network</text>
+      <text x="36" y="208" font-size="13" font-weight="400" fill="#94a3b8">  Slice Instances e l&#x27;AMF idonea durante la registrazione.</text>
+    </g>
+
+    <!-- Section 5: 5. Scenari di Deployment 3GPP: Standalone (SA) vs Non-Standalone (NSA) -->
+    <g transform="translate(40, 2062)">
+      <rect width="1200" height="295" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="295" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">5. Scenari di Deployment 3GPP: Standalone (SA) vs Non-Standalone (NSA)</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Opzione 2 (Standalone - SA)</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• gNodeB 5G connesso direttamente al 5G Core (5GC): consente il pieno</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  supporto di SBA, Network Slicing E2E e bassissima latenza URLLC nativa.</text>
+      <text x="28" y="142" font-size="14" font-weight="700" fill="#38bdf8">📌 Opzione 3x (Non-Standalone - NSA con EN-DC)</text>
+      <text x="36" y="166" font-size="13" font-weight="400" fill="#e2e8f0">• E-UTRA-NR Dual Connectivity: eNodeB 4G fa da nodo master per il controllo</text>
+      <text x="36" y="186" font-size="13" font-weight="400" fill="#94a3b8">  RRC verso l&#x27;EPC, mentre il gNodeB funge da nodo secondario.</text>
+      <text x="36" y="212" font-size="13" font-weight="400" fill="#e2e8f0">• In Opzione 3x il tunnel S1-U termina direttamente sul gNodeB: il traffico</text>
+      <text x="36" y="232" font-size="13" font-weight="400" fill="#94a3b8">  dati ad alto throughput è gestito su 5G e splittato su X2 verso LTE.</text>
+    </g>
+
+</svg>

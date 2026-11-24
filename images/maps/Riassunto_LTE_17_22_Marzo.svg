@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 2455" width="100%" height="100%" style="background-color: #0b1120; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="2455" fill="#0b1120"/>
+
+    <!-- Document Header -->
+    <g transform="translate(40, 40)">
+      <rect width="1200" height="100" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+      <rect x="24" y="20" width="160" height="26" rx="6" fill="rgba(59, 130, 246, 0.2)"/>
+      <text x="104" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#60a5fa">LTE Lezioni 17-22 Marzo</text>
+      <text x="24" y="74" font-size="22" font-weight="800" fill="#ffffff">LTE: Attach, Sicurezza, Stati, Piano Utente e Handover X2</text>
+      <text x="1176" y="56" text-anchor="end" font-size="12" fill="#94a3b8">UniPG • Reti Wireless • Prof. M. Femminella</text>
+    </g>
+    <!-- Section 1: 1. Procedura di Initial Attach e Autenticazione EPS-AKA -->
+    <g transform="translate(40, 170)">
+      <rect width="1200" height="449" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="449" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">1. Procedura di Initial Attach e Autenticazione EPS-AKA</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Flusso di Segnalazione NAS e Vettore di Sicurezza</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• Lo UE invia l&#x27;Attach Request (con IMSI o GUTI) in un messaggio NAS</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  cifrato/integro veicolato tramite RRC Connection Setup Complete all&#x27;eNB e</text>
+      <text x="36" y="136" font-size="13" font-weight="400" fill="#94a3b8">  inoltrato all&#x27;MME.</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#e2e8f0">• L&#x27;MME contatta l&#x27;HSS/AuC: l&#x27;AuC usa la chiave segreta K (128 bit)</text>
+      <text x="36" y="182" font-size="13" font-weight="400" fill="#94a3b8">  condivisa con la SIM per generare il vettore quadrupla: RAND, AUTN, XRES e</text>
+      <text x="36" y="202" font-size="13" font-weight="400" fill="#94a3b8">  la chiave K_ASME.</text>
+      <text x="36" y="228" font-size="13" font-weight="400" fill="#e2e8f0">• Verifica Mutua: lo UE calcola il token e verifica AUTN; se valido, calcola</text>
+      <text x="36" y="248" font-size="13" font-weight="400" fill="#94a3b8">  RES e lo invia all&#x27;MME che lo confronta con XRES. Autenticazione riuscita!</text>
+      <text x="28" y="274" font-size="14" font-weight="700" fill="#38bdf8">📌 Gerarchia delle Chiavi Crittografiche</text>
+      <text x="36" y="298" font-size="13" font-weight="400" fill="#e2e8f0">• K (su USIM/AuC) -&gt; K_ASME (base di sicurezza EPS condivisa tra UE e MME).</text>
+      <text x="36" y="324" font-size="13" font-weight="400" fill="#e2e8f0">• Dalla K_ASME l&#x27;MME deriva le chiavi NAS (K_NASint, K_NASenc) e la chiave</text>
+      <text x="36" y="344" font-size="13" font-weight="400" fill="#94a3b8">  radio K_eNB.</text>
+      <text x="36" y="370" font-size="13" font-weight="400" fill="#e2e8f0">• L&#x27;eNB riceve solo K_eNB e deriva le chiavi AS (Access Stratum): K_RRCint,</text>
+      <text x="36" y="390" font-size="13" font-weight="400" fill="#94a3b8">  K_RRCenc e K_UPenc per la cifratura dei pacchetti sul canale radio.</text>
+    </g>
+
+    <!-- Section 2: 2. Creazione del Default Bearer e Tunnel GTP-U -->
+    <g transform="translate(40, 643)">
+      <rect width="1200" height="383" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="383" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">2. Creazione del Default Bearer e Tunnel GTP-U</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Risoluzione APN e Allocazione Indirizzo IP</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• L&#x27;MME risolve l&#x27;Access Point Name (APN) tramite DNS identificando il P-GW.</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  Invia Create Session Request al S-GW, che a sua volta la inoltra al P-GW.</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• Il P-GW alloca l&#x27;indirizzo IP del terminale (IPv4 e/o prefisso IPv6) e</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  genera il primo segmento del tunnel GTP-U (S5/S8) con il relativo TEID.</text>
+      <text x="28" y="188" font-size="14" font-weight="700" fill="#38bdf8">📌 Scambio dei Tunnel Endpoint Identifier (TEID) e Initial Context Setup</text>
+      <text x="36" y="212" font-size="13" font-weight="400" fill="#e2e8f0">• Ogni nodo assegna un TEID locale per identificare il tunnel in ricezione.</text>
+      <text x="36" y="232" font-size="13" font-weight="400" fill="#94a3b8">  I TEID sono scambiati bidirezionalmente tra P-GW, S-GW ed eNodeB.</text>
+      <text x="36" y="258" font-size="13" font-weight="400" fill="#e2e8f0">• L&#x27;eNodeB riceve Initial Context Setup Request, configura la sicurezza AS</text>
+      <text x="36" y="278" font-size="13" font-weight="400" fill="#94a3b8">  con lo UE e attiva il Data Radio Bearer (DRB) radio.</text>
+      <text x="36" y="304" font-size="13" font-weight="400" fill="#e2e8f0">• TFT (Traffic Flow Template): filtri a 5-tupla IP configurati sul P-GW per</text>
+      <text x="36" y="324" font-size="13" font-weight="400" fill="#94a3b8">  instradare i pacchetti downlink sul bearer corretto.</text>
+    </g>
+
+    <!-- Section 3: 3. Gestione della Mobilità: Stati EMM, ECM, RRC e Paging -->
+    <g transform="translate(40, 1050)">
+      <rect width="1200" height="449" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="449" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">3. Gestione della Mobilità: Stati EMM, ECM, RRC e Paging</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 I Tre Livelli di Macchine a Stati</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• EMM (EPS Mobility Management): DEREGISTERED (terminale non noto alla rete)</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  vs REGISTERED (ha un contesto IP e GUTI assegnato dall&#x27;MME).</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• ECM (EPS Connection Management): IDLE (nessuna connessione di segnalazione</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  NAS attiva) vs CONNECTED (canale S1-MME e contesto attivo).</text>
+      <text x="36" y="188" font-size="13" font-weight="400" fill="#e2e8f0">• RRC (Radio Resource Control): IDLE (nessun canale radio dedicato, ascolto</text>
+      <text x="36" y="208" font-size="13" font-weight="400" fill="#94a3b8">  DRX) vs CONNECTED (risorse radio dedicate e misure attive).</text>
+      <text x="28" y="234" font-size="14" font-weight="700" fill="#38bdf8">📌 Funzionamento del Paging e Ruolo del S-GW in IDLE</text>
+      <text x="36" y="258" font-size="13" font-weight="400" fill="#e2e8f0">• Quando lo UE è in IDLE, il tunnel S1-U è abbattuto, ma il tunnel S5/S8</text>
+      <text x="36" y="278" font-size="13" font-weight="400" fill="#94a3b8">  rimane attivo. Quando arriva un pacchetto downlink, il S-GW lo bufferizza.</text>
+      <text x="36" y="304" font-size="13" font-weight="400" fill="#e2e8f0">• Il S-GW invia Downlink Data Notification (DDN) all&#x27;MME, che genera il</text>
+      <text x="36" y="324" font-size="13" font-weight="400" fill="#94a3b8">  messaggio di Paging distribuito su tutti gli eNodeB della Tracking Area</text>
+      <text x="36" y="344" font-size="13" font-weight="400" fill="#94a3b8">  (TAI).</text>
+      <text x="36" y="370" font-size="13" font-weight="400" fill="#e2e8f0">• Lo UE si risveglia nel suo frame DRX, legge il P-RNTI su PDCCH e avvia la</text>
+      <text x="36" y="390" font-size="13" font-weight="400" fill="#94a3b8">  procedura di Service Request con accesso RACH per ristabilire S1-U.</text>
+    </g>
+
+    <!-- Section 4: 4. Piano Utente GTP-U, Regolazione del Traffico e Roaming -->
+    <g transform="translate(40, 1523)">
+      <rect width="1200" height="405" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="405" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">4. Piano Utente GTP-U, Regolazione del Traffico e Roaming</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Incapsulamento del Pacchetto GTP-U e NAT</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• I pacchetti IP utente sono incapsulati in un frame UDP con porta 2152 e</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  header GTP-U contenente il TEID a 32 bit.</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• Header IP esterno: indirizzi IP delle interfacce fisiche di eNB e S-GW.</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  Header IP interno: IP privato del terminale e IP del server Internet.</text>
+      <text x="36" y="188" font-size="13" font-weight="400" fill="#e2e8f0">• Il P-GW esegue il Network Address Translation (NAT) verso Internet e</text>
+      <text x="36" y="208" font-size="13" font-weight="400" fill="#94a3b8">  applica le policy di shaping APN-AMBR.</text>
+      <text x="28" y="234" font-size="14" font-weight="700" fill="#38bdf8">📌 Architetture di Roaming Internazionale</text>
+      <text x="36" y="258" font-size="13" font-weight="400" fill="#e2e8f0">• Home-Routed (interfaccia S8): il traffico del visitatore passa per il S-GW</text>
+      <text x="36" y="278" font-size="13" font-weight="400" fill="#94a3b8">  visitato ma torna al P-GW della rete Home. Billing centralizzato ma latenza</text>
+      <text x="36" y="298" font-size="13" font-weight="400" fill="#94a3b8">  elevata.</text>
+      <text x="36" y="324" font-size="13" font-weight="400" fill="#e2e8f0">• Local Breakout: il terminale usa sia S-GW che P-GW della rete visitata per</text>
+      <text x="36" y="344" font-size="13" font-weight="400" fill="#94a3b8">  uscire direttamente su Internet locale. Latenza ottimale.</text>
+    </g>
+
+    <!-- Section 5: 5. Procedura di Handover X2 tra eNodeB -->
+    <g transform="translate(40, 1952)">
+      <rect width="1200" height="449" rx="12" fill="#151e2e" stroke="#283548" stroke-width="1.5" filter="url(#shadow)"/>
+      <rect x="0" y="0" width="6" height="449" rx="3" fill="#3b82f6"/>
+      <text x="24" y="34" font-size="16" font-weight="700" fill="#60a5fa">5. Procedura di Handover X2 tra eNodeB</text>
+      <line x1="24" y1="46" x2="1176" y2="46" stroke="#283548" stroke-width="1"/>
+      <text x="28" y="72" font-size="14" font-weight="700" fill="#38bdf8">📌 Fasi di Preparazione, Esecuzione e Forwarding</text>
+      <text x="36" y="96" font-size="13" font-weight="400" fill="#e2e8f0">• Preparazione: lo UE invia Measurement Report (RSRP/RSRQ). L&#x27;eNodeB Source</text>
+      <text x="36" y="116" font-size="13" font-weight="400" fill="#94a3b8">  decide l&#x27;handover e invia Handover Request su interfaccia diretta X2.</text>
+      <text x="36" y="142" font-size="13" font-weight="400" fill="#e2e8f0">• Esecuzione: l&#x27;eNodeB Target alloca le risorse e invia Handover Request Ack</text>
+      <text x="36" y="162" font-size="13" font-weight="400" fill="#94a3b8">  con un preambolo RACH dedicato (Handover senza contesa, contention-free).</text>
+      <text x="36" y="188" font-size="13" font-weight="400" fill="#e2e8f0">• Data Forwarding: durante il transitorio radio, la Source inoltra i</text>
+      <text x="36" y="208" font-size="13" font-weight="400" fill="#94a3b8">  pacchetti in transito al Target via X2 per garantire zero packet loss.</text>
+      <text x="28" y="234" font-size="14" font-weight="700" fill="#38bdf8">📌 Fase di Completamento e Path Switch</text>
+      <text x="36" y="258" font-size="13" font-weight="400" fill="#e2e8f0">• Lo UE aggancia il Target inviando RRC Connection Reconfiguration Complete.</text>
+      <text x="36" y="278" font-size="13" font-weight="400" fill="#94a3b8">  Il Target invia Path Switch Request all&#x27;MME.</text>
+      <text x="36" y="304" font-size="13" font-weight="400" fill="#e2e8f0">• L&#x27;MME ordina al S-GW di aggiornare il tunnel downlink S1-U verso il Target</text>
+      <text x="36" y="324" font-size="13" font-weight="400" fill="#94a3b8">  (Modify Bearer Request).</text>
+      <text x="36" y="350" font-size="13" font-weight="400" fill="#e2e8f0">• Il S-GW invia uno speciale pacchetto &#x27;End Marker&#x27; sul vecchio canale verso</text>
+      <text x="36" y="370" font-size="13" font-weight="400" fill="#94a3b8">  la Source per delimitare la fine dei dati prima di passare sul nuovo</text>
+      <text x="36" y="390" font-size="13" font-weight="400" fill="#94a3b8">  percorso.</text>
+    </g>
+
+</svg>
