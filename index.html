@@ -831,7 +831,427 @@
       color: var(--text);
     }
 
+  
+    /* ============================================================
+       STILI FORMULARIO, MAPPE VETTORIALI & RIASSUNTI (v7)
+       ============================================================ */
+    .mode-switcher-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .mode-tab-btn {
+      padding: 10px 12px;
+      font-size: 13px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    /* Formulario */
+    .formula-search-input {
+      width: 100%;
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 12px;
+    }
+    .formula-search-input:focus {
+      border-color: var(--accent);
+    }
+
+    .filter-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .filter-chip {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-chip:hover {
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .filter-chip.active {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .formulas-counter-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .formulas-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .formula-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 16px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .formula-card:hover {
+      border-color: #3b82f6;
+    }
+
+    .formula-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+    .formula-badges {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .formula-code-pill {
+      background: rgba(96, 165, 250, 0.15);
+      color: var(--accent);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      font-family: monospace;
+    }
+    .formula-cat-pill {
+      background: var(--surface-elevated);
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+    }
+    .formula-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    .formula-math-box {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 14px;
+      margin: 10px 0;
+      overflow-x: auto;
+      text-align: center;
+      color: #93c5fd;
+      font-size: 15px;
+      position: relative;
+    }
+    .formula-math-box .copy-tex-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: var(--text-muted);
+      border-radius: 4px;
+      padding: 3px 6px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+    .formula-math-box .copy-tex-btn:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .formula-purpose-box {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+    .formula-purpose-box strong {
+      color: var(--accent);
+    }
+
+    .formula-params-details {
+      background: var(--surface-elevated);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    .formula-params-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text);
+      outline: none;
+      user-select: none;
+    }
+    .formula-params-details ul {
+      margin: 8px 0 0 16px;
+      padding: 0;
+    }
+    .formula-params-details li {
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .formula-meta-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* Riassunti e Mappe */
+    .sub-tab-switcher {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .sub-tab-btn {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      color: var(--text-muted);
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sub-tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .review-selector-chips {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .review-doc-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .review-doc-btn.active {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent);
+    }
+
+    .review-doc-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 20px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      font-size: 13.5px;
+    }
+    .summary-h1 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 8px;
+      margin: 16px 0 12px 0;
+    }
+    .summary-h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #60a5fa;
+      margin: 18px 0 8px 0;
+    }
+    .summary-h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #93c5fd;
+      margin: 14px 0 6px 0;
+    }
+    .summary-callout {
+      background: rgba(59, 130, 246, 0.1);
+      border-left: 3px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0;
+      color: #bfdbfe;
+    }
+    .summary-link {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    .review-doc-card ul {
+      margin: 8px 0 12px 20px;
+    }
+    .review-doc-card li {
+      margin-bottom: 6px;
+    }
+
+    /* Mappe Vettoriali */
+    .maps-selector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .map-card-item {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .map-card-item:hover, .map-card-item.active {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .map-card-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .map-card-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .map-card-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+    .map-card-action {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .map-viewer-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .map-viewer-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .map-title-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .map-tools-buttons {
+      display: flex;
+      gap: 6px;
+    }
+    .map-tool-btn {
+      background: var(--surface-elevated);
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .map-tool-btn:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .map-viewport {
+      width: 100%;
+      height: 520px;
+      background: #070b14;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: grab;
+      touch-action: none;
+    }
+    .map-viewport.grabbing {
+      cursor: grabbing;
+    }
+    .map-content-wrapper {
+      transform-origin: 0 0;
+      transition: transform 0.05s linear;
+      width: 100%;
+      height: 100%;
+    }
+    .map-content-wrapper svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .map-help-hint {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      text-align: center;
+    }
   </style>
+
+  <!-- KaTeX per rendering formule matematiche ad alta definizione -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 </head>
 <body>
 
@@ -864,13 +1284,19 @@
     <!-- VIEW 1: SETUP -->
     <div id="viewSetup" class="view active">
       
-      <!-- SELETTORE MODALITÀ: RIPASSO TEORIA vs ESERCIZI GUIDATI -->
+      <!-- SELETTORE MODALITÀ: 4 SEZIONI DI STUDIO D'ESAME -->
       <div class="mode-switcher-container">
         <button class="mode-tab-btn active" id="tabModeTheory" onclick="selectAppMode('theory')">
-          📚 Ripasso Flashcards
+          📚 Flashcards
         </button>
         <button class="mode-tab-btn" id="tabModeExercises" onclick="selectAppMode('exercises')">
-          ✏️ Esercizi d'Esame
+          ✏️ Esercizi
+        </button>
+        <button class="mode-tab-btn" id="tabModeFormulas" onclick="selectAppMode('formulas')">
+          📐 Formulario
+        </button>
+        <button class="mode-tab-btn" id="tabModeReviews" onclick="selectAppMode('reviews')">
+          🗺️ Mappe & Riassunti
         </button>
       </div>
 
@@ -927,6 +1353,81 @@
           <!-- Popolato via JS da exercises.js -->
         </div>
       </div>
+      <!-- SEZIONE 3: FORMULARIO COMPLETO D'ESAME -->
+      <div id="setupFormulasBox" class="setup-card" style="display: none;">
+        <div class="section-header-row" style="margin-bottom: 12px;">
+          <h2 class="setup-title" style="margin-bottom: 4px;">📐 Formulario Completo di Reti Wireless</h2>
+          <p class="setup-desc">Tutte le 31 relazioni analitiche e formule matematiche del corso (Prof. M. Femminella), con definizioni, unità di misura, spiegazione teorica ed esercizi d'esame.</p>
+        </div>
+
+        <input type="text" id="formulaSearchInput" class="formula-search-input" placeholder="🔍 Cerca formula, parametro (es. Friis, Rayleigh, SIR, PRB, ALOHA, Erlang, dBm)..." oninput="filterFormulas()">
+
+        <div class="filter-chips-row" id="formulaCategoryChips">
+          <!-- Popolato dinamicamente da formulas.js -->
+        </div>
+
+        <div class="formulas-counter-text" id="formulasCountLabel">31 formule disponibili</div>
+
+        <div class="formulas-list" id="formulasContainer">
+          <!-- Popolato via JS da formulas.js -->
+        </div>
+      </div>
+
+      <!-- SEZIONE 4: MAPPE CONCETTUALI E RIASSUNTI D'ESAME -->
+      <div id="setupReviewsBox" class="setup-card" style="display: none;">
+        <div class="section-header-row" style="margin-bottom: 12px;">
+          <h2 class="setup-title" style="margin-bottom: 4px;">🗺️ Mappe Concettuali e Riassunti d'Esame</h2>
+          <p class="setup-desc">Consulta i testi di riassunto completi per la ripetizione orale ed esplora le mappe concettuali vettoriali navigabili con zoom.</p>
+        </div>
+
+        <!-- Sub-switcher: Mappe vs Riassunti -->
+        <div class="sub-tab-switcher">
+          <button class="sub-tab-btn active" id="subTabReviewsMaps" onclick="selectReviewSubTab('maps')">
+            🗺️ Mappe Vettoriali Navigabili (3)
+          </button>
+          <button class="sub-tab-btn" id="subTabReviewsText" onclick="selectReviewSubTab('text')">
+            📑 Testi di Riassunto (5G & LTE)
+          </button>
+        </div>
+
+        <!-- Pannello 1: Mappe Concettuali Vettoriali -->
+        <div id="reviewsMapsPanel">
+          <div class="maps-selector-grid" id="mapsSelectorGrid">
+            <!-- 3 Card delle Mappe -->
+          </div>
+
+          <!-- Viewer interattivo per la mappa selezionata -->
+          <div class="map-viewer-card" id="mapViewerContainer" style="display: none;">
+            <div class="map-viewer-toolbar">
+              <span class="map-title-label" id="currentMapTitle">Mappa Selezionata</span>
+              <div class="map-tools-buttons">
+                <button class="map-tool-btn" onclick="zoomSvgMap(1.25)" title="Ingrandisci">+</button>
+                <button class="map-tool-btn" onclick="zoomSvgMap(0.8)" title="Riduci">-</button>
+                <button class="map-tool-btn" onclick="resetSvgMapZoom()" title="Ripristina 100%">100%</button>
+                <button class="map-tool-btn" onclick="toggleMapFullscreen()" title="Schermo intero">⛶</button>
+                <a id="btnDownloadMapSvg" class="map-tool-btn" download title="Scarica SVG vettoriale">⬇️ SVG</a>
+              </div>
+            </div>
+            <div class="map-viewport" id="mapViewport">
+              <div class="map-content-wrapper" id="mapContentWrapper">
+                <!-- SVG caricato dinamicamente -->
+              </div>
+            </div>
+            <div class="map-help-hint">💡 <em>Trascina con il dito o il mouse per muoverti nella mappa. Usa i pulsanti + e - o il pinch per zoomare.</em></div>
+          </div>
+        </div>
+
+        <!-- Pannello 2: Testi di Riassunto -->
+        <div id="reviewsTextPanel" style="display: none;">
+          <div class="review-selector-chips" id="reviewDocChips">
+            <!-- Bottoni di selezione documento 5G / LTE -->
+          </div>
+          <div class="review-doc-card" id="reviewDocContent">
+            <!-- Contenuto del riassunto renderizzato -->
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- VIEW 2: PRACTICE -->
@@ -1090,9 +1591,11 @@
     </div>
   </div>
 
-  <!-- Carica database iniziale -->
-  <script src="topics.js?v=6"></script>
-  <script src="exercises.js?v=6"></script>
+    <!-- Carica database iniziale -->
+  <script src="topics.js?v=7"></script>
+  <script src="exercises.js?v=7"></script>
+  <script src="formulas.js?v=7"></script>
+  <script src="summaries.js?v=7"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -1133,7 +1636,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_v6";
+      const DATASET_VERSION = "reticellulari_lte_5g_v7";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -1869,26 +2372,379 @@
     let currentAppMode = 'theory'; // 'theory' | 'exercises'
     let currentActiveExercise = null;
 
+    
+    /* ============================================================
+       GESTIONE 4 MODALITÀ D'ESAME (Flashcard, Esercizi, Formulario, Mappe & Riassunti)
+       ============================================================ */
+    let currentActiveFormulaCategory = "all";
+    let activeReviewDocId = "summary_5g";
+    let activeMapId = null;
+    let mapTransform = { scale: 1, x: 0, y: 0 };
+    let isPanningMap = false;
+    let panStart = { x: 0, y: 0 };
+
     function selectAppMode(mode) {
       currentAppMode = mode;
+      
       const tabTheory = document.getElementById('tabModeTheory');
       const tabEx = document.getElementById('tabModeExercises');
+      const tabForm = document.getElementById('tabModeFormulas');
+      const tabRev = document.getElementById('tabModeReviews');
+
       const boxTheory = document.getElementById('setupTheoryBox');
       const boxEx = document.getElementById('setupExercisesBox');
+      const boxForm = document.getElementById('setupFormulasBox');
+      const boxRev = document.getElementById('setupReviewsBox');
+
+      [tabTheory, tabEx, tabForm, tabRev].forEach(t => t?.classList.remove('active'));
+      [boxTheory, boxEx, boxForm, boxRev].forEach(b => { if(b) b.style.display = 'none'; });
 
       if (mode === 'theory') {
         tabTheory.classList.add('active');
-        tabEx.classList.remove('active');
         boxTheory.style.display = 'block';
-        boxEx.style.display = 'none';
-      } else {
-        tabTheory.classList.remove('active');
+      } else if (mode === 'exercises') {
         tabEx.classList.add('active');
-        boxTheory.style.display = 'none';
         boxEx.style.display = 'block';
         renderExercisesList();
+      } else if (mode === 'formulas') {
+        tabForm.classList.add('active');
+        boxForm.style.display = 'block';
+        initFormulasSection();
+      } else if (mode === 'reviews') {
+        tabRev.classList.add('active');
+        boxRev.style.display = 'block';
+        initReviewsSection();
       }
       triggerHaptic('light');
+    }
+
+    /* ============================================================
+       SEZIONE FORMULARIO
+       ============================================================ */
+    function initFormulasSection() {
+      renderFormulaCategories();
+      renderFormulasList();
+    }
+
+    function renderFormulaCategories() {
+      const container = document.getElementById('formulaCategoryChips');
+      if (!container) return;
+      const formulas = window.FORMULAS_DATA || [];
+      const cats = ["all", ...new Set(formulas.map(f => f.category))];
+      
+      container.innerHTML = '';
+      cats.forEach(c => {
+        const chip = document.createElement('button');
+        chip.className = `filter-chip ${c === currentActiveFormulaCategory ? 'active' : ''}`;
+        chip.textContent = c === 'all' ? 'Tutte (31)' : c.split('. ')[1] || c;
+        chip.onclick = () => {
+          currentActiveFormulaCategory = c;
+          renderFormulaCategories();
+          renderFormulasList();
+          triggerHaptic('light');
+        };
+        container.appendChild(chip);
+      });
+    }
+
+    function filterFormulas() {
+      renderFormulasList();
+    }
+
+    function renderFormulasList() {
+      const container = document.getElementById('formulasContainer');
+      const countLabel = document.getElementById('formulasCountLabel');
+      const searchVal = (document.getElementById('formulaSearchInput')?.value || '').toLowerCase().trim();
+      if (!container) return;
+
+      const formulas = window.FORMULAS_DATA || [];
+      const filtered = formulas.filter(f => {
+        const matchCat = currentActiveFormulaCategory === 'all' || f.category === currentActiveFormulaCategory;
+        if (!matchCat) return false;
+        if (!searchVal) return true;
+        const hay = `${f.code} ${f.title} ${f.category} ${f.math} ${f.purpose} ${(f.parameters || []).join(' ')} ${f.exercises}`.toLowerCase();
+        return hay.includes(searchVal);
+      });
+
+      countLabel.textContent = `${filtered.length} formule trovate`;
+      container.innerHTML = '';
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div style="color: var(--text-muted); padding: 16px; text-align: center;">Nessuna formula corrispondente alla ricerca.</div>';
+        return;
+      }
+
+      filtered.forEach(f => {
+        const card = document.createElement('div');
+        card.className = 'formula-card';
+        
+        // Escape LaTeX formula for data attribute
+        const mathClean = (f.math || '').replace(/\r?\n/g, ' ');
+        
+        let paramsHtml = '';
+        if (f.parameters && f.parameters.length > 0) {
+          const lis = f.parameters.map(p => `<li>${p}</li>`).join('');
+          paramsHtml = `
+            <details class="formula-params-details">
+              <summary>📋 Parametri e Unità di Misura (${f.parameters.length})</summary>
+              <ul>${lis}</ul>
+            </details>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="formula-header">
+            <div>
+              <div class="formula-badges">
+                <span class="formula-code-pill">${f.code}</span>
+                <span class="formula-cat-pill">${f.category.split('. ')[1] || f.category}</span>
+              </div>
+              <div class="formula-title">${f.title}</div>
+            </div>
+          </div>
+          
+          <div class="formula-math-box">
+            <button class="copy-tex-btn" onclick="copyFormulaLaTeX('${f.id}')" title="Copia LaTeX">Copia</button>
+            <div id="tex-${f.id}" class="math-tex display" data-tex="${mathClean}">$$${mathClean}$$</div>
+          </div>
+
+          <div class="formula-purpose-box">
+            <strong>A cosa serve:</strong> ${f.purpose}
+          </div>
+
+          ${paramsHtml}
+
+          <div class="formula-meta-footer">
+            <span>📖 ${f.theory || 'Teoria correlata'}</span>
+            <span>✏️ ${f.exercises || 'Esercizi correlati'}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Render KaTeX se disponibile
+      if (window.katex) {
+        try {
+          filtered.forEach(f => {
+            const el = document.getElementById(`tex-${f.id}`);
+            if (el) {
+              const tex = el.getAttribute('data-tex');
+              katex.render(tex, el, { displayMode: true, throwOnError: false });
+            }
+          });
+        } catch(e) {}
+      }
+    }
+
+    function copyFormulaLaTeX(fid) {
+      const f = (window.FORMULAS_DATA || []).find(x => x.id === fid);
+      if (f && f.math) {
+        navigator.clipboard.writeText(f.math).then(() => {
+          triggerHaptic('medium');
+          alert('Formula LaTeX copiata negli appunti!');
+        });
+      }
+    }
+
+    /* ============================================================
+       SEZIONE MAPPE VETTORIALI & RIASSUNTI D'ESAME
+       ============================================================ */
+    function initReviewsSection() {
+      selectReviewSubTab('maps');
+    }
+
+    function selectReviewSubTab(tab) {
+      const btnMaps = document.getElementById('subTabReviewsMaps');
+      const btnText = document.getElementById('subTabReviewsText');
+      const panelMaps = document.getElementById('reviewsMapsPanel');
+      const panelText = document.getElementById('reviewsTextPanel');
+
+      if (tab === 'maps') {
+        btnMaps.classList.add('active');
+        btnText.classList.remove('active');
+        panelMaps.style.display = 'block';
+        panelText.style.display = 'none';
+        renderMapsList();
+      } else {
+        btnMaps.classList.remove('active');
+        btnText.classList.add('active');
+        panelMaps.style.display = 'none';
+        panelText.style.display = 'block';
+        renderReviewDocs();
+      }
+      triggerHaptic('light');
+    }
+
+    // MAPPE VETTORIALI
+    function renderMapsList() {
+      const container = document.getElementById('mapsSelectorGrid');
+      if (!container) return;
+      const maps = window.REVIEWS_DATA?.maps || [];
+      
+      container.innerHTML = '';
+      maps.forEach(m => {
+        const item = document.createElement('div');
+        item.className = `map-card-item ${activeMapId === m.id ? 'active' : ''}`;
+        item.onclick = () => openMapViewer(m.id);
+        item.innerHTML = `
+          <span class="map-card-badge">${m.badge} (${m.elementsCount} nodi)</span>
+          <div class="map-card-title">${m.title}</div>
+          <div class="map-card-desc">${m.desc}</div>
+          <div class="map-card-action">🔍 Esplora Vettoriale (Zoom & Pan) →</div>
+        `;
+        container.appendChild(item);
+      });
+
+      if (!activeMapId && maps.length > 0) {
+        openMapViewer(maps[0].id);
+      }
+    }
+
+    async function openMapViewer(mapId) {
+      const maps = window.REVIEWS_DATA?.maps || [];
+      const m = maps.find(x => x.id === mapId);
+      if (!m) return;
+      activeMapId = mapId;
+
+      document.querySelectorAll('.map-card-item').forEach(el => el.classList.remove('active'));
+      const activeCard = Array.from(document.querySelectorAll('.map-card-item')).find(el => el.textContent.includes(m.title));
+      if (activeCard) activeCard.classList.add('active');
+
+      const viewer = document.getElementById('mapViewerContainer');
+      viewer.style.display = 'block';
+      document.getElementById('currentMapTitle').textContent = m.title;
+      
+      const dlBtn = document.getElementById('btnDownloadMapSvg');
+      if (dlBtn) {
+        dlBtn.href = m.svgUrl;
+        dlBtn.download = `${m.id}.svg`;
+      }
+
+      const wrapper = document.getElementById('mapContentWrapper');
+      wrapper.innerHTML = '<div style="color: var(--text-muted); padding: 40px; text-align: center;">Caricamento mappa vettoriale in corso...</div>';
+
+      try {
+        const res = await fetch(m.svgUrl);
+        const svgText = await res.text();
+        wrapper.innerHTML = svgText;
+        resetSvgMapZoom();
+        setupMapPanAndZoom();
+      } catch (err) {
+        wrapper.innerHTML = `<div style="color: var(--danger); padding: 30px;">Impossibile caricare il file SVG: ${err.message}</div>`;
+      }
+      triggerHaptic('light');
+    }
+
+    function setupMapPanAndZoom() {
+      const viewport = document.getElementById('mapViewport');
+      const wrapper = document.getElementById('mapContentWrapper');
+      if (!viewport || !wrapper) return;
+
+      // Mouse drag
+      viewport.onmousedown = (e) => {
+        isPanningMap = true;
+        panStart = { x: e.clientX - mapTransform.x, y: e.clientY - mapTransform.y };
+        viewport.classList.add('grabbing');
+      };
+      window.onmousemove = (e) => {
+        if (!isPanningMap) return;
+        mapTransform.x = e.clientX - panStart.x;
+        mapTransform.y = e.clientY - panStart.y;
+        updateMapTransform();
+      };
+      window.onmouseup = () => {
+        isPanningMap = false;
+        viewport.classList.remove('grabbing');
+      };
+
+      // Mouse Wheel Zoom
+      viewport.onwheel = (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.15 : 0.85;
+        zoomSvgMap(factor);
+      };
+
+      // Touch Pan
+      let touchStart = { x: 0, y: 0 };
+      viewport.ontouchstart = (e) => {
+        if (e.touches.length === 1) {
+          touchStart = { x: e.touches[0].clientX - mapTransform.x, y: e.touches[0].clientY - mapTransform.y };
+        }
+      };
+      viewport.ontouchmove = (e) => {
+        if (e.touches.length === 1) {
+          mapTransform.x = e.touches[0].clientX - touchStart.x;
+          mapTransform.y = e.touches[0].clientY - touchStart.y;
+          updateMapTransform();
+        }
+      };
+    }
+
+    function zoomSvgMap(factor) {
+      mapTransform.scale *= factor;
+      mapTransform.scale = Math.max(0.1, Math.min(mapTransform.scale, 8));
+      updateMapTransform();
+      triggerHaptic('light');
+    }
+
+    function resetSvgMapZoom() {
+      mapTransform = { scale: 1, x: 0, y: 0 };
+      updateMapTransform();
+    }
+
+    function updateMapTransform() {
+      const wrapper = document.getElementById('mapContentWrapper');
+      if (wrapper) {
+        wrapper.style.transform = `translate(${mapTransform.x}px, ${mapTransform.y}px) scale(${mapTransform.scale})`;
+      }
+    }
+
+    function toggleMapFullscreen() {
+      const vp = document.getElementById('mapViewport');
+      if (!document.fullscreenElement) {
+        vp.requestFullscreen?.().catch(() => {});
+      } else {
+        document.exitFullscreen?.().catch(() => {});
+      }
+    }
+
+    // TESTI DI RIASSUNTO
+    function renderReviewDocs() {
+      const chipContainer = document.getElementById('reviewDocChips');
+      if (!chipContainer) return;
+      const docs = window.REVIEWS_DATA?.summaries || [];
+
+      chipContainer.innerHTML = '';
+      docs.forEach(d => {
+        const btn = document.createElement('button');
+        btn.className = `review-doc-btn ${activeReviewDocId === d.id ? 'active' : ''}`;
+        btn.textContent = d.badge;
+        btn.onclick = () => {
+          activeReviewDocId = d.id;
+          renderReviewDocs();
+          loadReviewDoc(d.id);
+          triggerHaptic('light');
+        };
+        chipContainer.appendChild(btn);
+      });
+
+      if (!activeReviewDocId && docs.length > 0) {
+        activeReviewDocId = docs[0].id;
+      }
+      loadReviewDoc(activeReviewDocId);
+    }
+
+    function loadReviewDoc(docId) {
+      const docs = window.REVIEWS_DATA?.summaries || [];
+      const d = docs.find(x => x.id === docId);
+      const container = document.getElementById('reviewDocContent');
+      if (!d || !container) return;
+
+      container.innerHTML = `
+        <div style="font-size: 12px; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">${d.badge} • ${d.date}</div>
+        <div style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px;">${d.title}</div>
+        <div class="summary-body">${d.html}</div>
+      `;
     }
 
     function renderExercisesList() {

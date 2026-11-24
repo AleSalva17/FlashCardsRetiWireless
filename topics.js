@@ -1,5 +1,7 @@
-// Database definitivo delle flashcards per Reti Wireless (Reti Cellulari + LTE Completo)
-// Generato automaticamente da RetiCellulari.excalidraw e LTE.excalidraw
+// Database definitivo delle flashcards per Reti Wireless (Reti Cellulari + LTE Completo + 5G Completo)
+// Generato per UniPG - Prof. Mauro Femminella
+// Totale Argomenti: 8 | Totale Flashcards: 163
+
 window.DEFAULT_TOPICS = [
   {
     "topic_id": "reticell_architettura",
@@ -1613,6 +1615,233 @@ window.DEFAULT_TOPICS = [
         "image_side": "nessuno",
         "extra": "L'handover S1 è più lento dell'handover X2 a causa dell'overhead di segnalazione nella rete centrale.",
         "difficolta": 2
+      }
+    ]
+  },
+  {
+    "topic_id": "5g_nr_core",
+    "topic_name": "8. 5G: New Radio, 5G Core, SBA, Network Slicing e Deployment",
+    "description": "I tre casi d'uso ITU (eMBB, URLLC, mMTC), numerologia e slot 5G NR, Service-Based Architecture (SBA), Network Slicing, AMF, SMF, UPF e scenari NSA/SA.",
+    "cards": [
+      {
+        "id": "5g-001",
+        "tipo": "Classificazione",
+        "node": "I Tre Casi d'Uso del 5G (Triangolo ITU)",
+        "front": "Quali sono i tre macro-scenari d'uso del 5G definiti dall'ITU e i loro rispettivi requisiti primari?",
+        "back": "Sono eMBB (Enhanced Mobile Broadband) per altissimi picchi di throughput (fino a 20 Gbps), URLLC (Ultra-Reliable Low-Latency Communication) per latenze inferiori a 1 ms e affidabilità al 99.999%, e mMTC (Massive Machine-Type Communication) per densità fino a 1 milione di dispositivi per km² a bassissimo consumo.",
+        "extra": "Definiti dallo standard ITU-R M.2083 come pilastri fondamentali della rete 5G NR.",
+        "tag": "5g nr itu embb urllc mmtc",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 1"
+      },
+      {
+        "id": "5g-002",
+        "tipo": "Confronto",
+        "node": "Bande di Frequenza FR1 vs FR2",
+        "front": "Qual è la differenza fondamentale tra le bande 5G FR1 ed FR2 in termini di frequenza e copertura?",
+        "back": "La FR1 (Sub-6 GHz, 410 MHz - 7.125 GHz) garantisce ampia copertura territoriale e penetrazione indoor con canali fino a 100 MHz. La FR2 (mmWave, 24.25 - 52.6 GHz) offre canali amplissimi (fino a 400 MHz) per throughput estremo a corto raggio, ma soffre di forte attenuazione atmosferica e ostacoli fisici.",
+        "extra": "FR2 richiede necessariamente beamforming analogico o ibrido per superare il severo path loss.",
+        "tag": "5g nr fr1 fr2 mmwave spettro",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 2.1"
+      },
+      {
+        "id": "5g-003",
+        "tipo": "Formula",
+        "node": "Numerologia Flessibile e Spaziatura Sottoportanti",
+        "front": "Come varia la spaziatura tra le sottoportanti in 5G NR e come si calcola rispetto a LTE?",
+        "back": "La spaziatura è scalabile secondo la legge Delta f = 15 * 2^mu kHz, con mu da 0 a 4 (15, 30, 60, 120, 240 kHz). Al crescere di mu, la durata del simbolo OFDM e dello slot si riduce proporzionalmente, permettendo latenze radio molto più basse.",
+        "extra": "In LTE mu era fisso a 0 (15 kHz con slot di 0.5 ms / subframe di 1 ms). In 5G con mu=3 lo slot dura 0.125 ms.",
+        "tag": "5g nr numerologia ofdm sottoportanti",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.2"
+      },
+      {
+        "id": "5g-004",
+        "tipo": "Causa-effetto",
+        "node": "Spaziatura Elevata nelle Onde Millimetriche",
+        "front": "Perché nelle bande ad onde millimetriche (FR2) è indispensabile adottare spaziatura tra sottoportanti elevata (es. 120 kHz)?",
+        "back": "Alle alte frequenze il rumore di fase dell'oscillatore locale e l'effetto Doppler sono molto più severi. Una maggiore spaziatura tra sottoportanti rende la trasmissione OFDM robusta contro l'interferenza inter-portante (ICI) provocata da tali scostamenti di frequenza.",
+        "extra": "A 28 o 39 GHz i 15 kHz dell'LTE provocherebbero un degrado inaccettabile della ricezione.",
+        "tag": "5g nr mmwave doppler rumore_fase ici",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.2"
+      },
+      {
+        "id": "5g-005",
+        "tipo": "Meccanismo",
+        "node": "Self-Contained Slot e TDD Dinamico",
+        "front": "Che cos'è la struttura di Self-Contained Slot in 5G NR e quale vantaggio introduce?",
+        "back": "È una struttura di slot in cui controllo di downlink, dati utente e controllo/riscontro di uplink (ACK/NACK HARQ) possono coesistere all'interno dello stesso singolo slot. Questo consente al terminale di riscontrare la trasmissione immediatamente, abbattendo la latenza di ritrasmissione a frazioni di millisecondo.",
+        "extra": "Supera la rigidità del frame LTE dove l'ACK HARQ richiedeva tipicamente 4 subframe.",
+        "tag": "5g nr slot self_contained tdd harq",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.3"
+      },
+      {
+        "id": "5g-006",
+        "tipo": "Funzione",
+        "node": "Mini-Slot per URLLC e Preemptive Scheduling",
+        "front": "Cosa sono i Mini-Slot in 5G NR e come consentono il supporto al traffico URLLC?",
+        "back": "I mini-slot sono unità di schedulazione radio composte da 2, 4 o 7 simboli OFDM (anziché i 14 simboli dello slot standard). Permettono una trasmissione immediata senza attendere i confini del normale slot, consentendo il preemptive scheduling (sovrascrittura istantanea) su trasmissioni eMBB già in corso.",
+        "extra": "Fondamentali per comunicazioni industriali, veicolari (V2X) e chirurgia remota.",
+        "tag": "5g nr urllc mini_slot scheduling",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.3"
+      },
+      {
+        "id": "5g-007",
+        "tipo": "Confronto",
+        "node": "Massive MIMO: Digital vs Hybrid Beamforming",
+        "front": "Qual è la differenza fondamentale tra Digital Beamforming e Hybrid Beamforming nei sistemi 5G Massive MIMO?",
+        "back": "Nel Digital Beamforming ogni singolo elemento d'antenna dispone di una catena RF e convertitore DAC/ADC dedicati, massimizzando la flessibilità ma con altissimo consumo. Nel Beamforming Ibrido/Analogico più antenne condividono la stessa catena RF mediante sfasatori analogici, riducendo drasticamente costi e complessità in FR2.",
+        "extra": "In FR1 si preferisce Digital Beamforming fino a 64 canali RF, in FR2 si impiega il Beamforming Ibrido.",
+        "tag": "5g nr massive_mimo beamforming rf",
+        "difficolta": 3,
+        "fonte": "Riassunto 5G - Sez. 2.4"
+      },
+      {
+        "id": "5g-008",
+        "tipo": "Procedura",
+        "node": "Beam Management (Sweeping, Measurement, Tracking)",
+        "front": "In quali fasi si articola la procedura di Beam Management tra gNodeB e terminale 5G?",
+        "back": "Si articola in Beam Sweeping (lo gNB trasmette blocchi SSB sequenzialmente su fasci spaziali diversi), Beam Measurement (lo UE misura RSRP su ciascun fascio), Beam Determination (selezione della coppia fascio migliore) e Beam Tracking/Refinement per correggere l'allineamento spaziale durante il movimento.",
+        "extra": "Gli Synchronization Signal Blocks (SSB) contengono PSS, SSS e PBCH trasmessi a spazzata d'antenna.",
+        "tag": "5g nr beam_management ssb beamforming",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.4"
+      },
+      {
+        "id": "5g-009",
+        "tipo": "Confronto",
+        "node": "Codici di Canale: Polar Codes vs LDPC",
+        "front": "Quali codici di correzione d'errore adotta 5G NR al posto dei codici Turbo di LTE?",
+        "back": "5G NR adotta i codici LDPC (Low-Density Parity-Check) per il canale dati condiviso ad altissimo throughput, e i Polar Codes per i canali di controllo radio (PDCCH e PUCCH) grazie alle eccellenti prestazioni su blocchi di payload ridotti.",
+        "extra": "I codici Turbo sono stati completamente abbandonati per limiti di parallelizzazione e decodifica ad alto bitrate.",
+        "tag": "5g nr ldpc polar_codes canale_radio",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 2.4"
+      },
+      {
+        "id": "5g-010",
+        "tipo": "Definizione",
+        "node": "Service-Based Architecture (SBA) del 5G Core",
+        "front": "Che cos'è la Service-Based Architecture (SBA) del 5G Core e quale paradigma adotta nel control plane?",
+        "back": "È l'architettura del piano di controllo in cui le Network Functions (NF) comunicano tramite un bus di servizi software interoperabile basato su protocollo HTTP/2 con API RESTful e serializzazione JSON, abbandonando i protocolli punto-punto come Diameter.",
+        "extra": "Ogni NF agisce come Service Producer e Service Consumer secondo il paradigma web-based microservices.",
+        "tag": "5gc sba http2 rest json architettura",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 3.1"
+      },
+      {
+        "id": "5g-011",
+        "tipo": "Funzione",
+        "node": "Ruolo della Funzione NRF (Network Repository Function)",
+        "front": "Qual è la funzione fondamentale della NRF (Network Repository Function) nella rete 5G Core?",
+        "back": "La NRF funge da registro centralizzato di tutti i servizi: le NF vi registrano il proprio profilo, indirizzo IP e capacità all'avvio, e le altre NF interrogano la NRF per individuare (service discovery) istanze ottimali dei microservizi necessari.",
+        "extra": "Equivalente al Service Registry nei pattern cloud-native (es. Consul o Eureka).",
+        "tag": "5gc nrf service_discovery sba microservizi",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.1"
+      },
+      {
+        "id": "5g-012",
+        "tipo": "Funzione",
+        "node": "AMF (Access and Mobility Management Function)",
+        "front": "Quali responsabilità gestisce la funzione AMF nel 5GC e quale porzione della vecchia MME 4G eredita?",
+        "back": "L'AMF gestisce la terminazione della segnalazione NAS, l'autenticazione iniziale, la gestione della registrazione, la mobilità e il paging del terminale. Non gestisce invece la sessione dati IP, che è stata completamente delegata alla SMF.",
+        "extra": "L'MME di LTE univa mobilità e sessione; in 5G queste funzioni sono rigidamente separate.",
+        "tag": "5gc amf mme mobilita segnalazione nas",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 3.2"
+      },
+      {
+        "id": "5g-013",
+        "tipo": "Funzione",
+        "node": "SMF (Session Management Function)",
+        "front": "Qual è il compito primario della SMF (Session Management Function) nel 5G Core?",
+        "back": "La SMF gestisce il ciclo di vita delle sessioni dati PDU (Protocol Data Unit), alloca gli indirizzi IP ai terminali, seleziona e configura la funzione del piano utente (UPF) tramite protocollo N4/PFCP e controlla la Quality of Service.",
+        "extra": "Controlla le regole di inoltro pacchetti applicate dall'UPF senza mai toccare il traffico dati direttamente.",
+        "tag": "5gc smf sessione pdu cups pfcp",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.2"
+      },
+      {
+        "id": "5g-014",
+        "tipo": "Funzione",
+        "node": "UPF (User Plane Function) ed Edge Computing",
+        "front": "Quali ruoli svolge la UPF (User Plane Function) e perché abilita il Multi-Access Edge Computing (MEC)?",
+        "back": "L'UPF è l'unico elemento del 5GC dedicato al piano utente: esegue incapsulamento GTP-U, routing, commutazione, ispezione pacchetti e conteggio traffico. Essendo disaccoppiata e stateless, può essere decentralizzata vicino alle celle radio per elaborazione locale a latenza sub-millisecondo.",
+        "extra": "Sostituisce le porzioni user-plane di S-GW e P-GW (SGW-U e PGW-U).",
+        "tag": "5gc upf user_plane mec edge_computing gtp",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.2"
+      },
+      {
+        "id": "5g-015",
+        "tipo": "Confronto",
+        "node": "UDM ed AUSF vs HSS del 4G",
+        "front": "Come viene suddiviso il database utenti HSS di LTE nel 5G Core tra le funzioni UDM e AUSF?",
+        "back": "La UDM (Unified Data Management) memorizza i profili di sottoscrizione, credenziali e logica di gestione dati utente, mentre l'AUSF (Authentication Server Function) esegue specificamente gli algoritmi di autenticazione e mutua verifica di sicurezza (5G-AKA o EAP-AKA').",
+        "extra": "Consente di separare l'esecuzione crittografica dall'archiviazione del database sottoscrittori.",
+        "tag": "5gc udm ausf hss sicurezza 5g_aka",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 3.2"
+      },
+      {
+        "id": "5g-016",
+        "tipo": "Definizione",
+        "node": "Network Slicing End-to-End",
+        "front": "Che cos'è il Network Slicing nel 5G e su quali livelli della rete si estende?",
+        "back": "È la capacità di istanziare molteplici reti logiche virtualizzate, indipendenti e isolate, sopra una medesima infrastruttura fisica condivisa. Si estende end-to-end coinvolgendo risorse radio (RAN), rete di trasporto e funzioni del 5G Core.",
+        "extra": "Permette di soddisfare contemporaneamente SLA radicalmente opposti (es. slice eMBB per streaming e slice URLLC per veicoli autonomi).",
+        "tag": "5g network_slicing sla isolamento virtualizzazione",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 4.1"
+      },
+      {
+        "id": "5g-017",
+        "tipo": "Classificazione",
+        "node": "Identificatore S-NSSAI (SST e SD)",
+        "front": "Da quali componenti è formato l'identificatore S-NSSAI di una slice di rete e cosa rappresentano?",
+        "back": "È composto dal SST (Slice/Service Type, 8 bit) che definisce il comportamento atteso in termini di funzioni e servizi (es. 1=eMBB, 2=URLLC, 3=mMTC), e dal SD opzionale (Slice Differentiator, 24 bit) che distingue slice con lo stesso SST gestite per clienti o tenant differenti.",
+        "extra": "L'insieme delle slice ammesse per un UE forma la lista NSSAI (Network Slice Selection Assistance Information).",
+        "tag": "5g network_slicing s_nssai sst sd tenant",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 4.2"
+      },
+      {
+        "id": "5g-018",
+        "tipo": "Funzione",
+        "node": "Funzione NSSF (Network Slice Selection Function)",
+        "front": "Qual è il compito della funzione NSSF (Network Slice Selection Function) durante la registrazione?",
+        "back": "La NSSF riceve dall'AMF le richieste di slice del terminale, verifica l'autorizzazione dell'abbonato e seleziona il set di Network Slice Instances (NSI) autorizzate, indicando l'insieme di AMF e NF idonee a servire il dispositivo.",
+        "extra": "Interviene all'atto della procedura di registrazione per instradare l'UE verso l'AMF competente.",
+        "tag": "5gc nssf slicing registrazione amf",
+        "difficolta": 2,
+        "fonte": "Riassunto 5G - Sez. 4.2"
+      },
+      {
+        "id": "5g-019",
+        "tipo": "Confronto",
+        "node": "Deployment 5G: Standalone (SA) vs Non-Standalone (NSA)",
+        "front": "Qual è la differenza architetturale fondamentale tra il deployment 5G Standalone (SA) e Non-Standalone (NSA)?",
+        "back": "Nel 5G Standalone (Opzione 2) la stazione radio gNB si interfaccia direttamente con il nuovo 5G Core (5GC), consentendo slicing nativo e SBA. Nel 5G Non-Standalone (Opzione 3x) la cella NR opera come estensione di una portante LTE di ancoraggio collegata al vecchio EPC 4G.",
+        "extra": "NSA permette un rollout rapido del 5G su infrastruttura 4G esistente, ma impedisce il Network Slicing end-to-end completo.",
+        "tag": "5g deployment sa nsa opzione2 opzione3x epc",
+        "difficolta": 1,
+        "fonte": "Riassunto 5G - Sez. 5"
+      },
+      {
+        "id": "5g-020",
+        "tipo": "Meccanismo",
+        "node": "EN-DC (E-UTRA-NR Dual Connectivity) in Opzione 3x",
+        "front": "Come funziona l'architettura EN-DC (Opzione 3x) e dove avviene la separazione del traffico dati?",
+        "back": "Nel meccanismo EN-DC lo UE comunica contemporaneamente con un eNodeB (Master Node, ancora di controllo RRC) e un gNodeB (Secondary Node). Nell'Opzione 3x il tunnel dati S1-U dell'EPC termina direttamente sul gNodeB, che invia i dati ad altissimo bitrate su 5G NR e splitta una frazione via interfaccia X2 verso l'eNodeB.",
+        "extra": "Evita che il pesante traffico dati 5G intasi la capacità di elaborazione del vecchio eNodeB 4G.",
+        "tag": "5g nsa en_dc dual_connectivity opzione3x split_bearer",
+        "difficolta": 3,
+        "fonte": "Riassunto 5G - Sez. 5"
       }
     ]
   }
