@@ -1091,8 +1091,8 @@
   </div>
 
   <!-- Carica database iniziale -->
-  <script src="topics.js"></script>
-  <script src="exercises.js"></script>
+  <script src="topics.js?v=6"></script>
+  <script src="exercises.js?v=6"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -1133,7 +1133,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_2026_v1";
+      const DATASET_VERSION = "reticellulari_lte_v6";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -1838,24 +1838,29 @@
     /* ============================================================
        FORZA AGGIORNAMENTO APP (RESET SERVICE WORKER E CACHE)
        ============================================================ */
-    function forceRefreshApp() {
-      if (confirm("Vuoi forzare l'aggiornamento dell'app e ricaricare tutti i contenuti più recenti da GitHub?")) {
-        try {
-          if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(regs => {
-              for (let reg of regs) reg.unregister();
-            });
+    async function forceRefreshApp() {
+      triggerHaptic('medium');
+      try {
+        if ('serviceWorker' in navigator) {
+          const regs = await navigator.serviceWorker.getRegistrations();
+          for (let reg of regs) {
+            await reg.unregister();
           }
-          if ('caches' in window) {
-            caches.keys().then(names => {
-              for (let name of names) caches.delete(name);
-            });
+        }
+        if ('caches' in window) {
+          const names = await caches.keys();
+          for (let name of names) {
+            await caches.delete(name);
           }
-          localStorage.removeItem("rw_dataset_ver");
-          localStorage.removeItem(STORAGE_KEY_TOPICS);
-        } catch (e) {}
-        window.location.reload(true);
+        }
+        localStorage.removeItem("rw_dataset_ver");
+        localStorage.removeItem(STORAGE_KEY_TOPICS);
+      } catch (e) {
+        console.error("Errore pulizia cache:", e);
       }
+      // Ricarica forzata con timestamp anti-cache per Telegram WebView e browser
+      const cleanUrl = window.location.origin + window.location.pathname;
+      window.location.replace(cleanUrl + '?v=' + Date.now());
     }
 
     /* ============================================================
