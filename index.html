@@ -1724,7 +1724,10 @@
         <button class="modal-close" onclick="closeReviewModal()">&times;</button>
       </div>
       <div class="modal-body" id="modalReviewContent"></div>
-      <div class="modal-actions">
+      <div class="modal-actions" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; align-items: center;">
+        <button class="btn-primary" id="btnRetryReviewCards" style="padding: 10px 18px; font-weight: 700; background: linear-gradient(135deg, #2563eb, #3b82f6); display: inline-flex; align-items: center; gap: 6px;" onclick="startRetryReviewSession()">
+          <span>🔁 Riprova (<span id="modalReviewCountBtn">0</span>)</span>
+        </button>
         <button class="btn-danger-outline" onclick="clearAllReviewData()">Svuota Lista</button>
         <button class="btn-secondary" style="padding: 10px 18px;" onclick="closeReviewModal()">Chiudi</button>
       </div>
@@ -1776,10 +1779,10 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=10"></script>
-  <script src="exercises.js?v=10"></script>
-  <script src="formulas.js?v=10"></script>
-  <script src="summaries.js?v=10"></script>
+  <script src="topics.js?v=11"></script>
+  <script src="exercises.js?v=11"></script>
+  <script src="formulas.js?v=11"></script>
+  <script src="summaries.js?v=11"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -1812,6 +1815,7 @@
     let cardResults = {};
     let lastReportText = "";
     let lastReportData = null;
+    let isRetrySession = false;
 
     const STORAGE_KEY_TOPICS = "rw_flashcards_custom_topics";
     const STORAGE_KEY_REVIEW = "rw_flashcards_da_ripassare";
@@ -1820,7 +1824,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_5g_v10";
+      const DATASET_VERSION = "reticellulari_lte_5g_v11";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -2355,17 +2359,36 @@
       // Aggiorna memoria persistente
       const revData = getReviewData();
       const nowStr = new Date().toLocaleString();
-      wrongCards.forEach(w => {
-        if (!revData.items[w.id]) {
-          revData.items[w.id] = {
-            id: w.id, front: w.front, node: w.node, note: w.note, topic: w.topicName,
-            first_failed: nowStr, last_failed: nowStr, fail_count: 1
-          };
-        } else {
-          revData.items[w.id].fail_count = (revData.items[w.id].fail_count || 1) + 1;
-          revData.items[w.id].last_failed = nowStr;
-        }
-      });
+      if (isRetrySession) {
+        // Se siamo in sessione Riprova:
+        // Le card completate con successo (!cardResults[c.id]) vengono rimosse da Da Ripassare!
+        sessionCards.forEach(c => {
+          if (!cardResults[c.id]) {
+            if (revData.items && revData.items[c.id]) {
+              delete revData.items[c.id];
+            }
+          } else {
+            // Ancora sbagliata
+            if (revData.items && revData.items[c.id]) {
+              revData.items[c.id].fail_count = (revData.items[c.id].fail_count || 1) + 1;
+              revData.items[c.id].last_failed = nowStr;
+            }
+          }
+        });
+        isRetrySession = false;
+      } else {
+        wrongCards.forEach(w => {
+          if (!revData.items[w.id]) {
+            revData.items[w.id] = {
+              id: w.id, front: w.front, node: w.node, note: w.note, topic: w.topicName,
+              first_failed: nowStr, last_failed: nowStr, fail_count: 1
+            };
+          } else {
+            revData.items[w.id].fail_count = (revData.items[w.id].fail_count || 1) + 1;
+            revData.items[w.id].last_failed = nowStr;
+          }
+        });
+      }
       saveReviewData(revData);
 
       // Prepara report Markdown per copia/incolla
@@ -2441,19 +2464,27 @@
       container.innerHTML = '';
       const revData = getReviewData();
       const keys = Object.keys(revData.items || {});
+      const countSpan = document.getElementById('modalReviewCountBtn');
+      const retryBtn = document.getElementById('btnRetryReviewCards');
+      if (countSpan) countSpan.textContent = keys.length;
 
       if (keys.length === 0) {
+        if (retryBtn) retryBtn.style.display = 'none';
         container.innerHTML = '<div style="color: var(--text-muted); text-align: center; padding: 24px;">Nessun argomento da ripassare. Ottimo lavoro! 🎉</div>';
       } else {
+        if (retryBtn) retryBtn.style.display = 'inline-flex';
         keys.forEach(k => {
           const item = revData.items[k];
           const div = document.createElement('div');
           div.className = 'wrong-item';
           div.style.marginBottom = '6px';
           div.innerHTML = `
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span class="wrong-item-node">${item.front || item.node}</span>
-              <span style="font-size:10px; background:var(--danger-bg); color:var(--danger); padding:2px 6px; border-radius:10px; font-weight:bold;">${item.fail_count || 1} errori</span>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+              <span class="wrong-item-node" style="font-weight:600; flex:1;">${item.front || item.node}</span>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:10px; background:var(--danger-bg); color:var(--danger); padding:2px 6px; border-radius:10px; font-weight:bold; white-space:nowrap;">${item.fail_count || 1} errori</span>
+                <button onclick="removeSingleReviewItem('${k}')" title="Rimuovi da ripassare" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:14px; padding:2px 6px; border-radius:4px; line-height:1;">✕</button>
+              </div>
             </div>
             <div class="wrong-item-note">📍 [[${item.note || item.node || ''}]] &bull; ${item.topic || ''}</div>
           `;
@@ -2462,6 +2493,85 @@
       }
       document.getElementById('reviewModal').classList.add('open');
       triggerHaptic('light');
+    }
+
+    function removeSingleReviewItem(id) {
+      const revData = getReviewData();
+      if (revData.items && revData.items[id]) {
+        delete revData.items[id];
+        saveReviewData(revData);
+        openReviewModal();
+      }
+    }
+
+    function startRetryReviewSession() {
+      const revData = getReviewData();
+      const keys = Object.keys(revData.items || {});
+      if (keys.length === 0) {
+        alert("Nessun argomento da ripassare al momento!");
+        return;
+      }
+
+      // Costruisci dizionario da tutte le card note
+      const cardMap = new Map();
+      (allTopics || window.DEFAULT_TOPICS || []).forEach(t => {
+        (t.cards || []).forEach(c => {
+          cardMap.set(String(c.id), {
+            ...c,
+            topicName: t.topic_name
+          });
+        });
+      });
+
+      if (window.EXAM_EXERCISES) {
+        window.EXAM_EXERCISES.forEach(ex => {
+          cardMap.set(String(ex.id), {
+            id: ex.id,
+            front: ex.title + (ex.context ? '\n\n' + ex.context : ''),
+            back: (ex.steps || []).map(s => `**${s.title}**\n${s.formula}\n${s.explanation}`).join('\n\n'),
+            node: ex.title,
+            note: ex.topic,
+            topicName: 'Esercizio: ' + ex.topic
+          });
+        });
+      }
+
+      const retryCards = [];
+      keys.forEach(k => {
+        if (cardMap.has(String(k))) {
+          retryCards.push(cardMap.get(String(k)));
+        } else {
+          const item = revData.items[k];
+          if (item) {
+            retryCards.push({
+              id: item.id || k,
+              front: item.front || item.node || 'Domanda di ripasso',
+              back: item.back || item.node || `Controlla la nota [[${item.note || ''}]]`,
+              node: item.node,
+              note: item.note,
+              topicName: item.topic || 'Da Ripassare'
+            });
+          }
+        }
+      });
+
+      if (retryCards.length === 0) {
+        alert("Impossibile caricare le domande selezionate.");
+        return;
+      }
+
+      closeReviewModal();
+
+      isRetrySession = true;
+      currentMode = 'theory';
+      sessionCards = retryCards;
+      currentIndex = 0;
+      cardResults = {};
+      sessionCards.forEach(c => { cardResults[c.id] = false; });
+
+      triggerHaptic('medium');
+      switchView('viewPractice');
+      renderCard();
     }
 
     function closeReviewModal() {
