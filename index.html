@@ -1776,10 +1776,10 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=9"></script>
-  <script src="exercises.js?v=9"></script>
-  <script src="formulas.js?v=9"></script>
-  <script src="summaries.js?v=9"></script>
+  <script src="topics.js?v=10"></script>
+  <script src="exercises.js?v=10"></script>
+  <script src="formulas.js?v=10"></script>
+  <script src="summaries.js?v=10"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -1820,7 +1820,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_5g_v9";
+      const DATASET_VERSION = "reticellulari_lte_5g_v10";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);

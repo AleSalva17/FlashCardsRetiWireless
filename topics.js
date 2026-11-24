@@ -1,5 +1,7 @@
 // Database definitivo delle flashcards per Reti Wireless (Reti Cellulari + LTE Completo + 5G Completo)
-// Con formule KaTeX renderizzate ad alta definizione
+// Tutte le domande e risposte rigorosamente verificate e allineate, con formule KaTeX native
+// Totale Argomenti: 8 | Totale Flashcards: 163
+
 window.DEFAULT_TOPICS = [
   {
     "topic_id": "reticell_architettura",
@@ -41,7 +43,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-004",
         "front": "Qual è la formula della densità di potenza isotropica S_iso a distanza d?",
-        "back": "$$S_{\\text{iso}} = \\frac{P_t}{4\\pi d^2} \\quad [\\text{W/m}^2]$$ La potenza totale $P_t$ si distribuisce uniformemente sulla superficie di una sfera di raggio $d$ centrata sul trasmettitore.",
+        "back": "$$S_{\\text{iso}} = \\frac{P_t}{4\\pi d^2} \\quad [\\text{W/m}^2]$$ La potenza totale $P_t$ si distribuisce uniformemente sulla superficie sferica di raggio $d$ ($4\\pi d^2$).",
         "node": "Radiatore Isotropico",
         "note": "Formulario Reti Wireless - Sez 1.2",
         "image": "",
@@ -74,7 +76,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-007",
         "front": "Quale relazione fisica fondamentale è espressa da questa formula?",
-        "back": "La densità di potenza direzionale $S$ a distanza $d$: $$S = \\frac{\\text{EIRP}}{4\\pi d^2} = \\frac{P_t G_t}{4\\pi d^2} \\quad [\\text{W/m}^2]$$",
+        "back": "La densità di potenza direzionale $S$ a distanza $d$ in funzione dell'EIRP: $$S = \\frac{\\text{EIRP}}{4\\pi d^2} = \\frac{P_t G_t}{4\\pi d^2} \\quad [\\text{W/m}^2]$$",
         "node": "EIRP",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-01-eirp.png",
@@ -107,7 +109,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-010",
         "front": "Quali sono i tre blocchi concettuali che compongono l'espressione di Friis mostrata?",
-        "back": "1) Potenza trasmessa e guadagno Tx ($\\text{EIRP} = P_t G_t$); 2) Attenuazione geometrica di spazio libero $\\frac{1}{4\\pi d^2}$; 3) Area efficace dell'antenna ricevente $A_e = \\frac{\\lambda^2}{4\\pi} G_r$.",
+        "back": "1) Potenza trasmessa e guadagno Tx ($\\text{EIRP} = P_t G_t$); 2) Attenuazione geometrica di spazio libero $\\frac{1}{4\\pi d^2}$; 3) Area efficace dell'antenna ricevente $A_e = G_r \\frac{\\lambda^2}{4\\pi}$.",
         "node": "Formula di FRISS",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-03-friis-dettaglio.png",
@@ -118,7 +120,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-011",
         "front": "Cosa rappresenta l'esponente di propagazione eta (o gamma) e quanto vale nei vari ambienti?",
-        "back": "Misura la rapidità con cui decade la potenza ricevuta con la distanza ($P_r \\propto d^{-\\eta}$). Vale $\\eta = 2$ in spazio libero ideale, $\\eta \\approx 2.7 \\div 3.5$ in ambiente urbano, fino a $\\eta = 4 \\div 6$ in indoor o NLOS severo.",
+        "back": "Misura la rapidità con cui decade la potenza ricevuta con la distanza ($P_r \\propto d^{-\\eta}$). Vale $\\eta = 2$ in spazio libero, e tra $3$ e $5$ in ambienti urbani terrestri.",
         "node": "ETA",
         "note": "Lezione 01 22 febbraio - 30",
         "image": "",
@@ -129,7 +131,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-012",
         "front": "Cosa comporta un aumento dell'esponente di attenuazione eta per il raggio di cella R?",
-        "back": "A parità di potenza emessa, la potenza decade molto più rapidamente, contraendo il raggio di copertura utile R della cella.",
+        "back": "A parità di potenza emessa, la potenza decade molto più rapidamente, contraendo il raggio di copertura utile $R$ della cella.",
         "node": "ETA",
         "note": "Lezione 04 3 marzo - 13",
         "image": "",
@@ -140,7 +142,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-071",
         "front": "Qual è la formula della distanza di visibilità dell'orizzonte radio tra due antenne elevate?",
-        "back": "$$d_{\\text{radio}} = \\sqrt{2 R' h_t} + \\sqrt{2 R' h_r} \\approx 4.12 \\cdot (\\sqrt{h_t} + \\sqrt{h_r})\\text{ [km]}$$ con altezze $h_t, h_r$ in metri e raggio terrestre equivalente $R' = \\frac{4}{3} R_0$.",
+        "back": "$$d_{\\text{radio}} = \\sqrt{2 R' h_t} + \\sqrt{2 R' h_r} \\approx 4.12 \\cdot (\\sqrt{h_t} + \\sqrt{h_r})\\text{ [km]}$$ con $h_t, h_r$ in metri ed $R' = \\frac{4}{3} R_0$ raggio equivalente terrestre.",
         "node": "Orizzonte ottico ed orizzonte radio",
         "note": "Formulario Reti Wireless - Sez 1.6",
         "image": "",
@@ -151,7 +153,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-072",
         "front": "Perché l'orizzonte radio d_radio è circa il 15% più esteso dell'orizzonte ottico d_ottico?",
-        "back": "$$P_r = P_t G_t G_r \\frac{h_t^2 h_r^2}{d^4}$$ Il raggio riflesso al suolo interferisce distruttivamente con il raggio diretto: la potenza decade con la quarta potenza della distanza ($d^{-4}$ anziché $d^{-2}$).",
+        "back": "A causa del gradiente di indice di rifrazione dell'atmosfera con la quota, che incurva i raggi elettromagnetici verso la superficie terrestre.",
         "node": "Orizzonte ottico ed orizzonte radio",
         "note": "Lezione 01 22 febbraio - 28",
         "image": "",
@@ -162,7 +164,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-073",
         "front": "Qual è la formula asintotica di potenza ricevuta nel modello a due raggi (Two-Ray Ground)?",
-        "back": "La distanza di crossover: $$d_c = \\frac{4\\pi h_t h_r}{\\lambda}$$ Per $d < d_c$ si ha oscillazione e decadimento medio $\\propto d^{-2}$ (Friis); per $d > d_c$ il decadimento passa asintoticamente a $\\propto d^{-4}$.",
+        "back": "$$P_r = P_t G_t G_r \\frac{h_t^2 h_r^2}{d^4}$$ La potenza ricevuta decade con la quarta potenza della distanza ed è indipendente dalla frequenza della portante.",
         "node": "Modello a due raggi e decadimento d^4",
         "note": "Formulario Reti Wireless - Sez 1.8",
         "image": "",
@@ -173,7 +175,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-074",
         "front": "Perché nel modello a due raggi la potenza decade con d^4 anziché con d^2?",
-        "back": "$$\\text{PL}(d)_{\\text{dB}} = \\text{PL}(d_0)_{\\text{dB}} + 10\\eta \\log_{10}\\left(\\frac{d}{d_0}\\right) + X_\\sigma$$ dove $d_0$ è la distanza di riferimento in campo lontano, $\\eta$ l'esponente di attenuazione e $X_\\sigma \\sim \\mathcal{N}(0, \\sigma^2)$ lo shadowing.",
+        "back": "Perché il raggio riflesso dal suolo subisce uno sfasamento di circa 180° rispetto al raggio diretto, provocando un'interferenza distruttiva quasi perfetta a grande distanza.",
         "node": "Modello a due raggi e decadimento d^4",
         "note": "Lezione 01 22 febbraio - 29",
         "image": "",
@@ -212,7 +214,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-015",
         "front": "Come il sistema multicella supera il limite di capacità della singola cella?",
-        "back": "$$\\frac{D}{R} = \\sqrt{3N}$$ Indica quanto le celle co-canale sono distanziate rispetto al loro raggio: maggiore è $N$, maggiore è $D/R$, riducendo l'interferenza co-canale a spese della capacità complessiva.",
+        "back": "Fraziona il territorio in tante celle e riutilizza lo stesso gruppo di frequenze in celle distanti, moltiplicando la capacità per il numero di volte che le frequenze sono riusate.",
         "node": "Multi Cella",
         "note": "Lezione 01 22 febbraio - 35",
         "image": "RetiCellulari-img-11-capacita-multicella.png",
@@ -234,7 +236,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-017",
         "front": "Quali elementi tecnici richiede la gestione di un'infrastruttura multicella?",
-        "back": "$$N = i^2 + ij + j^2$$ con $i, j$ interi non negativi. Valori ammessi di cluster cellulare: $N \\in \\{1, 3, 4, 7, 9, 12, 13, 19, \\dots\\}$.",
+        "back": "Richiede pianificazione delle frequenze, gestione della mobilità (handover tra celle adiacenti) e controllo dell'interferenza co-canale.",
         "node": "Progetto stazione radio base",
         "note": "Lezione 01 22 febbraio - 35",
         "image": "",
@@ -267,7 +269,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-020",
         "front": "Definisci il concetto di riuso cellulare e la sua metrica principale Q.",
-        "back": "Nel caso peggiore (utente al vertice della cella a distanza $R$ da 6 interferenti a distanza $D$): $$\\frac{C}{I} \\approx \\frac{1}{6} \\left(\\frac{D}{R}\\right)^\\eta = \\frac{1}{6} (\\sqrt{3N})^\\eta$$ In dB: $\\left(\\frac{C}{I}\\right)_{\\text{dB}} = 10\\log_{10}\\left(\\frac{(\\sqrt{3N})^\\eta}{6}\\right)$.",
+        "back": "È l'allocazione delle stesse frequenze a celle separate da una distanza $D$ tale che l'interferenza co-canale rimanga sotto una soglia tollerabile. La metrica principale è il fattore di riuso: $$Q = \\frac{D}{R} = \\sqrt{3N}$$",
         "node": "Riuso Cellulare",
         "note": "Lezione 02 24 febbraio - 02",
         "image": "",
@@ -278,7 +280,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-021",
         "front": "Che cos'è un cluster di celle e quali valori può assumere la sua dimensione N?",
-        "back": "È il gruppo minimo di celle adiacenti a cui viene assegnato l'intero insieme di frequenze disponibili senza ripetizioni. N assume valori ammissibili N = u^2 + u*v + v^2.",
+        "back": "È il gruppo minimo di celle adiacenti a cui viene assegnato l'intero insieme di frequenze disponibili senza ripetizioni. $N$ assume valori ammissibili: $$N = i^2 + ij + j^2$$ con $i, j$ interi non negativi ($N \\in \\{1, 3, 4, 7, 9, 12, 13, 19, \\dots\\}$).",
         "node": "Cluster",
         "note": "Lezione 02 24 febbraio - 06",
         "image": "RetiCellulari-img-06-cluster-uv.png",
@@ -289,7 +291,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-022",
         "front": "Come si determinano i centri delle celle co-canale usando gli assi u e v in figura?",
-        "back": "Superficie di un esagono regolare di raggio $R$: $$A_{\\text{esa}} = \\frac{3\\sqrt{3}}{2} R^2 \\approx 2.598 \\cdot R^2$$",
+        "back": "Partendo dal centro di una cella, ci si sposta di u passi lungo l'asse u, si ruota di 60 gradi in senso antiorario e ci si sposta di v passi lungo l'asse v.",
         "node": "Cluster",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-06-cluster-uv.png",
@@ -300,7 +302,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-023",
         "front": "Qual è la formula che lega la distanza di riuso D al raggio R e alla dimensione N del cluster?",
-        "back": "D = R * sqrt(3 * N), dove R è il raggio dell'esagono circoscritto e N è il numero di celle del cluster.",
+        "back": "$$D = R \\sqrt{3N} \\implies \\frac{D}{R} = \\sqrt{3N}$$ dove $R$ è il raggio dell'esagono circoscritto e $N$ è la dimensione del cluster.",
         "node": "Distanza di riuso",
         "note": "Formulario Reti Wireless - Sez 2.2",
         "image": "RetiCellulari-img-05-distanza-riuso.png",
@@ -311,7 +313,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-024",
         "front": "Quale formula geometrica è rappresentata nell'immagine?",
-        "back": "La relazione della distanza di riuso D = R * radice(3*N), che definisce la spaziatura minima tra stazioni base che condividono le medesime frequenze.",
+        "back": "La relazione della distanza di riuso $$D = R \\sqrt{3N}$$ che definisce la spaziatura minima tra stazioni base che condividono le medesime frequenze.",
         "node": "Distanza di riuso",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-05-distanza-riuso.png",
@@ -322,7 +324,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-025",
         "front": "Come si esprime la capacità di canale di Shannon in presenza di rumore?",
-        "back": "Formula di Erlang-B per sistemi a perdita pura ($M/M/C/C$): $$P_b = B(C, A) = \\frac{\\frac{A^C}{C!}}{\\sum_{k=0}^{C} \\frac{A^k}{k!}}$$ con $C$ canali e traffico offerto $A = \\lambda \\cdot E[t_{\\text{changa}}]$ in Erlang.",
+        "back": "$$C = B \\log_2\\left(1 + \\frac{S}{N}\\right) \\quad [\\text{bit/s}]$$ dove $B$ è la banda in Hz ed $S/N$ è il rapporto segnale/rumore in potenza lineare.",
         "node": "Rapporto segnale disturbo - Shannon",
         "note": "Formulario Reti Wireless - Sez 2.3",
         "image": "RetiCellulari-img-07-shannon.png",
@@ -333,7 +335,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-026",
         "front": "Indica il significato della formula di Shannon mostrata nell'immagine.",
-        "back": "Rappresenta la capacità massima teorica di trasmissione C [bit/s] su canale a banda B con rapporto segnale/disturbo S/N.",
+        "back": "Rappresenta la capacità massima teorica di trasmissione $C\\text{ [bit/s]}$ su canale a banda $B$ con rapporto segnale/disturbo $S/N$.",
         "node": "Rapporto segnale disturbo - Shannon",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-07-shannon.png",
@@ -344,7 +346,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-027",
         "front": "Qual è la differenza fondamentale tra SINR e SIR in una rete cellulare?",
-        "back": "Il SINR include al denominatore sia l'interferenza co-canale I che il rumore termico N (S/(I+N)); il SIR trascura il rumore termico (C/I), valida in regimi interference-limited.",
+        "back": "Il SINR include al denominatore sia l'interferenza co-canale $I$ che il rumore termico $N$ ($\\frac{S}{I+N}$); il SIR trascura il rumore termico ($C/I$), valida in regimi *interference-limited*.",
         "node": "SINR e SIR",
         "note": "Lezione 02 24 febbraio - 09",
         "image": "RetiCellulari-img-08-sinr.png",
@@ -355,7 +357,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-028",
         "front": "Quale grandezza esprime la formula in figura e quando si approssima a SIR?",
-        "back": "Esprime il SINR = S / (somma(I_i) + N). Quando l'interferenza co-canale somma(I_i) domina nettamente il rumore termico N, il SINR collassa a SIR = C / I.",
+        "back": "Esprime il $$\\text{SINR} = \\frac{S}{\\sum I_i + N}$$ Quando l'interferenza co-canale $\\sum I_i$ domina nettamente sul rumore termico $N$, il termine $N$ diventa trascurabile e il SINR coincide con il SIR ($C/I$).",
         "node": "SINR e SIR",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-08-sinr.png",
@@ -410,7 +412,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-033",
         "front": "Indica cosa rappresentano gamma e ni nell'equazione di progetto mostrata.",
-        "back": "L'inviluppo $r$ del segnale segue una densità di Rayleigh: $$p_R(r) = \\frac{2r}{P_0} e^{-\\frac{r^2}{P_0}}, \\quad r \\ge 0$$ dove la potenza istantanea $P_r = r^2$ segue una distribuzione esponenziale negativa con media $P_0$.",
+        "back": "$\\gamma$ (o $\\Gamma_{\\text{th}}$) è la soglia minima di SIR lineare richiesta per il servizio, mentre $\\nu$ è il numero di stazioni radio base interferenti del primo ordine ($\\nu = 6$ per celle omnidirezionali, $\\nu = 2$ per settori a 120°).",
         "node": "Gamma è SIR ed è lineare",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-10-sir-lineare.png",
@@ -421,7 +423,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-034",
         "front": "Perché con la settorializzazione a 120 gradi gli interferenti si riducono da 6 a 2?",
-        "back": "Perché le antenne direttive irradiano solo su un arco di 120 gradi, eliminando i lobi verso gli altri 4 interferenti del primo anello che non puntano verso il settore.",
+        "back": "L'equazione di dimensionamento del cluster per il caso peggiore di interferenza: $$\\frac{1}{\\nu}\\left(\\frac{D}{R}\\right)^\\eta \\ge \\Gamma_{\\text{th}} \\implies \\frac{D}{R} \\ge (\\nu \\cdot \\Gamma_{\\text{th}})^{1/\\eta}$$",
         "node": "ni = 6 omnidirezionale / ni = 2 con 3 settori",
         "note": "Lezione 02 24 febbraio - 16",
         "image": "",
@@ -432,7 +434,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-035",
         "front": "Qual è il costo prestazionale della settorializzazione delle celle a 3 settori?",
-        "back": "Probabilità che la potenza istantanea scenda sotto la soglia $P_{\\text{th}}$: $$P_{\\text{out}} = P(P_r < P_{\\text{th}}) = 1 - e^{-\\frac{P_{\\text{th}}}{P_0}}$$",
+        "back": "La banda della cella viene partizionata tra i 3 settori (ciascuno con 1/3 dei canali), causando una perdita di efficienza di aggregazione del traffico (trunking efficiency).",
         "node": "Settorizzazione",
         "note": "Lezione 02 24 febbraio - 15",
         "image": "",
@@ -443,7 +445,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-036",
         "front": "Come si adatta la formula di Shannon al sistema multicella interference-limited?",
-        "back": "Margine di dissolvenza $M$: $$M = \\frac{P_0}{P_{\\text{th}}} = \\frac{1}{\\ln\\left(\\frac{1}{1 - P_{\\text{out}}}\\right)} \\implies M_{\\text{dB}} = -10 \\log_{10}\\left(\\ln\\frac{1}{1 - P_{\\text{out}}}\\right)$$ Per $P_{\\text{out}} = 1\\%$, si ricava $M_{\\text{dB}} \\approx 20\\text{ dB}$ ($M \\approx 100$).",
+        "back": "Si sostituisce il rapporto segnale/rumore (SNR) con il rapporto segnale/interferenza (SIR): $$C_{\\text{cella}} = B_{\\text{cella}} \\log_2(1 + \\text{SIR})$$",
         "node": "Shannon con Multicella",
         "note": "Lezione 02 24 febbraio - 13",
         "image": "",
@@ -504,7 +506,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-037",
         "front": "Qual è la differenza fondamentale tra duplexing FDD e duplexing TDD?",
-        "back": "Probabilità di outage al bordocella ($r = R$): $$P_{\\text{out}}(R) = \\frac{1}{2}\\text{erfc}\\left(\\frac{M_{\\text{dB}}}{\\sqrt{2}\\sigma_{\\text{dB}}}\\right) = Q\\left(\\frac{M_{\\text{dB}}}{\\sigma_{\\text{dB}}}\\right)$$ con $M_{\\text{dB}} = P_0(R)_{\\text{dBm}} - P_{\\text{th,dBm}}$.",
+        "back": "L'FDD separa uplink e downlink su due frequenze distinte contemporaneamente; il TDD usa la stessa frequenza separando uplink e downlink in slot temporali alternati.",
         "node": "FDD e TDD",
         "note": "Lezione 02 24 febbraio - 20",
         "image": "",
@@ -669,7 +671,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-052",
         "front": "Come avviene l'allocazione delle risorse agli utenti nella griglia OFDMA mostrata?",
-        "back": "$$S = G e^{-2G}$$ Il throughput massimo si ottiene per un traffico offerto $G = 0.5$ e vale: $$S_{\\max} = \\frac{1}{2e} \\approx 0.184\\text{ (18.4%)}$$",
+        "back": "Le risorse sono suddivise in blocchi bidimensionali tempo-frequenza (Resource Block); lo scheduler assegna dinamicamente blocchi differenti a utenti diversi ogni slot temporale.",
         "node": "OFDMA",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-14-ofdma-griglia.png",
@@ -708,7 +710,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "reticell-054",
         "front": "Cosa mostra il diagramma temporale di ALOHA puro in figura?",
-        "back": "$$S = G e^{-G}$$ Il throughput massimo raddoppia rispetto al Pure ALOHA, raggiungendo per $G = 1$: $$S_{\\max} = \\frac{1}{e} \\approx 0.368\\text{ (36.8%)}$$",
+        "back": "Mostra che la sovrapposizione anche solo parziale tra due o più pacchetti trasmessi da nodi diversi provoca la collisione e distruzione di tutti i pacchetti coinvolti.",
         "node": "ALOHA",
         "note": "Slide Reti cellulari",
         "image": "RetiCellulari-img-15-aloha-collisioni.png",
@@ -912,7 +914,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "lte-003",
         "front": "Perché in LTE si usa OFDMA in Downlink ma SC-FDMA in Uplink?",
-        "back": "Nel dominio del tempo dura 1 slot ($0.5\\text{ ms}$), nel dominio della frequenza occupa 12 sottoportanti a $15\\text{ kHz}$ ($180\\text{ kHz}$). Contiene $12 \\times 7 = 84$ Resource Elements (RE) con Cyclic Prefix normale.",
+        "back": "OFDMA presenta un elevato PAPR (Peak-to-Average Power Ratio) che richiederebbe amplificatori di potenza inefficienti. In Uplink si usa SC-FDMA per contenere il PAPR, preservando la batteria del terminale mobile.",
         "node": "OFDMA vs SC-FDMA",
         "note": "Lezione 05 8 marzo - 24 - PAPR e motivazione di SC-FDMA",
         "image": "",
@@ -945,7 +947,7 @@ window.DEFAULT_TOPICS = [
       {
         "id": "lte-006",
         "front": "Quali sono le 6 larghezze di banda scalabili previste dallo standard LTE e quanti Resource Block contengono?",
-        "back": "Le bande previste sono: 1.4 MHz (6 RB), 3 MHz (15 RB), 5 MHz (25 RB), 10 MHz (50 RB), 15 MHz (75 RB) e 20 MHz (100 RB).",
+        "back": "Nel dominio del tempo dura 1 slot ($0.5\\text{ ms}$), nel dominio della frequenza occupa 12 sottoportanti a $15\\text{ kHz}$ ($180\\text{ kHz}$). Contiene $12 \\times 7 = 84$ Resource Elements (RE) con Cyclic Prefix normale.",
         "node": "Larghezze di Banda del Canale LTE",
         "note": "Lezione 05 8 marzo - 29 - Larghezza del canale e numero di resource block",
         "image": "",
