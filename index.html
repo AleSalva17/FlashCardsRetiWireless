@@ -917,6 +917,16 @@
           <span>Avvia Esercitazione</span>
         </button>
       </div>
+
+      <!-- SEZIONE 2: ESERCIZI D'ESAME GUIDATI -->
+      <div id="setupExercisesBox" class="setup-card" style="display: none;">
+        <h2 class="setup-title">Esercizi d'Esame Svolti e Guidati</h2>
+        <p class="setup-desc">Scegli un esercizio d'esame. Le flashcard ti guideranno passo-passo attraverso tutti i passaggi logici, le formule usate e i calcoli numerici.</p>
+        
+        <div class="exercises-grid" id="exercisesContainer">
+          <!-- Popolato via JS da exercises.js -->
+        </div>
+      </div>
     </div>
 
     <!-- VIEW 2: PRACTICE -->
@@ -1498,8 +1508,7 @@
         html += `<div class="card-img-container"><img src="images/${image}" alt="figura/formula"></div>`;
       }
       let clean = (text || '').replace(/!\[\[(.*?)\]\](<br>)?/g, '').trim();
-      html += `<div>${clean.replace(/
-/g, '<br>')}</div>`;
+      html += `<div>${clean.split('\n').join('<br>')}</div>`;
 
       if (card && card.isExercise && currentSide === 'retro') {
         if (card.formula) {
@@ -1824,6 +1833,174 @@
       else if (e.code === 'ArrowLeft') { e.preventDefault(); prevCard(); }
       else if (e.code === 'KeyX' || e.code === 'KeyS') { e.preventDefault(); toggleMarkWrong(); }
     });
+
+
+    /* ============================================================
+       FORZA AGGIORNAMENTO APP (RESET SERVICE WORKER E CACHE)
+       ============================================================ */
+    function forceRefreshApp() {
+      if (confirm("Vuoi forzare l'aggiornamento dell'app e ricaricare tutti i contenuti più recenti da GitHub?")) {
+        try {
+          if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(regs => {
+              for (let reg of regs) reg.unregister();
+            });
+          }
+          if ('caches' in window) {
+            caches.keys().then(names => {
+              for (let name of names) caches.delete(name);
+            });
+          }
+          localStorage.removeItem("rw_dataset_ver");
+          localStorage.removeItem(STORAGE_KEY_TOPICS);
+        } catch (e) {}
+        window.location.reload(true);
+      }
+    }
+
+    /* ============================================================
+       GESTIONE MODALITÀ: TEORIA vs ESERCIZI D'ESAME GUIDATI
+       ============================================================ */
+    let currentAppMode = 'theory'; // 'theory' | 'exercises'
+    let currentActiveExercise = null;
+
+    function selectAppMode(mode) {
+      currentAppMode = mode;
+      const tabTheory = document.getElementById('tabModeTheory');
+      const tabEx = document.getElementById('tabModeExercises');
+      const boxTheory = document.getElementById('setupTheoryBox');
+      const boxEx = document.getElementById('setupExercisesBox');
+
+      if (mode === 'theory') {
+        tabTheory.classList.add('active');
+        tabEx.classList.remove('active');
+        boxTheory.style.display = 'block';
+        boxEx.style.display = 'none';
+      } else {
+        tabTheory.classList.remove('active');
+        tabEx.classList.add('active');
+        boxTheory.style.display = 'none';
+        boxEx.style.display = 'block';
+        renderExercisesList();
+      }
+      triggerHaptic('light');
+    }
+
+    function renderExercisesList() {
+      const container = document.getElementById('exercisesContainer');
+      if (!container) return;
+      const exercises = window.EXAM_EXERCISES || [];
+      if (exercises.length === 0) {
+        container.innerHTML = '<div style="color: var(--text-muted); padding: 12px;">Nessun esercizio caricato.</div>';
+        return;
+      }
+
+      container.innerHTML = '';
+      exercises.forEach(ex => {
+        const card = document.createElement('div');
+        card.className = 'exercise-item-card';
+        card.onclick = () => openExercisePreview(ex.id);
+
+        card.innerHTML = `
+          <div class="ex-item-header">
+            <div class="ex-item-title">${ex.title}</div>
+          </div>
+          <div class="ex-badges-row">
+            <span class="ex-pill">${ex.lesson}</span>
+            <span class="ex-pill steps">📍 ${ex.steps ? ex.steps.length : 0} Passi Guidati</span>
+            <span class="ex-pill">Difficoltà: ${'★'.repeat(ex.difficulty || 2)}</span>
+          </div>
+          <div class="ex-item-desc">${ex.problem_statement}</div>
+          <div class="ex-item-action">
+            <span>Risolvi passo-passo →</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function openExercisePreview(exId) {
+      const exercises = window.EXAM_EXERCISES || [];
+      const ex = exercises.find(e => e.id === exId);
+      if (!ex) return;
+      currentActiveExercise = ex;
+
+      document.getElementById('exModalTitle').textContent = ex.title;
+
+      let knownRows = '';
+      if (ex.known_data) {
+        for (const [k, v] of Object.entries(ex.known_data)) {
+          knownRows += `<tr><td>${k}</td><td>${v}</td></tr>`;
+        }
+      }
+
+      let unknownsList = '';
+      if (ex.unknowns) {
+        unknownsList = ex.unknowns.map(u => `<li>${u}</li>`).join('');
+      }
+
+      const body = document.getElementById('exModalBody');
+      body.innerHTML = `
+        <div style="font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 6px;">${ex.lesson}</div>
+        <div style="font-size: 14px; line-height: 1.5; color: var(--text); background: var(--surface-elevated); padding: 14px; border-radius: 10px; margin-bottom: 14px; border: 1px solid var(--surface-border);">
+          <strong>Testo del Problema:</strong><br>${ex.problem_statement}
+        </div>
+        
+        <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">Dati Noti del Problema:</div>
+        <table class="problem-known-table">
+          ${knownRows}
+        </table>
+
+        ${unknownsList ? `<div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin: 8px 0 4px 0;">Obiettivi da Calcolare:</div><ul style="font-size: 13px; padding-left: 20px; color: #cbd5e1; margin-bottom: 12px;">${unknownsList}</ul>` : ''}
+
+        <div style="font-size: 12px; color: var(--text-muted); background: rgba(96, 165, 250, 0.08); padding: 10px; border-radius: 8px; border: 1px solid rgba(96, 165, 250, 0.2);">
+          💡 <em>La risoluzione è strutturata in <strong>${ex.steps.length} flashcard sequenziali</strong> che ti guideranno formulando le domande chiave di ogni passaggio, verificando i calcoli e le formule prima di passare al successivo.</em>
+        </div>
+      `;
+
+      const btnLaunch = document.getElementById('btnLaunchExercise');
+      btnLaunch.onclick = () => {
+        closeExerciseModal();
+        startExerciseSession(ex.id);
+      };
+
+      document.getElementById('exerciseModal').classList.add('active');
+      triggerHaptic('light');
+    }
+
+    function closeExerciseModal(e) {
+      if (e && e.target !== document.getElementById('exerciseModal')) return;
+      document.getElementById('exerciseModal').classList.remove('active');
+    }
+
+    function startExerciseSession(exId) {
+      const exercises = window.EXAM_EXERCISES || [];
+      const ex = exercises.find(e => e.id === exId);
+      if (!ex) return;
+
+      currentActiveExercise = ex;
+      sessionCards = ex.steps.map((s, idx) => ({
+        id: `${ex.id}-step-${s.step_num || idx + 1}`,
+        front: s.front,
+        back: s.back,
+        topicName: `✏️ ${ex.title.split(':')[0]}`,
+        isExercise: true,
+        phase: s.phase || `Passo ${s.step_num || idx + 1}`,
+        formula: s.formula || '',
+        tip: s.tip || '',
+        node: ex.title,
+        note: ex.lesson
+      }));
+
+      currentIndex = 0;
+      cardResults = {};
+      sessionCards.forEach(c => { cardResults[c.id] = false; });
+
+      triggerHaptic('medium');
+      switchView('viewPractice');
+      renderCard();
+    }
+
 
     init();
   </script>
