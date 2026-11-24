@@ -1385,11 +1385,57 @@
       font-family: monospace;
     }
 
+  
+    /* KaTeX Styling per Flashcards ed Esercizi (v9) */
+    .card-text .katex {
+      font-size: 1.12em;
+      color: #93c5fd;
+    }
+    .card-text .katex-display {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      color: #93c5fd;
+      text-align: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+    .formula-box {
+      background: #090d16 !important;
+      border: 1px solid #1e293b !important;
+      border-radius: 10px !important;
+      padding: 14px 18px !important;
+      margin-top: 14px !important;
+      color: #93c5fd !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+      font-size: 14.5px !important;
+      line-height: 1.6 !important;
+    }
+    .formula-box strong {
+      color: #60a5fa !important;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .formula-box .katex-display {
+      margin: 8px 0 0 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 4px 0 !important;
+    }
+
   </style>
 
   <!-- KaTeX per rendering formule matematiche ad alta definizione -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="if(window.renderMathInFlashcard) window.renderMathInFlashcard();"></script>
 </head>
 <body>
 
@@ -1730,10 +1776,10 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=8"></script>
-  <script src="exercises.js?v=8"></script>
-  <script src="formulas.js?v=8"></script>
-  <script src="summaries.js?v=8"></script>
+  <script src="topics.js?v=9"></script>
+  <script src="exercises.js?v=9"></script>
+  <script src="formulas.js?v=9"></script>
+  <script src="summaries.js?v=9"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -1774,7 +1820,7 @@
 
     async function init() {
       // Auto-migrazione: azzera la cache di vecchi argomenti di test per evitare sovrapposizioni
-      const DATASET_VERSION = "reticellulari_lte_5g_v8";
+      const DATASET_VERSION = "reticellulari_lte_5g_v9";
       if (localStorage.getItem("rw_dataset_ver") !== DATASET_VERSION) {
         localStorage.removeItem(STORAGE_KEY_TOPICS);
         localStorage.setItem("rw_dataset_ver", DATASET_VERSION);
@@ -2149,17 +2195,57 @@
         html += `<div class="card-img-container"><img src="images/${image}" alt="figura/formula"></div>`;
       }
       let clean = (text || '').replace(/!\[\[(.*?)\]\](<br>)?/g, '').trim();
-      html += `<div>${clean.split('\n').join('<br>')}</div>`;
+      html += `<div>${clean.replace(/\r?\n/g, '<br>')}</div>`;
 
       if (card && card.isExercise && currentSide === 'retro') {
         if (card.formula) {
-          html += `<div class="formula-box">📐 <strong>Formula utilizzata:</strong><br>${card.formula}</div>`;
+          const fStr = card.formula.trim();
+          const fMath = fStr.startsWith('$$') ? fStr : `$$${fStr}$$`;
+          html += `<div class="formula-box"><strong>📐 Formula Matematica / Passaggio:</strong><div>${fMath}</div></div>`;
         }
         if (card.tip) {
           html += `<div class="tip-box">💡 <strong>Nota del Professore:</strong><br>${card.tip}</div>`;
         }
       }
       return html;
+    }
+
+    
+    /* KaTeX rendering per le Flashcards e Passaggi Guidati */
+    function renderMathInFlashcard() {
+      const frontEl = document.getElementById('cardFrontText');
+      const backEl = document.getElementById('cardBackText');
+      
+      const doRender = (el) => {
+        if (!el) return;
+        if (window.renderMathInElement) {
+          try {
+            renderMathInElement(el, {
+              delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false}
+              ],
+              throwOnError: false
+            });
+          } catch(e) {}
+        } else if (window.katex) {
+          // Fallback parser diretto
+          try {
+            el.innerHTML = el.innerHTML.replace(/\$\$([\s\S]+?)\$\$/g, (m, tex) => {
+              try {
+                return `<div class="katex-display">${katex.renderToString(tex.trim(), {displayMode: true, throwOnError: false})}</div>`;
+              } catch(err) { return m; }
+            }).replace(/\$([^\$\n]+?)\$/g, (m, tex) => {
+              try {
+                return katex.renderToString(tex.trim(), {displayMode: false, throwOnError: false});
+              } catch(err) { return m; }
+            });
+          } catch(e) {}
+        }
+      };
+
+      doRender(frontEl);
+      doRender(backEl);
     }
 
     function renderCard() {
@@ -2182,11 +2268,15 @@
 
       document.getElementById('btnPrev').disabled = currentIndex === 0;
       document.getElementById('btnNext').textContent = currentIndex === sessionCards.length - 1 ? 'Concludi →' : 'Succ →';
+
+      // Render KaTeX formule ad alta definizione
+      renderMathInFlashcard();
     }
 
     function flipCard() {
       const cardEl = document.getElementById('cardElement');
       cardEl.classList.toggle('is-flipped');
+      renderMathInFlashcard();
       triggerHaptic('light');
     }
 

@@ -1,11 +1,11 @@
-const CACHE_NAME = 'flashcards-rw-v8';
+const CACHE_NAME = 'flashcards-rw-v9';
 const ASSETS = [
   './',
   './index.html',
-  './topics.js?v=8',
-  './exercises.js?v=8',
-  './formulas.js?v=8',
-  './summaries.js?v=8',
+  './topics.js?v=9',
+  './exercises.js?v=9',
+  './formulas.js?v=9',
+  './summaries.js?v=9',
   './manifest.json',
   './images/maps/DimensionamentoDellaCella.svg',
   './images/maps/RetiCellulari.svg',
@@ -45,8 +45,8 @@ self.addEventListener('fetch', (e) => {
                          url.pathname.endsWith('.html') || 
                          url.pathname.endsWith('.js') || 
                          url.pathname.endsWith('.json') || 
-                         url.pathname.endsWith('.svg') ||
-                         url.pathname.endsWith('.md') ||
+                         url.pathname.endsWith('.svg') || 
+                         url.pathname.endsWith('.md') || 
                          url.pathname === '/' ||
                          url.pathname.endsWith('/');
 
