@@ -1,6 +1,6 @@
 // Database unificato e completo delle flashcards per Reti Wireless
 // Allineato al 100% con le Mappe Concettuali e le Immagini delle Lezioni
-// Totale Argomenti: 10 | Totale Flashcards: 218
+// Totale Argomenti: 11 | Totale Flashcards: 250
 
 window.DEFAULT_TOPICS = [
   {
@@ -2500,5 +2500,395 @@ window.DEFAULT_TOPICS = [
       }
     ],
     "count": 29
+  },
+  {
+    "topic_id": "wifi_80211",
+    "topic_name": "11. Wi-Fi IEEE 802.11: Architettura, MAC CSMA/CA, Evoluzione PHY, QoS e Sicurezza 802.11i",
+    "cards": [
+      {
+        "id": "wifi_80211_001",
+        "front": "Qual è il principio architetturale di base dello standard IEEE 802.11 e su quali bande ISM opera principalmente?",
+        "back": "Lo standard IEEE 802.11 definisce l'interfaccia radio per reti locali senza fili (WLAN).\n* **Banda 2.4 GHz (ISM)**: suddivisa in 13 canali da $22\\text{ MHz}$ spaziati di soli $5\\text{ MHz}$; gli unici tre canali **ortogonali (non sovrapposti)** sono **1, 6 e 11**.\n* **Banda 5 GHz (UNII)**: canali nativamente separati da $20\\text{ MHz}$ (fino a $160\\text{ MHz}$ con bonding), assenza di interferenze microonde/Bluetooth, soggetta a meccanismi **DFS** (Dynamic Frequency Selection) e **TPC** (Transmit Power Control) per convivere con i radar meteorologici.",
+        "node": "Reti Locali Wireless IEEE 802.11 (Wi-Fi)",
+        "note": "Lezione 13 5 aprile - 01 - Frequenze ISM e canali WiFi",
+        "image": "wifi1-p06-canali-ISM-cluster-K3.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo centrale della Mappa Concettuale Wi-Fi. In Europa i canali a 2.4 GHz sono 13; negli USA solo 1-11.",
+        "difficolta": 1,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_002",
+        "front": "Cosa si intende per BSS (Basic Service Set) e qual è il ruolo svolto dall'Access Point (AP)?",
+        "back": "Il **BSS (Basic Service Set)** è la cella elementare di una rete Wi-Fi in modalità infrastruttura:\n* È governato da un **Access Point (AP)** centrale che funge da stazione base, master di sincronizzazione e ponte verso la rete cablata (Distribution System).\n* Tutte le stazioni client (STA) associate al BSS comunicano unicamente con l'AP: il traffico tra due stazioni dello stesso BSS deve comunque transitare obbligatoriamente attraverso l'AP (*relay obbligato*).\n* Il BSS è identificato univocamente a livello 2 dal **BSSID**, che coincide con l'indirizzo MAC dell'interfaccia radio dell'AP.",
+        "node": "Basic Service Set (BSS) con Access Point (AP)",
+        "note": "Lezione 14 7 aprile - 02 - Architettura del sistema - STA, BSS ed ESS",
+        "image": "wifi1-p14-topologie-IBSS-BSS-ESS.jpg",
+        "image_side": "fronte",
+        "extra": "Costituisce il mattone fondamentale della copertura Wi-Fi infrastrutturata.",
+        "difficolta": 1,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_003",
+        "front": "Che cos'è un ESS (Extended Service Set) e come consente la mobilità (roaming) a Livello 2?",
+        "back": "Un **ESS (Extended Service Set)** è un'unione logica di molteplici BSS interconnessi tramite un **Distribution System (DS)** comune (tipicamente una dorsale Ethernet switchata):\n* Tutti gli AP dell'ESS trasmettono il medesimo **SSID** (es. 'eduroam' o 'WiFi-Ateneo').\n* **Roaming L2 Trasparente**: quando un terminale si sposta da un AP all'altro dello stesso ESS, si ri-associa al nuovo AP mantenendo lo stesso indirizzo IP e le connessioni TCP attive, poiché la transizione avviene interamente a Livello 2 senza richiedere riconfigurazione di Livello 3.",
+        "node": "Extended Service Set (ESS) con Distribution System (DS)",
+        "note": "Lezione 14 7 aprile - 02 - Architettura del sistema - STA, BSS ed ESS",
+        "image": "wifi1-p14-topologie-IBSS-BSS-ESS.jpg",
+        "image_side": "retro",
+        "extra": "Permette una copertura estesa a livello di intero campus o edificio.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_004",
+        "front": "Come funziona la modalità Ad-Hoc (IBSS) e in quali aspetti differisce dalla modalità Infrastruttura?",
+        "back": "L'**IBSS (Independent BSS)** è una rete peer-to-peer formata spontaneamente da due o più stazioni senza la presenza di alcun Access Point:\n* Non esiste coordinamento centrale né connessione verso reti esterne o dorsali cablate.\n* La sincronizzazione temporale e l'invio dei Beacon Frame periodici è decentralizzata: ad ogni ciclo di beacon, ciascuna stazione compete con backoff per trasmettere il Beacon per conto dell'intero gruppo.\n* Non supporta il risparmio energetico centralizzato dell'AP né il roaming.",
+        "node": "Modalità Ad-Hoc (IBSS) senza infrastruttura",
+        "note": "Lezione 14 7 aprile - 02 - Architettura del sistema - STA, BSS ed ESS",
+        "image": "wifi1-p15-confronto-adhoc-infrastruttura.jpg",
+        "image_side": "fronte",
+        "extra": "Usata per scambi diretti tra dispositivi (es. Wi-Fi Direct).",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_005",
+        "front": "Qual è il ruolo dei Beacon Frame e in cosa differiscono la Scansione Passiva e la Scansione Attiva?",
+        "back": "Il **Beacon Frame** è una trama di gestione (Management) trasmessa periodicamente dall'AP (tipicamente ogni $100\\text{ ms}$ o $100\\text{ TU}$):\n* Trasporta il timestamp di sincronizzazione TSF (1 MHz), il BSSID, l'SSID, i supported rates, i parametri di sicurezza RSN e la mappa TIM per il power saving.\n* **Scansione Passiva**: la stazione sintonizza la radio su ciascun canale in sequenza e attende in silenzio la ricezione di un Beacon Frame.\n* **Scansione Attiva**: la stazione invia su ciascun canale una trama di richiesta **Probe Request** (in broadcast o verso un SSID specifico) e attende le risposte immediate **Probe Response** dagli AP in ascolto, accelerando la procedura di discovery.",
+        "node": "Beacon Frame, Probe ed identificatore SSID/BSSID",
+        "note": "Lezione 14 7 aprile - 04 - Sincronizzazione tramite beacon frame",
+        "image": "wifi1-p16-access-point-beacon-sincronizzazione.jpg",
+        "image_side": "retro",
+        "extra": "Fondamentale per la scoperta della rete e per la sincronizzazione del clock TSF.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_006",
+        "front": "Come funziona la regola mnemonica dei 4 Indirizzi MAC nelle trame Wi-Fi (To DS / From DS)?",
+        "back": "I 4 campi indirizzo MAC della trama 802.11 seguono la regola fissa:\n* **Indirizzo 1**: Sempre il **Ricevitore immediato (RA - Receiver Address)**.\n* **Indirizzo 2**: Sempre il **Trasmettitore immediato (TA - Transmitter Address)**.\n* **Indirizzo 3**: L'indirizzo mancante dell'end-to-end:\n  * *Uplink* (`To DS=1, From DS=0`): Addr 1=BSSID/AP, Addr 2=SA, **Addr 3=DA** (Destinazione finale sul DS).\n  * *Downlink* (`To DS=0, From DS=1`): Addr 1=RA/STA, Addr 2=BSSID/AP, **Addr 3=SA** (Sorgente originaria sul DS).\n* **Indirizzo 4**: Usato **solo nei bridge WDS/Mesh** (`To DS=1, From DS=1`), dove Addr 1/2 sono i due AP ponte e Addr 3/4 sono DA e SA originali.",
+        "node": "Reti Locali Wireless IEEE 802.11 (Wi-Fi)",
+        "note": "Lezione 13 5 aprile - 04 - La Struttura della Trama MAC 802.11 Generale",
+        "image": "wifi1-p18-trama-MAC-frame-control.jpg",
+        "image_side": "fronte",
+        "extra": "Domanda tipica d'esame: saper ricavare immediatamente chi è RA, TA, DA, SA in base a To DS e From DS.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_007",
+        "front": "Perché nelle reti Wi-Fi si adotta CSMA/CA (Collision Avoidance) invece del CSMA/CD di Ethernet?",
+        "back": "CSMA/CD (Collision Detection) è impraticabile nel canale radio per due limiti fisici:\n1. **Vincolo Half-Duplex**: il segnale trasmesso dalla radio locale sovrasta di svariati ordini di grandezza ($> 60-80\\text{ dB}$) qualunque segnale in arrivo da nodi remoti; è impossibile ascoltare il canale mentre si trasmette.\n2. **Raggio d'Azione Spaziale Asimmetrico (Terminali Nascosti)**: due stazioni possono non sentirsi reciprocamente pur collidendo sul ricevitore dell'AP.\n\nPer questo 802.11 adotta **CSMA/CA** (*Collision Avoidance*): non potendo rilevare le collisioni durante l'invio, si fa di tutto per **evitarle preventivamente** tramite carrier sensing, spazi IFS, backoff casuale e **riscontro positivo esplicito (ACK)**.",
+        "node": "Meccanismo CSMA/CA con Collision Avoidance",
+        "note": "Lezione 14 7 aprile - 06 - MAC 802.11 CSMA-CA DCF Basic Access",
+        "image": "wifi1-p37.jpg",
+        "image_side": "retro",
+        "extra": "L'ACK a livello 2 è tassativo per sapere se il frame è stato ricevuto senza collisione.",
+        "difficolta": 1,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_008",
+        "front": "Qual è la gerarchia e la relazione temporale tra gli Interframe Spaces (SIFS, PIFS, DIFS ed EIFS)?",
+        "back": "Gli spazi di intertrama garantiscono priorità deterministica d'accesso sul canale radio secondo la relazione:\n$$\\text{SIFS} < \\text{PIFS} < \\text{DIFS} < \\text{EIFS}$$\n* **SIFS (Short IFS)**: intervallo minimo per riscontri ad altissima priorità (ACK, CTS, frame burst). Nessun altro nodo può intervenire.\n* **PIFS (PCF IFS)**: $\\text{PIFS} = \\text{SIFS} + 1\\text{ Slot}$. Riservato all'AP per il polling centralizzato (modalità PCF).\n* **DIFS (DCF IFS)**: $\\text{DIFS} = \\text{SIFS} + 2\\text{ Slot}$. Intervallo che le stazioni normali devono attendere prima di trasmettere o avviare il backoff.\n* **EIFS (Extended IFS)**: applicato quando si riceve un frame corrotto/illeggibile; attende $\\text{EIFS} = \\text{SIFS} + \\text{DIFS} + T_{\\text{ACK}}$ per consentire all'ACK corretto di completarsi.",
+        "node": "Interframe Spacing: SIFS, PIFS, DIFS ed EIFS",
+        "note": "Lezione 14 7 aprile - 08 - Spazi di intertrama IFS",
+        "image": "wifi1-p39.jpg",
+        "image_side": "fronte",
+        "extra": "La durata più breve conferisce precedenza assoluta sul canale senza avviare contesa.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_009",
+        "front": "Come funziona l'algoritmo di Backoff Binario Esponenziale in 802.11 DCF se il contatore vale k?",
+        "back": "Quando il canale è occupato (o dopo un invio), la stazione estrae un intero $k \\in [0, \\text{CW}]$:\n1. Attende che il canale rimanga silenzioso per un tempo **DIFS**.\n2. Per ogni intero Time Slot di silenzio successivo, **decrementa $k \\leftarrow k - 1$**.\n3. **Congelamento (*Freeze*)**: se il canale torna occupato, il contatore si blocca sul valore corrente.\n4. **Ripresa (*Resume*)**: quando il canale torna libero (dopo un nuovo DIFS), il conteggio riprende dallo stesso valore congelato.\n5. A **$k = 0$**, la stazione trasmette.\n* In caso di mancato ACK (collisione), la finestra raddoppia: $\\text{CW}_{\\text{new}} = 2(\\text{CW}_{\\text{old}} + 1) - 1$, crescendo da $31$ fino a $\\text{CW}_{\\max} = 1023$, e si estrae un nuovo $k$.",
+        "node": "Backoff esponenziale con finestra CWmin e CWmax",
+        "note": "Lezione 15 12 aprile - 04 - Algoritmo di Backoff Contention Window e Retry Limits",
+        "image": "wifi1-p45.jpg",
+        "image_side": "retro",
+        "extra": "Il raddoppio esponenziale decongestiona il mezzo riducendo la probabilità di estrazione dello stesso k.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_010",
+        "front": "Perché nel Wi-Fi è obbligatorio il riscontro positivo esplicito tramite ACK a Livello 2 e come è spaziatio?",
+        "back": "Poiché il trasmettitore radio non può rilevare le collisioni mentre trasmette, l'unico modo per sapere se il frame è giunto integro (passando il controllo FCS CRC-32) è la ricezione di un **ACK esplicito** inviato dal ricevitore.\n* **Spaziatura SIFS**: l'ACK viene inviato esattamente dopo un intervallo **SIFS** dalla fine del frame dati.\n* Poiché $\\text{SIFS} < \\text{DIFS}$, nessuna altra stazione in ascolto può far scadere il proprio DIFS e trasmettere; l'ACK ha la certezza matematica di trovare il canale libero senza contesa.\n* Se l'ACK non giunge entro un timeout (*ACK Timeout*), il trasmettitore dichiara il frame perso, incrementa il retry counter e raddoppia la Contention Window.",
+        "node": "Riscontro positivo esplicito tramite ACK immediato",
+        "note": "Lezione 14 7 aprile - 10 - Trasmissione e riscontro ACK",
+        "image": "wifi1-p40.jpg",
+        "image_side": "fronte",
+        "extra": "L'assenza di collision detection rende l'ACK a Livello 2 indispensabile.",
+        "difficolta": 1,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_011",
+        "front": "Che cos'è il problema del Terminale Nascosto (Hidden Node Problem) e quali conseguenze provoca?",
+        "back": "Si verifica quando due stazioni (A e C) sono entrambe nel raggio d'ascolto dell'AP (B), ma **fuori portata radio reciproca**:\n* Quando A trasmette a B, la stazione C esegue il carrier sensing fisico ma non rileva alcun segnale (canale percepito libero).\n* C inizia quindi a trasmettere contemporaneamente verso B.\n* I due segnali si sovrappongono e collidono distruttivamente sull'antenna dell'AP (B), provocando la perdita totale di entrambi i frame.\n* In reti con traffico elevato, il terminale nascosto fa crollare il throughput reale a valori vicini a zero a causa delle continue collisioni sistematiche.",
+        "node": "Problema del terminale nascosto e collisioni",
+        "note": "Lezione 15 12 aprile - 02 - Terminale nascosto e handshake RTS-CTS",
+        "image": "wifi1-p49.jpg",
+        "image_side": "fronte",
+        "extra": "È la più celebre anomalia spaziale delle reti wireless non coordinate.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_012",
+        "front": "Come risolve il problema del terminale nascosto l'handshake a 4 vie RTS/CTS e quando viene attivato?",
+        "back": "L'handshake scambia due brevi trame di controllo preliminari:\n1. **RTS (Request to Send)**: la stazione sorgente invia un breve frame RTS all'AP.\n2. **CTS (Clear to Send)**: l'AP risponde in broadcast con un frame CTS dopo SIFS.\n* **Risoluzione**: tutte le stazioni nascoste (che non sentivano l'RTS) sentono perfettamente il CTS emesso dall'AP e si zittiscono per tutta la durata indicata nel frame.\n* Segue la trasmissione sicura di **DATA** e dell'**ACK** finale.\n* **Criterio di Attivazione**: RTS/CTS ha un costo di overhead; viene attivato solo per trame la cui lunghezza supera la soglia configurabile **`RTS_Threshold`** (es. trame lunghe $> 1000\\text{ byte}$).",
+        "node": "Handshake a 4 vie RTS (Request) e CTS (Clear)",
+        "note": "Lezione 15 12 aprile - 02 - Terminale nascosto e handshake RTS-CTS",
+        "image": "wifi1-p50.jpg",
+        "image_side": "retro",
+        "extra": "Sequenza a 4 vie: RTS -> SIFS -> CTS -> SIFS -> DATA -> SIFS -> ACK.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_013",
+        "front": "Che cos'è il Network Allocation Vector (NAV) e come realizza il Virtual Carrier Sensing?",
+        "back": "Il **NAV (Network Allocation Vector)** è un timer interno mantenuto da ogni scheda radio Wi-Fi che indica per quanti microsecondi il mezzo radio rimarrà occupato da comunicazioni altrui:\n* Ogni frame (RTS, CTS, DATA) include un campo denominato **Duration/ID** che dichiara il tempo necessario per completare l'intera sequenza di scambio residua (inclusi gli spazi SIFS e l'ACK finale).\n* Qualunque stazione che riceve correttamente l'header MAC aggiorna il proprio NAV se il valore ricevuto è maggiore del timer corrente.\n* Finché il **$\\text{NAV} > 0$**, la stazione considera il **canale occupato a livello logico (Virtual Carrier Sensing)** e congela il backoff, anche se l'antenna radio non rileva potenza elettromagnetica (Clear Channel Assessment libero).",
+        "node": "Vettore di allocazione rete NAV e virtual sensing",
+        "note": "Lezione 15 12 aprile - 01 - ACK nascosto Virtual Carrier Sensing e NAV",
+        "image": "wifi1-p46.jpg",
+        "image_side": "retro",
+        "extra": "Protegge l'ACK da collisioni dovute alla fine prematura del sensing fisico.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_014",
+        "front": "Che cos'è il problema del Terminale Esposto (Exposed Node Problem) e quale impatto ha sulle prestazioni?",
+        "back": "Si verifica quando una stazione (B) ascolta la trasmissione di una stazione vicina (A verso un altro ricevitore X), e decide di non trasmettere verso la propria stazione destinataria (C), pur essendo C completamente fuori dal raggio di interferenza di A e X:\n* Il carrier sensing di B rileva energia sul canale e si zittisce inutilmente.\n* **Conseguenza**: mentre il terminale nascosto causa collisioni, il terminale esposto causa una **perdita di efficienza spettrale e mancato riuso spaziale**, poiché le due trasmissioni (A$\\rightarrow$X e B$\\rightarrow$C) avrebbero potuto convivere contemporaneamente con successo.",
+        "node": "Problema del terminale esposto e riuso spaziale",
+        "note": "Lezione 15 12 aprile - 04 - Problema del terminale esposto",
+        "image": "wifi1-p51.jpg",
+        "image_side": "fronte",
+        "extra": "Mostra il trade-off opposto rispetto al terminale nascosto: prudenza eccessiva che blocca trasmissioni lecite.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_015",
+        "front": "Che cos'è la Performance Anomaly di 802.11 (Heusse et al., 2003) e da quale equità distorta è causata?",
+        "back": "L'**Anomalia di Heusse** stabilisce che in una cella Wi-Fi con stazioni operanti a bit rate disomogenei (es. una STA a $1\\text{ Mbps}$ per scarsa qualità radio e altre a $54\\text{ Mbps}$), il throughput di tutte le stazioni veloci **collassa al livello di quella lenta**:\n* **Causa**: 802.11 DCF garantisce **packet fairness** (uguale probabilità statistica di trasmettere pacchetti a lungo termine).\n* Per trasmettere lo stesso pacchetto da $1500\\text{ byte}$, la stazione lenta impiega circa $12\\text{ ms}$, mentre quella a $54\\text{ Mbps}$ impiega solo $0.22\\text{ ms}$.\n* La stazione lenta monopolizza oltre il $95\\%$ dell'airtime complessivo della cella, trascinando il throughput utile di tutti verso il basso.\n* **Soluzione**: passaggio da packet fairness ad **airtime fairness** (introdotta da 802.11e con il TXOP).",
+        "node": "Reti Locali Wireless IEEE 802.11 (Wi-Fi)",
+        "note": "Lezione 15 12 aprile - 05 - Throughput e Performance Anomaly di 802.11",
+        "image": "wifi1-p54.jpg",
+        "image_side": "retro",
+        "extra": "Domanda classica dell'orale: spiegare perché una sola stazione degradata penalizza l'intero BSS.",
+        "difficolta": 3,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_016",
+        "front": "Come funziona il risparmio energetico (Power Save Mode - PSM) e quale ruolo hanno TIM e DTIM?",
+        "back": "La STA comunica all'AP di entrare in modalità **Doze** (consumo $\\mu\\text{A}$) impostando il bit *Power Management = 1* nel Frame Control:\n* L'AP si fa carico di memorizzare nei propri buffer tutti i frame indirizzati alla stazione.\n* Nei Beacon Frame periodici, l'AP trasmette la **TIM (Traffic Indication Map)**, una bitmap dove ciascun bit corrisponde all'AID (Association ID) di una stazione.\n* La STA si sveglia brevemente solo per ascoltare il Beacon: se il suo bit nella TIM è 1, invia un frame **PS-Poll** per richiedere la consegna del pacchetto.\n* **DTIM (Delivery TIM)**: beacon speciali trasmessi ogni $N$ beacon, dopo i quali l'AP trasmette immediatamente il traffico broadcast/multicast a tutte le stazioni sveglie.",
+        "node": "Reti Locali Wireless IEEE 802.11 (Wi-Fi)",
+        "note": "Lezione 16 19 aprile - 02 - Meccanismo di risparmio energetico Power Save Mode e TIM DTIM",
+        "image": "wifi1-p62.jpg",
+        "image_side": "retro",
+        "extra": "Fondamentale per consentire l'autonomia delle batterie in smartphone e dispositivi IoT.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_017",
+        "front": "Qual è la differenza architetturale tra un Fat AP (Autonomo) e un'architettura Thin AP con Wireless LAN Controller (WLC)?",
+        "back": "* **Fat (Autonomous) AP**: ciascun AP gestisce autonomamente l'intero stack (dalla crittografia al routing, autenticazione e filtraggio). Complesso e costoso da gestire su larga scala poiché ogni apparato va configurato singolarmente.\n* **Thin AP (Fit AP) + WLC**: architettura **Split-MAC** adottata nei campus:\n  * L'AP economico (Thin) gestisce solo i compiti real-time a livello fisico e MAC basso (generazione beacon, preamboli, ACK immediato e crittografia AES hardware).\n  * Il **WLC (Wireless LAN Controller)** centralizzato gestisce autenticazione 802.1X, gestione delle frequenze e potenze radio (RRM), policy di sicurezza e handover L2.\n  * La comunicazione tra Thin AP e WLC viaggia incapsulata in tunnel **CAPWAP** (UDP 5246 per controllo, 5247 per dati).",
+        "node": "Basic Service Set (BSS) con Access Point (AP)",
+        "note": "Lezione 16 19 aprile - 05 - Architettura Fat AP vs Thin AP e protocollo CAPWAP",
+        "image": "wifi1-p68.jpg",
+        "image_side": "fronte",
+        "extra": "Semplifica la gestione enterprise consentendo roaming senza riconnessione.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_018",
+        "front": "Quali caratteristiche fisiche contraddistinguono lo standard 802.11b (DSSS) rispetto a 802.11a/g (OFDM)?",
+        "back": "* **802.11b (1999)**: opera a $2.4\\text{ GHz}$ con modulazione a spettro espanso a sequenza diretta (**DSSS**) e codifica **CCK** (Complementary Code Keying), raggiungendo velocità di picco di **$11\\text{ Mbps}$** con canali da $22\\text{ MHz}$.\n* **802.11a (1999)**: opera a $5\\text{ GHz}$ con modulazione **OFDM** (52 sottoportanti di cui 48 dati e 4 piloti), modulazioni fino a 64-QAM e velocità fino a **$54\\text{ Mbps}$** con canali da $20\\text{ MHz}$.\n* **802.11g (2003)**: porta la modulazione **OFDM a $54\\text{ Mbps}$ nella banda a $2.4\\text{ GHz}$**, garantendo retro-compatibilità con 802.11b tramite meccanismi di protezione (es. CTS-to-self) che evitano collisioni tra modulazioni incompatibili.",
+        "node": "802.11b (DSSS 11 Mbps) ed 802.11a/g (OFDM 54 Mbps)",
+        "note": "Lezione 17 21 aprile - 01 - Evoluzione fisica 802.11a b g n ac ax",
+        "image": "wifi1-p04-modulazioni-bitrate.jpg",
+        "image_side": "fronte",
+        "extra": "Ha segnato il passaggio fondamentale da spread-spectrum a multi-portante OFDM.",
+        "difficolta": 1,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_019",
+        "front": "Come funziona la Quality of Service (QoS) in 802.11e (EDCA) e quali parametri differenziano le 4 Access Categories?",
+        "back": "802.11e EDCA sostituisce DCF implementando 4 code hardware concorrenti (**Access Categories - AC**) all'interno di ciascuna stazione:\n* `AC_VO` (Voice), `AC_VI` (Video), `AC_BE` (Best Effort), `AC_BK` (Background).\n* La differenziazione avviene assegnando parametri di contesa diversi per ciascuna coda:\n  1. **AIFS[AC]**: sostituisce il DIFS; la voce attende un AIFS ridotto ($\\text{AIFS} = \\text{SIFS} + 2\\text{ slot}$), accedendo prima del traffico dati.\n  2. **$\\text{CW}_{\\min}$ e $\\text{CW}_{\\max}$**: più piccoli per Voice ($\\text{CW}_{\\min}=3, \\text{CW}_{\\max}=7$) e molto ampi per Background ($15 \\div 1023$).\n  3. **TXOP Limit**: tempo massimo garantito in cui la stazione può trasmettere raffiche di trame.",
+        "node": "Reti Locali Wireless IEEE 802.11 (Wi-Fi)",
+        "note": "Lezione 17 21 aprile - 02 - Qualita del servizio 802.11e HCF ed EDCA con 4 Access Categories",
+        "image": "wifi2-p05.jpg",
+        "image_side": "retro",
+        "extra": "Introduce per la prima volta priorità probabilistica hardware nello standard Wi-Fi.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_020",
+        "front": "Che cos'è la Transmission Opportunity (TXOP) con Frame Bursting e in che modo risolve l'Anomalia di Heusse?",
+        "back": "La **TXOP (Transmission Opportunity)** è un intervallo di tempo continuativo assegnato a una stazione per trasmettere:\n* Durante il $\\text{TXOP\\_Limit}$, la stazione esegue il **Frame Bursting**: invia molteplici frame dati consecutivi separati unicamente da **SIFS**, senza rimettersi in contesa di backoff tra un frame e l'altro.\n* **Risoluzione dell'Anomalia di Heusse**:\n  * Invece di assegnare a ciascun nodo il diritto di trasmettere lo stesso numero di pacchetti (*packet fairness*), la TXOP alloca a ciascuno una determinata quota di **tempo d'aria (*airtime fairness*)**.\n  * Una stazione veloce a $54\\text{ Mbps}$ in una TXOP da $3\\text{ ms}$ trasmette decine di pacchetti, mentre la stazione lenta trasmette solo una frazione del suo frame, ripristinando l'efficienza globale del canale.",
+        "node": "Block ACK cumulativo e finestra di trasmissione TXOP",
+        "note": "Lezione 17 21 aprile - 03 - TXOP Frame Bursting e Airtime Fairness",
+        "image": "wifi2-p08.jpg",
+        "image_side": "fronte",
+        "extra": "Passa da packet fairness ad airtime fairness.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_021",
+        "front": "Quali innovazioni tecnologiche introducono lo standard 802.11n (Wi-Fi 4) fino a 600 Mbps?",
+        "back": "802.11n introduce quattro innovazioni di rilievo:\n1. **MIMO (Multiple-Input Multiple-Output)**: fino a 4 flussi spaziali indipendenti ($4 \\times 4$), moltiplicando linearmente il bitrate via multiplexing spaziale.\n2. **Channel Bonding (40 MHz)**: accorpamento di due canali da $20\\text{ MHz}$ adiacenti; grazie alla rimozione della guard band intermedia, il numero di sottoportanti dati passa da $2 \\times 48 = 96$ a ben $108$ ($+112\\%$ di banda).\n3. **Short Guard Interval (SGI)**: riduzione del tempo di guardia OFDM da $800\\text{ ns}$ a $400\\text{ ns}$ in ambienti indoor a basso ritardo di multipath (+11% throughput).\n4. **Aggregazione di Frame (A-MPDU e A-MSDU)** a livello MAC per superare i colli di bottiglia di protocollo.",
+        "node": "802.11n (Wi-Fi 4): MIMO, canali 40 MHz e RIFS",
+        "note": "Lezione 17 21 aprile - 04 - Standard 802.11n MIMO Channel Bonding 40 MHz e Short GI",
+        "image": "wifi2-p15.jpg",
+        "image_side": "fronte",
+        "extra": "Ha rappresentato il salto prestazionale oltre i 100 Mbps (High Throughput - HT).",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_022",
+        "front": "Quali caratteristiche distinguono lo standard 802.11ac (Wi-Fi 5) e 802.11ax (Wi-Fi 6)?",
+        "back": "* **802.11ac (Wi-Fi 5)** (Very High Throughput - VHT):\n  * Opera **esclusivamente a $5\\text{ GHz}$**.\n  * Canali larghi fino a **$80\\text{ MHz}$ e $160\\text{ MHz}$**, modulazione **256-QAM** e fino a 8 flussi spaziali.\n  * Introduce il **MU-MIMO in Downlink** (l'AP trasmette a stazioni diverse contemporaneamente su fasci separati).\n* **802.11ax (Wi-Fi 6)** (High Efficiency - HE):\n  * Torna a operare su **entrambe le bande ($2.4\\text{ GHz}$ e $5/6\\text{ GHz}$)**.\n  * Introduce **OFDMA** (suddivisione dei canali in Resource Units per servire utenti multipli nello stesso istante sia in DL che in UL).\n  * Modulazione **1024-QAM** (10 bit/simbolo), **BSS Coloring** per mitigare le interferenze tra celle sovrapposte e **TWT (Target Wake Time)** per IoT.",
+        "node": "802.11ac (Wi-Fi 5): 5 GHz, canali 160 MHz, MU-MIMO",
+        "note": "Lezione 18 26 aprile - 06 - 802.11ac - canali estesi e MU-MIMO",
+        "image": "wifi2-p28.jpg",
+        "image_side": "retro",
+        "extra": "802.11ax massimizza l'efficienza spettrale in ambienti ad altissima densità (stadi, aeroporti).",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_023",
+        "front": "Perché all'aumentare del PHY rate (es. 600 Mbps) si verifica il collo di bottiglia del livello MAC?",
+        "back": "Mentre il tempo per trasmettere i bit dati ($T_{\\text{DATA}}$) decresce linearmente all'aumentare del bitrate fisico, tutti gli overhead temporali del protocollo MAC rimangono **rigidamente costanti**:\n$$T_{\\text{overhead}} = \\text{DIFS} + \\text{Backoff medio} + T_{\\text{preambolo PLCP}} + \\text{SIFS} + T_{\\text{ACK}}$$\n* Con un payload di $1500\\text{ byte}$ a $600\\text{ Mbps}$, i dati viaggiano in soli $20\\ \\mu\\text{s}$, mentre l'overhead temporale fisso ammonta a oltre $100-150\\ \\mu\\text{s}$.\n* Senza tecniche di aggregazione, l'efficienza utile crollerebbe a meno del $15-20\\%$ della capacità nominale del mezzo: il canale passerebbe la maggior parte del tempo in silenzi IFS, preamboli lenti e ACK.",
+        "node": "Overhead fisso di intestazione e tempo di canale sprecato",
+        "note": "Lezione 18 26 aprile - 01 - Limiti di efficienza del livello MAC",
+        "image": "wifi3-p03.jpg",
+        "image_side": "fronte",
+        "extra": "Dimostra perché il PHY gigabit impone obbligatoriamente l'aggregazione di trame a livello MAC.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_024",
+        "front": "Qual è la differenza architetturale e funzionale tra aggregazione A-MSDU e aggregazione A-MPDU?",
+        "back": "* **A-MSDU (Aggregate MAC Service Data Unit)**:\n  * Aggrega a monte del MAC più pacchetti di rete (MSDU) diretti allo stesso destinatario sotto un **unico header MAC e un unico codice FCS (CRC-32)**.\n  * Massima efficienza (rimuove tutti gli header intermedi), ma **molto fragile**: se anche un solo bit su 8 KB è corrotto, l'intero aggregato fallisce il CRC e tutti i pacchetti devono essere ritrasmessi.\n* **A-MPDU (Aggregate MAC Protocol Data Unit)**:\n  * Aggrega a valle del MAC trame già complete di header MAC e CRC individuale, separate da delimitatori MPDU da 4 byte.\n  * Si combina con il **Block ACK**: in caso di errore, il ricevitore segnala esattamente quale singolo sotto-frame è corrotto, ritrasmettendo solo quello.",
+        "node": "Aggregazione A-MSDU ad alto livello MAC",
+        "note": "Lezione 18 26 aprile - 04 - Aggregazione di frame A-MSDU e A-MPDU",
+        "image": "wifi3-p09.jpg",
+        "image_side": "fronte",
+        "extra": "In pratica A-MPDU è la soluzione universale grazie al riscontro selettivo del Block ACK.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_025",
+        "front": "Come funziona il meccanismo di Block ACK (ADDBA) e quale struttura dati utilizza?",
+        "back": "Il **Block ACK** sostituisce l'invio di un ACK per ogni singolo frame, confermando una raffica di un massimo di 64 trame (MPDU) con un'unica risposta:\n1. **Setup della Sessione**: le stazioni negoziano la sessione con uno scambio `ADDBA Request` e `ADDBA Response` concordando la dimensione del buffer.\n2. **Struttura della Bitmap**: il frame Block ACK trasporta un campo **Starting Sequence Number (16 bit)** seguito da una **Bitmap di 64 bit (8 byte)**.\n3. Ciascun bit della bitmap corrisponde a un numero di sequenza progressivo: `1` indica ricezione corretta, `0` indica mancata ricezione.\n4. Il trasmettitore ritrasmette in un successivo A-MPDU **esclusivamente i pacchetti con bit a 0**.",
+        "node": "Block ACK cumulativo e finestra di trasmissione TXOP",
+        "note": "Lezione 18 26 aprile - 05 - Meccanismo di Block ACK",
+        "image": "wifi3-p12.jpg",
+        "image_side": "retro",
+        "extra": "Permette riscontri selettivi ad altissima velocità abbattendo il numero di trasmissioni ACK.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_026",
+        "front": "Perché l'algoritmo di sicurezza WEP (Wired Equivalent Privacy) è completamente fallito?",
+        "back": "Il WEP (1999) è collassato a causa di tre gravi difetti crittografici:\n1. **Vettore di Inizializzazione (IV) troppo corto**: solo **24 bit** trasmessi in chiaro. Su una rete carica con $2^{24} \\approx 16.7\\text{ milioni}$ di combinazioni, l'IV si ripete in poche decine di minuti (*keystream reuse* che espone allo XOR dei testi in chiaro).\n2. **Debolezza di RC4 (Attacco FMS)**: la semplice concatenazione $\\text{IV} \\parallel K$ consente, raccogliendo poche migliaia di pacchetti con IV deboli, di ricostruire matematicamente la chiave segreta $K$ in meno di un minuto.\n3. **Integrità basata su CRC-32 (ICV)**: il CRC-32 è lineare; un attaccante può modificare i bit del pacchetto cifrato aggiornando il CRC senza conoscere la chiave segreta.",
+        "node": "Vulnerabilità del WEP e transizione a WPA/WPA2 (CCMP)",
+        "note": "Lezione 18 26 aprile - 07 - Fallimento della sicurezza WEP e attacco FMS",
+        "image": "wifi3-p17.jpg",
+        "image_side": "fronte",
+        "extra": "Dimostra perché un cifrario di flusso (RC4) con IV corto è intrinsecamente vulnerabile al riuso del keystream.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_027",
+        "front": "Quali innovazioni crittografiche introduce WPA2 (IEEE 802.11i / CCMP) rispetto a WEP e TKIP?",
+        "back": "WPA2 elimina ogni residuo di RC4 introducendo il protocollo **CCMP (Counter Mode with CBC-MAC)** basato sul cifrario a blocchi **AES (Advanced Encryption Standard)** a 128 bit:\n* **Cifratura**: modalità **AES-CTR** (Counter Mode) con IV esteso a **48 bit** (Packet Number - PN), eliminando qualunque rischio di riuso del keystream.\n* **Integrità e Autenticazione**: **CBC-MAC** calcola un codice **MIC (Message Integrity Code)** a 64 bit calcolato sull'intero frame (inclusi gli indirizzi MAC dell'header), impedendo attacchi di manomissione, iniezione e spoofing.\n* **Protezione da Replay**: il Packet Number a 48 bit è strettamente incrementale; pacchetti con PN duplicato o inferiore all'ultimo ricevuto vengono scartati all'istante.",
+        "node": "Vulnerabilità del WEP e transizione a WPA/WPA2 (CCMP)",
+        "note": "Lezione 19 28 aprile - 02 - Protocollo crittografico CCMP basato su AES",
+        "image": "wifi3-p25.jpg",
+        "image_side": "retro",
+        "extra": "È lo standard RSN (Robust Security Network) ancora oggi universalmente diffuso.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_028",
+        "front": "Come è strutturata l'architettura di autenticazione Enterprise IEEE 802.1X / EAP / RADIUS?",
+        "back": "L'architettura 802.1X si compone di 3 entità distinte:\n1. **Supplicant**: il terminale client (STA) che richiede l'accesso alla rete.\n2. **Authenticator**: l'Access Point (AP), che mantiene la porta dati logica bloccata, lasciando passare solo il traffico di autenticazione EAPOL (*EAP over LAN*).\n3. **Authentication Server (AS)**: il server centrale di autenticazione (tipicamente **RADIUS** o Diameter).\n* Il dialogo EAP viaggia su EAPOL tra Supplicant e AP, e viene incapsulato in pacchetti RADIUS tra AP e server AS.\n* Al termine dell'autenticazione (es. con credenziali universitarie), il server AS e il client generano concordemente la **MSK (Master Session Key)**, da cui deriva la **PMK**.",
+        "node": "Autenticazione 802.1X/EAP con server RADIUS centrale",
+        "note": "Lezione 19 28 aprile - 01 - Architettura 802.1X EAP EAPOL e RADIUS",
+        "image": "wifi3-p22.jpg",
+        "image_side": "fronte",
+        "extra": "È l'infrastruttura alla base delle reti accademiche mondiali come Eduroam.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_029",
+        "front": "Qual è la gerarchia delle chiavi crittografiche in 802.11i (MSK, PMK, PTK, GTK)?",
+        "back": "La gerarchia deriva chiavi temporanee da chiavi master senza mai esporre segreti via radio:\n* **MSK (Master Session Key)**: 512 bit, generata durante l'autenticazione 802.1X.\n* **PMK (Pairwise Master Key)**: 256 bit, derivata dalla MSK (in Enterprise) o coincidente con la Pre-Shared Key (in WPA2-Personal).\n* **PTK (Pairwise Transient Key)**: chiave temporanea univoca per ciascuna sessione unicast STA-AP, suddivisa in:\n  * **KCK (Key Confirmation Key)**: autentica e calcola il MIC sui frame EAPOL.\n  * **KEK (Key Encryption Key)**: cifra la GTK inviata dall'AP.\n  * **TK (Temporal Key)**: 128 bit, cifra e protegge i dati utente con AES-CCMP.\n* **GTK (Group Temporal Key)**: chiave condivisa per decifrare il traffico broadcast/multicast del BSS.",
+        "node": "Gerarchia chiavi PMK, PTK ed handshake a 4 vie (4-Way)",
+        "note": "Lezione 19 28 aprile - 03 - Four-Way Handshake di 802.11i e scambio delle chiavi",
+        "image": "wifi3-p28.jpg",
+        "image_side": "retro",
+        "extra": "Nessuna chiave master viaggia mai sull'etere radio.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_030",
+        "front": "Come si articola lo scambio a 4 messaggi del 4-Way Handshake di 802.11i?",
+        "back": "Il 4-Way Handshake verifica il possesso reciproco della PMK e installa la PTK:\n1. **Messaggio 1 (AP $\\rightarrow$ STA)**: l'AP invia un numero casuale proprio denominato **ANonce**.\n2. **Messaggio 2 (STA $\\rightarrow$ AP)**: la STA genera il proprio **SNonce**, calcola la $\\text{PTK} = \\text{PRF}(\\text{PMK}, \\text{ANonce}, \\text{SNonce}, \\text{MAC}_{\\text{AP}}, \\text{MAC}_{\\text{STA}})$ e invia SNonce protetto dal MIC calcolato con la sotto-chiave KCK.\n3. **Messaggio 3 (AP $\\rightarrow$ STA)**: l'AP verifica il MIC, deriva la PTK, e invia conferma insieme alla **GTK** cifrata con la KEK e autenticata con il MIC.\n4. **Messaggio 4 (STA $\\rightarrow$ AP)**: la STA conferma l'avvenuta installazione delle chiavi. L'AP sblocca la porta controllata al traffico IP dati.",
+        "node": "Gerarchia chiavi PMK, PTK ed handshake a 4 vie (4-Way)",
+        "note": "Lezione 19 28 aprile - 03 - Four-Way Handshake di 802.11i e scambio delle chiavi",
+        "image": "wifi3-p30.jpg",
+        "image_side": "fronte",
+        "extra": "Domanda d'esame frequente: dimostrare come la PTK viene generata autonomamente da entrambi senza essere trasmessa.",
+        "difficolta": 3,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_031",
+        "front": "Quale vulnerabilità affligge il 4-Way Handshake in WPA2-Personal (KRACK / Dizionario) e come la risolve WPA3?",
+        "back": "* **Vulnerabilità WPA2-PSK**:\n  * Nel 4-Way Handshake, intercettando via etere ANonce, SNonce e il MIC del Messaggio 2, un attaccante può eseguire un **attacco a dizionario offline** per indovinare la passphrase senza interagire con la rete.\n  * Inoltre l'attacco **KRACK (2017)** sfrutta la ritrasmissione del Messaggio 3 per forzare il reset del contatore Packet Number di AES.\n* **Risoluzione WPA3 (SAE - Simultaneous Authentication of Equals)**:\n  * Sostituisce il 4-Way Handshake con il protocollo **Dragonfly (SAE)** basato su crittografia a curve ellittiche (*Zero-Knowledge Proof*).\n  * **Forward Secrecy**: anche se la password di rete venisse scoperta in futuro, il traffico precedentemente registrato non può essere decifrato.\n  * Rende matematicamente vano qualunque attacco a dizionario offline.",
+        "node": "WPA3 con handshake SAE e protezione da attacchi a dizionario",
+        "note": "Lezione 19 28 aprile - 05 - Confronto WEP WPA WPA2 WPA3 Eduroam e Captive Portal UAM",
+        "image": "wifi3-p38.jpg",
+        "image_side": "retro",
+        "extra": "Rende sicure anche le password deboli o corte contro gli attacchi a forza bruta.",
+        "difficolta": 3,
+        "topic": "wifi_80211"
+      },
+      {
+        "id": "wifi_80211_032",
+        "front": "Qual è la differenza di sicurezza tra una rete Enterprise (es. Eduroam) e un Captive Portal (Web UAM)?",
+        "back": "* **Rete 802.1X Enterprise (Eduroam)**:\n  * La sicurezza e la cifratura partono dal **Livello 2** prima dell'emissione di qualsiasi pacchetto IP.\n  * Il canale radio tra dispositivo e AP è cifrato punto-a-punto con chiavi AES individuali univoche.\n  * Nessun vicino radio può intercettare né compiere manomissioni/spoofing ARP.\n* **Captive Portal (Universal Access Method - UAM)**:\n  * La rete Wi-Fi è tipicamente **completamente aperta a Livello 2** (senza cifratura WPA).\n  * L'autenticazione avviene a **Livello 7** reindirizzando le richieste HTTP verso una pagina web di login.\n  * Tutto il traffico locale successivo (se non protetto da HTTPS applicativo) viaggia in chiaro nell'etere ed è esposto a intercettazione e session hijacking.",
+        "node": "Autenticazione 802.1X/EAP con server RADIUS centrale",
+        "note": "Lezione 19 28 aprile - 05 - Confronto WEP WPA WPA2 WPA3 Eduroam e Captive Portal UAM",
+        "image": "wifi3-p39.jpg",
+        "image_side": "fronte",
+        "extra": "Spiega perché i Captive Portal degli hotel/stazioni sono intrinsecamente insicuri rispetto a 802.1X.",
+        "difficolta": 2,
+        "topic": "wifi_80211"
+      }
+    ]
   }
 ];
