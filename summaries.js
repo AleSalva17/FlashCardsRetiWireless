@@ -368,6 +368,15 @@ window.REVIEWS_DATA = {
       "elementsCount": 450
     },
     {
+      "id": "map_5g",
+      "title": "Mappa Concettuale: Sistemi 5G NR e 5GC",
+      "badge": "5G NR & Core (108 elementi / 26 nodi)",
+      "desc": "Albero concettuale completo del 5G: Classi ITU (eMBB, URLLC, mMTC), Spettro FR1/FR2 e 256-QAM, Numerologia flessibile mu, Self-contained slot, Deployment NSA/SA (Opzione 3x/2), Service-Based Architecture (AMF, SMF, UPF) e Network Slicing.",
+      "svgUrl": "images/maps/5G.svg",
+      "isVectorDoc": false,
+      "elementsCount": 108
+    },
+    {
       "id": "map_reticellulari",
       "title": "Mappa Concettuale: Reti Cellulari e Propagazione",
       "badge": "Fondamenti (197 nodi)",

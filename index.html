@@ -1761,10 +1761,10 @@
         <!-- Sub-switcher: Mappe vs Riassunti -->
         <div class="sub-tab-switcher">
           <button class="sub-tab-btn active" id="subTabReviewsMaps" onclick="selectReviewSubTab('maps')">
-            🗺️ Mappe Vettoriali Navigabili (3)
+            🗺️ Mappe Vettoriali Navigabili (6)
           </button>
           <button class="sub-tab-btn" id="subTabReviewsText" onclick="selectReviewSubTab('text')">
-            📑 Testi di Riassunto (5G & LTE)
+            📑 Testi di Riassunto (WiFi, 5G & LTE)
           </button>
         </div>
 
@@ -2031,11 +2031,11 @@
   </div>
 
     <!-- Carica database iniziale -->
-  <script src="topics.js?v=15"></script>
-  <script src="exercises.js?v=15"></script>
-  <script src="questions.js?v=15"></script>
-  <script src="formulas.js?v=15"></script>
-  <script src="summaries.js?v=15"></script>
+  <script src="topics.js?v=16"></script>
+  <script src="exercises.js?v=16"></script>
+  <script src="questions.js?v=16"></script>
+  <script src="formulas.js?v=16"></script>
+  <script src="summaries.js?v=16"></script>
 
   <script>
     // Inizializzazione Telegram WebApp se presente
@@ -3656,14 +3656,21 @@
       const container = document.getElementById('mapsSelectorGrid');
       if (!container) return;
       const maps = window.REVIEWS_DATA?.maps || [];
+      const btnMaps = document.getElementById('subTabReviewsMaps');
+      if (btnMaps) {
+        btnMaps.innerHTML = `🗺️ Mappe Vettoriali Navigabili (${maps.length})`;
+      }
       
       container.innerHTML = '';
       maps.forEach(m => {
         const item = document.createElement('div');
         item.className = `map-card-item ${activeMapId === m.id ? 'active' : ''}`;
         item.onclick = () => openMapViewer(m.id);
+        const badgeLabel = (m.badge && (m.badge.includes('nodi') || m.badge.includes('elementi'))) 
+          ? m.badge 
+          : `${m.badge} (${m.elementsCount} nodi)`;
         item.innerHTML = `
-          <span class="map-card-badge">${m.badge} (${m.elementsCount} nodi)</span>
+          <span class="map-card-badge">${badgeLabel}</span>
           <div class="map-card-title">${m.title}</div>
           <div class="map-card-desc">${m.desc}</div>
           <div class="map-card-action">🔍 Esplora Vettoriale (Zoom & Pan) →</div>

@@ -1,16 +1,17 @@
-const CACHE_NAME = 'flashcards-rw-v15';
+const CACHE_NAME = 'flashcards-rw-v16';
 const ASSETS = [
   './',
   './index.html',
-  './topics.js?v=15',
-  './exercises.js?v=15',
-  './questions.js?v=15',
-  './formulas.js?v=15',
-  './summaries.js?v=15',
+  './topics.js?v=16',
+  './exercises.js?v=16',
+  './questions.js?v=16',
+  './formulas.js?v=16',
+  './summaries.js?v=16',
   './manifest.json',
   './images/maps/DimensionamentoDellaCella.svg',
   './images/maps/RetiCellulari.svg',
   './images/maps/LTE.svg',
+  './images/maps/5G.svg',
   './images/maps/Riassunto_5G.svg',
   './images/maps/Riassunto_LTE_17_22_Marzo.svg',
   './notes/Riassunto_5G.md',
