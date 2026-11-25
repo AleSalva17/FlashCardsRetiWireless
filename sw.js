@@ -1,12 +1,12 @@
-const CACHE_NAME = 'flashcards-rw-v14';
+const CACHE_NAME = 'flashcards-rw-v15';
 const ASSETS = [
   './',
   './index.html',
-  './topics.js?v=14',
-  './exercises.js?v=14',
-  './questions.js?v=14',
-  './formulas.js?v=14',
-  './summaries.js?v=14',
+  './topics.js?v=15',
+  './exercises.js?v=15',
+  './questions.js?v=15',
+  './formulas.js?v=15',
+  './summaries.js?v=15',
   './manifest.json',
   './images/maps/DimensionamentoDellaCella.svg',
   './images/maps/RetiCellulari.svg',
@@ -15,6 +15,7 @@ const ASSETS = [
   './images/maps/Riassunto_LTE_17_22_Marzo.svg',
   './notes/Riassunto_5G.md',
   './notes/Riassunto_LTE_17_22_Marzo.md',
+  './notes/Riassunto_WiFi_Lezioni_13_19.md',
   './notes/Formulario_Reti_Wireless.md'
 ];
 
