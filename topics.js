@@ -1,6 +1,6 @@
 // Database unificato e completo delle flashcards per Reti Wireless
 // Allineato al 100% con le Mappe Concettuali e le Immagini delle Lezioni
-// Totale Argomenti: 11 | Totale Flashcards: 250
+// Totale Argomenti: 12 | Totale Flashcards: 273
 
 window.DEFAULT_TOPICS = [
   {
@@ -2890,5 +2890,288 @@ window.DEFAULT_TOPICS = [
         "topic": "wifi_80211"
       }
     ]
+  },
+  {
+    "topic_id": "iot_wot",
+    "topic_name": "12. IoT & Web of Things: REST, HTTP, Polling vs Eventi e Protocollo MQTT (Lezioni 20-22)",
+    "cards": [
+      {
+        "id": "iot_wot_001",
+        "front": "Qual è il paradigma fondamentale dell'Internet of Things (IoT) e come si classificano i dispositivi secondo la RFC 7228?",
+        "back": "L'**Internet of Things (IoT)** estende la rete Internet al mondo degli oggetti fisici dotati di capacità computazionali, di sensing, attuazione e connettività.\n\nLa **RFC 7228** distingue due grandi classi di nodi:\n1. **Dispositivi Vincolati (Constrained Devices)**: microcontrollori a 8/16/32 bit con risorse limitate (classe C0: <10 KiB RAM, classe C1: ~10 KiB RAM, classe C2: ~50 KiB RAM / ~250 KiB Flash) alimentati a batteria o da energy harvesting, che non possono supportare stack IP completi pesanti.\n2. **Nodi Pienamente Alimentati / Edge Gateway**: Single-Board Computer (es. Raspberry Pi) o router industriali con connettività continua, alimentazione da rete e stack Linux completo, che fanno da ponte tra i nodi vincolati e il Cloud.",
+        "node": "Internet of Things & Web of Things",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p01.jpg, iot-p02.jpg · RFC 7228",
+        "image": "iot-p01.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Internet of Things & Web of Things'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p01.jpg, iot-p02.jpg · RFC 7228",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_002",
+        "front": "Che differenza concettuale sussiste tra Machine-to-Machine (M2M) e Web of Things (WoT)?",
+        "back": "La differenza risiede nel livello di astrazione e interoperabilità:\n* **M2M (Machine-to-Machine)**: silos verticali e proprietari, protocolli chiusi e non interoperabili (es. Modbus, Zigbee, formati binari custom) che richiedono gateway di traduzione ad-hoc per ogni applicazione.\n* **Web of Things (WoT)**: paradigma orizzontale e aperto che usa i **protocolli standard del Web (HTTP, URI, JSON, REST, WebSockets)** al livello applicativo per esporre oggetti e sensori come vere e proprie *risorse web navigabili e accessibili* da qualsiasi client standard (browser, curl, app web), garantendo integrazione universale plug-and-play.",
+        "node": "Internet of Things & Web of Things",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p03.jpg, iot-p04.jpg",
+        "image": "iot-p03.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Internet of Things & Web of Things'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p03.jpg, iot-p04.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_003",
+        "front": "Come vengono identificate e strutturate le risorse nel Web of Things mediante URI e URL?",
+        "back": "Nel WoT ogni dispositivo, sensore o attuatore è identificato in modo univoco e globale tramite un **URI (Uniform Resource Identifier)**, solitamente espresso come **URL (Uniform Resource Locator)**:\n$$\\text{scheme://host:port/path?query#fragment}$$\n* **Scheme**: protocollo applicativo (es. `http://` o `coap://`).\n* **Host & Port**: indirizzo IP/FQDN del dispositivo o del gateway (es. `192.168.1.50:8080`).\n* **Path**: gerarchia logica delle risorse nel mondo fisico (es. `/edificioA/piano2/ufficio12/temperatura`).\n* **Query**: filtri opzionali (es. `?unit=celsius&precision=2`).",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p04.jpg · RFC 3986",
+        "image": "iot-p04.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p04.jpg · RFC 3986",
+        "difficolta": 1,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_004",
+        "front": "Come si è evoluto il protocollo HTTP (da HTTP/1.0 a HTTP/1.1 con Keep-Alive e Pipelining) e quali implicazioni ha sui tempi di trasferimento?",
+        "back": "* **HTTP/1.0 (Non persistente)**: ogni singola richiesta/risposta richiede una connessione TCP dedicata (3-Way Handshake + scambio dati + chiusura). Per scaricare $K$ oggetti occorrono $K \\times 2\\text{ RTT}$ (un RTT per il TCP handshake + un RTT per la transazione HTTP).\n* **HTTP/1.1 (Connessioni Persistenti / Keep-Alive)**: la connessione TCP rimane aperta per transazioni multiple successive, risparmiando l'RTT di handshake per ogni oggetto aggiuntivo.\n* **Pipelining**: il client può inviare richieste multiple in sequenza senza attendere le risposte intermedie; tuttavia soffre del blocco *Head-of-Line (HoL)* a livello applicativo se la prima risposta tarda a essere elaborata.",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p05.jpg, iot-p06.jpg, iot-p07.jpg",
+        "image": "iot-p06.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p05.jpg, iot-p06.jpg, iot-p07.jpg",
+        "difficolta": 3,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_005",
+        "front": "Quali sono i principi architetturali fondamentali dello stile REST (Representational State Transfer)?",
+        "back": "Definito da Roy Fielding (2000), lo stile **REST** impone 6 vincoli architetturali:\n1. **Architettura Client-Server disaccoppiata**: separazione netta tra interfaccia utente/sensore e logica di conservazione stato.\n2. **Stateless (Senza Stato)**: ogni richiesta dal client al server deve contenere *tutte* le informazioni necessarie per essere compresa ed eseguita; il server non conserva alcun contesto di sessione.\n3. **Cacheable (Memorizzabile in Cache)**: le risposte devono dichiararsi esplicitamente cachabili o non cachabili per ridurre il carico di rete.\n4. **Interfaccia Uniforme (Uniform Interface)**: identificazione risorse tramite URI, manipolazione tramite rappresentazioni, messaggi auto-descrittivi e HATEOAS.\n5. **Sistema a Livelli (Layered System)**: il client non può distinguere se è collegato al server finale o a un proxy/gateway intermedio.\n6. **Code-on-Demand (Opzionale)**: possibilità di scaricare script eseguibili.",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p12.jpg, iot-p13.jpg, iot-p14.jpg",
+        "image": "iot-p13.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p12.jpg, iot-p13.jpg, iot-p14.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_006",
+        "front": "Come si mappano le operazioni CRUD sui verbi HTTP e quali di essi sono 'Sicuri' o 'Idempotenti'?",
+        "back": "Mappatura CRUD (Create, Read, Update, Delete) sui metodi HTTP standard:\n* **GET** $\\rightarrow$ **Read**: lettura di una risorsa. È **Sicuro** (non modifica lo stato) e **Idempotente** ($N$ chiamate producono lo stesso effetto sul server).\n* **POST** $\\rightarrow$ **Create**: creazione di una nuova risorsa subordinata. **Non Sicuro** e **Non Idempotente** (ripetere un POST crea risorse duplicate distinte).\n* **PUT** $\\rightarrow$ **Update / Replace**: sostituzione completa dello stato della risorsa. **Non Sicuro** ma **Idempotente** (eseguire lo stesso PUT $N$ volte lascia la risorsa nello stesso stato finale).\n* **DELETE** $\\rightarrow$ **Delete**: cancellazione della risorsa. **Non Sicuro** ma **Idempotente** (cancellare una risorsa già cancellata produce lo stesso effetto di assenza risorsa).",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p15.jpg, iot-p16.jpg",
+        "image": "iot-p15.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p15.jpg, iot-p16.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_007",
+        "front": "Quali sono le principali classi di codici di stato HTTP e i loro esempi più rilevanti nel contesto IoT?",
+        "back": "I codici di stato HTTP a 3 cifre si suddividono in 5 classi:\n* **1xx (Informativi)**: es. `101 Switching Protocols` (upgrade a WebSocket).\n* **2xx (Successo)**: `200 OK` (lettura sensore riuscita), `201 Created` (creazione risorsa riuscita via POST con header `Location`), `204 No Content` (comando attuatore eseguito con successo, nessun body).\n* **3xx (Reindirizzamento)**: `301 Moved Permanently`, `304 Not Modified` (supporto caching sensori).\n* **4xx (Errore Client)**: `400 Bad Request` (payload JSON malformato), `401 Unauthorized`, `403 Forbidden`, `404 Not Found` (URI inesistente).\n* **5xx (Errore Server)**: `500 Internal Server Error`, `503 Service Unavailable` (gateway/sensore sovraccarico).",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p11.jpg",
+        "image": "iot-p11.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p11.jpg",
+        "difficolta": 1,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_008",
+        "front": "Quali sono le differenze strutturali tra JSON ed XML nella rappresentazione dei dati IoT?",
+        "back": "* **XML (eXtensible Markup Language)**: linguaggio a marcatori basato su tag annidati `<tag>...</tag>`. Supporta schemi complessi (XSD) e attributi, ma è estremamente prolisso (alto overhead di byte dovuto ai tag di chiusura), pesante da parsare per microcontrollori vincolati.\n* **JSON (JavaScript Object Notation)**: formato testuale compatto basato su coppie chiave-valore `{ \"chiave\": valore }` e array ordinati `[...]`. Mappa nativamente le strutture dati in memoria dei linguaggi di programmazione, ha un overhead di caratteri molto inferiore ad XML ed è processabile con parsing leggero e veloce, rendendolo lo standard de-facto per il Web of Things.",
+        "node": "Internet of Things & Web of Things",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p12.jpg, iot-p17.jpg",
+        "image": "iot-p17.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Internet of Things & Web of Things'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p12.jpg, iot-p17.jpg",
+        "difficolta": 1,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_009",
+        "front": "Quali sono i limiti critici e strutturali del protocollo HTTP quando applicato ai dispositivi vincolati dell'IoT?",
+        "back": "HTTP presenta tre grossi limiti strutturali per l'IoT:\n1. **Overhead enorme dei messaggi**: header testuali ASCII (User-Agent, Host, Accept, Content-Type) che pesano centinaia di byte a fronte di pochi byte di misura sensoriale (es. 2 byte di temperatura trasportati in 400 byte di trama, efficienza < 1%).\n2. **Modello strettamente sincrono Request-Response**: non esiste notifica server-push nativa; un client deve continuamente interrogare il server (polling) per conoscere variazioni di stato.\n3. **Costo energetico del trasporto TCP/TLS**: richiede 3-way handshake iniziale e scambi crittografici pesanti, costringendo la radio RF del sensore a rimanere accesa a lungo e prosciugando la batteria.",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 20 (3 Maggio) · Slide iot-p17.jpg",
+        "image": "iot-p17.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 20 (3 Maggio) · Slide iot-p17.jpg",
+        "difficolta": 3,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_010",
+        "front": "Come funziona il pattern di Polling Periodico Sincrono e quali problemi di inefficienza comporta?",
+        "back": "Nel **Polling Periodico Sincrono**:\n* Il client (o server centrale) invia una richiesta `GET` a intervalli regolari fissi $T_{\\text{poll}}$ al sensore per verificare se il valore è cambiato o per leggere l'ultima misura.\n\n**Inefficienze critiche**:\n* **Traffico inutile al 99%**: se la grandezza fisica varia raramente (es. allarme incendio, termostato), quasi tutte le interrogazioni producono dati identici o `304 Not Modified`, sprecando banda ed energia.\n* **Ritardo intrinseco di rilevazione**: l'evento reale può manifestarsi subito dopo un'interrogazione; il sistema lo rileverà solo al ciclo successivo, con un ritardo medio di $T_{\\text{poll}} / 2$.\n* **Dilemma di dimensionamento**: ridurre $T_{\\text{poll}}$ diminuisce la latenza ma fa esplodere i consumi della batteria; aumentarlo salva la batteria ma causa ritardi inaccettabili.",
+        "node": "Pattern di Comunicazione & Efficienza",
+        "note": "Lezione 21 (5 Maggio) · Slide iot-p18.jpg, iot-p19.jpg",
+        "image": "iot-p18.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Pattern di Comunicazione & Efficienza'. Fonte: Lezione 21 (5 Maggio) · Slide iot-p18.jpg, iot-p19.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_011",
+        "front": "Come funziona il pattern di Notifica Asincrona su Evento (WebHook / Event-Driven) e quali vantaggi offre rispetto al Polling?",
+        "back": "Nel pattern **Event-Driven (WebHook)**:\n* Il sensore/dispositivo rimane in modalità deep sleep a bassissimo consumo (consumo radio spenta $\\sim 10\\ \\mu\\text{W}$);\n* Solo quando si verifica un evento reale (superamento soglia o timer interno), il sensore si risveglia, apre la connessione ed emette una notifica verso il server (es. HTTP `POST` contenente i dati dell'evento);\n* Il server risponde con `200 OK` e il sensore torna immediatamente in sleep profondo.\n\n**Vantaggi**:\n* **Latenza minima**: la notifica è inviata nell'istante esatto dell'evento;\n* **Efficienza energetica massima**: zero traffico quando l'ambiente è statico, estendendo la durata della batteria da giorni ad anni.",
+        "node": "Pattern di Comunicazione & Efficienza",
+        "note": "Lezione 21 (5 Maggio) · Slide iot-p20.jpg, iot-p21.jpg",
+        "image": "iot-p20.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Pattern di Comunicazione & Efficienza'. Fonte: Lezione 21 (5 Maggio) · Slide iot-p20.jpg, iot-p21.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_012",
+        "front": "Come si formula analiticamente l'efficienza di trasferimento dati HTTP e da cosa è dominata?",
+        "back": "L'**efficienza di trasferimento** $\\eta$ è definita come il rapporto tra il payload utile applicativo ($L_{\\text{payload}}$) e il volume complessivo di dati trasmessi e ricevuti a livello di rete/trasporto ($B_{\\text{tot}}$):\n$$\\eta = \\frac{L_{\\text{payload}}}{B_{\\text{tot}}} = \\frac{L_{\\text{payload}}}{L_{\\text{req}} + L_{\\text{resp}} + L_{\\text{proto\\_overhead}}}$$\nIn uno scambio HTTP su TCP:\n* $L_{\\text{req}}$: header IP (20 B) + header TCP (20 B) + request line e header HTTP (200-400 B).\n* $L_{\\text{resp}}$: header IP (20 B) + header TCP (20 B) + status line e header HTTP (150-300 B) + $L_{\\text{payload}}$.\n* Per un sensore IoT con payload tipico di 10-20 byte (es. `{\"t\":22.5}`), $B_{\\text{tot}} \\approx 600 - 800\\text{ byte}$, determinando un'efficienza $\\eta \\approx 1.5\\% - 3\\%$. L'overhead dei protocolli supera il 97% del traffico totale.",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 21 (5 Maggio) · Slide iot-p22.jpg, iot-p23.jpg · Esercizio d'Esame",
+        "image": "iot-p23.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 21 (5 Maggio) · Slide iot-p22.jpg, iot-p23.jpg · Esercizio d'Esame",
+        "difficolta": 3,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_013",
+        "front": "Qual è il principio dell'Architettura Publish-Subscribe e quali disaccoppiamenti introduce rispetto al modello Client-Server?",
+        "back": "L'architettura **Publish-Subscribe (Pub/Sub)** introduce un intermediario centrale (il **Message Broker**) eliminando la necessità di connessione punto-punto diretta tra chi produce e chi consuma dati.\n\nIntroduce tre livelli fondamentali di **disaccoppiamento**:\n1. **Spaziale**: Publisher e Subscriber non conoscono l'identità o l'indirizzo IP reciproco, conoscono solo il Broker e il nome del Topic.\n2. **Temporale**: Publisher e Subscriber non devono essere contemporaneamente online nel medesimo istante (il Broker può conservare i messaggi per subscriber offline grazie a sessioni persistenti).\n3. **Di Sincronizzazione**: la pubblicazione è un'operazione non bloccante; il publisher invia il messaggio e prosegue senza dover attendere la consegna o l'elaborazione da parte di ciascun subscriber.",
+        "node": "Internet of Things & Web of Things",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p27.jpg, iot-p28.jpg, iot-p29.jpg",
+        "image": "iot-p28.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Internet of Things & Web of Things'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p27.jpg, iot-p28.jpg, iot-p29.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_014",
+        "front": "Quali sono le caratteristiche architetturali del protocollo MQTT (RFC standard OASIS/ISO 20922)?",
+        "back": "**MQTT (Message Queuing Telemetry Transport)** è un protocollo di messaggistica M2M/IoT leggero basato su modello Pub/Sub:\n* **Livello di trasporto**: opera sopra **TCP** (porta default standard `1883`, oppure `8883` cifrata con TLS);\n* **Header binario compatto**: l'intestazione fissa (*Fixed Header*) pesa solo **2 byte**, riducendo a zero l'overhead rispetto ai centinaia di byte di HTTP;\n* **Connessione TCP persistente**: il client si connette una volta sola tramite pacchetto `CONNECT` e mantiene il tunnel aperto tramite messaggi periodici di `PINGREQ`/`PINGRESP` (Keep-Alive);\n* **Topic gerarchici**: routing flessibile basato su stringhe UTF-8 separate da slash (`/`);\n* **Affidabilità configurabile**: 3 livelli di QoS negoziabili per singolo messaggio.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p30.jpg, iot-p31.jpg, iot-p32.jpg",
+        "image": "iot-p31.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p30.jpg, iot-p31.jpg, iot-p32.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_015",
+        "front": "Come è strutturato lo spazio dei Topic in MQTT e come funzionano le wildcard singola '+' e multilivello '#'?",
+        "back": "I **Topic MQTT** sono stringhe gerarchiche composte da livelli separati da barra `/` (case-sensitive):\n`casa/primo_piano/cucina/temperatura`\n\nI Subscriber possono sottoscrivere topic esatti o usare caratteri speciali (**Wildcard**):\n1. **Wildcard a livello singolo (`+`)**: sostituisce esattamente *un solo livello* gerarchico.\n   * Esempio: `casa/+/cucina/temperatura` intercetta `casa/primo_piano/cucina/temperatura` e `casa/secondo_piano/cucina/temperatura`, ma non `casa/primo_piano/zona_a/cucina/temperatura`.\n2. **Wildcard multilivello (`#`)**: sostituisce *qualsiasi numero di sottolivelli* successivi. **Può comparire solo alla fine del pattern** preceduta da uno slash.\n   * Esempio: `casa/primo_piano/#` intercetta tutti i topic che iniziano con `casa/primo_piano/`, inclusi `temperatura`, `sensori/fumo`, ecc.\n   * *(Nota: il publisher non può MAI pubblicare verso topic contenenti wildcard; le wildcard sono riservate alle subscription)*.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p33.jpg, iot-p34.jpg, iot-p35.jpg",
+        "image": "iot-p34.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p33.jpg, iot-p34.jpg, iot-p35.jpg",
+        "difficolta": 1,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_016",
+        "front": "Come funziona il meccanismo di Keep-Alive e PING in MQTT per rilevare cadute silenziose della connessione TCP?",
+        "back": "Poiché TCP su canali wireless può subire interruzioni improvvise (half-open connection) senza invio di flag `FIN`/`RST`, MQTT implementa un timer applicativo di **Keep-Alive** concordato nel frame `CONNECT` (espresso in secondi, es. $T_{\\text{keepalive}} = 60\\text{ s}$):\n* Se durante questo intervallo il client non ha dati applicativi da inviare, trasmette un pacchetto ultraleggero di soli 2 byte: **`PINGREQ`**;\n* Il Broker deve rispondere tempestivamente con un **`PINGRESP`** (2 byte);\n* Se il Broker non riceve alcun frame dal client entro $1.5 \\times T_{\\text{keepalive}}$ (es. 90 secondi), dichiara la connessione interrotta, chiude il socket TCP e scatena la pubblicazione del messaggio di testamento (**Last Will and Testament**).",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p37.jpg, iot-p38.jpg",
+        "image": "iot-p38.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p37.jpg, iot-p38.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_017",
+        "front": "Come funziona il livello QoS 0 (At most once) in MQTT e quali frame vengono scambiati?",
+        "back": "**QoS 0 — At most once (Al massimo una volta / Fire and Forget)**:\n* **Garanzia**: il messaggio è inviato facendo affidamento esclusivamente sull'affidabilità best-effort della sottostante connessione TCP. Non vi è alcun riscontro a livello applicativo MQTT.\n* **Flusso messaggi**:\n  $$\\text{Client} \\xrightarrow{\\text{PUBLISH (QoS=0)}} \\text{Broker}$$\n* **Caratteristiche**:\n  - Nessun identificatore di pacchetto (`Packet Identifier = 0`);\n  - Nessun messaggio di ACK (`PUBACK` non esiste per QoS 0);\n  - Il messaggio non viene memorizzato dal mittente per ritrasmissioni;\n  - Se la connessione cade o si verifica un errore durante l'invio, il messaggio va perso;\n  - È il livello con **massimo throughput e minimo overhead di banda**, ideale per misure telemetriche ad altissima frequenza dove la perdita di un singolo campione è tollerabile.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p39.jpg, iot-p40.jpg",
+        "image": "iot-p40.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p39.jpg, iot-p40.jpg",
+        "difficolta": 1,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_018",
+        "front": "Come funziona il livello QoS 1 (At least once) in MQTT, come si gestisce la ritrasmissione e perché possono verificarsi duplicati?",
+        "back": "**QoS 1 — At least once (Almeno una volta)**:\n* **Garanzia**: assicura che il messaggio venga consegnato al ricevitore *almeno una volta*, ma possono verificarsi duplicati applicativi.\n* **Flusso messaggi**:\n  1. Il mittente invia un frame `PUBLISH` contenente un **Packet Identifier (PID)** univoco e mantiene il messaggio memorizzato in un buffer locale;\n  2. Il ricevitore (Broker o Subscriber) elabora il messaggio e risponde con un frame **`PUBACK`** contenente lo stesso PID;\n  3. Ricevuto il `PUBACK`, il mittente rimuove il messaggio dal buffer.\n* **Genesi dei duplicati**: se il pacchetto `PUBLISH` raggiunge il Broker ma la risposta `PUBACK` va persa nella rete wireless (o arriva oltre il timeout), il mittente scatta in ritrasmissione impostando il bit **DUP (Duplicate = 1)** con lo stesso PID. Il Broker riceverà il messaggio per la seconda volta e lo inoltrerà nuovamente ai subscriber, generando una duplicazione.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p41.jpg, iot-p42.jpg, iot-p43.jpg",
+        "image": "iot-p42.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p41.jpg, iot-p42.jpg, iot-p43.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_019",
+        "front": "Come funziona il livello QoS 2 (Exactly once) in MQTT e quale handshaking a 4 vie garantisce l'assenza di duplicati?",
+        "back": "**QoS 2 — Exactly once (Esattamente una volta)**:\n* **Garanzia**: assicura che il messaggio sia consegnato al destinatario esattamente una sola volta, garantendo assenza sia di perdite sia di duplicati (indispensabile per comandi di attuazione critici, transazioni di pagamento, allarmi industriali).\n* **Handshake a 4 vie (4-Way Handshake MQTT)**:\n  1. **PUBLISH (QoS=2, PID=k)**: il mittente memorizza il messaggio e lo invia;\n  2. **PUBREC (Publish Received)**: il ricevitore memorizza il PID per tracciare la transazione e risponde che il pacchetto è stato ricevuto con successo;\n  3. **PUBREL (Publish Release)**: il mittente riceve il `PUBREC`, libera il payload dal proprio buffer e invia il comando di rilascio al ricevitore;\n  4. **PUBCOMP (Publish Complete)**: il ricevitore riceve il `PUBREL`, consegna il messaggio all'applicazione/subscriber, scarta lo stato del PID e invia la conferma finale `PUBCOMP`.\n* **Complessità**: introduce un overhead di 4 messaggi per transazione, raddoppiando l'RTT rispetto a QoS 1 ma fornendo la massima affidabilità.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p44.jpg, iot-p45.jpg",
+        "image": "iot-p44.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p44.jpg, iot-p45.jpg",
+        "difficolta": 3,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_020",
+        "front": "Cosa indica il flag CleanSession nel messaggio CONNECT di MQTT e come impatta la persistenza delle sessioni?",
+        "back": "Nel frame `CONNECT`, il client imposta il flag booleano **`CleanSession`**:\n* **CleanSession = 1 (Sessione Volatile / Transitoria)**:\n  - Alla disconnessione, il Broker cancella immediatamente tutte le informazioni relative al client;\n  - Le sottoscrizioni ai topic decadono;\n  - Se il client era offline, tutti i messaggi pubblicati in sua assenza vanno persi in modo definitivo;\n  - Ideale per sensori semplici che pubblicano solo dati e non necessitano di ricevere messaggi arretrati.\n* **CleanSession = 0 (Sessione Persistente / Durevole)**:\n  - Il Broker mantiene memorizzato lo stato della sessione (identificata dal `ClientID`) anche se il socket TCP viene chiuso;\n  - Conserva l'elenco delle sottoscrizioni e accumula in una coda FIFO tutti i messaggi in arrivo con QoS 1 e QoS 2;\n  - Quando il client si riconnette con lo stesso `ClientID`, il Broker svuota la coda e gli recapita tutti i messaggi accumulati durante il periodo di disconnessione.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p47.jpg, iot-p48.jpg",
+        "image": "iot-p48.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p47.jpg, iot-p48.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_021",
+        "front": "Cosa sono i Retained Messages in MQTT e quale problema risolvono per i nuovi Subscriber?",
+        "back": "Quando un publisher invia un pacchetto `PUBLISH` con il flag **`Retain = 1`**:\n* Il Broker distribuisce normalmente il messaggio ai subscriber correnti, ma in aggiunta **memorizza permanentemente quel messaggio come 'ultimo valore noto' per quello specifico Topic**.\n\n**Risoluzione del problema dei nuovi arrivati**:\n* In assenza di Retain, un nuovo subscriber che si connette e sottoscrive il topic (es. `sensore/temperatura`) dovrebbe attendere passivamente la successiva pubblicazione del sensore (che potrebbe avvenire dopo ore o giorni se il sensore trasmette solo su variazione);\n* Con il flag `Retain = 1`, non appena il nuovo client sottoscrive il topic, il Broker gli invia **immediatamente** l'ultimo messaggio conservato (con bit Retain=1 per indicare che è un valore storicizzato), permettendo al client di visualizzare subito lo stato corrente del sistema.\n* *(Per cancellare un messaggio retained, un publisher invia un `PUBLISH` su quel topic con payload vuoto (0 byte) e flag `Retain = 1`)*.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p49.jpg, iot-p50.jpg",
+        "image": "iot-p50.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p49.jpg, iot-p50.jpg",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_022",
+        "front": "Come funziona il meccanismo Last Will and Testament (LWT) in MQTT per la notifica tempestiva di guasto del nodo?",
+        "back": "Il **Last Will and Testament (LWT - Testamento Biologico)** è una funzionalità nativa di MQTT per rilevare e notificare a tutti i nodi il fallimento improvviso di un dispositivo (es. batteria esaurita, rottura hardware, perdita segnale radio):\n1. **Dichiarazione preventiva**: All'atto della connessione iniziale, il client include nel frame `CONNECT` le specifiche del proprio 'testamento':\n   - `Will Topic` (es. `dispositivi/sensore12/status`);\n   - `Will Message` (es. payload `offline` o `connessione_interrotta`);\n   - `Will QoS` (0, 1 o 2) e `Will Retain`.\n2. **Conservazione**: Il Broker custodisce il messaggio di testamento finché la sessione è attiva;\n3. **Casi di attivazione**:\n   * **Disconnessione ordinata**: se il client invia esplicitamente un frame **`DISCONNECT`**, il Broker riconosce la chiusura volontaria e **cancella il testamento senza pubblicarlo**;\n   * **Caduta anomala o crash**: se il Broker rileva la rottura improvvisa del socket TCP o la scadenza del timer di Keep-Alive, **pubblica automaticamente il Will Message** sul Will Topic con il livello di QoS pattuito, informando istantaneamente l'intera rete del guasto del sensore.",
+        "node": "Architettura Pub/Sub & Protocollo MQTT",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p51.jpg, iot-p52.jpg, iot-p53.jpg",
+        "image": "iot-p52.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'Architettura Pub/Sub & Protocollo MQTT'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p51.jpg, iot-p52.jpg, iot-p53.jpg",
+        "difficolta": 3,
+        "topic": "iot_wot"
+      },
+      {
+        "id": "iot_wot_023",
+        "front": "Qual è il confronto sinottico completo tra HTTP e MQTT su trasporto, overhead, paradigma e idoneità IoT?",
+        "back": "| Parametro | HTTP / REST | MQTT |\n| :--- | :--- | :--- |\n| **Livello di Trasporto** | TCP (porta 80/443), tipicamente half-duplex per richiesta | TCP (porta 1883/8883), connessione full-duplex persistente |\n| **Paradigma di Scambio** | Client-Server (Request-Response) sincrono | Publish-Subscribe asincrono mediato da Broker |\n| **Disaccoppiamento** | Accoppiato nello spazio e nel tempo | Totalmente disaccoppiato (spaziale, temporale, sincronizzazione) |\n| **Dimensione Minima Header** | Testuale ASCII: centinaia di byte (~200–500 B) | Binario compatto: **2 byte** |\n| **Efficienza con Dati Piccoli** | Bassissima (< 3%) | Elevatissima (> 70–80%) |\n| **Livelli di QoS** | Nessuno a livello applicativo (solo ACK TCP) | Nativo: 3 livelli negoziabili (QoS 0, 1, 2) |\n| **Supporto Server Push** | Complesso (richiede Polling, Long-Polling, WebSockets) | Nativo ed immediato verso tutti i Subscriber |\n| **Rilevamento Guasto Nodo** | Lento (scoperto solo al fallimento del polling) | Immediato e nativo (Last Will and Testament) |\n| **Idoneità per Nodi a Batteria** | Bassa (radio accesa a lungo) | Ottima (connessione persistente e keep-alive lungo) |",
+        "node": "WoT, HTTP & Architettura RESTful",
+        "note": "Lezione 22 (12 Maggio) · Slide iot-p54.jpg · Tavola Sinottica Finale",
+        "image": "iot-p54.jpg",
+        "image_side": "fronte",
+        "extra": "Nodo della Mappa Concettuale IoT: 'WoT, HTTP & Architettura RESTful'. Fonte: Lezione 22 (12 Maggio) · Slide iot-p54.jpg · Tavola Sinottica Finale",
+        "difficolta": 2,
+        "topic": "iot_wot"
+      }
+    ],
+    "count": 23
   }
 ];

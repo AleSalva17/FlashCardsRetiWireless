@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1350" width="100%" height="100%" style="background:#0f172a; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<defs>
+  <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0284c7" />
+    <stop offset="100%" stop-color="#38bdf8" />
+  </linearGradient>
+  <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#1e293b" />
+    <stop offset="100%" stop-color="#0f172a" />
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+  </filter>
+</defs>
+<!-- Header Banner -->
+<rect x="40" y="30" width="1520" height="120" rx="16" fill="url(#headerGrad)" filter="url(#shadow)"/>
+<text x="70" y="80" fill="#ffffff" font-size="28" font-weight="800">Mappa Concettuale: Wi-Fi - Strato Fisico ad Alta Velocità (HT)</text>
+<text x="70" y="115" fill="#f0f9ff" font-size="16" font-weight="500">Mappa Concettuale Vettoriale Ufficiale · Wi-Fi: 802.11n HT (28 elementi)</text>
+<g transform="translate(60,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="24" cy="40" r="10" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">1</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Strato fisico ad Alta Velocità (High</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">Throughput)</text>
+</g>
+<g transform="translate(563,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">2</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Combinazione di tre pilastri tecnologici</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">a livello fisico</text>
+</g>
+<g transform="translate(1066,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">3</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Tecnologia MIMO</text>
+</g>
+<g transform="translate(60,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">4</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Channel Bonding</text>
+</g>
+<g transform="translate(563,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">5</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">canali a 40MHz</text>
+</g>
+<g transform="translate(1066,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">6</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Short Guard Interval</text>
+</g>
+<g transform="translate(60,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">7</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Uso di antenne multiple 4x4</text>
+</g>
+<g transform="translate(563,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">8</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Spatial-Multiplexing</text>
+</g>
+<g transform="translate(1066,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">9</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Flusso dati diviso in più stream spaziali</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">indipendenti trasmessi contemporaneament...</text>
+</g>
+<g transform="translate(60,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">10</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Throughtput si moltiplica linearmente per</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">il nuemro di stream (fino 4x)</text>
+</g>
+<g transform="translate(563,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">11</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Beamforming</text>
+</g>
+<g transform="translate(1066,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">12</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">STBC</text>
+</g>
+<g transform="translate(60,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">13</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Space-Time BlockCoding</text>
+</g>
+<g transform="translate(563,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">14</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Focalizzare potenza segnale in una</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">direzione precisa nello spazio</text>
+</g>
+<g transform="translate(1066,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">15</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Trasmette repliche codificate dello</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">stesso dato su più antenne per sconfiggere fading</text>
+</g>
+<g transform="translate(60,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">16</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Aggregazione di due channel adiacenti da</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">20MHz (primary e secondary) in uno unico ...</text>
+</g>
+<g transform="translate(563,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">17</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Raddoppia la banda</text>
+</g>
+<g transform="translate(1066,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">18</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Elimina banda di guarda tra i due channel</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">intermedi</text>
+</g>
+<g transform="translate(60,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">19</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Aumento sottoportanti da 2x52=104 a 108</text>
+</g>
+<g transform="translate(563,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">20</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Per evitare interferenza da simboli</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">intervallo di guardia (CyclicPrefix) dura 800n...</text>
+</g>
+<g transform="translate(1066,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">21</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">In ambienti indoor tipici il multipath</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">raramente supera i 100-200ns quindi si può ...</text>
+</g>
+<g transform="translate(60,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">22</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Formati trama PLCP</text>
+</g>
+<g transform="translate(563,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">23</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">No Hight Troughput (HT)</text>
+</g>
+<g transform="translate(1066,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">24</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">HT Mixed</text>
+</g>
+<g transform="translate(60,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">25</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">HT greenfield</text>
+</g>
+<g transform="translate(563,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">26</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Legacy Physical layer header, non si</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">sfruttano le innovazioni del 802.11n</text>
+</g>
+<g transform="translate(1066,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">27</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">preambolo legacy a inizio trama leggibile</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">dalle vecchie stazioni per impostare il ...</text>
+</g>
+<g transform="translate(60,1125)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">28</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">senza preambolo legacy, massima</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">efficienza ma vietato in presenza di stazioni 802....</text>
+</g>
+<text x="800" y="1320" fill="#64748b" font-size="13" font-weight="500" text-anchor="middle">Corso di Reti Wireless · Prof. Mauro Femminella · Mappa Concettuale Vettoriale Interattiva</text>
+</svg>

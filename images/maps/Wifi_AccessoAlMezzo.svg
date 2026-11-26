@@ -1,0 +1,572 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 3345" width="100%" height="100%" style="background:#0f172a; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<defs>
+  <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0284c7" />
+    <stop offset="100%" stop-color="#38bdf8" />
+  </linearGradient>
+  <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#1e293b" />
+    <stop offset="100%" stop-color="#0f172a" />
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+  </filter>
+</defs>
+<!-- Header Banner -->
+<rect x="40" y="30" width="1520" height="120" rx="16" fill="url(#headerGrad)" filter="url(#shadow)"/>
+<text x="70" y="80" fill="#ffffff" font-size="28" font-weight="800">Mappa Concettuale: Wi-Fi - Accesso al Mezzo CSMA/CA e DCF</text>
+<text x="70" y="115" fill="#f0f9ff" font-size="16" font-weight="500">Mappa Concettuale Vettoriale Ufficiale · Wi-Fi: Accesso al Mezzo (86 elementi)</text>
+<g transform="translate(60,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="24" cy="40" r="10" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">1</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Accesso al mezzo</text>
+</g>
+<g transform="translate(563,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">2</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">gestione del canale</text>
+</g>
+<g transform="translate(1066,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">3</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">CSMA/CD collsion detection impossibile</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">ricezione del proprio segnale durante la tr...</text>
+</g>
+<g transform="translate(60,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">4</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">CSMA/CA Collision Avoidance</text>
+</g>
+<g transform="translate(563,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">5</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Carrier Sensing</text>
+</g>
+<g transform="translate(1066,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">6</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Spazi Inter-trama</text>
+</g>
+<g transform="translate(60,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">7</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">IFS InterFrame Space</text>
+</g>
+<g transform="translate(563,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">8</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">definiscono la priorità di accesso</text>
+</g>
+<g transform="translate(1066,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">9</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">SIFS (Short IFS)</text>
+</g>
+<g transform="translate(60,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">10</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Il più breve in assoluto</text>
+</g>
+<g transform="translate(563,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">11</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">10micros in 2.4 GHz 16 in 5 GHz</text>
+</g>
+<g transform="translate(1066,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">12</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Riservato per le trasmissioni con</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">priorità assoluta</text>
+</g>
+<g transform="translate(60,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">13</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Il canale rimane libero solo per un tempo</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">SIFS, nessuna stazione in contesa può di...</text>
+</g>
+<g transform="translate(563,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">14</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">DIFS (Distributed IFS)</text>
+</g>
+<g transform="translate(1066,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">15</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">tempo di attesa ordinario per</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">trasmissioni asincrone in DCF</text>
+</g>
+<g transform="translate(60,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">16</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">DCF</text>
+</g>
+<g transform="translate(563,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">17</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Funzione di coordinamento distribuito</text>
+</g>
+<g transform="translate(1066,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">18</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Ciascuno prova a trasmettere per conto</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">proprio senza coordinamento</text>
+</g>
+<g transform="translate(60,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">19</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Le trame brodcast non hanno l&#x27;ack quindi</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">sono trame unicast</text>
+</g>
+<g transform="translate(563,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">20</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">ACK obbligatorio</text>
+</g>
+<g transform="translate(1066,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">21</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Poichè chi trasmette non può rilevare</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">collisioni ogni frame unicast trasmesso con ...</text>
+</g>
+<g transform="translate(60,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">22</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">ACK Frame</text>
+</g>
+<g transform="translate(563,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">23</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Capo Tipo se la trama è dati controllo</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">mng o riservato</text>
+</g>
+<g transform="translate(1066,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">24</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Capo SottoTipo per tipo di trama</text>
+</g>
+<g transform="translate(60,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">25</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Solo 1 indirizzo sul riscontro, quello a</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">cui è rivolto l&#x27;ACK</text>
+</g>
+<g transform="translate(563,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">26</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Combina due meccanismi indipendenti</text>
+</g>
+<g transform="translate(1066,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">27</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Physical Carrier Sensing</text>
+</g>
+<g transform="translate(60,1125)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">28</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">nel phy</text>
+</g>
+<g transform="translate(563,1125)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">29</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Virtual Carrier Sensing</text>
+</g>
+<g transform="translate(1066,1125)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">30</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Eseguito tramite il meccaniscmo CCA clean</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">channel assesment</text>
+</g>
+<g transform="translate(60,1230)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">31</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Energy detection: potenza maggiore di una</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">soglia</text>
+</g>
+<g transform="translate(563,1230)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">32</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Preamble Detection: rilevamento di un</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">preambolo 802.11 valido</text>
+</g>
+<g transform="translate(1066,1230)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">33</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Ogni trama MAC include un campo</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">Duration/ID</text>
+</g>
+<g transform="translate(60,1335)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">34</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Le stazioni terze che ascoltano questa</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">trama incrementano il loro valore interno</text>
+</g>
+<g transform="translate(563,1335)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">35</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">NAV</text>
+</g>
+<g transform="translate(1066,1335)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">36</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Network Allocation Vector</text>
+</g>
+<g transform="translate(60,1440)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">37</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Come conto alla rovescia, finchè maggiore</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">di 0 canale occupato</text>
+</g>
+<g transform="translate(563,1440)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">38</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Il problema del terminale nascosto</text>
+</g>
+<g transform="translate(1066,1440)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">39</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">A e C vogliono comunicare con B ma A e C</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">non si sentono</text>
+</g>
+<g transform="translate(60,1545)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">40</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">A e C trasmettono due frame di grandi</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">dimensioni che collidono inevitabilmente dis...</text>
+</g>
+<g transform="translate(563,1545)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">41</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Risoluzione tramite Handshake RTS/CTS a 4</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">vie</text>
+</g>
+<g transform="translate(1066,1545)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">42</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">A invia frame di controllo cortissimo RTS</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">(request to send)</text>
+</g>
+<g transform="translate(60,1650)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">43</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">B riceve RTS e dopo un tempo SIFS</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">risponde con un CTS(Clear to send) in brodcast r...</text>
+</g>
+<g transform="translate(563,1650)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">44</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Durata impostata per coprire l&#x27;intera</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">transazione</text>
+</g>
+<g transform="translate(1066,1650)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">45</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">(CTS + DATA + ACK + 3SIFS)</text>
+</g>
+<g transform="translate(60,1755)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">46</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Tutte le stazioni nel raggio di B</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">ascoltano il CTS e impostano il proprio NAV</text>
+</g>
+<g transform="translate(563,1755)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">47</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">A trasmette il frame DATA</text>
+</g>
+<g transform="translate(1066,1755)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">48</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">B risponde con l&#x27;ACK dopo un tempo SIFS</text>
+</g>
+<g transform="translate(60,1860)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">49</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Soglia RTS</text>
+</g>
+<g transform="translate(563,1860)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">50</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Poichè lhandshake introduce un overhoead</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">fisso non conviene usarlo per tutti i pac...</text>
+</g>
+<g transform="translate(1066,1860)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">51</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Per quelli corti BasicAccess (DATA-ACK)</text>
+</g>
+<g transform="translate(60,1965)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">52</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Cosa succede se una stazione non è in</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">grado di leggere il campo duration per inter...</text>
+</g>
+<g transform="translate(563,1965)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">53</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Applicazione tempo di guardia EIFS per</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">proteggere l&#x27;ACK altrui</text>
+</g>
+<g transform="translate(1066,1965)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">54</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Tack tempo trasmissione ACK alla velocità</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">di base più bassa</text>
+</g>
+<g transform="translate(60,2070)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">55</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Reset in caso di decodifica corretta di</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">un nuovo frame</text>
+</g>
+<g transform="translate(563,2070)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">56</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Algoritmo di BackOff</text>
+</g>
+<g transform="translate(1066,2070)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">57</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Per evitare che più stazioni trasmettano</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">simultaneamente quando canale diventa libero</text>
+</g>
+<g transform="translate(60,2175)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">58</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Stazione estrae un numero intero casuale</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">k compreso tra 0 e la durata della Conten...</text>
+</g>
+<g transform="translate(563,2175)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">59</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Contatore Di Backoff che rappresenta il</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">nuemro di slot temporali (SlotTime es 9 in...</text>
+</g>
+<g transform="translate(1066,2175)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">60</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Regole di decremento</text>
+</g>
+<g transform="translate(60,2280)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">61</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Stazione attende un tempo DIFS</text>
+</g>
+<g transform="translate(563,2280)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">62</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Per ogni intero SLotTime in cui il canale</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">rimane libero il contatore viene diminuito</text>
+</g>
+<g transform="translate(1066,2280)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">63</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Se durante il conteggio canale viene</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">occupato il contatore si congela</text>
+</g>
+<g transform="translate(60,2385)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">64</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Quando canale libero e la stazione ha</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">atteso un DIFS di tempo riprende il conteggio</text>
+</g>
+<g transform="translate(563,2385)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">65</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">TempoDIBackoff = k x TimeSlot</text>
+</g>
+<g transform="translate(1066,2385)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">66</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">A 0 trasmette immediatamente</text>
+</g>
+<g transform="translate(60,2490)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">67</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">CWmin=15 o 31</text>
+</g>
+<g transform="translate(563,2490)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">68</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">CWmax = 1023</text>
+</g>
+<g transform="translate(1066,2490)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">69</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Due stazioni estraggono stesso k -&gt;</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">nessuna riceve ACK -&gt; collisione</text>
+</g>
+<g transform="translate(60,2595)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">70</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Interviene la parte Binaria Esponenziale</text>
+</g>
+<g transform="translate(563,2595)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">71</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Se un pacchetto collide significa rete</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">affollata -&gt; raddopio grandezza finestra di...</text>
+</g>
+<g transform="translate(1066,2595)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">72</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">CW_new = 2 (CW_old + 1) - 1</text>
+</g>
+<g transform="translate(60,2700)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">73</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">In seguito a una trasmissione completata</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">con successo reset</text>
+</g>
+<g transform="translate(563,2700)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">74</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Limiti di ritrasmissione</text>
+</g>
+<g transform="translate(1066,2700)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">75</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">7 per trame RTS</text>
+</g>
+<g transform="translate(60,2805)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">76</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">4 per trame long data</text>
+</g>
+<g transform="translate(563,2805)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">77</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Poi pacchetto scartato a livello di MAC</text>
+</g>
+<g transform="translate(1066,2805)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">78</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Performance Anomaly</text>
+</g>
+<g transform="translate(60,2910)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">79</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">In una BSS operano terminali a distanze</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">differenti dall&#x27;AP che negoziano date rate...</text>
+</g>
+<g transform="translate(563,2910)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">80</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">DCF classico garantisce stessa</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">probabilità di accesso al canale</text>
+</g>
+<g transform="translate(1066,2910)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">81</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">In media ciascuna stazione trasmette lo</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">stesso numero di pacchetti nel tempo</text>
+</g>
+<g transform="translate(60,3015)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">82</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Trasmettere tanti dati a 1MBs rispetto</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">che a 54 MBs richede tempi maggiori</text>
+</g>
+<g transform="translate(563,3015)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">83</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Stazione lenta e monopolizzata, stazioni</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">veloci rimangono bloccate</text>
+</g>
+<g transform="translate(1066,3015)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">84</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Soluzione Transmission Opportunity</text>
+</g>
+<g transform="translate(60,3120)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">85</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Allocare una quota equa di tempo in</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">trasmissione anzichè di pacchetti</text>
+</g>
+<text x="800" y="3315" fill="#64748b" font-size="13" font-weight="500" text-anchor="middle">Corso di Reti Wireless · Prof. Mauro Femminella · Mappa Concettuale Vettoriale Interattiva</text>
+</svg>

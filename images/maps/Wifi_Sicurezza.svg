@@ -1,0 +1,511 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 3030" width="100%" height="100%" style="background:#0f172a; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<defs>
+  <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0284c7" />
+    <stop offset="100%" stop-color="#38bdf8" />
+  </linearGradient>
+  <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#1e293b" />
+    <stop offset="100%" stop-color="#0f172a" />
+  </linearGradient>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+  </filter>
+</defs>
+<!-- Header Banner -->
+<rect x="40" y="30" width="1520" height="120" rx="16" fill="url(#headerGrad)" filter="url(#shadow)"/>
+<text x="70" y="80" fill="#ffffff" font-size="28" font-weight="800">Mappa Concettuale: Wi-Fi - Sicurezza da WEP a WPA2/WPA3</text>
+<text x="70" y="115" fill="#f0f9ff" font-size="16" font-weight="500">Mappa Concettuale Vettoriale Ufficiale · Wi-Fi: Sicurezza &amp; 802.11i (77 elementi)</text>
+<g transform="translate(60,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="2"/>
+  <circle cx="24" cy="40" r="10" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">1</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Sicurezza nel WiFI</text>
+</g>
+<g transform="translate(563,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">2</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Fallimento del WEP</text>
+</g>
+<g transform="translate(1066,180)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">3</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Wired Equivalence Privacy</text>
+</g>
+<g transform="translate(60,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">4</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Molteplici vulnerabilità Crittografiche</text>
+</g>
+<g transform="translate(563,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">5</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Cifrario a flusso RC4 e riuso della chiave</text>
+</g>
+<g transform="translate(1066,285)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">6</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">RC4 genera flusso di byte pseudocasuali</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">tramite XOR con il testo in chiaro</text>
+</g>
+<g transform="translate(60,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">7</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Bastano due testi cifrati con stesso</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">keystream per eliminare crittografia</text>
+</g>
+<g transform="translate(563,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">8</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Vettore di inizializzazione (IV)</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">debolissimo</text>
+</g>
+<g transform="translate(1066,390)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">9</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">per evitare riuso antepone un IV di 24</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">bit -&gt; 2 alla 24 combinazioni</text>
+</g>
+<g transform="translate(60,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">10</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">in una rete mediamente trafficata</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">collisioni ogni poche decine di minuti</text>
+</g>
+<g transform="translate(563,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">11</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Attacco FMS</text>
+</g>
+<g transform="translate(1066,495)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">12</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">esistono chiavi deboli che consentono ad</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">un attaccante passivo di ricostruire l&#x27;in...</text>
+</g>
+<g transform="translate(60,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">13</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Bit Flipping Attack</text>
+</g>
+<g transform="translate(563,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">14</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">CRC operatore lineare rispetto operazione</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">XOR, un attaccante può alterare i bit de...</text>
+</g>
+<g transform="translate(1066,600)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">15</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">ARP Request Injection</text>
+</g>
+<g transform="translate(60,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">16</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Raccogliere milioni di IV in meno di 2</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">minuti iniettando ripetutamente una richies...</text>
+</g>
+<g transform="translate(563,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">17</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Soluzione Transitoria</text>
+</g>
+<g transform="translate(1066,705)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">18</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">WPA e TKIP</text>
+</g>
+<g transform="translate(60,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">19</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">WifiProtected Access e Temporary Key</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">Integrity Protocol</text>
+</g>
+<g transform="translate(563,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">20</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">IV esteso a 48 bit</text>
+</g>
+<g transform="translate(1066,810)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">21</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Funzione di Key Mixing</text>
+</g>
+<g transform="translate(60,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">22</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Per neutralizzare l&#x27;attacco FMS chiave</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">master mescolata con IV e MAC del trasmetti...</text>
+</g>
+<g transform="translate(563,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">23</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Algoritmo Michael (MIC a 64bit)</text>
+</g>
+<g transform="translate(1066,915)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">24</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Sostituisce CRC-32 con un vero Message</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">Integrity Check non lineare</text>
+</g>
+<g transform="translate(60,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">25</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Essendo debole al BruteForce TKIP</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">introduce una contromisura</text>
+</g>
+<g transform="translate(563,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">26</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">se si verificano 2 errori MIC in 60sec la</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">rete di blocca e rigenera tutte le chiavi</text>
+</g>
+<g transform="translate(1066,1020)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">27</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Architettura di sicurezza definitiva</text>
+</g>
+<g transform="translate(60,1125)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">28</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">WPA2 e WPA3 con 802.11i</text>
+</g>
+<g transform="translate(563,1125)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">29</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Rimpiazza definitivamente cifrario RC4</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">con AES (Advanced Encrypted Network) a bloc...</text>
+</g>
+<g transform="translate(1066,1125)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">30</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Protocollo di incapsulamento cifrato CCMP</text>
+</g>
+<g transform="translate(60,1230)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">31</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">CounterMode with CBC Mac Protocol</text>
+</g>
+<g transform="translate(563,1230)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">32</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Counter Mode (CTR)</text>
+</g>
+<g transform="translate(1066,1230)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">33</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">trasforma cifrario a blocchi in cifrario</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">a flusso parallelo ad alta velocità</text>
+</g>
+<g transform="translate(60,1335)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">34</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">CBC-MAC</text>
+</g>
+<g transform="translate(563,1335)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">35</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Calcola codice di autenticazione del</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">messaggio (MIC) usando payload e campi critic...</text>
+</g>
+<g transform="translate(1066,1335)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">36</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Rende impossibile alterazione MAC o</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">manomissione</text>
+</g>
+<g transform="translate(60,1440)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">37</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">PN Packet Number a 48bit</text>
+</g>
+<g transform="translate(563,1440)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">38</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Contatore strettamente incrementale</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">rendendo immune da attacchi di Replay</text>
+</g>
+<g transform="translate(1066,1440)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">39</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Controllo degli accessi</text>
+</g>
+<g transform="translate(60,1545)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">40</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Lavoro/Università</text>
+</g>
+<g transform="translate(563,1545)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">41</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">La sicurezza non si basa su una password</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">condivisa ma sull&#x27;architettura a 3 entità</text>
+</g>
+<g transform="translate(1066,1545)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">42</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">SUPPLICANT</text>
+</g>
+<g transform="translate(60,1650)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">43</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">(terminale)</text>
+</g>
+<g transform="translate(563,1650)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">44</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">AUTHENTICATOR</text>
+</g>
+<g transform="translate(1066,1650)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">45</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">(AP)</text>
+</g>
+<g transform="translate(60,1755)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">46</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">AUTHENTICATION SERVER</text>
+</g>
+<g transform="translate(563,1755)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">47</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">(Server RADIUS)</text>
+</g>
+<g transform="translate(1066,1755)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">48</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Inizialmente porto logico in stato non</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">controllato, lascia passare unicamente i pa...</text>
+</g>
+<g transform="translate(60,1860)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">49</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Custodisce il database con le credenziali</text>
+</g>
+<g transform="translate(563,1860)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">50</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">EAPOL</text>
+</g>
+<g transform="translate(1066,1860)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">51</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Protocollo di incapsulamento EAP</text>
+</g>
+<g transform="translate(60,1965)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">52</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">trame layer2 chiamate EAPOL (EAP over LAN)</text>
+</g>
+<g transform="translate(563,1965)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">53</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">RADIUS</text>
+</g>
+<g transform="translate(1066,1965)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">54</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Non conosce ne verifica passwd,</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">intermediario trasparente</text>
+</g>
+<g transform="translate(60,2070)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">55</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Metodi EAP sicuri</text>
+</g>
+<g transform="translate(563,2070)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">56</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">PEAP</text>
+</g>
+<g transform="translate(1066,2070)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">57</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Server Radius presenta un certificato</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">digitale che il terminale verifica per insta...</text>
+</g>
+<g transform="translate(60,2175)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">58</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">EAP-TLS</text>
+</g>
+<g transform="translate(563,2175)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">59</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Autenticazione mutua server-client ma</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">richiede un certificato installato per dispo...</text>
+</g>
+<g transform="translate(1066,2175)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">60</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Quando terminata l&#x27;autenticazione</text>
+</g>
+<g transform="translate(60,2280)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">61</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Client e Server ricavano concordemente un</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">segreto comune la MSK a 512bit</text>
+</g>
+<g transform="translate(563,2280)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">62</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">(le chiavi poi vengono ricavate in ordine)</text>
+</g>
+<g transform="translate(1066,2280)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">63</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">1) PMK</text>
+</g>
+<g transform="translate(60,2385)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">64</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Prima metà della MSK o tramite un</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">algoritmo di ashing ripetuto</text>
+</g>
+<g transform="translate(563,2385)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">65</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">2) PTK</text>
+</g>
+<g transform="translate(1066,2385)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">66</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">Chiave di sessione dinamica unica per</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">quella specifica associazione terminale-AP c...</text>
+</g>
+<g transform="translate(60,2490)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">67</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">3) Vengono ricavate 3 sottochiavi</text>
+</g>
+<g transform="translate(563,2490)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">68</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">KCK</text>
+</g>
+<g transform="translate(1066,2490)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">69</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">per calcolare codice di integrità dei</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">messaggi dell&#x27;handshake</text>
+</g>
+<g transform="translate(60,2595)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">70</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">KEK</text>
+</g>
+<g transform="translate(563,2595)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">71</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">usata dall&#x27;AP per cifrare la chiave di</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">gruppo brodcast</text>
+</g>
+<g transform="translate(1066,2595)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">72</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">TK</text>
+</g>
+<g transform="translate(60,2700)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">73</text>
+  <text x="46" y="34" fill="#f8fafc" font-size="14" font-weight="600">temporary key caricata nell&#x27;hardware di</text>
+  <text x="46" y="54" fill="#94a3b8" font-size="13" font-weight="400">criptazione per cifrare messaggi unicast c...</text>
+</g>
+<g transform="translate(563,2700)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">74</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">Confronto WPA2-Enterprise (Eduroam)</text>
+</g>
+<g transform="translate(1066,2700)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">75</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">vs</text>
+</g>
+<g transform="translate(60,2805)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">76</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">CaptivePortal(UAM)</text>
+</g>
+<g transform="translate(563,2805)" filter="url(#shadow)">
+  <rect width="473" height="80" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1"/>
+  <circle cx="24" cy="40" r="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="24" y="44" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">77</text>
+  <text x="46" y="45" fill="#f8fafc" font-size="15" font-weight="600">4Way HandShake tra stazione e AccessPoint</text>
+</g>
+<text x="800" y="3000" fill="#64748b" font-size="13" font-weight="500" text-anchor="middle">Corso di Reti Wireless · Prof. Mauro Femminella · Mappa Concettuale Vettoriale Interattiva</text>
+</svg>
